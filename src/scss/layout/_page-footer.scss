@@ -4,14 +4,15 @@
   .page-footer {
     margin-top: auto;
     color: var(--text-color);
-    background-color: transparent;
+    background-color: #ffffff;
+    border-radius: 4rem 4rem 0 0;
+    overflow: hidden;
   }
 
   .page-footer__main {
     position: relative;
     padding-block: 8.2rem 8.8rem;
     background-color: #ffffff;
-    border-radius: 4rem 4rem 0 0;
     overflow: hidden;
   }
 
@@ -140,7 +141,6 @@
     .page-footer__main {
       padding-block: 4.4rem 6.1rem;
       background-color: #ffffff;
-      border-radius: 3.2rem 3.2rem 0 0;
     }
 
     .page-footer__bg {

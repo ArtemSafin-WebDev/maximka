@@ -1,0 +1,126 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  .participants {
+    padding-block: 12rem;
+  }
+
+  .participants__inner {
+    display: grid;
+    grid-template-columns: 83.2rem minmax(0, 1fr);
+    column-gap: 2.8rem;
+    align-items: start;
+  }
+
+  .participants__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .participants__label {
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #999999;
+    text-transform: uppercase;
+  }
+
+  .participants__title {
+    max-width: 83.2rem;
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text-color);
+  }
+
+  .participants__list {
+    display: grid;
+    grid-template-columns: repeat(4, 19.9rem);
+    gap: 2rem;
+    justify-content: space-between;
+  }
+
+  .participants__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    width: 19.9rem;
+  }
+
+  .participants__logo-wrap {
+    display: grid;
+    place-items: center;
+    width: 19.9rem;
+    height: 14.5rem;
+    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 4rem;
+  }
+
+  .participants__logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .participants__role {
+    width: 100%;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: var(--text-color);
+  }
+
+  .participants__role-line {
+    display: block;
+  }
+
+  @include mq.down(sm) {
+    .participants {
+      padding-block: 6rem;
+    }
+
+    .participants__inner {
+      display: block;
+    }
+
+    .participants__content {
+      gap: 1.6rem;
+    }
+
+    .participants__label {
+      font-size: 1.4rem;
+    }
+
+    .participants__title {
+      max-width: none;
+      font-size: 2rem;
+    }
+
+    .participants__list {
+      grid-template-columns: repeat(2, 15rem);
+      gap: 3.2rem;
+      justify-content: space-between;
+      margin-top: 3.2rem;
+    }
+
+    .participants__item {
+      width: 15rem;
+    }
+
+    .participants__logo-wrap {
+      width: 15rem;
+      height: 14.5rem;
+      border-radius: 2.8rem;
+    }
+
+    .participants__role {
+      font-size: 1.6rem;
+      letter-spacing: 0.02em;
+    }
+  }
+}

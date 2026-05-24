@@ -1,0 +1,34 @@
+<section class="participants" aria-labelledby="participants-title">
+  <div class="container">
+    <div class="participants__inner">
+      <div class="participants__content">
+        <p class="participants__label">{{participants.label}}</p>
+        <h2 class="participants__title" id="participants-title">
+          {{participants.title}}
+        </h2>
+      </div>
+
+      <ul class="participants__list">
+        {{#each participants.items}}
+          <li class="participants__item">
+            <div class="participants__logo-wrap">
+              <img
+                class="participants__logo"
+                src="{{image}}"
+                width="512"
+                height="374"
+                alt="{{alt}}"
+                loading="lazy"
+              >
+            </div>
+            <p class="participants__role">
+              {{#each roleLines}}
+                <span class="participants__role-line">{{this}}</span>
+              {{/each}}
+            </p>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</section>
