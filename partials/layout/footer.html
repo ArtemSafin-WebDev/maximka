@@ -1,5 +1,73 @@
 <footer class="page-footer">
-    <div class="container">
+  <div class="page-footer__main">
+    <img
+      class="page-footer__bg"
+      src="/images/footer-bg.svg"
+      alt=""
+      aria-hidden="true"
+    >
 
+    <div class="container">
+      <div class="page-footer__main-grid">
+        <a class="page-footer__logo-link" href="/" aria-label="Максима">
+          <img
+            class="page-footer__logo"
+            src="/images/shared/logo.svg"
+            width="212"
+            height="33"
+            alt="Максима"
+          >
+        </a>
+
+        <nav class="page-footer__nav" aria-label="Навигация в подвале">
+          {{#each footer.nav}}
+            <a class="page-footer__nav-link" href="{{href}}">{{label}}</a>
+          {{/each}}
+        </nav>
+
+        <div class="page-footer__phone">
+          <span class="page-footer__phone-label">Телефон:</span>
+          <a class="page-footer__phone-link" href="tel:+74951320708">{{footer.phone}}</a>
+        </div>
+
+        <div class="page-footer__credits">
+          <a
+            class="page-footer__made-by"
+            href="{{footer.studioUrl}}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Сайт разработан Mark Weber"
+          >
+            <span class="page-footer__made-by-text">
+              <span>Создание</span>
+              <span>сайта</span>
+            </span>
+            <img
+              class="page-footer__made-by-logo"
+              src="/images/shared/made-by.svg"
+              width="38"
+              height="55"
+              alt=""
+            >
+          </a>
+          <span class="page-footer__year">©{{footer.year}}</span>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="page-footer__legal">
+    <div class="container">
+      <div class="page-footer__legal-row">
+        <nav class="page-footer__legal-nav" aria-label="Юридическая информация">
+          {{#each footer.legalLinks}}
+            <a class="page-footer__legal-link" href="{{href}}">{{label}}</a>
+          {{/each}}
+        </nav>
+        <span class="page-footer__legal-year">©{{footer.year}}</span>
+      </div>
+
+      <p class="page-footer__disclaimer">{{footer.disclaimer}}</p>
+    </div>
+  </div>
 </footer>
