@@ -1,0 +1,44 @@
+<section class="promos" aria-labelledby="promos-title">
+  <div class="container">
+    <h2 class="promos__title" id="promos-title">{{promos.title}}</h2>
+
+    <div class="promos__slider swiper js-promos-slider">
+      <ul class="promos__list swiper-wrapper">
+        {{#each promos.items}}
+          <li class="promos__slide swiper-slide">
+            <article class="promos__card {{themeClass}}">
+              <img
+                class="promos__image"
+                src="{{image}}"
+                width="560"
+                height="437"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              >
+
+              <div class="promos__content">
+                <h3 class="promos__card-title">
+                  <span class="promos__desktop-text">{{title}}</span>
+                  <span class="promos__mobile-text">{{titleMobile}}</span>
+                </h3>
+
+                <p class="promos__description">
+                  <span class="promos__desktop-text">{{description}}</span>
+                  <span class="promos__mobile-text">
+                    {{#each descriptionMobileLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
+                  </span>
+                </p>
+              </div>
+
+              <a class="promos__button" href="{{buttonHref}}">
+                <span class="promos__desktop-text">{{buttonLabel}}</span>
+                <span class="promos__mobile-text">{{buttonLabelMobile}}</span>
+              </a>
+            </article>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</section>

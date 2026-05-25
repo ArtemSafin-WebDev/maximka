@@ -1,6 +1,42 @@
 export default {
   "/index.html": {
     title: "Главная страница",
+    promos: {
+      title: "Акции",
+      items: [
+        {
+          image: "/images/promos/1.svg",
+          title: "Скидка до 15%",
+          titleMobile: "Старт продаж",
+          description: "Идеальное предложение для вас",
+          descriptionMobileLines: ["Идеальное предложение для", "вас"],
+          buttonLabel: "Перейти в каталог",
+          buttonLabelMobile: "Оставить заявку",
+          buttonHref: "#individual-conditions",
+        },
+        {
+          image: "/images/promos/2.svg",
+          title: "Скидка до 15%",
+          titleMobile: "Старт продаж",
+          description: "Идеальное предложение для вас",
+          descriptionMobileLines: ["Идеальное предложение для", "вас"],
+          buttonLabel: "Перейти в каталог",
+          buttonLabelMobile: "Оставить заявку",
+          buttonHref: "#individual-conditions",
+        },
+        {
+          image: "/images/promos/3.svg",
+          themeClass: "promos__card--dark",
+          title: "Скидка до 15%",
+          titleMobile: "Старт продаж",
+          description: "Идеальное предложение для вас",
+          descriptionMobileLines: ["Идеальное предложение для", "вас"],
+          buttonLabel: "Перейти в каталог",
+          buttonLabelMobile: "Оставить заявку",
+          buttonHref: "#individual-conditions",
+        },
+      ],
+    },
     participants: {
       label: "Участники проекта",
       title:

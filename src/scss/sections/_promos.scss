@@ -1,0 +1,157 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  .promos {
+    padding-bottom: 10rem;
+  }
+
+  .promos__title {
+    margin-bottom: 4.8rem;
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text-color);
+  }
+
+  .promos__slider {
+    overflow: visible;
+  }
+
+  .promos__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .promos__slide {
+    min-width: 0;
+  }
+
+  .promos__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 33.8rem;
+    padding: 3.2rem;
+    overflow: hidden;
+    border-radius: 4rem;
+    color: var(--bg-color);
+  }
+
+  .promos__card--dark {
+    color: var(--text-color);
+  }
+
+  .promos__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .promos__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    width: 100%;
+    max-width: 49.6rem;
+  }
+
+  .promos__card-title {
+    font-size: 5.6rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+
+  .promos__description {
+    font-size: 3.2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+
+  .promos__button {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    padding: 2.4rem 3.2rem;
+    border-radius: 10rem;
+    background-color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--text-color);
+    white-space: nowrap;
+  }
+
+  .promos__mobile-text {
+    display: none;
+  }
+
+  @include mq.down(sm) {
+    .promos {
+      padding-bottom: 8.7rem;
+    }
+
+    .promos__title {
+      margin-bottom: 2.4rem;
+      font-size: 2rem;
+    }
+
+    .promos__list {
+      display: flex;
+      gap: 0;
+    }
+
+    .promos__slide {
+      width: 100%;
+      height: auto;
+    }
+
+    .promos__card {
+      min-height: 23.2rem;
+      padding: 2rem;
+      border-radius: 2.4rem;
+    }
+
+    .promos__content {
+      max-width: 29.5rem;
+    }
+
+    .promos__card-title {
+      font-size: 2.4rem;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .promos__description {
+      font-size: 1.8rem;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .promos__button {
+      min-width: 16.3rem;
+      min-height: 5.6rem;
+      padding: 1.2rem 2rem;
+      border-radius: 3.1rem;
+      font-size: 1.6rem;
+    }
+
+    .promos__desktop-text {
+      display: none;
+    }
+
+    .promos__mobile-text {
+      display: inline;
+    }
+  }
+}

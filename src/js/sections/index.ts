@@ -1,1 +1,5 @@
-export default function sections() {}
+import initPromos from "./promos";
+
+export default function sections() {
+  initPromos();
+}
