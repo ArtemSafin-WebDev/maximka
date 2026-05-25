@@ -75,6 +75,17 @@
     letter-spacing: 0.02em;
   }
 
+  .page-footer__nav-link,
+  .page-footer__phone-link,
+  .page-footer__made-by,
+  .page-footer__legal-link {
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
   .page-footer__credits {
     display: contents;
   }

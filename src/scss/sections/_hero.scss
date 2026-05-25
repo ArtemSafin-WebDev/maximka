@@ -147,6 +147,12 @@
       color: var(--text-color);
       -webkit-text-fill-color: var(--text-color);
     }
+
+    &:hover {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      -webkit-text-fill-color: #ffffff;
+    }
   }
 
   .hero__cta {
@@ -251,6 +257,12 @@
         color: var(--text-color);
         -webkit-text-fill-color: var(--text-color);
       }
+
+      &:hover {
+        background-color: var(--primary-color);
+        color: #ffffff;
+        -webkit-text-fill-color: #ffffff;
+      }
     }
 
     .hero__cta-icon {
@@ -268,6 +280,11 @@
         height: 1.8rem;
         fill: currentColor;
       }
+    }
+
+    .hero__cta:hover .hero__cta-icon {
+      background-color: rgb(255 255 255 / 16%);
+      color: #ffffff;
     }
   }
 }

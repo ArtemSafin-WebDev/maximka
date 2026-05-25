@@ -33,15 +33,8 @@
 
               <span class="features-card__number">{{number}}</span>
 
-              <h3 class="features-card__title {{#if titleHoverLines}}features-card__title--has-hover{{/if}}">
-                <span class="features-card__title-default">
-                  {{#each titleLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
-                </span>
-                {{#if titleHoverLines}}
-                  <span class="features-card__title-hover">
-                    {{#each titleHoverLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
-                  </span>
-                {{/if}}
+              <h3 class="features-card__title">
+                {{#each titleLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
               </h3>
 
               <span class="features-card__icon" aria-hidden="true">

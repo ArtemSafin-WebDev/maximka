@@ -132,10 +132,6 @@
     transition: color 0.3s ease;
   }
 
-  .features-card__title-hover {
-    display: none;
-  }
-
   .features-card__icon {
     position: absolute;
     right: 2.4rem;
@@ -184,20 +180,6 @@
     color: var(--text-color);
     background-color: #ffffff;
     transform: rotate(0deg);
-  }
-
-  .features-card:hover .features-card__title-hover,
-  .features-card:focus-within .features-card__title-hover {
-    display: inline;
-  }
-
-  .features-card:hover
-    .features-card__title--has-hover
-    .features-card__title-default,
-  .features-card:focus-within
-    .features-card__title--has-hover
-    .features-card__title-default {
-    display: none;
   }
 
   .features__scrollbar.swiper-scrollbar {

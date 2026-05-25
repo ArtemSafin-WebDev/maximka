@@ -31,6 +31,7 @@
   .page-header :where(a, button) {
     transition:
       background-color 0.2s,
+      color 0.2s,
       border-color 0.2s;
   }
 
@@ -78,6 +79,12 @@
     color: #ffffff;
   }
 
+  .page-header__button--apartments:hover,
+  .page-header__button--menu-apartments:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+  }
+
   .page-header__button--callback {
     gap: 1.2rem;
     padding: 1.2rem 2rem 1.2rem 1.2rem;
@@ -90,6 +97,19 @@
     color: #ffffff;
   }
 
+  .page-header__button--callback:hover,
+  .page-header__button--menu-callback:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+  }
+
+  .page-header.is-scrolled
+    :is(.page-header__button--apartments, .page-header__button--callback):hover {
+    background-color: var(--primary-hover-color);
+  }
+
+  .page-header__button--callback:hover .page-header__button-icon,
+  .page-header__button--menu-callback:hover .page-header__button-icon,
   .page-header.is-scrolled
     .page-header__button--callback
     .page-header__button-icon {
@@ -117,6 +137,15 @@
   .page-header__button--menu-apartments .page-header__button-icon {
     background-color: var(--primary-color);
     color: #ffffff;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+  }
+
+  .page-header__button--apartments:hover .page-header__button-icon,
+  .page-header__button--menu-apartments:hover .page-header__button-icon {
+    background-color: rgb(255 255 255 / 16%);
+    color: #ffffff;
   }
 
   .page-header.is-scrolled
@@ -124,6 +153,13 @@
     .page-header__button-icon {
     background-color: #ffffff;
     color: var(--primary-color);
+  }
+
+  .page-header.is-scrolled
+    .page-header__button--apartments:hover
+    .page-header__button-icon {
+    background-color: #ffffff;
+    color: var(--primary-hover-color);
   }
 
   .page-header__nav {
@@ -140,6 +176,10 @@
 
   .page-header__nav-link {
     display: block;
+
+    &:hover {
+      color: var(--primary-color);
+    }
   }
 
   .page-header__divider {
@@ -164,6 +204,10 @@
     line-height: 1.1;
     letter-spacing: 0.04em;
     white-space: nowrap;
+
+    &:hover {
+      color: var(--primary-color);
+    }
   }
 
   .page-header__toggle,
@@ -299,6 +343,10 @@
       white-space: nowrap;
     }
 
+    .page-header__menu-link:hover {
+      color: var(--primary-color);
+    }
+
     .page-header__menu-phone {
       position: absolute;
       left: var(--container-padding);
@@ -309,6 +357,10 @@
       letter-spacing: 0.04em;
       color: #ffffff;
       white-space: nowrap;
+
+      &:hover {
+        color: var(--primary-color);
+      }
     }
 
     .page-header__button--menu-callback {

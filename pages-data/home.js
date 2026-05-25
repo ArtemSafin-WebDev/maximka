@@ -227,7 +227,6 @@ export default {
         {
           number: "02",
           titleLines: ["Сервисы внутри", "дома"],
-          titleHoverLines: ["Город внутри", "дома"],
           image: "/images/features/2.webp",
           alt: "Фасад с коммерческими помещениями на первых этажах",
         },
