@@ -24,7 +24,9 @@
                 </h3>
 
                 <p class="promos__description">
-                  <span class="promos__desktop-text">{{description}}</span>
+                  <span class="promos__desktop-text">
+                    {{#each descriptionLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
+                  </span>
                   <span class="promos__mobile-text">
                     {{#each descriptionMobileLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
                   </span>

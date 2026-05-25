@@ -24,19 +24,22 @@
   }
 
   .promos__slide {
+    box-sizing: border-box;
     min-width: 0;
   }
 
   .promos__card {
     position: relative;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    min-height: 33.8rem;
+    aspect-ratio: 560 / 338;
     padding: 3.2rem;
     overflow: hidden;
     border-radius: 4rem;
     color: var(--bg-color);
+    isolation: isolate;
   }
 
   .promos__card--dark {
@@ -48,6 +51,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
+    z-index: 0;
     object-fit: cover;
   }
 
@@ -78,18 +82,27 @@
   .promos__button {
     position: relative;
     z-index: 1;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: auto;
     padding: 2.4rem 3.2rem;
     border-radius: 10rem;
-    background-color: #ffffff;
+    background: #ffffff !important;
     font-size: 2.4rem;
     font-weight: 500;
     line-height: 1.1;
-    color: var(--text-color);
+    color: #333333 !important;
+    -webkit-text-fill-color: #333333 !important;
+    text-decoration: none;
     white-space: nowrap;
+
+    &:link,
+    &:visited {
+      color: #333333 !important;
+      -webkit-text-fill-color: #333333 !important;
+    }
   }
 
   .promos__mobile-text {
@@ -117,7 +130,7 @@
     }
 
     .promos__card {
-      min-height: 23.2rem;
+      aspect-ratio: 335 / 232;
       padding: 2rem;
       border-radius: 2.4rem;
     }
@@ -139,6 +152,7 @@
     }
 
     .promos__button {
+      width: 16.3rem;
       min-width: 16.3rem;
       min-height: 5.6rem;
       padding: 1.2rem 2rem;
