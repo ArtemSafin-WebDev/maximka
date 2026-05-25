@@ -571,6 +571,7 @@ export default {
           required: true,
         },
         {
+          textarea: true,
           type: "text",
           name: "comment",
           placeholder: "Комментарий",

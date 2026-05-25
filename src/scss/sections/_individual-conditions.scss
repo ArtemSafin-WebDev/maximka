@@ -12,6 +12,10 @@
     border-radius: 6rem;
   }
 
+  .individual-conditions__picture {
+    display: block;
+  }
+
   .individual-conditions__bg {
     position: absolute;
     inset: 0;
@@ -98,12 +102,17 @@
       border-radius: 0;
     }
 
+    .individual-conditions__picture {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2.4rem;
+    }
+
     .individual-conditions__bg {
       position: static;
       width: 100%;
       height: 30.5rem;
       object-fit: cover;
-      border-radius: 0 2.4rem 2.4rem 0;
     }
 
     .individual-conditions__form {
@@ -120,11 +129,46 @@
     }
 
     .individual-conditions__submit {
+      min-height: 4.2rem;
       margin-block: 0;
+      padding: 1.2rem 2rem;
+      border-radius: 3.1rem;
+      font-size: 1.6rem;
     }
 
     .individual-conditions__content {
-      display: none;
+      top: 3.1rem;
+      right: 0.9rem;
+      left: auto;
+      display: flex;
+      gap: 1.6rem;
+      justify-content: flex-start;
+      width: 18.7rem;
+      min-height: 0;
+      color: #ffffff;
+    }
+
+    .individual-conditions__title {
+      font-size: 2rem;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    .individual-conditions__phone {
+      gap: 1.6rem;
+    }
+
+    .individual-conditions__phone-label {
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .individual-conditions__phone-link {
+      font-size: 2rem;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
     }
   }
 }
