@@ -86,10 +86,14 @@
     height: 16.6rem;
     border-radius: 0 0 4rem 4rem;
     background-color: #d8de5b;
+    background-image: url("/images/advantages/pattern.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
     clip-path: polygon(0 32%, 10% 22%, 90% 0, 100% 24%, 100% 100%, 0 100%);
     clip-path: shape(
-      from 0 5.2rem,
-      curve to 4.2rem 3.4rem with 0 4rem / 1.3rem 3.5rem,
+      from 0 6.2rem,
+      curve to 6.8rem 4.4rem with 0 4.8rem / 3.8rem 4.8rem,
       line to calc(100% - 4.2rem) 0,
       arc to 100% 4.2rem of 4.2rem cw,
       vline to 100%,
@@ -267,8 +271,8 @@
       border-radius: 0 0 2.541rem 2.541rem;
       clip-path: polygon(0 32%, 10% 22%, 90% 0, 100% 24%, 100% 100%, 0 100%);
       clip-path: shape(
-        from 0 3.4rem,
-        curve to 2.7rem 2.2rem with 0 2.7rem / 0.9rem 2.3rem,
+        from 0 4rem,
+        curve to 4.3rem 2.8rem with 0 3rem / 2.4rem 3rem,
         line to calc(100% - 2.7rem) 0,
         arc to 100% 2.7rem of 2.7rem cw,
         vline to 100%,
