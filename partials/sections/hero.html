@@ -1,0 +1,68 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__media" aria-hidden="true">
+    <picture class="hero__picture">
+      <source media="(max-width: 576px)" srcset="{{hero.imageMobile}}">
+      <img
+        class="hero__image"
+        src="{{hero.image}}"
+        width="1920"
+        height="1125"
+        alt=""
+      >
+    </picture>
+  </div>
+
+  <div class="hero__content container">
+    <div class="hero__heading">
+      <p class="hero__eyebrow">{{hero.eyebrow}}</p>
+      <h1 class="hero__title" id="hero-title">{{hero.title}}</h1>
+    </div>
+
+    <a class="hero__cta" href="{{hero.cta.href}}">
+      <span>{{hero.cta.label}}</span>
+      <span class="hero__cta-icon" aria-hidden="true">
+        <svg width="25" height="25" focusable="false">
+          <use href="#arrows/right"></use>
+        </svg>
+      </span>
+    </a>
+
+    <article class="hero__promo" aria-label="{{hero.promo.title}}">
+      <picture class="hero__promo-picture" aria-hidden="true">
+        <source media="(max-width: 576px)" srcset="{{hero.promo.imageMobile}}">
+        <img
+          class="hero__promo-image"
+          src="{{hero.promo.image}}"
+          width="328"
+          height="380"
+          alt=""
+        >
+      </picture>
+
+      <div class="hero__promo-content">
+        <h2 class="hero__promo-title">{{hero.promo.title}}</h2>
+        <p class="hero__promo-description">{{hero.promo.description}}</p>
+      </div>
+
+      <a class="hero__promo-button" href="{{hero.promo.buttonHref}}">
+        {{hero.promo.buttonLabel}}
+      </a>
+    </article>
+
+    <ul class="hero__tags" aria-label="{{hero.tagsLabel}}">
+      {{#each hero.tags}}
+        <li class="hero__tag">
+          <img
+            class="hero__tag-icon"
+            src="{{icon}}"
+            width="20"
+            height="20"
+            alt=""
+            aria-hidden="true"
+          >
+          <span>{{label}}</span>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>

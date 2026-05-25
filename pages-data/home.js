@@ -1,6 +1,47 @@
 export default {
   "/index.html": {
     title: "Главная страница",
+    hero: {
+      image: "/images/hero/bg.webp",
+      imageMobile: "/images/hero/bg-mobile.webp",
+      eyebrow: "Жилой комплекс «Максима»",
+      title: "Новое качество жизни по доступной цене",
+      cta: {
+        label: "Выбрать квартиру",
+        href: "#individual-conditions",
+      },
+      promo: {
+        image: "/images/hero/card-bg.svg",
+        imageMobile: "/images/hero/card-bg-mobile.svg",
+        title: "Старт продаж",
+        description: "Идеальное предложение для вас",
+        buttonLabel: "Оставить заявку",
+        buttonHref: "#individual-conditions",
+      },
+      tagsLabel: "Преимущества жилого комплекса",
+      tags: [
+        {
+          icon: "/images/hero/icons/1.svg",
+          label: "Комфорт-класс",
+        },
+        {
+          icon: "/images/hero/icons/2.svg",
+          label: "Двор без машин",
+        },
+        {
+          icon: "/images/hero/icons/3.svg",
+          label: "Предчистовая отделка",
+        },
+        {
+          icon: "/images/hero/icons/4.svg",
+          label: "Подземный паркинг",
+        },
+        {
+          icon: "/images/hero/icons/5.svg",
+          label: "12 мин до м. Авиастроительная",
+        },
+      ],
+    },
     solutions: {
       label: "Планировочные решения",
       titleLines: [
