@@ -1,0 +1,316 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  .advantages {
+    margin-bottom: 14rem;
+    overflow: hidden;
+  }
+
+  .advantages__intro {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 2rem;
+    row-gap: 3.2rem;
+    margin-bottom: 4.8rem;
+  }
+
+  .advantages__label {
+    grid-column: 1 / -1;
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #999999;
+  }
+
+  .advantages__title {
+    grid-column: 1 / span 6;
+    max-width: 85rem;
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text-color);
+  }
+
+  .advantages__description {
+    grid-column: 8 / span 5;
+    align-self: start;
+    max-width: 70.6rem;
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-color);
+  }
+
+  .advantages__slider {
+    position: relative;
+    overflow: visible;
+  }
+
+  .advantages__list {
+    display: flex;
+  }
+
+  .advantages__slide {
+    box-sizing: border-box;
+    width: 41.5rem;
+    height: auto;
+  }
+
+  .advantages-card {
+    position: relative;
+    display: block;
+    height: 58rem;
+    overflow: hidden;
+    border-radius: 4rem;
+    background-color: #d9d9d9;
+    color: var(--text-color);
+    isolation: isolate;
+  }
+
+  .advantages-card__image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  .advantages-card::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    z-index: -1;
+    height: 16.6rem;
+    border-radius: 0 0 4rem 4rem;
+    background-color: #d8de5b;
+    clip-path: polygon(0 32%, 10% 22%, 90% 0, 100% 24%, 100% 100%, 0 100%);
+    clip-path: shape(
+      from 0 5.2rem,
+      curve to 4.2rem 3.4rem with 0 4rem / 1.3rem 3.5rem,
+      line to calc(100% - 4.2rem) 0,
+      arc to 100% 4.2rem of 4.2rem cw,
+      vline to 100%,
+      hline to 0,
+      vline to 5.2rem,
+      close
+    );
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .advantages-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background-color: rgb(0 0 0 / 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .advantages-card__content {
+    position: absolute;
+    left: 3.2rem;
+    right: 3.2rem;
+    bottom: 3.2rem;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 4.1rem;
+    transition: color 0.3s ease;
+  }
+
+  .advantages-card__title {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .advantages-card__icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: var(--text-color);
+  }
+
+  .advantages-card__icon svg {
+    width: 3.2rem;
+    height: 3.2rem;
+    fill: currentColor;
+  }
+
+  .advantages-card:hover,
+  .advantages-card:focus-within {
+    color: #ffffff;
+  }
+
+  .advantages-card:hover::before,
+  .advantages-card:focus-within::before {
+    opacity: 0;
+  }
+
+  .advantages-card:hover::after,
+  .advantages-card:focus-within::after {
+    opacity: 1;
+  }
+
+  .advantages__nav {
+    position: absolute;
+    top: 25.4rem;
+    left: calc(75% - 3.6rem);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7.2rem;
+    height: 7.2rem;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #d8de5b;
+    color: var(--text-color);
+  }
+
+  .advantages__nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.6rem;
+    height: 7.2rem;
+    color: inherit;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .advantages__nav-icon {
+    fill: currentColor;
+  }
+
+  .advantages__scrollbar.swiper-scrollbar {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    height: 0.4rem;
+    margin-top: 4rem;
+    border-radius: 0;
+    background-color: #e8e8e8;
+  }
+
+  .advantages__scrollbar .swiper-scrollbar-drag {
+    width: 26.5rem !important;
+    border-radius: 0;
+    background-color: #333333;
+  }
+
+  .advantages__scrollbar.swiper-scrollbar-lock {
+    display: none;
+  }
+
+  @include mq.down(sm) {
+    .advantages {
+      margin-bottom: 8.7rem;
+    }
+
+    .advantages__intro {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 4.8rem;
+    }
+
+    .advantages__label {
+      margin-bottom: 1.6rem;
+      font-size: 1.4rem;
+    }
+
+    .advantages__title {
+      margin-bottom: 3.2rem;
+      max-width: none;
+      font-size: 2rem;
+    }
+
+    .advantages__description {
+      max-width: none;
+      font-size: 1.6rem;
+    }
+
+    .advantages__slider {
+      margin-inline: -1rem;
+    }
+
+    .advantages__slide {
+      width: 26.4rem;
+    }
+
+    .advantages-card {
+      height: 36.8rem;
+      border-radius: 2.541rem;
+    }
+
+    .advantages-card::before {
+      height: 10.5rem;
+      border-radius: 0 0 2.541rem 2.541rem;
+      clip-path: polygon(0 32%, 10% 22%, 90% 0, 100% 24%, 100% 100%, 0 100%);
+      clip-path: shape(
+        from 0 3.4rem,
+        curve to 2.7rem 2.2rem with 0 2.7rem / 0.9rem 2.3rem,
+        line to calc(100% - 2.7rem) 0,
+        arc to 100% 2.7rem of 2.7rem cw,
+        vline to 100%,
+        hline to 0,
+        vline to 3.4rem,
+        close
+      );
+    }
+
+    .advantages-card__content {
+      left: 2rem;
+      right: 2rem;
+      bottom: 2rem;
+      gap: 2.6rem;
+    }
+
+    .advantages-card__title {
+      font-size: 1.6rem;
+    }
+
+    .advantages-card__icon {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .advantages-card__icon svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .advantages__nav {
+      display: none;
+    }
+
+    .advantages__scrollbar.swiper-scrollbar {
+      width: calc(100% - 1rem);
+      margin-top: 2.4rem;
+      margin-left: 1rem;
+    }
+
+    .advantages__scrollbar .swiper-scrollbar-drag {
+      width: 4.8rem !important;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import initAboutProject from "./aboutProject";
+import initAdvantages from "./advantages";
 import initFeatures from "./features";
 import initGallery from "./gallery";
 import initProgress from "./progress";
@@ -11,5 +12,6 @@ export default function sections() {
   initProgress();
   initFeatures();
   initSolutions();
+  initAdvantages();
   initPromos();
 }

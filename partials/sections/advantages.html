@@ -1,0 +1,56 @@
+<section class="advantages" aria-labelledby="advantages-title">
+  <div class="container">
+    <div class="advantages__intro">
+      <p class="advantages__label">{{advantages.label}}</p>
+
+      <h2 class="advantages__title" id="advantages-title">{{advantages.title}}</h2>
+
+      <p class="advantages__description">{{advantages.description}}</p>
+    </div>
+
+    <div class="advantages__slider swiper js-advantages-slider">
+      <ul class="advantages__list swiper-wrapper">
+        {{#each advantages.items}}
+          <li class="advantages__slide swiper-slide">
+            <article class="advantages-card">
+              <img
+                class="advantages-card__image"
+                src="{{image}}"
+                width="{{width}}"
+                height="{{height}}"
+                alt="{{alt}}"
+                loading="lazy"
+              >
+
+              <div class="advantages-card__content">
+                <h3 class="advantages-card__title">{{title}}</h3>
+
+                <span class="advantages-card__icon" aria-hidden="true">
+                  <svg width="32" height="32" focusable="false">
+                    <use href="#arrows/diagonal"></use>
+                  </svg>
+                </span>
+              </div>
+            </article>
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="advantages__nav" aria-label="{{advantages.controlsLabel}}">
+        <button class="advantages__nav-button js-advantages-prev" type="button" aria-label="{{advantages.prevLabel}}">
+          <svg class="advantages__nav-icon" width="11" height="18" aria-hidden="true" focusable="false">
+            <use href="#slider-left"></use>
+          </svg>
+        </button>
+
+        <button class="advantages__nav-button js-advantages-next" type="button" aria-label="{{advantages.nextLabel}}">
+          <svg class="advantages__nav-icon" width="11" height="18" aria-hidden="true" focusable="false">
+            <use href="#slider-right"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div class="advantages__scrollbar swiper-scrollbar"></div>
+    </div>
+  </div>
+</section>
