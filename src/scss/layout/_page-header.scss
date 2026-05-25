@@ -1,11 +1,337 @@
+@use "tools/media" as mq;
+
 @layer layout {
   .page-header {
-    position: sticky;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
+    padding-block: 4rem;
     z-index: 70;
-    background-color: #fff;
+    color: #ffffff;
+    transition:
+      background-color 0.2s,
+      backdrop-filter 0.2s;
+  }
+
+  .page-header.is-scrolled {
+    background-color: rgb(255 255 255 / 82%);
     color: var(--text-color);
+    backdrop-filter: blur(1.54rem);
+  }
+
+  .page-header :where(a) {
+    color: inherit;
+  }
+
+  .page-header :where(a:link, a:visited) {
+    color: inherit;
+  }
+
+  .page-header :where(a, button) {
+    transition:
+      background-color 0.2s,
+      border-color 0.2s;
+  }
+
+  .page-header__inner {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 6.4rem;
+  }
+
+  .page-header__logo-link {
+    flex-shrink: 0;
+    display: block;
+    color: inherit;
+  }
+
+  .page-header__logo {
+    display: block;
+    width: 22rem;
+    height: 3.6rem;
+  }
+
+  .page-header__button {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    min-height: 5.6rem;
+    border-radius: 3.4rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .page-header__button--apartments {
+    gap: 1.8rem;
+    padding: 1.2rem 1.2rem 1.2rem 2rem;
+    background-color: #ffffff;
+    color: var(--text-color);
+  }
+
+  .page-header.is-scrolled .page-header__button--apartments {
+    background-color: var(--primary-color);
+    color: #ffffff;
+  }
+
+  .page-header__button--callback {
+    gap: 1.2rem;
+    padding: 1.2rem 2rem 1.2rem 1.2rem;
+    background-color: #ffffff;
+    color: var(--text-color);
+  }
+
+  .page-header.is-scrolled .page-header__button--callback {
+    background-color: var(--primary-color);
+    color: #ffffff;
+  }
+
+  .page-header.is-scrolled
+    .page-header__button--callback
+    .page-header__button-icon {
+    color: #ffffff;
+  }
+
+  .page-header__button-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    color: var(--primary-color);
+  }
+
+  .page-header__button-icon svg {
+    width: 3.2rem;
+    height: 3.2rem;
+    fill: currentColor;
+  }
+
+  .page-header__button--apartments .page-header__button-icon,
+  .page-header__button--menu-apartments .page-header__button-icon {
+    background-color: var(--primary-color);
+    color: #ffffff;
+  }
+
+  .page-header.is-scrolled
+    .page-header__button--apartments
+    .page-header__button-icon {
+    background-color: #ffffff;
+    color: var(--primary-color);
+  }
+
+  .page-header__nav {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    min-width: 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .page-header__nav-link {
+    display: block;
+  }
+
+  .page-header__divider {
+    flex-shrink: 0;
+    width: 0.1rem;
+    height: 2.2rem;
+    background-color: currentColor;
+    opacity: 0.55;
+  }
+
+  .page-header__actions {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .page-header__phone {
+    flex-shrink: 0;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .page-header__toggle,
+  .page-header__menu {
+    display: none;
+  }
+
+  .page-header__toggle-label {
+    position: absolute;
+    width: 0.1rem;
+    height: 0.1rem;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @include mq.down(sm) {
+    .page-header {
+      min-height: 9.4rem;
+      padding-block: 3.1rem;
+      color: #ffffff;
+      background-color: transparent;
+      backdrop-filter: none;
+      overflow: hidden;
+    }
+
+    .page-header.is-scrolled {
+      background-color: transparent;
+      color: #ffffff;
+      backdrop-filter: none;
+    }
+
+    .page-header.is-menu-open {
+      height: 81.2rem;
+      border-radius: 0 0 3.2rem 3.2rem;
+      background-image: linear-gradient(
+          175.8deg,
+          rgb(102 102 102 / 74%) 5.5716%,
+          rgb(102 102 102 / 0%) 52.582%
+        ),
+        url("/images/hero/bg-mobile.webp");
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+    }
+
+    .page-header.is-menu-open::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 47.2rem;
+      border-radius: 0 0 2.4rem 2.4rem;
+      background-color: rgb(0 0 0 / 30%);
+      backdrop-filter: blur(1.12rem);
+      pointer-events: none;
+    }
+
+    .page-header__inner {
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .page-header__logo {
+      width: 14.8rem;
+      height: 2.4rem;
+    }
+
+    .page-header__button--apartments,
+    .page-header__nav,
+    .page-header__divider,
+    .page-header__actions {
+      display: none;
+    }
+
+    .page-header__toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.2rem;
+      height: 3.2rem;
+      border: 0.114rem solid currentColor;
+      border-radius: 50%;
+      color: #ffffff;
+    }
+
+    .page-header__toggle-icon {
+      position: absolute;
+      inset: 0;
+      width: 3.2rem;
+      height: 3.2rem;
+      fill: currentColor;
+    }
+
+    .page-header__toggle-icon--close,
+    .page-header.is-menu-open .page-header__toggle-icon--open {
+      opacity: 0;
+    }
+
+    .page-header.is-menu-open .page-header__toggle-icon--close {
+      opacity: 1;
+    }
+
+    .page-header__menu {
+      position: relative;
+      z-index: 2;
+      display: block;
+      height: 0;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .page-header.is-menu-open .page-header__menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .page-header__menu-nav {
+      position: absolute;
+      left: var(--container-padding);
+      top: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+      width: calc(100vw - (var(--container-padding) * 2));
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    .page-header__menu-phone {
+      position: absolute;
+      left: var(--container-padding);
+      top: 26.6rem;
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    .page-header__button--menu-callback {
+      position: absolute;
+      left: var(--container-padding);
+      top: 33.3rem;
+      gap: 0.8rem;
+      min-height: 5.6rem;
+      padding: 1.2rem 2rem 1.2rem 1.2rem;
+      background-color: #ffffff;
+      color: var(--text-color);
+    }
+
+    .page-header__button--menu-apartments {
+      position: absolute;
+      left: var(--container-padding);
+      top: 67.3rem;
+      justify-content: space-between;
+      width: calc(100vw - (var(--container-padding) * 2));
+      min-height: 5.6rem;
+      padding: 1.2rem 1.2rem 1.2rem 2rem;
+      background-color: #ffffff;
+      color: var(--text-color);
+    }
   }
 }

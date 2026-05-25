@@ -1,5 +1,79 @@
-<header class="page-header">
-    <div class="container">
+<header class="page-header js-page-header">
+  <div class="page-header__inner container">
+    <a class="page-header__logo-link" href="/" aria-label="Максима">
+      {{> components/header-logo }}
+    </a>
 
+    <a class="page-header__button page-header__button--apartments" href="{{header.apartments.href}}">
+      <span>{{header.apartments.label}}</span>
+      <span class="page-header__button-icon" aria-hidden="true">
+        <svg width="32" height="32" focusable="false">
+          <use href="#arrows/right"></use>
+        </svg>
+      </span>
+    </a>
+
+    <nav class="page-header__nav" aria-label="Основная навигация">
+      {{#each header.nav}}
+        <a class="page-header__nav-link" href="{{href}}">{{label}}</a>
+      {{/each}}
+    </nav>
+
+    <span class="page-header__divider" aria-hidden="true"></span>
+
+    <div class="page-header__actions">
+      <a class="page-header__phone" href="{{header.phoneHref}}">{{header.phone}}</a>
+      <a class="page-header__button page-header__button--callback" href="{{header.callback.href}}">
+        <span class="page-header__button-icon" aria-hidden="true">
+          <svg width="32" height="32" focusable="false">
+            <use href="#phone"></use>
+          </svg>
+        </span>
+        <span>{{header.callback.label}}</span>
+      </a>
     </div>
+
+    <button
+      class="page-header__toggle js-page-header-toggle"
+      type="button"
+      aria-controls="page-header-menu"
+      aria-expanded="false"
+    >
+      <svg class="page-header__toggle-icon page-header__toggle-icon--open" width="32" height="32" focusable="false">
+        <use href="#menu/open"></use>
+      </svg>
+      <svg class="page-header__toggle-icon page-header__toggle-icon--close" width="32" height="32" focusable="false">
+        <use href="#menu/close"></use>
+      </svg>
+      <span class="page-header__toggle-label">Меню</span>
+    </button>
+  </div>
+
+  <div class="page-header__menu" id="page-header-menu">
+    <nav class="page-header__menu-nav" aria-label="Мобильная навигация">
+      {{#each header.nav}}
+        <a class="page-header__menu-link" href="{{href}}">{{label}}</a>
+      {{/each}}
+    </nav>
+
+    <a class="page-header__menu-phone" href="{{header.phoneHref}}">{{header.phone}}</a>
+
+    <a class="page-header__button page-header__button--menu-callback" href="{{header.callback.href}}">
+      <span class="page-header__button-icon" aria-hidden="true">
+        <svg width="32" height="32" focusable="false">
+          <use href="#phone"></use>
+        </svg>
+      </span>
+      <span>{{header.callback.label}}</span>
+    </a>
+
+    <a class="page-header__button page-header__button--menu-apartments" href="{{header.apartments.href}}">
+      <span>{{header.apartments.label}}</span>
+      <span class="page-header__button-icon" aria-hidden="true">
+        <svg width="32" height="32" focusable="false">
+          <use href="#arrows/right"></use>
+        </svg>
+      </span>
+    </a>
+  </div>
 </header>

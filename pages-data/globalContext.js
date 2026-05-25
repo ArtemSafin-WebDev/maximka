@@ -1,5 +1,24 @@
 export default {
   title: "Vite starter title",
+  header: {
+    phone: "+7 (4722) 78-95-49",
+    phoneHref: "tel:+74722789549",
+    nav: [
+      { label: "О проекте", href: "#about" },
+      { label: "Расположение", href: "#location" },
+      { label: "Планировки", href: "#layouts" },
+      { label: "Акции", href: "#promotions" },
+      { label: "Контакты", href: "#contacts" },
+    ],
+    apartments: {
+      label: "Выбрать квартиру",
+      href: "#layouts",
+    },
+    callback: {
+      label: "Заказать звонок",
+      href: "#callback",
+    },
+  },
   footer: {
     phone: "+7 (495) 132-07-08",
     nav: [
