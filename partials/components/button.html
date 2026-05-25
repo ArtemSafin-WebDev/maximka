@@ -1,3 +1,9 @@
-<button class="btn {{class}}" type="{{type}}">
-  {{label}}
-</button>
+{{#if href}}
+  <a class="btn {{class}}" href="{{href}}">
+    {{label}}
+  </a>
+{{else}}
+  <button class="btn {{class}}" type="{{type}}">
+    {{label}}
+  </button>
+{{/if}}

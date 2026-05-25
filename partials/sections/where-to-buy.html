@@ -1,0 +1,45 @@
+<section class="where-to-buy" aria-labelledby="where-to-buy-title">
+  <div class="container">
+    <h2 class="where-to-buy__title" id="where-to-buy-title">{{whereToBuy.title}}</h2>
+
+    <ul class="where-to-buy__list">
+      {{#each whereToBuy.items}}
+        <li class="where-to-buy__item">
+          <picture>
+            <source
+              srcset="{{imageMobile}}"
+              media="(max-width: 576px)"
+              width="335"
+              height="309"
+            >
+            <img
+              class="where-to-buy__image"
+              src="{{image}}"
+              width="850"
+              height="338"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+            >
+          </picture>
+
+          <div class="where-to-buy__content">
+            <h3 class="where-to-buy__card-title">{{title}}</h3>
+
+            {{#if descriptionLines}}
+              <p class="where-to-buy__description">
+                {{#each descriptionLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
+              </p>
+            {{/if}}
+
+            {{> components/button
+              class="where-to-buy__button btn--outline"
+              href=buttonHref
+              label=buttonLabel
+            }}
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>

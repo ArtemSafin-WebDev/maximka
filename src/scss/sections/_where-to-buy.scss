@@ -1,0 +1,107 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  .where-to-buy {
+    padding-bottom: 12rem;
+  }
+
+  .where-to-buy__title {
+    margin-bottom: 4.8rem;
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text-color);
+  }
+
+  .where-to-buy__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .where-to-buy__item {
+    position: relative;
+    min-height: 33.8rem;
+    overflow: hidden;
+    border-radius: 4rem;
+    background-color: #ffffff;
+  }
+
+  .where-to-buy__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .where-to-buy__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 33.8rem;
+    padding: 3.2rem;
+  }
+
+  .where-to-buy__card-title {
+    max-width: 52.8rem;
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--text-color);
+  }
+
+  .where-to-buy__description {
+    max-width: 52.8rem;
+    margin-top: 1.8rem;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--text-color);
+  }
+
+  .where-to-buy__button {
+    margin-top: auto;
+  }
+
+  @include mq.down(sm) {
+    .where-to-buy {
+      padding-bottom: 6rem;
+    }
+
+    .where-to-buy__title {
+      margin-bottom: 2.4rem;
+      font-size: 2rem;
+    }
+
+    .where-to-buy__list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .where-to-buy__item {
+      min-height: 30.9rem;
+      border-radius: 2.4rem;
+    }
+
+    .where-to-buy__content {
+      min-height: 30.9rem;
+      padding: 2rem;
+    }
+
+    .where-to-buy__card-title {
+      max-width: 28.3rem;
+      font-size: 2.4rem;
+    }
+
+    .where-to-buy__description {
+      max-width: 25.2rem;
+      margin-top: 1.6rem;
+      font-size: 1.4rem;
+    }
+
+  }
+}

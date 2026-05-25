@@ -28,6 +28,26 @@ export default {
         },
       ],
     },
+    whereToBuy: {
+      title: "Как купить",
+      items: [
+        {
+          title: "Рассрочка 0%",
+          descriptionLines: ["До конца строительства.", "ПВ от 10%."],
+          image: "/images/where-to-buy/1.svg",
+          imageMobile: "/images/where-to-buy/1-mobile.svg",
+          buttonLabel: "Уточнить у менеджера",
+          buttonHref: "#individual-conditions",
+        },
+        {
+          title: "Специальные условия при 100% оплате",
+          image: "/images/where-to-buy/2.svg",
+          imageMobile: "/images/where-to-buy/2-mobile.svg",
+          buttonLabel: "Уточнить у менеджера",
+          buttonHref: "#individual-conditions",
+        },
+      ],
+    },
     individualConditions: {
       image: "/images/individual-conditions/bg.webp",
       imageMobile: "/images/individual-conditions/bg-mobile.webp",
