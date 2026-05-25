@@ -43,6 +43,10 @@
   }
 
   .advantages__slider {
+    --advantages-slide-width: 41.5rem;
+    --advantages-slide-gap: 20px;
+    --advantages-nav-size: 7.2rem;
+
     position: relative;
     overflow: visible;
   }
@@ -53,7 +57,7 @@
 
   .advantages__slide {
     box-sizing: border-box;
-    width: 41.5rem;
+    width: var(--advantages-slide-width);
     height: auto;
   }
 
@@ -173,17 +177,28 @@
   .advantages__nav {
     position: absolute;
     top: 25.4rem;
-    left: calc(75% - 3.6rem);
+    left: calc(
+      ((var(--advantages-slide-width) + var(--advantages-slide-gap)) * 3) -
+        (var(--advantages-slide-gap) / 2) - (var(--advantages-nav-size) / 2)
+    );
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 7.2rem;
-    height: 7.2rem;
+    width: var(--advantages-nav-size);
+    height: var(--advantages-nav-size);
     overflow: hidden;
     border-radius: 50%;
     background-color: #d8de5b;
     color: var(--text-color);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .advantages__nav:has(.advantages__nav-button:not(.swiper-button-disabled):hover) {
+    background-color: var(--primary-color);
+    color: #ffffff;
   }
 
   .advantages__nav-button {
@@ -198,6 +213,12 @@
     &:hover {
       opacity: 0.7;
     }
+  }
+
+  .advantages__nav-button.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
   }
 
   .advantages__nav-icon {

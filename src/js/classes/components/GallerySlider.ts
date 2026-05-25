@@ -9,6 +9,18 @@ class GallerySlider extends Component {
   private readonly nextButton: HTMLButtonElement | null;
   private readonly handlePrevClick = () => this.swiper.slidePrev();
   private readonly handleNextClick = () => this.swiper.slideNext();
+  private readonly updateNavigationState = () => {
+    this.prevButton?.classList.toggle(
+      "swiper-button-disabled",
+      this.swiper.isBeginning
+    );
+    this.prevButton?.toggleAttribute("disabled", this.swiper.isBeginning);
+    this.nextButton?.classList.toggle(
+      "swiper-button-disabled",
+      this.swiper.isEnd
+    );
+    this.nextButton?.toggleAttribute("disabled", this.swiper.isEnd);
+  };
 
   constructor(element: HTMLElement) {
     super(element);
@@ -19,6 +31,9 @@ class GallerySlider extends Component {
 
     this.prevButton?.addEventListener("click", this.handlePrevClick);
     this.nextButton?.addEventListener("click", this.handleNextClick);
+    this.swiper.on("slideChange", this.updateNavigationState);
+    this.swiper.on("update", this.updateNavigationState);
+    this.updateNavigationState();
   }
 
   private initSlider() {
@@ -46,6 +61,8 @@ class GallerySlider extends Component {
   public destroy() {
     this.prevButton?.removeEventListener("click", this.handlePrevClick);
     this.nextButton?.removeEventListener("click", this.handleNextClick);
+    this.swiper.off("slideChange", this.updateNavigationState);
+    this.swiper.off("update", this.updateNavigationState);
     this.swiper.destroy(true, true);
     this.unregister();
   }

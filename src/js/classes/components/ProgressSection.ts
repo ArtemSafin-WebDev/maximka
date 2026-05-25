@@ -14,6 +14,24 @@ class ProgressSection extends Component {
   private readonly handlePrevClick = () => this.swiper?.slidePrev();
   private readonly handleNextClick = () => this.swiper?.slideNext();
   private readonly handleFilterChange = () => this.updateFilter();
+  private readonly updateNavigationState = () => {
+    this.prevButton?.classList.toggle(
+      "swiper-button-disabled",
+      Boolean(this.swiper?.isBeginning)
+    );
+    this.prevButton?.toggleAttribute(
+      "disabled",
+      Boolean(this.swiper?.isBeginning)
+    );
+    this.nextButton?.classList.toggle(
+      "swiper-button-disabled",
+      Boolean(this.swiper?.isEnd)
+    );
+    this.nextButton?.toggleAttribute(
+      "disabled",
+      Boolean(this.swiper?.isEnd)
+    );
+  };
 
   constructor(element: HTMLElement) {
     super(element);
@@ -35,11 +53,14 @@ class ProgressSection extends Component {
 
     this.prevButton?.addEventListener("click", this.handlePrevClick);
     this.nextButton?.addEventListener("click", this.handleNextClick);
+    this.swiper?.on("slideChange", this.updateNavigationState);
+    this.swiper?.on("update", this.updateNavigationState);
     this.filterInputs.forEach((input) => {
       input.addEventListener("change", this.handleFilterChange);
     });
 
     this.updateFilter();
+    this.updateNavigationState();
   }
 
   private initSlider(slider: HTMLElement) {
@@ -86,6 +107,7 @@ class ProgressSection extends Component {
 
     this.swiper?.slideTo(0, 0);
     this.swiper?.update();
+    this.updateNavigationState();
   }
 
   private getCheckedValue(name: string) {
@@ -99,6 +121,8 @@ class ProgressSection extends Component {
   public destroy() {
     this.prevButton?.removeEventListener("click", this.handlePrevClick);
     this.nextButton?.removeEventListener("click", this.handleNextClick);
+    this.swiper?.off("slideChange", this.updateNavigationState);
+    this.swiper?.off("update", this.updateNavigationState);
     this.filterInputs.forEach((input) => {
       input.removeEventListener("change", this.handleFilterChange);
     });
