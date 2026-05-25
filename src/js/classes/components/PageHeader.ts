@@ -41,14 +41,12 @@ class PageHeader extends Component {
   private openMenu = () => {
     this.isMenuOpen = true;
     this.element.classList.add("is-menu-open");
-    document.body.classList.add("menu-open");
     this.toggleButton?.setAttribute("aria-expanded", "true");
   };
 
   private closeMenu = () => {
     this.isMenuOpen = false;
     this.element.classList.remove("is-menu-open");
-    document.body.classList.remove("menu-open");
     this.toggleButton?.setAttribute("aria-expanded", "false");
   };
 
