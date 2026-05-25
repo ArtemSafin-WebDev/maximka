@@ -3,6 +3,7 @@
 @layer sections {
   .solutions {
     margin-bottom: 14rem;
+    scroll-margin-top: 14rem;
   }
 
   .solutions__intro {
@@ -200,7 +201,7 @@
 
   .solutions__scrollbar .swiper-scrollbar-drag {
     border-radius: 0;
-    background-color: #333333;
+    background-color: #707070;
   }
 
   .solutions__scrollbar.swiper-scrollbar-lock {
@@ -211,6 +212,7 @@
     .solutions {
       margin-bottom: 8.7rem;
       overflow: hidden;
+      scroll-margin-top: 9.4rem;
     }
 
     .solutions__intro {

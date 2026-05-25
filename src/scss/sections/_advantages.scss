@@ -237,9 +237,8 @@
   }
 
   .advantages__scrollbar .swiper-scrollbar-drag {
-    width: 26.5rem !important;
     border-radius: 0;
-    background-color: #333333;
+    background-color: #707070;
   }
 
   .advantages__scrollbar.swiper-scrollbar-lock {
@@ -334,8 +333,5 @@
       margin-left: 1rem;
     }
 
-    .advantages__scrollbar .swiper-scrollbar-drag {
-      width: 4.8rem !important;
-    }
   }
 }

@@ -8,7 +8,7 @@ export default {
       title: "Новое качество жизни по доступной цене",
       cta: {
         label: "Выбрать квартиру",
-        href: "#individual-conditions",
+        href: "#layouts",
       },
       promo: {
         image: "/images/hero/card-bg.svg",
@@ -16,7 +16,7 @@ export default {
         title: "Старт продаж",
         description: "Идеальное предложение для вас",
         buttonLabel: "Оставить заявку",
-        buttonHref: "#individual-conditions",
+        buttonHref: "#request-dialog",
       },
       tagsLabel: "Преимущества жилого комплекса",
       tags: [
@@ -216,7 +216,7 @@ export default {
       description:
         "Проект сочетает продуманные планировочные решения с собственной инфраструктурой внутри ЖК — для жизни в ритме большого города.",
       buttonLabel: "Выбрать квартиру",
-      buttonHref: "#individual-conditions",
+      buttonHref: "#layouts",
       items: [
         {
           number: "01",
@@ -266,7 +266,7 @@ export default {
                 "В прихожей — ниша для хранения, в ванной комнате поместится стиральная машина и в ряде планировок полноценная ванна.",
               price: "12 455 000 р",
               buttonLabel: "Подобрать квартиру",
-              buttonHref: "#individual-conditions",
+              buttonHref: "#request-dialog",
             },
             {
               image: "/images/solutions/2.webp",
@@ -276,7 +276,7 @@ export default {
                 "Изолированная кухня. Увеличенные окна, балкон или лоджия, встроенные ниши для хранения в прихожей.",
               price: "12 455 000 р",
               buttonLabel: "Подобрать квартиру",
-              buttonHref: "#individual-conditions",
+              buttonHref: "#request-dialog",
             },
             {
               image: "/images/solutions/3.webp",
@@ -286,7 +286,7 @@ export default {
                 "Распашные планировки на две стороны света. Просторные изолированные кухни, отдельная гостиная и спальня.",
               price: "12 455 000 р",
               buttonLabel: "Подобрать квартиру",
-              buttonHref: "#individual-conditions",
+              buttonHref: "#request-dialog",
             },
           ],
         },
@@ -301,7 +301,7 @@ export default {
                 "Современные евро-планировки с кухней-гостиной и изолированной спальней. Компактный метраж не в ущерб приватности: общая зона подходит для семейных вечеров, а спальня остаётся тихим личным пространством.",
               price: "12 455 000 р",
               buttonLabel: "Подобрать квартиру",
-              buttonHref: "#individual-conditions",
+              buttonHref: "#request-dialog",
             },
             {
               image: "/images/solutions/5.webp",
@@ -311,7 +311,7 @@ export default {
                 "Евроформат с просторной кухней-гостиной и двумя изолированными спальнями. Два санузла, вместительная прихожая. Отдельные спальни позволяют каждому иметь своё приватное пространство.",
               price: "12 455 000 р",
               buttonLabel: "Подобрать квартиру",
-              buttonHref: "#individual-conditions",
+              buttonHref: "#request-dialog",
             },
             {
               image: "/images/solutions/6.webp",
@@ -321,7 +321,7 @@ export default {
                 "Просторная кухня-гостиная наполнена светом благодаря двум широким окнам. Компактный кабинет идеально подходит для работы или творчества, а рядом расположена уютная детская комната.",
               price: "12 455 000 р",
               buttonLabel: "Подобрать квартиру",
-              buttonHref: "#individual-conditions",
+              buttonHref: "#request-dialog",
             },
           ],
         },
@@ -385,7 +385,7 @@ export default {
           descriptionMobileLines: ["Идеальное предложение для", "вас"],
           buttonLabel: "Перейти в каталог",
           buttonLabelMobile: "Оставить заявку",
-          buttonHref: "#individual-conditions",
+          buttonHref: "#request-dialog",
         },
         {
           image: "/images/promos/2.svg",
@@ -395,7 +395,7 @@ export default {
           descriptionMobileLines: ["Идеальное предложение для", "вас"],
           buttonLabel: "Перейти в каталог",
           buttonLabelMobile: "Оставить заявку",
-          buttonHref: "#individual-conditions",
+          buttonHref: "#request-dialog",
         },
         {
           image: "/images/promos/3.svg",
@@ -406,7 +406,7 @@ export default {
           descriptionMobileLines: ["Идеальное предложение для", "вас"],
           buttonLabel: "Перейти в каталог",
           buttonLabelMobile: "Оставить заявку",
-          buttonHref: "#individual-conditions",
+          buttonHref: "#request-dialog",
         },
       ],
     },
@@ -446,17 +446,103 @@ export default {
           image: "/images/where-to-buy/1.svg",
           imageMobile: "/images/where-to-buy/1-mobile.svg",
           buttonLabel: "Уточнить у менеджера",
-          buttonHref: "#individual-conditions",
+          buttonHref: "#request-dialog",
         },
         {
           title: "Специальные условия при 100% оплате",
           image: "/images/where-to-buy/2.svg",
           imageMobile: "/images/where-to-buy/2-mobile.svg",
           buttonLabel: "Уточнить у менеджера",
-          buttonHref: "#individual-conditions",
+          buttonHref: "#request-dialog",
         },
       ],
     },
+    modals: [
+      {
+        id: "callback-dialog",
+        formName: "callback",
+        title: "Заказать звонок",
+        description:
+          "Менеджер свяжется с вами для подтверждения заявки и согласует время консультации",
+        submitLabel: "Оставить заявку",
+        fields: [
+          {
+            type: "text",
+            name: "name",
+            placeholder: "Ваше имя",
+            required: true,
+          },
+          {
+            type: "tel",
+            name: "phone",
+            placeholder: "Ваш телефон",
+            required: true,
+          },
+        ],
+        agreements: [
+          {
+            name: "personal-data",
+            required: true,
+            textBefore:
+              "Я согласен на обработку персональных данных и принимаю ",
+            policy: {
+              href: "#",
+              label: "условия политики конфиденциальности",
+            },
+          },
+        ],
+      },
+      {
+        id: "request-dialog",
+        formName: "request",
+        title: "Оставить заявку",
+        description:
+          "Менеджер свяжется с вами для подтверждения заявки и согласует время консультации",
+        submitLabel: "Оставить заявку",
+        fields: [
+          {
+            type: "text",
+            name: "name",
+            placeholder: "Ваше имя",
+            required: true,
+          },
+          {
+            type: "tel",
+            name: "phone",
+            placeholder: "Ваш телефон",
+            required: true,
+          },
+          {
+            type: "email",
+            name: "email",
+            placeholder: "Ваша почта",
+            required: true,
+          },
+          {
+            textarea: true,
+            name: "comment",
+            placeholder: "Комментарий",
+          },
+        ],
+        agreements: [
+          {
+            name: "personal-data",
+            required: true,
+            textBefore:
+              "Я согласен на обработку персональных данных и принимаю ",
+            policy: {
+              href: "#",
+              label: "условия политики конфиденциальности",
+            },
+          },
+          {
+            name: "newsletter",
+            text:
+              "Я согласен на получение рекламных и информационных email-рассылок",
+          },
+        ],
+      },
+    ],
     individualConditions: {
       image: "/images/individual-conditions/bg.webp",
       imageMobile: "/images/individual-conditions/bg-mobile.webp",

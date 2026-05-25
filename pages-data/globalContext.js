@@ -16,7 +16,7 @@ export default {
     },
     callback: {
       label: "Заказать звонок",
-      href: "#callback",
+      href: "#callback-dialog",
     },
   },
   footer: {

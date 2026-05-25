@@ -44,13 +44,15 @@
   }
 
   .form-field__control--textarea {
-    min-height: 2.2rem;
+    min-height: 7.2rem;
     overflow: hidden;
   }
 
   .form-field--textarea {
     .form-field__inner {
       align-items: flex-start;
+      min-height: 12rem;
+      border-radius: 3.2rem;
     }
   }
 
