@@ -1,0 +1,83 @@
+@use "tools/media" as mq;
+
+@layer components {
+  .form-field {
+    display: block;
+    width: 100%;
+  }
+
+  .form-field__inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 7rem;
+    padding: 2.4rem;
+    background-color: var(--bg-color);
+    border: 0.1rem solid rgb(153 153 153 / 18%);
+    border-radius: 10rem;
+    transition: border-color 0.2s;
+  }
+
+  .form-field:hover .form-field__inner,
+  .form-field:focus-within .form-field__inner {
+    border-color: #999999;
+  }
+
+  .form-field:has(.form-field__control.not-valid) .form-field__inner {
+    border-color: var(--primary-color);
+  }
+
+  .form-field__control {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--text-color);
+
+    &::placeholder {
+      color: #999999;
+      opacity: 1;
+    }
+
+    &.not-valid {
+      color: var(--text-color);
+    }
+  }
+
+  .form-field__control--textarea {
+    min-height: 2.2rem;
+    overflow: hidden;
+  }
+
+  .form-field--textarea {
+    .form-field__inner {
+      align-items: flex-start;
+    }
+  }
+
+  .form-field .validation-error {
+    margin-top: 0.6rem;
+    padding-inline: 2.4rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--primary-color);
+  }
+
+  @include mq.down(sm) {
+    .form-field__inner {
+      min-height: 5rem;
+      padding: 1.6rem 2rem;
+    }
+
+    .form-field__control {
+      font-size: 1.6rem;
+    }
+
+    .form-field--textarea {
+      .form-field__inner {
+        min-height: 11rem;
+        border-radius: 2.4rem;
+      }
+    }
+  }
+}

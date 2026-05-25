@@ -28,5 +28,56 @@ export default {
         },
       ],
     },
+    individualConditions: {
+      image: "/images/individual-conditions/bg.webp",
+      imageMobile: "/images/individual-conditions/bg-mobile.webp",
+      title: "Получите индивидуальные условия",
+      phoneLabel: "Телефон:",
+      phone: "+7 (495) 132-07-08",
+      phoneHref: "tel:+74951320708",
+      submitLabel: "Оставить заявку",
+      fields: [
+        {
+          type: "text",
+          name: "name",
+          placeholder: "Ваше имя",
+          required: true,
+        },
+        {
+          type: "email",
+          name: "email",
+          placeholder: "Ваша почта",
+          required: true,
+        },
+        {
+          type: "tel",
+          name: "phone",
+          placeholder: "Ваш телефон",
+          required: true,
+        },
+        {
+          type: "text",
+          name: "comment",
+          placeholder: "Комментарий",
+        },
+      ],
+      agreements: [
+        {
+          name: "personal-data",
+          required: true,
+          textBefore:
+            "Я согласен на обработку персональных данных и принимаю ",
+          policy: {
+            href: "#",
+            label: "условия политики конфиденциальности",
+          },
+        },
+        {
+          name: "newsletter",
+          text:
+            "Я согласен на получение рекламных и информационных email-рассылок",
+        },
+      ],
+    },
   },
 };

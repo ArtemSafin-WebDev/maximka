@@ -1,0 +1,24 @@
+<label class="checkbox">
+  <span class="checkbox__marker">
+    <input
+      class="checkbox__control"
+      type="checkbox"
+      name="{{name}}"
+      value="Y"
+      {{#if required}}required{{/if}}
+    >
+    <span class="checkbox__box" aria-hidden="true">
+      <svg class="checkbox__icon" width="16" height="16" aria-hidden="true" focusable="false">
+        <use href="#checkmark"></use>
+      </svg>
+    </span>
+  </span>
+  <span class="checkbox__text">
+    {{#if policy}}
+      {{textBefore}}
+      <a href="{{policy.href}}">{{policy.label}}</a>
+    {{else}}
+      {{text}}
+    {{/if}}
+  </span>
+</label>

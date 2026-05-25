@@ -1,0 +1,22 @@
+<label class="form-field{{#if textarea}} form-field--textarea{{/if}}">
+  <span class="form-field__inner">
+    {{#if textarea}}
+      <textarea
+        class="form-field__control form-field__control--textarea"
+        name="{{name}}"
+        placeholder="{{placeholder}}"
+        aria-label="{{placeholder}}"
+        {{#if required}}required{{/if}}
+      ></textarea>
+    {{else}}
+      <input
+        class="form-field__control"
+        type="{{type}}"
+        name="{{name}}"
+        placeholder="{{placeholder}}"
+        aria-label="{{placeholder}}"
+        {{#if required}}required{{/if}}
+      >
+    {{/if}}
+  </span>
+</label>

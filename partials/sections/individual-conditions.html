@@ -1,0 +1,56 @@
+<section class="individual-conditions" id="individual-conditions" aria-labelledby="individual-conditions-title">
+  <div class="container">
+    <div class="individual-conditions__inner">
+      <picture>
+        <source
+          srcset="{{individualConditions.imageMobile}}"
+          media="(max-width: 576px)"
+          width="670"
+          height="610"
+        >
+        <img
+          class="individual-conditions__bg"
+          src="{{individualConditions.image}}"
+          width="3444"
+          height="1518"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        >
+      </picture>
+
+      <form class="individual-conditions__form js-form" action="#" method="post">
+        <div class="individual-conditions__fields">
+          {{#each individualConditions.fields}}
+            {{> components/text-field }}
+          {{/each}}
+        </div>
+
+        {{> components/button
+          class="individual-conditions__submit btn--full"
+          type="submit"
+          label=individualConditions.submitLabel
+        }}
+
+        <div class="individual-conditions__agreements">
+          {{#each individualConditions.agreements}}
+            {{> components/checkbox }}
+          {{/each}}
+        </div>
+      </form>
+
+      <div class="individual-conditions__content">
+        <h2 class="individual-conditions__title" id="individual-conditions-title">
+          {{individualConditions.title}}
+        </h2>
+
+        <div class="individual-conditions__phone">
+          <span class="individual-conditions__phone-label">{{individualConditions.phoneLabel}}</span>
+          <a class="individual-conditions__phone-link" href="{{individualConditions.phoneHref}}">
+            {{individualConditions.phone}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

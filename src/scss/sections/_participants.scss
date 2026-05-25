@@ -2,23 +2,21 @@
 
 @layer sections {
   .participants {
-    padding-block: 12rem;
+    padding-bottom: 12rem;
   }
 
   .participants__inner {
     display: grid;
     grid-template-columns: 83.2rem minmax(0, 1fr);
-    column-gap: 2.8rem;
+    grid-template-areas:
+      "label ."
+      "title list";
+    gap: 4rem 2.8rem;
     align-items: start;
   }
 
-  .participants__content {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-  }
-
   .participants__label {
+    grid-area: label;
     font-size: 2.8rem;
     font-weight: 500;
     line-height: 1.1;
@@ -27,6 +25,7 @@
   }
 
   .participants__title {
+    grid-area: title;
     max-width: 83.2rem;
     font-size: 4rem;
     font-weight: 500;
@@ -35,6 +34,7 @@
   }
 
   .participants__list {
+    grid-area: list;
     display: grid;
     grid-template-columns: repeat(4, 19.9rem);
     gap: 2rem;
@@ -75,21 +75,13 @@
     color: var(--text-color);
   }
 
-  .participants__role-line {
-    display: block;
-  }
-
   @include mq.down(sm) {
     .participants {
-      padding-block: 6rem;
+      padding-bottom: 6rem;
     }
 
     .participants__inner {
       display: block;
-    }
-
-    .participants__content {
-      gap: 1.6rem;
     }
 
     .participants__label {

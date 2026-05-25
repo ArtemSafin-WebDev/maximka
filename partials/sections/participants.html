@@ -1,12 +1,11 @@
 <section class="participants" aria-labelledby="participants-title">
   <div class="container">
     <div class="participants__inner">
-      <div class="participants__content">
-        <p class="participants__label">{{participants.label}}</p>
-        <h2 class="participants__title" id="participants-title">
-          {{participants.title}}
-        </h2>
-      </div>
+      <p class="participants__label">{{participants.label}}</p>
+
+      <h2 class="participants__title" id="participants-title">
+        {{participants.title}}
+      </h2>
 
       <ul class="participants__list">
         {{#each participants.items}}
@@ -22,9 +21,7 @@
               >
             </div>
             <p class="participants__role">
-              {{#each roleLines}}
-                <span class="participants__role-line">{{this}}</span>
-              {{/each}}
+              {{#each roleLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
             </p>
           </li>
         {{/each}}

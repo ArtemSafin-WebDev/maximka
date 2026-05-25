@@ -1,0 +1,90 @@
+@use "tools/media" as mq;
+
+@layer components {
+  .checkbox {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.6rem minmax(0, 1fr);
+    column-gap: 1.2rem;
+    align-items: start;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.015em;
+    color: var(--text-color);
+    cursor: pointer;
+  }
+
+  .checkbox__marker {
+    position: relative;
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-top: 0.1rem;
+  }
+
+  .checkbox__control {
+    position: absolute;
+    width: 0.1rem;
+    height: 0.1rem;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .checkbox__box {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: #ffffff;
+    border: 0.08rem solid #999999;
+    border-radius: 0.16rem;
+    color: #ffffff;
+    transition:
+      background-color 0.2s,
+      border-color 0.2s;
+  }
+
+  .checkbox__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    opacity: 0;
+    fill: currentcolor;
+    transition: opacity 0.2s;
+  }
+
+  .checkbox__control:checked + .checkbox__box {
+    background-color: var(--text-color);
+    border-color: var(--text-color);
+  }
+
+  .checkbox__control:checked + .checkbox__box .checkbox__icon {
+    opacity: 1;
+  }
+
+  .checkbox__control.not-valid + .checkbox__box {
+    border-color: var(--primary-color);
+  }
+
+  .checkbox__text a {
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-position: from-font;
+  }
+
+  .checkbox .validation-error {
+    grid-column: 2;
+    margin-top: 0.4rem;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    color: var(--primary-color);
+  }
+
+  @include mq.down(sm) {
+    .checkbox {
+      font-size: 1.2rem;
+    }
+  }
+}
