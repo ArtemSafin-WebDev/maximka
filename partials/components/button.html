@@ -1,19 +1,37 @@
 {{#if href}}
   <a class="btn {{class}}" href="{{href}}">
-    {{#if labelMobile}}
-      <span class="btn__text btn__text--desktop">{{label}}</span>
-      <span class="btn__text btn__text--mobile">{{labelMobile}}</span>
-    {{else}}
-      {{label}}
+    <span class="btn__label">
+      {{#if labelMobile}}
+        <span class="btn__text btn__text--desktop">{{label}}</span>
+        <span class="btn__text btn__text--mobile">{{labelMobile}}</span>
+      {{else}}
+        {{label}}
+      {{/if}}
+    </span>
+    {{#if icon}}
+      <span class="btn__icon" aria-hidden="true">
+        <svg width="32" height="32" focusable="false">
+          <use href="#{{icon}}"></use>
+        </svg>
+      </span>
     {{/if}}
   </a>
 {{else}}
   <button class="btn {{class}}" type="{{type}}">
-    {{#if labelMobile}}
-      <span class="btn__text btn__text--desktop">{{label}}</span>
-      <span class="btn__text btn__text--mobile">{{labelMobile}}</span>
-    {{else}}
-      {{label}}
+    <span class="btn__label">
+      {{#if labelMobile}}
+        <span class="btn__text btn__text--desktop">{{label}}</span>
+        <span class="btn__text btn__text--mobile">{{labelMobile}}</span>
+      {{else}}
+        {{label}}
+      {{/if}}
+    </span>
+    {{#if icon}}
+      <span class="btn__icon" aria-hidden="true">
+        <svg width="32" height="32" focusable="false">
+          <use href="#{{icon}}"></use>
+        </svg>
+      </span>
     {{/if}}
   </button>
 {{/if}}

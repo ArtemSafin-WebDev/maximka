@@ -1,0 +1,60 @@
+<section class="features js-features" aria-labelledby="features-title">
+  <div class="container">
+    <div class="features__intro">
+      <p class="features__label">{{features.label}}</p>
+
+      <h2 class="features__title" id="features-title">{{features.title}}</h2>
+
+      <div class="features__summary">
+        <p class="features__description">{{features.description}}</p>
+
+        {{> components/button
+          class="features__button btn--arrow"
+          href=features.buttonHref
+          label=features.buttonLabel
+          icon="arrows/right"
+        }}
+      </div>
+    </div>
+
+    <div class="features__slider swiper js-features-slider">
+      <ul class="features__list swiper-wrapper">
+        {{#each features.items}}
+          <li class="features__slide swiper-slide">
+            <article class="features-card">
+              <img
+                class="features-card__image"
+                src="{{image}}"
+                width="828"
+                height="932"
+                alt="{{alt}}"
+                loading="lazy"
+              >
+
+              <span class="features-card__number">{{number}}</span>
+
+              <h3 class="features-card__title {{#if titleHoverLines}}features-card__title--has-hover{{/if}}">
+                <span class="features-card__title-default">
+                  {{#each titleLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
+                </span>
+                {{#if titleHoverLines}}
+                  <span class="features-card__title-hover">
+                    {{#each titleHoverLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
+                  </span>
+                {{/if}}
+              </h3>
+
+              <span class="features-card__icon" aria-hidden="true">
+                <svg width="32" height="32" focusable="false">
+                  <use href="#arrows/right"></use>
+                </svg>
+              </span>
+            </article>
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="features__scrollbar swiper-scrollbar"></div>
+    </div>
+  </div>
+</section>

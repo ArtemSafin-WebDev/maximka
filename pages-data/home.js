@@ -104,6 +104,41 @@ export default {
         },
       ],
     },
+    features: {
+      label: "Особенности проекта",
+      title: "Современный дом с продуманной инфраструктурой для всей семьи",
+      description:
+        "Проект сочетает продуманные планировочные решения с собственной инфраструктурой внутри ЖК — для жизни в ритме большого города.",
+      buttonLabel: "Выбрать квартиру",
+      buttonHref: "#individual-conditions",
+      items: [
+        {
+          number: "01",
+          titleLines: ["Архитектура", "и масштаб"],
+          image: "/images/features/1.webp",
+          alt: "Архитектура жилого комплекса",
+        },
+        {
+          number: "02",
+          titleLines: ["Сервисы внутри", "дома"],
+          titleHoverLines: ["Город внутри", "дома"],
+          image: "/images/features/2.webp",
+          alt: "Фасад с коммерческими помещениями на первых этажах",
+        },
+        {
+          number: "03",
+          titleLines: ["Закрытый двор", "без машин"],
+          image: "/images/features/3.webp",
+          alt: "Зелёный двор с прогулочной зоной",
+        },
+        {
+          number: "04",
+          titleLines: ["Планировки", "для жизни"],
+          image: "/images/features/4.webp",
+          alt: "Планировка квартиры с видом сверху",
+        },
+      ],
+    },
     solutions: {
       label: "Планировочные решения",
       titleLines: [

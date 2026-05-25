@@ -25,6 +25,35 @@
     }
   }
 
+  .btn--arrow {
+    gap: 1.8rem;
+    padding: 2.8rem 2.4rem 2.8rem 3.2rem;
+    font-size: 2.4rem;
+  }
+
+  .btn__label {
+    min-width: 0;
+  }
+
+  .btn__icon {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: var(--primary-color);
+  }
+
+  .btn__icon svg {
+    display: block;
+    width: 3.2rem;
+    height: 3.2rem;
+    fill: currentColor;
+  }
+
   .btn--full {
     width: 100%;
   }
@@ -78,6 +107,13 @@
     .btn--promo {
       min-height: 5.6rem;
       padding: 1.2rem 2rem;
+      border-radius: 3.1rem;
+      font-size: 1.6rem;
+    }
+
+    .btn--arrow {
+      min-height: 5.6rem;
+      padding: 1.2rem 1.2rem 1.2rem 2rem;
       border-radius: 3.1rem;
       font-size: 1.6rem;
     }

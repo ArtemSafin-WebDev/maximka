@@ -1,0 +1,308 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  .features {
+    padding-top: 9.6rem;
+    padding-bottom: 8rem;
+    overflow: hidden;
+  }
+
+  .features__intro {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 2rem;
+    row-gap: 5.2rem;
+    margin-bottom: 4.8rem;
+  }
+
+  .features__label {
+    grid-column: 1 / -1;
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #999999;
+  }
+
+  .features__title {
+    grid-column: 1 / span 6;
+    max-width: 85rem;
+    font-size: 4.4rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .features__summary {
+    grid-column: 8 / span 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 63.6rem;
+  }
+
+  .features__description {
+    margin-bottom: 2.4rem;
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .features__slider {
+    overflow: visible;
+  }
+
+  .features__list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .features__slide {
+    box-sizing: border-box;
+    min-width: 0;
+    height: auto;
+  }
+
+  .features-card {
+    --feature-mask-width: 26.9rem;
+    --feature-mask-height: 46.6rem;
+    --feature-mask-full-width: 96rem;
+    --feature-mask-full-height: 166.3rem;
+
+    position: relative;
+    display: block;
+    height: 46.6rem;
+    padding: 3.2rem;
+    overflow: hidden;
+    border-radius: 4rem;
+    background-color: #d8de5b;
+    color: var(--text-color);
+    isolation: isolate;
+  }
+
+  .features-card__image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mask-image: url("/images/features/mask.svg");
+    mask-repeat: no-repeat;
+    mask-position: right top;
+    mask-size: var(--feature-mask-width) var(--feature-mask-height);
+    transition:
+      mask-position 0.45s ease,
+      mask-size 0.45s ease;
+    -webkit-mask-image: url("/images/features/mask.svg");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: right top;
+    -webkit-mask-size: var(--feature-mask-width) var(--feature-mask-height);
+    -webkit-transition:
+      -webkit-mask-position 0.45s ease,
+      -webkit-mask-size 0.45s ease;
+  }
+
+  .features-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: rgb(0 0 0 / 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .features-card__number {
+    display: block;
+    font-size: 5.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .features-card__title {
+    position: absolute;
+    left: 3.2rem;
+    bottom: 2.8rem;
+    max-width: 31.5rem;
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .features-card__title-hover {
+    display: none;
+  }
+
+  .features-card__icon {
+    position: absolute;
+    right: 2.4rem;
+    bottom: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: var(--text-color);
+    transform: rotate(-45deg);
+    transition:
+      background-color 0.2s,
+      color 0.2s,
+      transform 0.2s;
+  }
+
+  .features-card__icon svg {
+    width: 3.2rem;
+    height: 3.2rem;
+    fill: currentColor;
+  }
+
+  .features-card:hover,
+  .features-card:focus-within {
+    color: #ffffff;
+  }
+
+  .features-card:hover .features-card__image,
+  .features-card:focus-within .features-card__image {
+    mask-position: center;
+    mask-size: var(--feature-mask-full-width) var(--feature-mask-full-height);
+    -webkit-mask-position: center;
+    -webkit-mask-size: var(--feature-mask-full-width) var(--feature-mask-full-height);
+  }
+
+  .features-card:hover::after,
+  .features-card:focus-within::after {
+    opacity: 1;
+  }
+
+  .features-card:hover .features-card__icon,
+  .features-card:focus-within .features-card__icon {
+    color: var(--text-color);
+    background-color: #ffffff;
+    transform: rotate(0deg);
+  }
+
+  .features-card:hover .features-card__title-hover,
+  .features-card:focus-within .features-card__title-hover {
+    display: inline;
+  }
+
+  .features-card:hover
+    .features-card__title--has-hover
+    .features-card__title-default,
+  .features-card:focus-within
+    .features-card__title--has-hover
+    .features-card__title-default {
+    display: none;
+  }
+
+  .features__scrollbar.swiper-scrollbar {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    display: none;
+    width: 100%;
+    height: 0.4rem;
+    margin-top: 2.4rem;
+    border-radius: 0;
+    background-color: #e8e8e8;
+  }
+
+  .features__scrollbar .swiper-scrollbar-drag {
+    border-radius: 0;
+    background-color: #333333;
+  }
+
+  .features__scrollbar.swiper-scrollbar-lock {
+    display: none;
+  }
+
+  @include mq.down(sm) {
+    .features {
+      padding-top: 5.6rem;
+      padding-bottom: 5.6rem;
+    }
+
+    .features__intro {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 4.8rem;
+    }
+
+    .features__label {
+      margin-bottom: 1.6rem;
+      font-size: 1.4rem;
+    }
+
+    .features__title {
+      margin-bottom: 3.2rem;
+      max-width: none;
+      font-size: 2rem;
+    }
+
+    .features__summary {
+      display: contents;
+    }
+
+    .features__description {
+      margin-bottom: 3.2rem;
+      font-size: 1.6rem;
+    }
+
+    .features__button {
+      align-self: flex-start;
+      order: 4;
+    }
+
+    .features__list {
+      display: flex;
+      gap: 0;
+    }
+
+    .features__slide {
+      width: 25.5rem;
+    }
+
+    .features-card {
+      --feature-mask-width: 16.5rem;
+      --feature-mask-height: 28.7rem;
+      --feature-mask-full-width: 61.8rem;
+      --feature-mask-full-height: 107rem;
+
+      height: 28.7rem;
+      padding: 2rem;
+      border-radius: 2.4rem;
+    }
+
+    .features-card__number {
+      font-size: 3.2rem;
+    }
+
+    .features-card__title {
+      left: 2rem;
+      bottom: 1.8rem;
+      max-width: 19.3rem;
+      font-size: 1.4rem;
+    }
+
+    .features-card__icon {
+      right: 1.4rem;
+      bottom: 1.4rem;
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    .features-card__icon svg {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    .features__scrollbar.swiper-scrollbar {
+      display: block;
+    }
+  }
+}
