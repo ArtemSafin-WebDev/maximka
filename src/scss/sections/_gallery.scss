@@ -2,7 +2,8 @@
 
 @layer sections {
   .gallery {
-    padding: 8rem 2rem 0;
+    margin-bottom: 14rem;
+    padding-inline: 2rem;
     overflow: hidden;
   }
 
@@ -122,7 +123,7 @@
 
   @include mq.down(sm) {
     .gallery {
-      padding-top: 5.6rem;
+      margin-bottom: 5.6rem;
     }
 
     .gallery__slide {

@@ -2,7 +2,7 @@
 
 @layer sections {
   .where-to-buy {
-    padding-bottom: 12rem;
+    margin-bottom: 12rem;
   }
 
   .where-to-buy__title {
@@ -68,7 +68,7 @@
 
   @include mq.down(sm) {
     .where-to-buy {
-      padding-bottom: 6rem;
+      margin-bottom: 6rem;
     }
 
     .where-to-buy__title {

@@ -1,0 +1,29 @@
+<div class="select {{class}} js-select" data-placeholder="{{placeholder}}">
+  <button class="select__button" type="button" aria-label="{{ariaLabel}}" aria-expanded="false">
+    <span class="select__button-text js-btn-text">{{placeholder}}</span>
+    <span class="select__icon" aria-hidden="true">
+      <svg class="select__icon-svg" width="32" height="32" focusable="false">
+        <use href="#arrows/down"></use>
+      </svg>
+    </span>
+  </button>
+
+  <div class="select__dropdown">
+    <ul class="select__list">
+      {{#each options}}
+        <li class="select__item">
+          <label class="select__option">
+            <input
+              class="select__input {{../inputClass}}"
+              type="radio"
+              name="{{../name}}"
+              value="{{value}}"
+              {{#if checked}}checked{{/if}}
+            >
+            <span>{{label}}</span>
+          </label>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

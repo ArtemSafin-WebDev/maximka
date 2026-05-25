@@ -2,7 +2,7 @@
 
 @layer sections {
   .promos {
-    padding-bottom: 10rem;
+    margin-bottom: 10rem;
   }
 
   .promos__title {
@@ -95,7 +95,7 @@
 
   @include mq.down(sm) {
     .promos {
-      padding-bottom: 8.7rem;
+      margin-bottom: 8.7rem;
     }
 
     .promos__title {

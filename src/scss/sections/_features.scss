@@ -2,8 +2,7 @@
 
 @layer sections {
   .features {
-    padding-top: 9.6rem;
-    padding-bottom: 8rem;
+    margin-bottom: 14rem;
     overflow: hidden;
   }
 
@@ -78,6 +77,7 @@
     background-color: #d8de5b;
     color: var(--text-color);
     isolation: isolate;
+    transition: color 0.3s ease;
   }
 
   .features-card__image {
@@ -129,6 +129,7 @@
     font-size: 2.4rem;
     font-weight: 500;
     line-height: 1.1;
+    transition: color 0.3s ease;
   }
 
   .features-card__title-hover {
@@ -222,8 +223,7 @@
 
   @include mq.down(sm) {
     .features {
-      padding-top: 5.6rem;
-      padding-bottom: 5.6rem;
+      margin-bottom: 5.6rem;
     }
 
     .features__intro {

@@ -2,7 +2,8 @@
 
 @layer sections {
   .about-project {
-    padding: 4.8rem 2rem 0;
+    margin-bottom: 4.8rem;
+    padding-inline: 2rem;
   }
 
   .about-project__card {
@@ -114,7 +115,8 @@
 
   @include mq.down(sm) {
     .about-project {
-      padding: 3.2rem 2rem 0;
+      margin-bottom: 5.6rem;
+      padding-inline: 2rem;
     }
 
     .about-project__card {

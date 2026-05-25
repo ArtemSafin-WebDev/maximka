@@ -1,0 +1,182 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  .progress {
+    margin-bottom: 14rem;
+    overflow: hidden;
+  }
+
+  .progress__head {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 4.8rem;
+  }
+
+  .progress__title {
+    grid-column: 1 / span 7;
+    margin: 0;
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .progress__filters {
+    grid-column: 8 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.6rem;
+  }
+
+  .progress__select--year {
+    order: 1;
+  }
+
+  .progress__select--quarter {
+    order: 2;
+  }
+
+  .progress__slider {
+    position: relative;
+    overflow: visible;
+  }
+
+  .progress__list {
+    display: flex;
+  }
+
+  .progress__slide {
+    box-sizing: border-box;
+    width: 70.5rem;
+    height: 51.5rem;
+    overflow: hidden;
+    border-radius: 4rem;
+    background-color: #e8e8e8;
+  }
+
+  .progress__slide[hidden] {
+    display: none;
+  }
+
+  .progress__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .progress__nav {
+    position: absolute;
+    top: 22.2rem;
+    left: 140.2rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7.2rem;
+    height: 7.2rem;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #d8de5b;
+    color: var(--text-color);
+    transform: translateX(-50%);
+  }
+
+  .progress__nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.6rem;
+    height: 7.2rem;
+    color: inherit;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .progress__nav-icon {
+    fill: currentColor;
+  }
+
+  .progress__empty {
+    margin: 2.4rem 0 0;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #999999;
+  }
+
+  .progress__scrollbar.swiper-scrollbar {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    height: 0.4rem;
+    margin-top: 4.8rem;
+    border-radius: 0;
+    background-color: #e8e8e8;
+  }
+
+  .progress__scrollbar .swiper-scrollbar-drag {
+    border-radius: 0;
+    background-color: #707070;
+  }
+
+  .progress__scrollbar.swiper-scrollbar-lock {
+    display: none;
+  }
+
+  @include mq.down(sm) {
+    .progress {
+      margin-bottom: 5.6rem;
+    }
+
+    .progress__head {
+      display: flex;
+      flex-direction: column;
+      gap: 3.2rem;
+      margin-bottom: 3.2rem;
+    }
+
+    .progress__title {
+      width: 100%;
+      font-size: 2rem;
+    }
+
+    .progress__filters {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+      width: 100%;
+    }
+
+    .progress__select--quarter {
+      order: 1;
+    }
+
+    .progress__select--year {
+      order: 2;
+    }
+
+    .progress__slide {
+      width: 27rem;
+      height: 19.7rem;
+      border-radius: 2.4rem;
+    }
+
+    .progress__nav {
+      display: none;
+    }
+
+    .progress__empty {
+      font-size: 1.6rem;
+    }
+
+    .progress__scrollbar.swiper-scrollbar {
+      margin-top: 2.4rem;
+    }
+  }
+}

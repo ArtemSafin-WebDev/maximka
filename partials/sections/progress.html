@@ -1,0 +1,58 @@
+<section class="progress js-progress" aria-labelledby="progress-title">
+  <div class="container">
+    <div class="progress__head">
+      <h2 class="progress__title" id="progress-title">{{progress.title}}</h2>
+
+      <div class="progress__filters" aria-label="{{progress.filtersLabel}}">
+        {{#each progress.filters}}
+          {{> components/select
+            class=class
+            inputClass="js-progress-filter"
+            name=name
+            placeholder=placeholder
+            ariaLabel=ariaLabel
+            options=options
+          }}
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="progress__slider swiper js-progress-slider">
+      <ul class="progress__list swiper-wrapper">
+        {{#each progress.items}}
+          <li
+            class="progress__slide swiper-slide js-progress-slide"
+            data-year="{{year}}"
+            data-quarter="{{quarter}}"
+          >
+            <img
+              class="progress__image"
+              src="{{image}}"
+              width="{{width}}"
+              height="{{height}}"
+              alt="{{alt}}"
+              loading="lazy"
+            >
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="progress__nav" aria-label="{{progress.controlsLabel}}">
+        <button class="progress__nav-button js-progress-prev" type="button" aria-label="{{progress.prevLabel}}">
+          <svg class="progress__nav-icon" width="11" height="18" aria-hidden="true" focusable="false">
+            <use href="#slider-left"></use>
+          </svg>
+        </button>
+
+        <button class="progress__nav-button js-progress-next" type="button" aria-label="{{progress.nextLabel}}">
+          <svg class="progress__nav-icon" width="11" height="18" aria-hidden="true" focusable="false">
+            <use href="#slider-right"></use>
+          </svg>
+        </button>
+      </div>
+
+      <p class="progress__empty js-progress-empty" hidden>{{progress.emptyText}}</p>
+      <div class="progress__scrollbar swiper-scrollbar"></div>
+    </div>
+  </div>
+</section>

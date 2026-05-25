@@ -95,12 +95,14 @@ class Select extends Component {
   public open = () => {
     if (this.isOpen) return;
     this.element.classList.add("active");
+    this.btn?.setAttribute("aria-expanded", "true");
     this.isOpen = true;
   };
 
   public close = () => {
     if (!this.isOpen) return;
     this.element.classList.remove("active");
+    this.btn?.setAttribute("aria-expanded", "false");
     this.isOpen = false;
   };
 

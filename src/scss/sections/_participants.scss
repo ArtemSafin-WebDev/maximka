@@ -2,7 +2,7 @@
 
 @layer sections {
   .participants {
-    padding-bottom: 12rem;
+    margin-bottom: 14rem;
   }
 
   .participants__inner {
@@ -77,7 +77,7 @@
 
   @include mq.down(sm) {
     .participants {
-      padding-bottom: 6rem;
+      margin-bottom: 6rem;
     }
 
     .participants__inner {

@@ -2,8 +2,7 @@
 
 @layer sections {
   .solutions {
-    padding-top: 8rem;
-    padding-bottom: 10rem;
+    margin-bottom: 14rem;
   }
 
   .solutions__intro {
@@ -210,8 +209,7 @@
 
   @include mq.down(sm) {
     .solutions {
-      padding-top: 5.6rem;
-      padding-bottom: 8.7rem;
+      margin-bottom: 8.7rem;
       overflow: hidden;
     }
 

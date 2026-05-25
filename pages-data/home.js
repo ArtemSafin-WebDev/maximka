@@ -104,6 +104,112 @@ export default {
         },
       ],
     },
+    progress: {
+      title: "Ход строительства",
+      filtersLabel: "Фильтры хода строительства",
+      controlsLabel: "Управление слайдером хода строительства",
+      prevLabel: "Предыдущее фото хода строительства",
+      nextLabel: "Следующее фото хода строительства",
+      emptyText: "Фотографии за выбранный период скоро появятся.",
+      filters: [
+        {
+          class: "progress__select progress__select--quarter",
+          name: "progress-quarter",
+          placeholder: "2 квартал",
+          ariaLabel: "Выберите квартал",
+          options: [
+            {
+              value: "1",
+              label: "1 квартал",
+            },
+            {
+              value: "2",
+              label: "2 квартал",
+              checked: true,
+            },
+            {
+              value: "3",
+              label: "3 квартал",
+            },
+            {
+              value: "4",
+              label: "4 квартал",
+            },
+          ],
+        },
+        {
+          class: "progress__select progress__select--year",
+          name: "progress-year",
+          placeholder: "2026 год",
+          ariaLabel: "Выберите год",
+          options: [
+            {
+              value: "2026",
+              label: "2026 год",
+              checked: true,
+            },
+            {
+              value: "2027",
+              label: "2027 год",
+            },
+            {
+              value: "2028",
+              label: "2028 год",
+            },
+          ],
+        },
+      ],
+      items: [
+        {
+          image: "/images/progress/1.webp",
+          width: 1410,
+          height: 1030,
+          alt: "Строительная площадка с краном и грузовой техникой",
+          year: "2026",
+          quarter: "2",
+        },
+        {
+          image: "/images/progress/2.webp",
+          width: 1410,
+          height: 1030,
+          alt: "Подготовленная дорога на строительной площадке",
+          year: "2026",
+          quarter: "2",
+        },
+        {
+          image: "/images/progress/3.webp",
+          width: 1410,
+          height: 1030,
+          alt: "Работы на строительной площадке рядом с жилым домом",
+          year: "2026",
+          quarter: "2",
+        },
+        {
+          image: "/images/progress/4.webp",
+          width: 1410,
+          height: 1030,
+          alt: "Строительная техника на площадке жилого комплекса",
+          year: "2026",
+          quarter: "2",
+        },
+        {
+          image: "/images/progress/5.webp",
+          width: 1410,
+          height: 1030,
+          alt: "Ход строительных работ на территории комплекса",
+          year: "2026",
+          quarter: "2",
+        },
+        {
+          image: "/images/progress/6.webp",
+          width: 1410,
+          height: 1030,
+          alt: "Общий вид строительной площадки жилого комплекса",
+          year: "2026",
+          quarter: "2",
+        },
+      ],
+    },
     features: {
       label: "Особенности проекта",
       title: "Современный дом с продуманной инфраструктурой для всей семьи",
