@@ -1,0 +1,146 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  .gallery {
+    padding: 8rem 2rem 0;
+    overflow: hidden;
+  }
+
+  .gallery__inner {
+    width: 100%;
+    max-width: 188rem;
+    margin-inline: auto;
+  }
+
+  .gallery__slider {
+    position: relative;
+    overflow: visible;
+  }
+
+  .gallery__list {
+    display: flex;
+  }
+
+  .gallery__slide {
+    box-sizing: border-box;
+    width: 153rem;
+    height: auto;
+  }
+
+  .gallery__figure {
+    position: relative;
+    width: 100%;
+    height: 90.1rem;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 4rem;
+    background-color: #e8e8e8;
+  }
+
+  .gallery__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery__caption {
+    position: absolute;
+    left: 3.2rem;
+    bottom: 2.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    max-width: calc(100% - 6.4rem);
+    padding: 1.2rem 1.6rem;
+    border-radius: 10rem;
+    background-color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--text-color);
+  }
+
+  .gallery__caption-icon {
+    flex: 0 0 auto;
+  }
+
+  .gallery__nav {
+    position: absolute;
+    top: 43.6rem;
+    left: 154rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7.2rem;
+    height: 7.2rem;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #d8de5b;
+    color: var(--text-color);
+    transform: translateX(-50%);
+  }
+
+  .gallery__nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.6rem;
+    height: 7.2rem;
+    color: inherit;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .gallery__nav-icon {
+    fill: currentColor;
+  }
+
+  .gallery__scrollbar.swiper-scrollbar {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    height: 0.4rem;
+    margin-top: 4rem;
+    border-radius: 0;
+    background-color: #e8e8e8;
+  }
+
+  .gallery__scrollbar .swiper-scrollbar-drag {
+    border-radius: 0;
+    background-color: #333333;
+  }
+
+  .gallery__scrollbar.swiper-scrollbar-lock {
+    display: none;
+  }
+
+  @include mq.down(sm) {
+    .gallery {
+      padding-top: 5.6rem;
+    }
+
+    .gallery__slide {
+      width: 33.5rem;
+    }
+
+    .gallery__figure {
+      height: 19.728rem;
+      border-radius: 2.4rem;
+    }
+
+    .gallery__caption,
+    .gallery__nav {
+      display: none;
+    }
+
+    .gallery__scrollbar.swiper-scrollbar {
+      margin-top: 2.4rem;
+    }
+  }
+}

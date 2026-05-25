@@ -1,0 +1,47 @@
+<section class="gallery js-gallery" aria-label="{{gallery.ariaLabel}}">
+  <div class="gallery__inner">
+    <div class="gallery__slider swiper js-gallery-slider">
+      <ul class="gallery__list swiper-wrapper">
+        {{#each gallery.items}}
+          <li class="gallery__slide swiper-slide">
+            <figure class="gallery__figure">
+              <img
+                class="gallery__image"
+                src="{{image}}"
+                width="{{width}}"
+                height="{{height}}"
+                alt="{{alt}}"
+                loading="lazy"
+              >
+
+              {{#if caption}}
+                <figcaption class="gallery__caption">
+                  <svg class="gallery__caption-icon" width="20" height="20" aria-hidden="true" focusable="false">
+                    <use href="#gallery-tag"></use>
+                  </svg>
+                  <span>{{caption}}</span>
+                </figcaption>
+              {{/if}}
+            </figure>
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="gallery__nav" aria-label="{{gallery.controlsLabel}}">
+        <button class="gallery__nav-button js-gallery-prev" type="button" aria-label="{{gallery.prevLabel}}">
+          <svg class="gallery__nav-icon" width="11" height="18" aria-hidden="true" focusable="false">
+            <use href="#slider-left"></use>
+          </svg>
+        </button>
+
+        <button class="gallery__nav-button js-gallery-next" type="button" aria-label="{{gallery.nextLabel}}">
+          <svg class="gallery__nav-icon" width="11" height="18" aria-hidden="true" focusable="false">
+            <use href="#slider-right"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div class="gallery__scrollbar swiper-scrollbar"></div>
+    </div>
+  </div>
+</section>
