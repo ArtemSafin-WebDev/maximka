@@ -37,10 +37,57 @@
     color: var(--text-color);
   }
 
+  .btn--promo {
+    position: relative;
+    isolation: isolate;
+    padding: 2.4rem 3.2rem;
+    overflow: hidden;
+    border-radius: 10rem;
+    background: transparent;
+    font-size: 2.4rem;
+    color: var(--text-color) !important;
+    -webkit-text-fill-color: var(--text-color);
+    white-space: nowrap;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-color: #ffffff;
+      border-radius: inherit;
+    }
+
+    &:link,
+    &:visited {
+      color: var(--text-color) !important;
+      -webkit-text-fill-color: var(--text-color);
+    }
+  }
+
+  .btn__text--mobile {
+    display: none;
+  }
+
   @include mq.down(sm) {
     .btn--outline {
       padding: 1.9rem;
       font-size: 1.6rem;
+    }
+
+    .btn--promo {
+      min-height: 5.6rem;
+      padding: 1.2rem 2rem;
+      border-radius: 3.1rem;
+      font-size: 1.6rem;
+    }
+
+    .btn__text--desktop {
+      display: none;
+    }
+
+    .btn__text--mobile {
+      display: inline;
     }
   }
 }

@@ -1,9 +1,19 @@
 {{#if href}}
   <a class="btn {{class}}" href="{{href}}">
-    {{label}}
+    {{#if labelMobile}}
+      <span class="btn__text btn__text--desktop">{{label}}</span>
+      <span class="btn__text btn__text--mobile">{{labelMobile}}</span>
+    {{else}}
+      {{label}}
+    {{/if}}
   </a>
 {{else}}
   <button class="btn {{class}}" type="{{type}}">
-    {{label}}
+    {{#if labelMobile}}
+      <span class="btn__text btn__text--desktop">{{label}}</span>
+      <span class="btn__text btn__text--mobile">{{labelMobile}}</span>
+    {{else}}
+      {{label}}
+    {{/if}}
   </button>
 {{/if}}

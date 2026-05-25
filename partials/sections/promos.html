@@ -33,10 +33,12 @@
                 </p>
               </div>
 
-              <a class="promos__button" href="{{buttonHref}}">
-                <span class="promos__desktop-text">{{buttonLabel}}</span>
-                <span class="promos__mobile-text">{{buttonLabelMobile}}</span>
-              </a>
+              {{> components/button
+                class="promos__button btn--promo"
+                href=buttonHref
+                label=buttonLabel
+                labelMobile=buttonLabelMobile
+              }}
             </article>
           </li>
         {{/each}}

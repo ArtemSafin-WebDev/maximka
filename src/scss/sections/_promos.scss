@@ -25,15 +25,18 @@
 
   .promos__slide {
     box-sizing: border-box;
+    display: flex;
     min-width: 0;
   }
 
   .promos__card {
     position: relative;
     box-sizing: border-box;
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
     min-height: 33.8rem;
     padding: 3.2rem;
     border-radius: 4rem;
@@ -82,44 +85,8 @@
   }
 
   .promos__button {
-    position: relative;
     z-index: 1;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-top: auto;
-    padding: 2.4rem 3.2rem;
-    overflow: hidden;
-    border-radius: 10rem;
-    background: transparent !important;
-    font-size: 2.4rem;
-    font-weight: 500;
-    line-height: 1.1;
-    color: #333333 !important;
-    -webkit-text-fill-color: #333333 !important;
-    text-decoration: none;
-    white-space: nowrap;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background-color: #ffffff;
-      border-radius: inherit;
-    }
-
-    &:link,
-    &:visited {
-      color: #333333 !important;
-      -webkit-text-fill-color: #333333 !important;
-    }
-  }
-
-  .promos__button span {
-    position: relative;
-    z-index: 1;
   }
 
   .promos__mobile-text {
@@ -172,10 +139,6 @@
     .promos__button {
       width: 16.3rem;
       min-width: 16.3rem;
-      min-height: 5.6rem;
-      padding: 1.2rem 2rem;
-      border-radius: 3.1rem;
-      font-size: 1.6rem;
     }
 
     .promos__desktop-text {
