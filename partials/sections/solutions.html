@@ -1,12 +1,11 @@
 <section class="solutions js-solutions" aria-labelledby="solutions-title">
   <div class="container">
     <div class="solutions__intro">
-      <div class="solutions__heading">
-        <p class="solutions__label">{{solutions.label}}</p>
-        <h2 class="solutions__title" id="solutions-title">
-          {{#each solutions.titleLines}}{{this}}{{#unless @last}} {{/unless}}{{/each}}
-        </h2>
-      </div>
+      <p class="solutions__label">{{solutions.label}}</p>
+
+      <h2 class="solutions__title" id="solutions-title">
+        {{#each solutions.titleLines}}{{this}}{{#unless @last}} {{/unless}}{{/each}}
+      </h2>
 
       <p class="solutions__description">
         {{#each solutions.descriptionLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}

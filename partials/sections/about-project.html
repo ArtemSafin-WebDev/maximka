@@ -1,0 +1,49 @@
+<section class="about-project js-about-project" aria-labelledby="about-project-title">
+  <div class="about-project__card">
+    <picture class="about-project__picture" aria-hidden="true">
+      <source media="(max-width: 576px)" srcset="{{aboutProject.imageMobile}}">
+      <img
+        class="about-project__image"
+        src="{{aboutProject.image}}"
+        width="1054"
+        height="544"
+        alt=""
+        loading="lazy"
+      >
+    </picture>
+
+    <div class="about-project__heading">
+      <p class="about-project__label">{{aboutProject.label}}</p>
+      <h2 class="about-project__title" id="about-project-title">
+        {{aboutProject.title}}
+      </h2>
+    </div>
+
+    <div class="about-project__body">
+      <p class="about-project__summary">{{aboutProject.summary}}</p>
+
+      <div
+        class="about-project__more js-about-project-more"
+        id="about-project-more"
+        aria-hidden="true"
+      >
+        <div class="about-project__more-inner">
+          {{#each aboutProject.details}}
+            <p>{{this}}</p>
+          {{/each}}
+        </div>
+      </div>
+
+      <button
+        class="about-project__button btn btn--outline js-about-project-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="about-project-more"
+        data-open-label="{{aboutProject.openLabel}}"
+        data-close-label="{{aboutProject.closeLabel}}"
+      >
+        <span>{{aboutProject.openLabel}}</span>
+      </button>
+    </div>
+  </div>
+</section>
