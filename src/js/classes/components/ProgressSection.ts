@@ -1,6 +1,7 @@
 import Swiper from "swiper";
 import { Scrollbar } from "swiper/modules";
 
+import { MOBILE_BREAKPOINT } from "../../constants/breakpoints";
 import Component from "../Component";
 
 class ProgressSection extends Component {
@@ -11,25 +12,54 @@ class ProgressSection extends Component {
   private readonly prevButton: HTMLButtonElement | null;
   private readonly nextButton: HTMLButtonElement | null;
   private readonly swiper: Swiper | null;
-  private readonly handlePrevClick = () => this.swiper?.slidePrev();
-  private readonly handleNextClick = () => this.swiper?.slideNext();
+  private readonly desktopMediaQuery = window.matchMedia(
+    `(min-width: ${MOBILE_BREAKPOINT + 1}px)`
+  );
+  private readonly handleMediaChange = () => this.updateNavigationState();
+  private readonly handlePrevClick = () => {
+    if (
+      this.desktopMediaQuery.matches &&
+      this.swiper?.isBeginning &&
+      !this.swiper.isLocked
+    ) {
+      this.slideToLastVisible();
+      return;
+    }
+
+    this.swiper?.slidePrev();
+  };
+  private readonly handleNextClick = () => {
+    if (
+      this.desktopMediaQuery.matches &&
+      this.swiper?.isEnd &&
+      !this.swiper.isLocked
+    ) {
+      this.swiper.slideTo(0);
+      return;
+    }
+
+    this.swiper?.slideNext();
+  };
   private readonly handleFilterChange = () => this.updateFilter();
   private readonly updateNavigationState = () => {
+    const isDesktop = this.desktopMediaQuery.matches;
+    const isLocked = Boolean(this.swiper?.isLocked);
+
     this.prevButton?.classList.toggle(
       "swiper-button-disabled",
-      Boolean(this.swiper?.isBeginning)
+      isLocked || (!isDesktop && Boolean(this.swiper?.isBeginning))
     );
     this.prevButton?.toggleAttribute(
       "disabled",
-      Boolean(this.swiper?.isBeginning)
+      isLocked || (!isDesktop && Boolean(this.swiper?.isBeginning))
     );
     this.nextButton?.classList.toggle(
       "swiper-button-disabled",
-      Boolean(this.swiper?.isEnd)
+      isLocked || (!isDesktop && Boolean(this.swiper?.isEnd))
     );
     this.nextButton?.toggleAttribute(
       "disabled",
-      Boolean(this.swiper?.isEnd)
+      isLocked || (!isDesktop && Boolean(this.swiper?.isEnd))
     );
   };
 
@@ -53,6 +83,7 @@ class ProgressSection extends Component {
 
     this.prevButton?.addEventListener("click", this.handlePrevClick);
     this.nextButton?.addEventListener("click", this.handleNextClick);
+    this.desktopMediaQuery.addEventListener("change", this.handleMediaChange);
     this.swiper?.on("slideChange", this.updateNavigationState);
     this.swiper?.on("update", this.updateNavigationState);
     this.filterInputs.forEach((input) => {
@@ -118,9 +149,19 @@ class ProgressSection extends Component {
     return checkedInput?.value ?? "";
   }
 
+  private slideToLastVisible() {
+    const lastVisibleSlideIndex = this.slides.reduce(
+      (lastIndex, slide, index) => (slide.hidden ? lastIndex : index),
+      0
+    );
+
+    this.swiper?.slideTo(lastVisibleSlideIndex);
+  }
+
   public destroy() {
     this.prevButton?.removeEventListener("click", this.handlePrevClick);
     this.nextButton?.removeEventListener("click", this.handleNextClick);
+    this.desktopMediaQuery.removeEventListener("change", this.handleMediaChange);
     this.swiper?.off("slideChange", this.updateNavigationState);
     this.swiper?.off("update", this.updateNavigationState);
     this.filterInputs.forEach((input) => {

@@ -469,20 +469,19 @@ export default {
           {
             type: "text",
             name: "name",
-            placeholder: "Ваше имя",
+            placeholder: "Имя",
             required: true,
           },
           {
             type: "tel",
             name: "phone",
-            placeholder: "Ваш телефон",
+            placeholder: "Телефон",
             required: true,
           },
         ],
         agreements: [
           {
             name: "personal-data",
-            required: true,
             textBefore:
               "Я согласен на обработку персональных данных и принимаю ",
             policy: {
@@ -503,20 +502,19 @@ export default {
           {
             type: "text",
             name: "name",
-            placeholder: "Ваше имя",
+            placeholder: "Имя",
             required: true,
           },
           {
             type: "tel",
             name: "phone",
-            placeholder: "Ваш телефон",
+            placeholder: "Телефон",
             required: true,
           },
           {
             type: "email",
             name: "email",
-            placeholder: "Ваша почта",
-            required: true,
+            placeholder: "Почта",
           },
           {
             textarea: true,
@@ -527,7 +525,6 @@ export default {
         agreements: [
           {
             name: "personal-data",
-            required: true,
             textBefore:
               "Я согласен на обработку персональных данных и принимаю ",
             policy: {
@@ -555,19 +552,18 @@ export default {
         {
           type: "text",
           name: "name",
-          placeholder: "Ваше имя",
+          placeholder: "Имя",
           required: true,
         },
         {
           type: "email",
           name: "email",
-          placeholder: "Ваша почта",
-          required: true,
+          placeholder: "Почта",
         },
         {
           type: "tel",
           name: "phone",
-          placeholder: "Ваш телефон",
+          placeholder: "Телефон",
           required: true,
         },
         {
@@ -580,7 +576,6 @@ export default {
       agreements: [
         {
           name: "personal-data",
-          required: true,
           textBefore:
             "Я согласен на обработку персональных данных и принимаю ",
           policy: {
