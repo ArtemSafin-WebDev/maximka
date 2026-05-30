@@ -6,6 +6,8 @@
   }
 
   .progress__head {
+    position: relative;
+    z-index: 3;
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: 2rem;
@@ -41,6 +43,7 @@
     --progress-slide-gap: 20px;
 
     position: relative;
+    z-index: 1;
     overflow: visible;
   }
 
@@ -153,13 +156,13 @@
     .progress__head {
       display: flex;
       flex-direction: column;
-      gap: 3.2rem;
-      margin-bottom: 3.2rem;
+      gap: 1.6rem;
+      margin-bottom: 2.4rem;
     }
 
     .progress__title {
       width: 100%;
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
 
     .progress__filters {
@@ -177,9 +180,33 @@
       order: 2;
     }
 
+    .progress__select .select__button {
+      min-height: 4rem;
+      gap: 1.2rem;
+      padding: 1.2rem 1.2rem 1.2rem 2rem;
+    }
+
+    .progress__select .select__button-text {
+      font-size: 1.2rem;
+    }
+
+    .progress__select .select__icon,
+    .progress__select .select__icon-svg {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+
+    .progress__select .select__dropdown {
+      padding: 1.6rem 1.2rem 1.6rem 2rem;
+    }
+
+    .progress__select .select__option {
+      font-size: 1.2rem;
+    }
+
     .progress__slide {
-      width: 27rem;
-      height: 19.7rem;
+      width: 26rem;
+      height: 26rem;
       border-radius: 2.4rem;
     }
 
@@ -192,7 +219,9 @@
     }
 
     .progress__scrollbar.swiper-scrollbar {
+      width: calc(100% - 3rem);
       margin-top: 2.4rem;
+      margin-inline: auto;
     }
   }
 }

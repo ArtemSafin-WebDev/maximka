@@ -47,9 +47,11 @@ class SolutionsTabs extends Component {
       },
       breakpoints: {
         0: {
+          enabled: false,
           spaceBetween: 11,
         },
         577: {
+          enabled: true,
           spaceBetween: 20,
         },
       },

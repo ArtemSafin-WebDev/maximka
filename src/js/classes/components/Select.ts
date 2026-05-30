@@ -13,6 +13,7 @@ class Select extends Component {
   private initiallyCheckedValues: string[] = [];
   private handleResetBtnClick: (event: MouseEvent) => void;
   private handleFormReset: () => void;
+  private closeTimer: number | null = null;
 
   constructor(element: HTMLElement) {
     super(element);
@@ -94,6 +95,11 @@ class Select extends Component {
 
   public open = () => {
     if (this.isOpen) return;
+    if (this.closeTimer) {
+      window.clearTimeout(this.closeTimer);
+      this.closeTimer = null;
+    }
+    this.element.classList.remove("is-closing");
     this.element.classList.add("active");
     this.btn?.setAttribute("aria-expanded", "true");
     this.isOpen = true;
@@ -102,11 +108,19 @@ class Select extends Component {
   public close = () => {
     if (!this.isOpen) return;
     this.element.classList.remove("active");
+    this.element.classList.add("is-closing");
     this.btn?.setAttribute("aria-expanded", "false");
     this.isOpen = false;
+    this.closeTimer = window.setTimeout(() => {
+      this.element.classList.remove("is-closing");
+      this.closeTimer = null;
+    }, 200);
   };
 
   public destroy() {
+    if (this.closeTimer) {
+      window.clearTimeout(this.closeTimer);
+    }
     document.documentElement.removeEventListener(
       "click",
       this.handleOutsideClick

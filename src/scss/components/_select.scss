@@ -9,7 +9,8 @@
     color: var(--text-color);
   }
 
-  .select.active {
+  .select.active,
+  .select.is-closing {
     z-index: 5;
   }
 
@@ -84,6 +85,10 @@
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+  }
+
+  .select.is-closing .select__dropdown {
+    visibility: visible;
   }
 
   .select__list {

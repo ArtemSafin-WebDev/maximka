@@ -51,7 +51,7 @@ class ProgressSection extends Component {
       breakpoints: {
         0: {
           loop: false,
-          spaceBetween: 12,
+          spaceBetween: 16,
         },
         [MOBILE_BREAKPOINT + 1]: {
           loop: true,
