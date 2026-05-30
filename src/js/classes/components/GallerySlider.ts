@@ -29,11 +29,15 @@ class GallerySlider extends Component {
       scrollbar: {
         el: this.element.querySelector<HTMLElement>(".swiper-scrollbar"),
         draggable: true,
+        dragSize: window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`)
+          .matches
+          ? 81
+          : "auto",
       },
       breakpoints: {
         0: {
           loop: false,
-          spaceBetween: 12,
+          spaceBetween: 16,
         },
         [MOBILE_BREAKPOINT + 1]: {
           loop: true,
