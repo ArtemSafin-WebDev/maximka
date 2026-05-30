@@ -124,36 +124,101 @@
     margin-block: 2.4rem 1.6rem;
   }
 
+  .modal__required-note {
+    display: none;
+  }
+
   @include mq.down(sm) {
     .modal {
-      width: calc(100% - 3.2rem);
+      width: calc(100% - 4rem);
     }
 
     .modal__panel {
-      gap: 1.8rem;
-      padding: 2.4rem;
-      border-radius: 2.4rem;
+      gap: 1.6rem;
+      padding: 2.8rem 2.4rem;
+      border-radius: 2.8rem;
     }
 
     .modal__head {
-      gap: 1.6rem;
+      align-items: flex-start;
+      gap: 2.4rem;
     }
 
     .modal__title {
-      font-size: 3.2rem;
+      font-size: 2.4rem;
     }
 
     .modal__close {
-      width: 5.2rem;
-      height: 5.2rem;
+      width: 3.6rem;
+      height: 3.6rem;
+      border: 0.1rem solid #999999;
+      background-color: #ffffff;
+      color: #999999;
+    }
+
+    .modal__close-icon {
+      width: 1.2rem;
+      height: 1.2rem;
     }
 
     .modal__description {
-      font-size: 1.4rem;
+      max-width: none;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 0;
+      color: var(--text-color);
+    }
+
+    .modal__form {
+      gap: 2.4rem;
+    }
+
+    .modal__fields {
+      gap: 1.6rem;
+    }
+
+    .modal .form-field__inner {
+      min-height: 4.4rem;
+      padding: 1.6rem;
+      border-color: rgb(153 153 153 / 24%);
+      border-radius: 2.4rem;
+    }
+
+    .modal .form-field__control {
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .modal .form-field__control--textarea {
+      min-height: 1.4rem;
+    }
+
+    .modal .form-field--textarea .form-field__inner {
+      min-height: 4.4rem;
+      border-radius: 2.4rem;
+    }
+
+    .modal__required-note {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: 0.015em;
+      color: #999999;
     }
 
     .modal__submit {
-      margin-block: 2rem 1.6rem;
+      min-height: 4.8rem;
+      margin-block: 0;
+      padding: 1.6rem 2rem;
+      font-size: 1.6rem;
+      line-height: 1.1;
+    }
+
+    .modal__agreements {
+      gap: 1.6rem;
     }
   }
 }

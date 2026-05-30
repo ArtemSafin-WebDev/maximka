@@ -469,13 +469,13 @@ export default {
           {
             type: "text",
             name: "name",
-            placeholder: "Имя",
+            placeholder: "Имя*",
             required: true,
           },
           {
             type: "tel",
             name: "phone",
-            placeholder: "Телефон",
+            placeholder: "Телефон*",
             required: true,
           },
         ],
@@ -502,13 +502,13 @@ export default {
           {
             type: "text",
             name: "name",
-            placeholder: "Имя",
+            placeholder: "Имя*",
             required: true,
           },
           {
             type: "tel",
             name: "phone",
-            placeholder: "Телефон",
+            placeholder: "Телефон*",
             required: true,
           },
           {
