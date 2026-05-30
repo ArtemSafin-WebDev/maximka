@@ -170,7 +170,8 @@
     }
   }
 
-  .hero__cta {
+  .hero__cta,
+  .hero__chat {
     display: none;
   }
 
@@ -214,30 +215,37 @@
 
     .hero__visual {
       position: relative;
+      height: 62.2rem;
       overflow: hidden;
       border-radius: 0 0 3.2rem 3.2rem;
     }
 
     .hero__media {
       inset: 0;
-      height: auto;
+      height: 100%;
       border-radius: inherit;
+
+      &::after {
+        background-image: none;
+        background-color: rgb(0 0 0 / 20%);
+        mix-blend-mode: normal;
+      }
     }
 
     .hero__content {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      min-height: 81.2rem;
-      height: auto;
-      padding-top: 12.2rem;
+      min-height: 62.2rem;
+      height: 100%;
+      padding-top: 10rem;
       padding-bottom: 2rem;
     }
 
     .hero__promo-container {
       position: static;
       height: auto;
-      margin-top: 3.2rem;
+      margin-top: 2rem;
       pointer-events: auto;
     }
 
@@ -246,14 +254,15 @@
     }
 
     .hero__eyebrow {
-      font-size: 1.6rem;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
     }
 
     .hero__title {
       max-width: none;
       margin-top: 1.2rem;
 
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-style: normal;
       font-weight: 600;
       line-height: 110%;
@@ -267,21 +276,35 @@
       right: auto;
       order: 4;
       width: calc(100vw - (var(--container-padding) * 2));
-      height: 23.2rem;
-      padding: 2rem;
-      border-radius: 2.4rem;
+      height: 24rem;
+      padding: 1.6rem;
+      border-radius: 2.8rem;
     }
 
     .hero__promo-content {
-      max-width: 29.5rem;
+      gap: 0.6rem;
+      max-width: 30.3rem;
     }
 
     .hero__promo-title {
       font-size: 2.4rem;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
     }
 
     .hero__promo-description {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .hero__promo-button {
+      left: 1.6rem;
+      bottom: 1.6rem;
+      min-height: 4.7rem;
+      padding: 1.6rem 2rem;
+      font-size: 1.4rem;
     }
 
     .hero__cta {
@@ -290,12 +313,12 @@
       display: inline-flex;
       align-items: center;
       gap: 1.2rem;
-      min-height: 5.6rem;
+      min-height: 4.7rem;
       margin-top: auto;
-      padding: 1.2rem 1.2rem 1.2rem 2rem;
+      padding: 1.6rem 2rem;
       border-radius: 3.1rem;
       background-color: #ffffff;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 500;
       line-height: 1.1;
       color: var(--text-color);
@@ -315,61 +338,73 @@
     }
 
     .hero__cta-icon {
+      display: none;
+    }
+
+    .hero__cta:hover .hero__cta-icon {
+      color: #ffffff;
+    }
+
+    .hero__chat {
+      position: absolute;
+      right: var(--container-padding);
+      bottom: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 3.2rem;
-      height: 3.2rem;
+      width: 5rem;
+      height: 5rem;
       border-radius: 50%;
       background-color: var(--primary-color);
       color: #ffffff;
 
       svg {
-        width: 3.2rem;
-        height: 3.2rem;
+        width: 2rem;
+        height: 2rem;
         fill: currentColor;
       }
-    }
-
-    .hero__cta:hover .hero__cta-icon {
-      background-color: rgb(255 255 255 / 16%);
-      color: #ffffff;
     }
 
     .hero__tags {
       position: static;
       order: 2;
       display: flex;
+      flex-wrap: wrap;
       gap: 0.8rem;
-      width: auto;
-      margin-top: 2rem;
+      width: 33.5rem;
+      margin-top: 2.4rem;
     }
 
     .hero__tag {
-      gap: 0.6rem;
+      gap: 0;
       padding: 0.8rem 1.2rem;
+      border-radius: 10rem;
+      background-color: rgb(0 0 0 / 20%);
+      backdrop-filter: blur(1rem);
       font-size: 1.2rem;
+      line-height: 1.1;
+      color: #ffffff;
+    }
+
+    .hero__tag:nth-child(1),
+    .hero__tag:nth-child(4) {
+      display: none;
     }
 
     .hero__tag:nth-child(2) {
-      order: 3;
+      order: 1;
     }
 
     .hero__tag:nth-child(3) {
-      order: 4;
-    }
-
-    .hero__tag:nth-child(4) {
       order: 2;
     }
 
     .hero__tag:nth-child(5) {
-      order: 5;
+      order: 3;
     }
 
     .hero__tag-icon {
-      width: 1.2rem;
-      height: 1.2rem;
+      display: none;
     }
   }
 }

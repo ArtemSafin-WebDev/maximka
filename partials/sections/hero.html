@@ -28,6 +28,12 @@
         </span>
       </a>
 
+      <a class="hero__chat" href="{{header.callback.href}}" aria-label="{{header.callback.label}}">
+        <svg width="20" height="20" focusable="false" aria-hidden="true">
+          <use href="#chat"></use>
+        </svg>
+      </a>
+
       <ul class="hero__tags" aria-label="{{hero.tagsLabel}}">
         {{#each hero.tags}}
           <li class="hero__tag">

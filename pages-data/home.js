@@ -4,7 +4,7 @@ export default {
     hero: {
       image: "/images/hero/bg.webp",
       imageMobile: "/images/hero/bg-mobile.webp",
-      eyebrow: "Жилой комплекс «Максима»",
+      eyebrow: "Жилой комплекс на Максимова",
       title: "Новое качество жизни по доступной цене",
       cta: {
         label: "Выбрать квартиру",
@@ -14,7 +14,7 @@ export default {
         image: "/images/hero/card-bg.svg",
         imageMobile: "/images/hero/card-bg-mobile.svg",
         title: "Старт продаж",
-        description: "Идеальное предложение для вас",
+        description: "Подберём оптимальное предложение для вас",
         buttonLabel: "Оставить заявку",
         buttonHref: "#request-dialog",
       },
@@ -38,7 +38,7 @@ export default {
         },
         {
           icon: "/images/hero/icons/5.svg",
-          label: "12 мин до м. Авиастроительная",
+          label: "12 мин. до м. Авиастроительная",
         },
       ],
     },
