@@ -118,64 +118,76 @@
     .about-project__card {
       display: flex;
       flex-direction: column;
+      gap: 0;
       max-width: 33.5rem;
-      min-height: 49.9rem;
-      padding: 2.4rem;
-      border-radius: 2.4rem;
+      min-height: auto;
+      padding: 2.8rem;
+      border-radius: 2.8rem;
     }
 
     .about-project.is-expanded .about-project__card {
-      min-height: 49.9rem;
+      min-height: auto;
     }
 
     .about-project__picture {
-      right: 0;
-      width: 33.5rem;
-      height: 49.9rem;
+      display: none;
     }
 
     .about-project__heading {
       display: flex;
       flex-direction: column;
-      gap: 1.6rem;
+      gap: 2rem;
     }
 
     .about-project__label {
-      font-size: 1.4rem;
+      font-size: 1.8rem;
+      line-height: 1.3;
+      text-transform: none;
+      color: var(--text-color);
     }
 
     .about-project__title {
       margin-top: 0;
-      font-size: 2rem;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1.4;
     }
 
     .about-project__body {
       display: flex;
-      flex: 1 1 auto;
       flex-direction: column;
-      padding-top: 3.2rem;
+      padding-top: 1.2rem;
     }
 
     .about-project__summary,
     .about-project__more-inner {
-      max-width: 28.7rem;
-      font-size: 1.6rem;
+      max-width: 100%;
+      font-size: 1.4rem;
+      line-height: 1.4;
     }
 
     .about-project__more {
-      margin-top: 1.6rem;
+      margin-top: 0;
+    }
+
+    .about-project.is-expanded .about-project__more {
+      margin-top: 1.2rem;
     }
 
     .about-project__more-inner {
-      gap: 1.6rem;
+      gap: 1.2rem;
     }
 
     .about-project__button {
-      margin-top: auto;
-    }
-
-    .about-project.is-expanded .about-project__button {
       margin-top: 3.2rem;
+      padding: 0;
+      border: 0;
+      appearance: none;
+      background-color: transparent;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1.1;
+      color: #999999;
     }
   }
 }
