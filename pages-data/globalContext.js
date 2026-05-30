@@ -10,6 +10,16 @@ export default {
       { label: "Акции", href: "#promotions" },
       { label: "Контакты", href: "#contacts" },
     ],
+    mobileNav: [
+      { label: "О проекте", href: "#about" },
+      { label: "Особенности проекта", href: "#features" },
+      { label: "Ход строительства", href: "#progress" },
+      { label: "Квартиры", href: "#layouts" },
+      { label: "Инфраструктура", href: "#infrastructure" },
+      { label: "Преимущества", href: "#benefits" },
+      { label: "Акции", href: "#promotions" },
+      { label: "Как купить", href: "#buy" },
+    ],
     apartments: {
       label: "Выбрать квартиру",
       href: "#layouts",

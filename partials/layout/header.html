@@ -33,47 +33,52 @@
       </a>
     </div>
 
-    <button
-      class="page-header__toggle js-page-header-toggle"
-      type="button"
-      aria-controls="page-header-menu"
-      aria-expanded="false"
-    >
-      <svg class="page-header__toggle-icon page-header__toggle-icon--open" width="32" height="32" focusable="false">
-        <use href="#menu/open"></use>
-      </svg>
-      <svg class="page-header__toggle-icon page-header__toggle-icon--close" width="32" height="32" focusable="false">
-        <use href="#menu/close"></use>
-      </svg>
-      <span class="page-header__toggle-label">Меню</span>
-    </button>
+    <div class="page-header__mobile-actions">
+      <a class="page-header__mobile-phone" href="{{header.phoneHref}}" aria-label="{{header.phone}}">
+        <svg width="28" height="28" focusable="false" aria-hidden="true">
+          <use href="#phone"></use>
+        </svg>
+      </a>
+
+      <button
+        class="page-header__toggle js-page-header-toggle"
+        type="button"
+        aria-controls="page-header-menu"
+        aria-expanded="false"
+      >
+        <svg class="page-header__toggle-icon page-header__toggle-icon--open" width="32" height="32" focusable="false">
+          <use href="#menu/open"></use>
+        </svg>
+        <svg class="page-header__toggle-icon page-header__toggle-icon--close" width="32" height="32" focusable="false">
+          <use href="#menu/close"></use>
+        </svg>
+        <span class="page-header__toggle-label">Меню</span>
+      </button>
+    </div>
   </div>
 
   <div class="page-header__menu" id="page-header-menu">
     <nav class="page-header__menu-nav" aria-label="Мобильная навигация">
-      {{#each header.nav}}
+      {{#each header.mobileNav}}
         <a class="page-header__menu-link" href="{{href}}">{{label}}</a>
       {{/each}}
     </nav>
 
-    <a class="page-header__menu-phone" href="{{header.phoneHref}}">{{header.phone}}</a>
+    <div class="page-header__menu-bottom">
+      <a class="page-header__button page-header__button--menu-apartments" href="{{header.apartments.href}}">
+        <span>{{header.apartments.label}}</span>
+        <span class="page-header__button-icon" aria-hidden="true">
+          <svg width="32" height="32" focusable="false">
+            <use href="#arrows/right"></use>
+          </svg>
+        </span>
+      </a>
 
-    <a class="page-header__button page-header__button--menu-callback" href="{{header.callback.href}}">
-      <span class="page-header__button-icon" aria-hidden="true">
-        <svg width="32" height="32" focusable="false">
-          <use href="#phone"></use>
+      <a class="page-header__menu-chat" href="{{header.callback.href}}" aria-label="{{header.callback.label}}">
+        <svg width="20" height="20" focusable="false" aria-hidden="true">
+          <use href="#chat"></use>
         </svg>
-      </span>
-      <span>{{header.callback.label}}</span>
-    </a>
-
-    <a class="page-header__button page-header__button--menu-apartments" href="{{header.apartments.href}}">
-      <span>{{header.apartments.label}}</span>
-      <span class="page-header__button-icon" aria-hidden="true">
-        <svg width="32" height="32" focusable="false">
-          <use href="#arrows/right"></use>
-        </svg>
-      </span>
-    </a>
+      </a>
+    </div>
   </div>
 </header>
