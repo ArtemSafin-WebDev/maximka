@@ -31,6 +31,7 @@ export default {
   },
   footer: {
     phone: "+7 (495) 132-07-08",
+    phoneHref: "tel:+74951320708",
     nav: [
       { label: "О проекте", href: "#about" },
       { label: "Расположение", href: "#location" },
@@ -42,6 +43,16 @@ export default {
       { label: "Как купить", href: "#buy" },
       { label: "Ход строительства", href: "#progress" },
       { label: "контакты", href: "#contacts" },
+    ],
+    mobileNav: [
+      { label: "О проекте", href: "#about" },
+      { label: "Особенности проекта", href: "#features" },
+      { label: "Инфраструктура", href: "#infrastructure" },
+      { label: "Преимущества", href: "#benefits" },
+      { label: "Расположение", href: "#location" },
+      { label: "Квартиры", href: "#layouts" },
+      { label: "Акции", href: "#promotions" },
+      { label: "Как купить", href: "#buy" },
     ],
     legalLinks: [
       { label: "Проектная декларация", href: "#" },

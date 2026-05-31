@@ -9,6 +9,13 @@
 
     <div class="container">
       <div class="page-footer__main-grid">
+        <a class="page-footer__callback" href="{{header.callback.href}}">
+          <svg class="page-footer__callback-icon" width="32" height="32" focusable="false" aria-hidden="true">
+            <use href="#callback-phone"></use>
+          </svg>
+          <span>{{header.callback.label}}</span>
+        </a>
+
         <a class="page-footer__logo-link" href="/" aria-label="Максима">
           <img
             class="page-footer__logo"
@@ -25,9 +32,15 @@
           {{/each}}
         </nav>
 
+        <nav class="page-footer__mobile-nav" aria-label="Навигация в подвале">
+          {{#each footer.mobileNav}}
+            <a class="page-footer__nav-link" href="{{href}}">{{label}}</a>
+          {{/each}}
+        </nav>
+
         <div class="page-footer__phone">
           <span class="page-footer__phone-label">Телефон:</span>
-          <a class="page-footer__phone-link" href="tel:+74951320708">{{footer.phone}}</a>
+          <a class="page-footer__phone-link" href="{{footer.phoneHref}}">{{footer.phone}}</a>
         </div>
 
         <div class="page-footer__credits">

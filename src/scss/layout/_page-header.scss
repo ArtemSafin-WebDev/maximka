@@ -231,7 +231,7 @@
 
   @include mq.down(sm) {
     .page-header {
-      position: absolute;
+      position: fixed;
       min-height: 6.8rem;
       padding-block: 0;
       color: var(--text-color);
