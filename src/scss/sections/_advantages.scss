@@ -102,8 +102,7 @@
 
   .advantages-card__content {
     --advantages-card-slope-left: 6.2rem;
-    --advantages-card-slope-right: 4.2rem;
-    --advantages-card-slope-radius: 4.2rem;
+    --advantages-card-side-radius: 4rem;
 
     position: absolute;
     inset: auto 0 0;
@@ -113,26 +112,35 @@
     gap: 4.1rem;
     min-height: 16.6rem;
     padding: 6.4rem 3.2rem 3.2rem;
-    border-radius: 0 0 4rem 4rem;
+    border-radius: var(--advantages-card-side-radius);
     background-color: #d8de5b;
     background-image: url("/images/advantages/pattern.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
     clip-path: polygon(
+      0 calc(var(--advantages-card-slope-left) + var(--advantages-card-side-radius)),
       0 var(--advantages-card-slope-left),
-      calc(100% - var(--advantages-card-slope-radius)) 0,
-      100% var(--advantages-card-slope-right),
-      100% 100%,
-      0 100%
+      calc(100% - var(--advantages-card-side-radius)) 0,
+      100% var(--advantages-card-side-radius),
+      100% calc(100% - var(--advantages-card-side-radius)),
+      calc(100% - var(--advantages-card-side-radius)) 100%,
+      var(--advantages-card-side-radius) 100%,
+      0 calc(100% - var(--advantages-card-side-radius))
     );
     clip-path: shape(
-      from 0 var(--advantages-card-slope-left),
-      curve to var(--advantages-card-slope-radius) calc(var(--advantages-card-slope-left) - 0.9rem) with 0 calc(var(--advantages-card-slope-left) - 0.9rem) / 1.9rem calc(var(--advantages-card-slope-left) - 1.2rem),
-      line to calc(100% - var(--advantages-card-slope-radius)) 0,
-      arc to 100% var(--advantages-card-slope-right) of var(--advantages-card-slope-radius) cw,
-      vline to 100%,
-      hline to 0,
+      from 0 calc(var(--advantages-card-slope-left) + var(--advantages-card-side-radius)),
+      arc to var(--advantages-card-side-radius) var(--advantages-card-slope-left) of
+        var(--advantages-card-side-radius) cw,
+      line to calc(100% - var(--advantages-card-side-radius)) 0,
+      arc to 100% var(--advantages-card-side-radius) of
+        var(--advantages-card-side-radius) cw,
+      vline to calc(100% - var(--advantages-card-side-radius)),
+      arc to calc(100% - var(--advantages-card-side-radius)) 100% of
+        var(--advantages-card-side-radius) cw,
+      hline to var(--advantages-card-side-radius),
+      arc to 0 calc(100% - var(--advantages-card-side-radius)) of
+        var(--advantages-card-side-radius) cw,
       close
     );
     transition:
@@ -361,8 +369,7 @@
 
     .advantages-card__content {
       --advantages-card-slope-left: 3.5rem;
-      --advantages-card-slope-right: 2.4rem;
-      --advantages-card-slope-radius: 2.4rem;
+      --advantages-card-side-radius: 2rem;
 
       min-height: 0;
       padding: 4.8rem 1.2rem 1.2rem;
