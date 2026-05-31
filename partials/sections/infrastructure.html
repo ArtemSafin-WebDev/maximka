@@ -1,0 +1,67 @@
+<section class="infrastructure" aria-labelledby="infrastructure-title">
+  <div class="infrastructure__content container">
+    <div class="infrastructure__heading">
+      <p class="infrastructure__label">{{infrastructure.label}}</p>
+      <h2 class="infrastructure__title" id="infrastructure-title">
+        {{infrastructure.title}}
+      </h2>
+    </div>
+
+    <div class="infrastructure__intro">
+      <p class="infrastructure__description">{{infrastructure.description}}</p>
+      {{> components/button
+        class="infrastructure__button btn--arrow"
+        href=infrastructure.cta.href
+        label=infrastructure.cta.label
+        icon="arrows/right"
+      }}
+    </div>
+  </div>
+
+  <div
+    class="infrastructure__map js-infrastructure-map"
+    data-api-key="{{infrastructure.map.apiKey}}"
+    data-center="{{infrastructure.map.center}}"
+    data-zoom="{{infrastructure.map.zoom}}"
+    data-complex-coordinates="{{infrastructure.map.complex.coordinates}}"
+    data-complex-title="{{infrastructure.map.complex.title}}"
+    data-complex-icon="{{infrastructure.map.complex.icon}}"
+    aria-label="{{infrastructure.map.ariaLabel}}"
+  >
+    <div class="infrastructure__map-canvas js-infrastructure-map-canvas"></div>
+
+    <div class="infrastructure__filters" aria-label="{{infrastructure.filtersLabel}}">
+      {{#each infrastructure.categories}}
+        <button
+          class="infrastructure__filter js-infrastructure-filter{{#if active}} active{{/if}}"
+          type="button"
+          data-category="{{id}}"
+        >
+          <img
+            class="infrastructure__filter-icon"
+            src="{{icon}}"
+            width="56"
+            height="56"
+            alt=""
+            loading="lazy"
+          >
+          <span>{{label}}</span>
+        </button>
+      {{/each}}
+    </div>
+
+    <ul class="infrastructure__points" hidden>
+      {{#each infrastructure.points}}
+        <li
+          class="js-infrastructure-point"
+          data-category="{{category}}"
+          data-title="{{title}}"
+          data-address="{{address}}"
+          data-distance="{{distance}}"
+          data-coordinates="{{coordinates}}"
+          data-icon="{{icon}}"
+        ></li>
+      {{/each}}
+    </ul>
+  </div>
+</section>
