@@ -119,28 +119,29 @@
     background-position: center;
     background-size: 100% 100%;
     clip-path: polygon(
-      0 calc(var(--advantages-card-slope-left) + var(--advantages-card-side-radius)),
+      0
+        calc(
+          var(--advantages-card-slope-left) + var(--advantages-card-side-radius)
+        ),
       0 var(--advantages-card-slope-left),
       calc(100% - var(--advantages-card-side-radius)) 0,
       100% var(--advantages-card-side-radius),
-      100% calc(100% - var(--advantages-card-side-radius)),
-      calc(100% - var(--advantages-card-side-radius)) 100%,
-      var(--advantages-card-side-radius) 100%,
-      0 calc(100% - var(--advantages-card-side-radius))
+      100% 100%,
+      0 100%
     );
     clip-path: shape(
-      from 0 calc(var(--advantages-card-slope-left) + var(--advantages-card-side-radius)),
-      arc to var(--advantages-card-side-radius) var(--advantages-card-slope-left) of
-        var(--advantages-card-side-radius) cw,
+      from 0
+        calc(
+          var(--advantages-card-slope-left) + var(--advantages-card-side-radius)
+        ),
+      arc to var(--advantages-card-side-radius)
+        var(--advantages-card-slope-left) of var(--advantages-card-side-radius)
+        cw,
       line to calc(100% - var(--advantages-card-side-radius)) 0,
       arc to 100% var(--advantages-card-side-radius) of
         var(--advantages-card-side-radius) cw,
-      vline to calc(100% - var(--advantages-card-side-radius)),
-      arc to calc(100% - var(--advantages-card-side-radius)) 100% of
-        var(--advantages-card-side-radius) cw,
-      hline to var(--advantages-card-side-radius),
-      arc to 0 calc(100% - var(--advantages-card-side-radius)) of
-        var(--advantages-card-side-radius) cw,
+      vline to 100%,
+      hline to 0,
       close
     );
     transition:
@@ -166,6 +167,10 @@
     border-radius: 50%;
     background-color: #ffffff;
     color: var(--text-color);
+  }
+
+  .advantages-card__icon--mobile {
+    display: none;
   }
 
   .advantages-card__icon svg {
@@ -212,7 +217,9 @@
       color 0.2s ease;
   }
 
-  .advantages__nav:has(.advantages__nav-button:not(.swiper-button-disabled):hover) {
+  .advantages__nav:has(
+    .advantages__nav-button:not(.swiper-button-disabled):hover
+  ) {
     background-color: var(--primary-color);
     color: #ffffff;
   }
@@ -362,31 +369,39 @@
     }
 
     .advantages-card__image {
-      inset: 0 0 auto;
-      height: 17rem;
-      border-radius: 1.2rem 1.2rem 0 0;
+      inset: 0;
+      height: 100%;
+      border-radius: 0;
     }
 
     .advantages-card__content {
-      --advantages-card-slope-left: 3.5rem;
-      --advantages-card-side-radius: 2rem;
+      --advantages-card-slope-left: 2rem;
+      --advantages-card-side-radius: 1.6rem;
 
       min-height: 0;
-      padding: 4.8rem 1.2rem 1.2rem;
+      padding: 3.2rem 1.2rem 1.2rem;
       border-radius: 0 0 1.2rem 1.2rem;
-      background-size: auto 9rem;
+      background-image: url("/images/advantages/card-bg-mobile.svg");
+      background-size: cover;
     }
 
     .advantages-card__title {
-      width: 14rem;
+      display: flex;
+      align-items: flex-end;
+      min-block-size: 3lh;
       font-size: 1.4rem;
       line-height: 1.1;
     }
 
-    .advantages-card__icon {
+    .advantages-card__icon--content {
+      display: none;
+    }
+
+    .advantages-card__icon--mobile {
       position: absolute;
-      top: 0.8rem;
-      right: 0.8rem;
+      inset: 0.8rem 0.8rem auto auto;
+      z-index: 2;
+      display: flex;
       width: 2.4rem;
       height: 2.4rem;
     }

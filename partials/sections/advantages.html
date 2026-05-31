@@ -50,12 +50,18 @@
               <div class="advantages-card__content">
                 <h3 class="advantages-card__title">{{title}}</h3>
 
-                <span class="advantages-card__icon" aria-hidden="true">
+                <span class="advantages-card__icon advantages-card__icon--content" aria-hidden="true">
                   <svg width="32" height="32" focusable="false">
                     <use href="#arrows/diagonal"></use>
                   </svg>
                 </span>
               </div>
+
+              <span class="advantages-card__icon advantages-card__icon--mobile" aria-hidden="true">
+                <svg width="32" height="32" focusable="false">
+                  <use href="#arrows/diagonal"></use>
+                </svg>
+              </span>
             </article>
           </li>
         {{/each}}
