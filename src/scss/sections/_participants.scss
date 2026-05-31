@@ -101,7 +101,7 @@
 
     .participants__item {
       gap: 0.8rem;
-      width: 15rem;
+      width: 100%;
     }
 
     .participants__item:nth-child(1) {
@@ -121,20 +121,20 @@
     }
 
     .participants__list {
-      grid-template-columns: repeat(2, 15rem);
-      gap: 3.2rem;
-      justify-content: space-between;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 3.2rem 1.6rem;
       margin-top: 2.4rem;
     }
 
     .participants__logo-wrap {
-      width: 15rem;
-      height: 14.5rem;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 150 / 145;
       border-radius: 2.8rem;
     }
 
     .participants__role {
-      width: 13.7rem;
+      width: 100%;
       font-size: 1.4rem;
       font-weight: 400;
       line-height: 1.3;

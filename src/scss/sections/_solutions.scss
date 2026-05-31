@@ -81,17 +81,19 @@
   }
 
   .solutions__slider {
-    overflow: hidden;
+    overflow: visible;
   }
 
   .solutions__list {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
   }
 
   .solutions__slide {
     box-sizing: border-box;
     display: flex;
-    width: calc((100% - 4rem) / 3);
+    width: auto;
     height: auto;
   }
 
@@ -250,37 +252,19 @@
 
     .solutions__tab,
     .solutions__tab:first-child {
+      flex-grow: 1;
       justify-content: center;
       min-height: 3.7rem;
       padding: 1.2rem;
+      width: auto;
       font-size: 1.2rem;
       line-height: 1.1;
       text-align: center;
     }
 
-    .solutions__tab:first-child {
-      flex: 1 1 auto;
-      width: auto;
-    }
-
-    .solutions__tab:not(:first-child) {
-      flex: 0 0 11.5rem;
-    }
-
-    .solutions__slider {
-      overflow: visible;
-    }
-
     .solutions__list {
-      flex-direction: column;
+      grid-template-columns: minmax(0, 1fr);
       gap: 1.2rem;
-      transform: none !important;
-    }
-
-    .solutions__slide {
-      width: 33rem !important;
-      max-width: 100%;
-      margin-right: 0 !important;
     }
 
     .solutions__card {
