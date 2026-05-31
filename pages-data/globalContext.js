@@ -44,16 +44,6 @@ export default {
       { label: "Ход строительства", href: "#progress" },
       { label: "контакты", href: "#contacts" },
     ],
-    mobileNav: [
-      { label: "О проекте", href: "#about" },
-      { label: "Особенности проекта", href: "#features" },
-      { label: "Инфраструктура", href: "#infrastructure" },
-      { label: "Преимущества", href: "#benefits" },
-      { label: "Расположение", href: "#location" },
-      { label: "Квартиры", href: "#layouts" },
-      { label: "Акции", href: "#promotions" },
-      { label: "Как купить", href: "#buy" },
-    ],
     legalLinks: [
       { label: "Проектная декларация", href: "#" },
       { label: "Документы", href: "#" },

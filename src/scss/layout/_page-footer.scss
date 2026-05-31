@@ -59,10 +59,6 @@
     line-height: 1.1;
   }
 
-  .page-footer__mobile-nav {
-    display: none;
-  }
-
   .page-footer__phone {
     display: flex;
     flex-direction: column;
@@ -248,15 +244,9 @@
     }
 
     .page-footer__nav {
-      display: none;
-    }
-
-    .page-footer__mobile-nav {
       grid-area: nav;
       display: grid;
-      grid-auto-flow: column;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      grid-template-rows: repeat(4, auto);
       gap: 3.2rem 3.9rem;
       width: calc(100% - 2.4rem);
       margin-inline: 1.2rem;
