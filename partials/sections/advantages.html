@@ -3,9 +3,34 @@
     <div class="advantages__intro">
       <p class="advantages__label">{{advantages.label}}</p>
 
-      <h2 class="advantages__title" id="advantages-title">{{advantages.title}}</h2>
+      <h2 class="advantages__title" id="advantages-title">
+        <span class="advantages__title-text advantages__title-text--desktop">{{advantages.title}}</span>
+        <span class="advantages__title-text advantages__title-text--mobile">{{advantages.mobileTitle}}</span>
+      </h2>
 
       <p class="advantages__description">{{advantages.description}}</p>
+
+      <div class="advantages__mobile-description">
+        {{#each advantages.mobileDescription}}
+          <p>{{this}}</p>
+        {{/each}}
+      </div>
+
+      <ul class="advantages__tags" aria-label="Ключевые преимущества">
+        {{#each advantages.mobileTags}}
+          <li class="advantages__tag">
+            <img
+              class="advantages__tag-icon"
+              src="{{icon}}"
+              width="16"
+              height="16"
+              alt=""
+              aria-hidden="true"
+            >
+            <span>{{label}}</span>
+          </li>
+        {{/each}}
+      </ul>
     </div>
 
     <div class="advantages__slider swiper js-advantages-slider">

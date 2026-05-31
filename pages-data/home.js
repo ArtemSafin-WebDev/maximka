@@ -21,7 +21,7 @@ export default {
       tagsLabel: "Преимущества жилого комплекса",
       tags: [
         {
-          icon: "/images/hero/icons/1.svg",
+          icon: "/images/hero/icons/buildings.svg",
           label: "Комфорт-класс",
         },
         {
@@ -33,7 +33,7 @@ export default {
           label: "Предчистовая отделка",
         },
         {
-          icon: "/images/hero/icons/4.svg",
+          icon: "/images/hero/icons/garage.svg",
           label: "Подземный паркинг",
         },
         {
@@ -334,6 +334,21 @@ export default {
         "Квартиры в ЖК «Максима» с предчистовой отделкой и повышенным комфортом",
       description:
         "От компактных студий до семейных форматов: кухни-гостиные, изолированные спальни, ниши для хранения и балкон или лоджия в каждой квартире",
+      mobileTitle: "Преимущества",
+      mobileDescription: [
+        "ЖК «Максима» расположен в центральной части Авиастроительного района — одном из самых самодостаточных в Казани.",
+        "До метро — 12 минут пешком, до остановки «Максимова» — 150 метров. Школы, сады, магазины, спорт и медицина — рядом с домом.",
+      ],
+      mobileTags: [
+        {
+          icon: "/images/hero/icons/buildings.svg",
+          label: "Комфорт-класс",
+        },
+        {
+          icon: "/images/hero/icons/garage.svg",
+          label: "Подземный паркинг",
+        },
+      ],
       controlsLabel: "Управление слайдером преимуществ",
       prevLabel: "Предыдущее преимущество",
       nextLabel: "Следующее преимущество",
@@ -377,36 +392,31 @@ export default {
     },
     promos: {
       title: "Акции",
+      titleMobile: "Спецпредложения",
       items: [
         {
           image: "/images/promos/1.svg",
-          title: "Скидка до 15%",
-          titleMobile: "Старт продаж",
-          descriptionLines: ["Идеальное предложение", "для вас"],
-          descriptionMobileLines: ["Идеальное предложение для", "вас"],
-          buttonLabel: "Перейти в каталог",
-          buttonLabelMobile: "Оставить заявку",
+          imageMobile: "/images/promos/mobile-1.svg",
+          title: "Старт продаж!",
+          descriptionLines: ["Подберём оптимальное", "предложение для вас"],
+          buttonLabel: "Получить консультацию",
           buttonHref: "#request-dialog",
         },
         {
           image: "/images/promos/2.svg",
-          title: "Скидка до 15%",
-          titleMobile: "Старт продаж",
-          descriptionLines: ["Идеальное предложение", "для вас"],
-          descriptionMobileLines: ["Идеальное предложение для", "вас"],
-          buttonLabel: "Перейти в каталог",
-          buttonLabelMobile: "Оставить заявку",
+          imageMobile: "/images/promos/mobile-2.svg",
+          title: "Ипотека от 3,5%",
+          descriptionLines: ["Подберем для вас выгодную", "программу"],
+          buttonLabel: "Получить консультацию",
           buttonHref: "#request-dialog",
         },
         {
           image: "/images/promos/3.svg",
+          imageMobile: "/images/promos/mobile-3.svg",
           themeClass: "promos__card--dark",
-          title: "Скидка до 15%",
-          titleMobile: "Старт продаж",
-          descriptionLines: ["Идеальное предложение", "для вас"],
-          descriptionMobileLines: ["Идеальное предложение для", "вас"],
-          buttonLabel: "Перейти в каталог",
-          buttonLabelMobile: "Оставить заявку",
+          title: "Рассрочка от 10%",
+          descriptionLines: ["Без удорожания стоимости"],
+          buttonLabel: "Получить консультацию",
           buttonHref: "#request-dialog",
         },
       ],
@@ -414,7 +424,7 @@ export default {
     participants: {
       label: "Участники проекта",
       title:
-        "Надёжность застройщика, скорость строительства и безопасность сделки — самые важные факторы при покупке недвижимости",
+        "Надёжность застройщика, скорость строительства и безопасность сделки — самые важные факторы при покупке недвижимости.",
       items: [
         {
           image: "/images/participants/1.webp",
@@ -543,7 +553,7 @@ export default {
     ],
     individualConditions: {
       image: "/images/individual-conditions/bg.webp",
-      imageMobile: "/images/individual-conditions/bg-mobile.webp",
+      imageMobile: "/images/individual-conditions/bg-mobile.svg",
       title: "Получите индивидуальные условия",
       phoneLabel: "Телефон:",
       phone: "+7 (495) 132-07-08",
@@ -553,7 +563,7 @@ export default {
         {
           type: "text",
           name: "name",
-          placeholder: "Имя",
+          placeholder: "Имя*",
           required: true,
         },
         {
@@ -564,7 +574,7 @@ export default {
         {
           type: "tel",
           name: "phone",
-          placeholder: "Телефон",
+          placeholder: "Телефон*",
           required: true,
         },
         {

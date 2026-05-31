@@ -5,8 +5,8 @@
         <source
           srcset="{{individualConditions.imageMobile}}"
           media="(max-width: 576px)"
-          width="670"
-          height="610"
+          width="335"
+          height="594"
         >
         <img
           class="individual-conditions__bg"
@@ -24,6 +24,8 @@
           {{#each individualConditions.fields}}
             {{> components/text-field }}
           {{/each}}
+
+          <p class="individual-conditions__required-note">* поле обязательно для заполнения</p>
         </div>
 
         {{> components/button

@@ -91,6 +91,10 @@
       color 0.2s ease;
   }
 
+  .progress__slider--empty .progress__nav {
+    display: none;
+  }
+
   .progress__nav:has(.progress__nav-button:not(.swiper-button-disabled):hover) {
     background-color: var(--primary-color);
     color: #ffffff;
@@ -145,6 +149,10 @@
   }
 
   .progress__scrollbar.swiper-scrollbar-lock {
+    display: none;
+  }
+
+  .progress__slider--empty .progress__scrollbar.swiper-scrollbar {
     display: none;
   }
 

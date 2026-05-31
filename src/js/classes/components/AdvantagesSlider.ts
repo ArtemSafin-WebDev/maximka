@@ -5,16 +5,32 @@ import { MOBILE_BREAKPOINT } from "../../constants/breakpoints";
 import Component from "../Component";
 
 class AdvantagesSlider extends Component {
-  private readonly swiper: Swiper;
+  private swiper: Swiper | null = null;
+  private readonly mediaQuery = window.matchMedia(
+    `(max-width: ${MOBILE_BREAKPOINT}px)`
+  );
+  private readonly handleMediaChange = () => this.update();
 
   constructor(element: HTMLElement) {
     super(element);
 
-    this.swiper = this.initSlider();
+    this.mediaQuery.addEventListener("change", this.handleMediaChange);
+    this.update();
   }
 
-  private initSlider() {
-    return new Swiper(this.element, {
+  private update() {
+    if (this.mediaQuery.matches) {
+      this.swiper?.destroy(true, true);
+      this.swiper = null;
+
+      return;
+    }
+
+    if (this.swiper) {
+      return;
+    }
+
+    this.swiper = new Swiper(this.element, {
       modules: [Navigation, Scrollbar],
       slidesPerView: "auto",
       spaceBetween: 20,
@@ -30,21 +46,14 @@ class AdvantagesSlider extends Component {
         el: this.element.querySelector<HTMLElement>(".swiper-scrollbar"),
         draggable: true,
       },
-      breakpoints: {
-        0: {
-          loop: false,
-          spaceBetween: 13,
-        },
-        [MOBILE_BREAKPOINT + 1]: {
-          loop: true,
-          spaceBetween: 20,
-        },
-      },
+      loop: true,
     });
   }
 
   public destroy() {
-    this.swiper.destroy(true, true);
+    this.mediaQuery.removeEventListener("change", this.handleMediaChange);
+    this.swiper?.destroy(true, true);
+    this.swiper = null;
     this.unregister();
   }
 }

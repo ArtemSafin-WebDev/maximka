@@ -1,35 +1,34 @@
 <section class="promos" aria-labelledby="promos-title">
   <div class="container">
-    <h2 class="promos__title" id="promos-title">{{promos.title}}</h2>
+    <h2 class="promos__title" id="promos-title">
+      <span class="promos__desktop-text">{{promos.title}}</span>
+      <span class="promos__mobile-text">{{promos.titleMobile}}</span>
+    </h2>
 
     <div class="promos__slider swiper js-promos-slider">
       <ul class="promos__list swiper-wrapper">
         {{#each promos.items}}
           <li class="promos__slide swiper-slide">
             <article class="promos__card {{themeClass}}">
-              <img
-                class="promos__image"
-                src="{{image}}"
-                width="560"
-                height="437"
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-              >
+              <picture class="promos__picture" aria-hidden="true">
+                <source media="(max-width: 576px)" srcset="{{imageMobile}}">
+                <img
+                  class="promos__image"
+                  src="{{image}}"
+                  width="560"
+                  height="437"
+                  alt=""
+                  loading="lazy"
+                >
+              </picture>
 
               <div class="promos__content">
                 <h3 class="promos__card-title">
-                  <span class="promos__desktop-text">{{title}}</span>
-                  <span class="promos__mobile-text">{{titleMobile}}</span>
+                  {{title}}
                 </h3>
 
                 <p class="promos__description">
-                  <span class="promos__desktop-text">
-                    {{#each descriptionLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
-                  </span>
-                  <span class="promos__mobile-text">
-                    {{#each descriptionMobileLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
-                  </span>
+                  {{#each descriptionLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
                 </p>
               </div>
 
@@ -37,7 +36,6 @@
                 class="promos__button btn--promo"
                 href=buttonHref
                 label=buttonLabel
-                labelMobile=buttonLabelMobile
               }}
             </article>
           </li>
