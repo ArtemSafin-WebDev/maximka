@@ -543,44 +543,44 @@
     }
 
     .features-modal__content {
-      --features-modal-width: calc(100vw - 4rem);
-      --features-modal-height: auto;
+      --features-modal-width: 32.3rem;
 
-      justify-content: flex-start;
-      padding: 2rem;
+      justify-content: center;
+      padding: 2rem 0;
       overflow-y: auto;
     }
 
     .features-modal__slide {
-      width: calc(100vw - 4rem);
+      width: var(--features-modal-width);
       height: auto;
-      min-height: calc(100dvh - 12.8rem);
     }
 
     .features-modal__panel {
       display: flex;
       flex-direction: column;
-      min-height: inherit;
-      border-radius: 2.8rem;
+      max-height: calc(100dvh - 4rem);
+      overflow-y: auto;
+      border-radius: 2.4rem;
     }
 
     .features-modal__text {
       position: relative;
       top: auto;
       left: auto;
-      order: 2;
+      order: 1;
       width: auto;
-      padding: 2.4rem;
+      padding: 2.4rem 2.4rem 1.6rem;
     }
 
     .features-modal__label {
-      margin-bottom: 2.4rem;
-      font-size: 1.4rem;
+      display: none;
     }
 
     .features-modal__title {
-      margin-bottom: 1.6rem;
-      font-size: 2.8rem;
+      width: 22rem;
+      margin-bottom: 2.4rem;
+      font-size: 2rem;
+      line-height: 1.2;
     }
 
     .features-modal__description {
@@ -592,52 +592,31 @@
       position: relative;
       top: auto;
       right: auto;
-      order: 1;
-      width: 100%;
-      height: 28rem;
-      border-radius: 2.8rem 2.8rem 0 0;
+      order: 2;
+      width: calc(100% - 1.8rem);
+      height: auto;
+      aspect-ratio: 305 / 230;
+      margin: auto 0.9rem 0.9rem;
+      border-radius: 1.6rem;
     }
 
     .features-modal__close {
-      top: 1.6rem;
-      right: 1.6rem;
-      width: 4.8rem;
-      height: 4.8rem;
+      top: calc(var(--features-modal-active-top, 0px) + 1.2rem);
+      right: calc((100vw - var(--features-modal-width)) / 2 + 1.2rem);
+      width: 3.6rem;
+      height: 3.6rem;
+      border: 0.1rem solid #999999;
+      background-color: #ffffff;
+      color: #999999;
     }
 
     .features-modal__close-icon {
-      width: 1.6rem;
-      height: 1.6rem;
+      width: 1.2rem;
+      height: 1.2rem;
     }
 
     .features-modal__nav {
-      width: calc(100vw - 4rem);
-      margin-top: 1.2rem;
-      gap: 1.2rem;
-    }
-
-    .features-modal__nav-button {
-      flex: 1 1 0;
-      gap: 0.8rem;
-      min-width: 0;
-      min-height: 4.8rem;
-      max-width: none;
-      padding: 1.2rem;
-      font-size: 1.2rem;
-    }
-
-    .features-modal__nav-button--next {
-      padding-inline: 1.2rem;
-    }
-
-    .features-modal__nav-icon {
-      width: 2.4rem;
-      height: 2.4rem;
-    }
-
-    .features-modal__nav-icon svg {
-      width: 2.4rem;
-      height: 2.4rem;
+      display: none;
     }
   }
 }

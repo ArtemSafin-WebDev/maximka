@@ -1,6 +1,7 @@
 import Swiper from "swiper";
 import { Navigation } from "swiper/modules";
 
+import { MOBILE_BREAKPOINT } from "../../constants/breakpoints";
 import Component from "../Component";
 
 class FeaturesModal extends Component {
@@ -11,6 +12,7 @@ class FeaturesModal extends Component {
   private readonly nextButton: HTMLButtonElement;
   private readonly prevText: HTMLElement;
   private readonly nextText: HTMLElement;
+  private readonly slider: HTMLElement;
   private readonly slideTitles: string[];
   private swiper: Swiper | null = null;
   private previouslyFocusedElement: HTMLElement | null = null;
@@ -46,29 +48,14 @@ class FeaturesModal extends Component {
       this.dialog.querySelectorAll<HTMLElement>("[data-features-slide-title]")
     ).map((slide) => slide.dataset.featuresSlideTitle ?? "");
 
-    const slider = this.dialog.querySelector<HTMLElement>(
+    this.slider = this.dialog.querySelector<HTMLElement>(
       ".js-features-modal-slider"
     ) as HTMLElement;
-    this.swiper = new Swiper(slider, {
-      modules: [Navigation],
-      slidesPerView: "auto",
-      centeredSlides: true,
-      loop: true,
-      spaceBetween: 40,
-      speed: 500,
-      watchOverflow: true,
-      navigation: {
-        prevEl: this.prevButton,
-        nextEl: this.nextButton,
-      },
-      on: {
-        slideChange: () => this.updateNavigation(),
-      },
-    });
 
     this.handleCardClick = this.handleCardClick.bind(this);
     this.handleDialogClick = this.handleDialogClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.updateActiveGeometry = this.updateActiveGeometry.bind(this);
     this.close = this.close.bind(this);
 
     this.cards.forEach((card) => {
@@ -79,8 +66,38 @@ class FeaturesModal extends Component {
     });
     this.dialog.addEventListener("click", this.handleDialogClick);
     this.dialog.addEventListener("close", this.handleClose);
+    window.addEventListener("resize", this.updateActiveGeometry);
 
     this.updateNavigation();
+  }
+
+  private initSlider() {
+    if (this.swiper) return;
+
+    this.swiper = new Swiper(this.slider, {
+      modules: [Navigation],
+      slidesPerView: "auto",
+      centeredSlides: true,
+      loop: true,
+      spaceBetween: 14,
+      speed: 500,
+      watchOverflow: true,
+      navigation: {
+        prevEl: this.prevButton,
+        nextEl: this.nextButton,
+      },
+      breakpoints: {
+        [MOBILE_BREAKPOINT + 1]: {
+          spaceBetween: 40,
+        },
+      },
+      on: {
+        slideChange: () => {
+          this.updateNavigation();
+          this.updateActiveGeometry();
+        },
+      },
+    });
   }
 
   private handleCardClick(event: MouseEvent) {
@@ -116,10 +133,13 @@ class FeaturesModal extends Component {
       document.body.classList.add("modal-open");
     }
 
+    this.initSlider();
+
     requestAnimationFrame(() => {
       this.swiper?.update();
       this.swiper?.slideToLoop(index, 0);
       this.updateNavigation(index);
+      this.updateActiveGeometry();
     });
   }
 
@@ -157,6 +177,21 @@ class FeaturesModal extends Component {
     this.nextButton.setAttribute("aria-label", `Показать: ${nextTitle}`);
   }
 
+  private updateActiveGeometry() {
+    requestAnimationFrame(() => {
+      const activeSlide = this.dialog.querySelector<HTMLElement>(
+        ".features-modal__slide.swiper-slide-active"
+      );
+      if (!activeSlide) return;
+
+      const rect = activeSlide.getBoundingClientRect();
+      this.dialog.style.setProperty(
+        "--features-modal-active-top",
+        `${rect.top}px`
+      );
+    });
+  }
+
   public destroy() {
     this.cards.forEach((card) => {
       card.removeEventListener("click", this.handleCardClick);
@@ -166,6 +201,7 @@ class FeaturesModal extends Component {
     });
     this.dialog.removeEventListener("click", this.handleDialogClick);
     this.dialog.removeEventListener("close", this.handleClose);
+    window.removeEventListener("resize", this.updateActiveGeometry);
     this.swiper?.destroy(true, true);
     this.swiper = null;
     this.unregister();
