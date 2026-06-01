@@ -672,6 +672,7 @@ export default {
           height: 1160,
           alt: "Архитектура жилого комплекса",
           title: "Выразительная архитектура",
+          href: "#layouts",
         },
         {
           image: "/images/advantages/2.webp",
@@ -679,6 +680,7 @@ export default {
           height: 1160,
           alt: "Лобби с панорамным остеклением",
           title: "Лобби с панорамным остеклением",
+          href: "#layouts",
         },
         {
           image: "/images/advantages/3.webp",
@@ -686,6 +688,7 @@ export default {
           height: 1160,
           alt: "Интерьер квартиры с продуманной планировкой",
           title: "Умные планировки",
+          href: "#layouts",
         },
         {
           image: "/images/advantages/4.webp",
@@ -693,6 +696,7 @@ export default {
           height: 1160,
           alt: "Квартира с предчистовой отделкой",
           title: "Предчистовая отделка",
+          href: "#layouts",
         },
         {
           image: "/images/advantages/5.webp",
@@ -700,6 +704,7 @@ export default {
           height: 1160,
           alt: "Подземный паркинг жилого комплекса",
           title: "Подземный паркинг",
+          href: "#layouts",
         },
       ],
     },

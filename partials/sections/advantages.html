@@ -37,7 +37,7 @@
       <ul class="advantages__list swiper-wrapper">
         {{#each advantages.items}}
           <li class="advantages__slide swiper-slide">
-            <article class="advantages-card">
+            <a class="advantages-card" href="{{href}}">
               <img
                 class="advantages-card__image"
                 src="{{image}}"
@@ -62,7 +62,7 @@
                   <use href="#arrows/diagonal"></use>
                 </svg>
               </span>
-            </article>
+            </a>
           </li>
         {{/each}}
       </ul>

@@ -21,7 +21,7 @@
       <ul class="features__list">
         {{#each features.items}}
           <li class="features__slide">
-            <article class="features-card">
+            <a class="features-card" href="{{../features.buttonHref}}">
               <img
                 class="features-card__image"
                 src="{{image}}"
@@ -42,7 +42,7 @@
                   <use href="#arrows/right"></use>
                 </svg>
               </span>
-            </article>
+            </a>
           </li>
         {{/each}}
       </ul>
