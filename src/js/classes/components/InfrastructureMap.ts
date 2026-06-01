@@ -89,6 +89,9 @@ let yandexMapsPromise: Promise<YMaps3> | null = null;
 
 class InfrastructureMap extends Component {
   private canvas: HTMLElement | null;
+  private filterRoot: HTMLElement | null;
+  private filterToggle: HTMLButtonElement | null;
+  private currentFilterText: HTMLElement | null;
   private filters: HTMLButtonElement[];
   private points: InfrastructurePoint[];
   private map: YMapInstance | null = null;
@@ -100,10 +103,23 @@ class InfrastructureMap extends Component {
     this.canvas = element.querySelector<HTMLElement>(
       ".js-infrastructure-map-canvas"
     );
+    this.filterRoot = element.querySelector<HTMLElement>(
+      ".js-infrastructure-filters"
+    );
+    this.filterToggle = element.querySelector<HTMLButtonElement>(
+      ".js-infrastructure-filter-toggle"
+    );
+    this.currentFilterText = element.querySelector<HTMLElement>(
+      ".js-infrastructure-filter-current"
+    );
     this.filters = Array.from(
       element.querySelectorAll<HTMLButtonElement>(".js-infrastructure-filter")
     );
     this.points = this.getPoints();
+
+    this.filterToggle?.addEventListener("click", this.handleFilterToggleClick);
+    document.addEventListener("click", this.handleDocumentClick);
+    document.addEventListener("keydown", this.handleDocumentKeydown);
 
     this.filters.forEach((filter) => {
       filter.addEventListener("click", this.handleFilterClick);
@@ -353,6 +369,7 @@ class InfrastructureMap extends Component {
     const filter = event.currentTarget as HTMLButtonElement;
     const category = filter.dataset.category ?? "all";
     this.setActiveCategory(category);
+    this.closeFilters();
   };
 
   private setActiveCategory(category: string): void {
@@ -360,6 +377,10 @@ class InfrastructureMap extends Component {
       const isActive = filter.dataset.category === category;
       filter.classList.toggle("active", isActive);
       filter.setAttribute("aria-pressed", isActive.toString());
+
+      if (isActive && this.currentFilterText) {
+        this.currentFilterText.textContent = filter.textContent?.trim() ?? "";
+      }
     });
 
     if (!this.map) {
@@ -384,6 +405,31 @@ class InfrastructureMap extends Component {
     });
   }
 
+  private handleFilterToggleClick = (): void => {
+    const isOpen = this.filterRoot?.classList.toggle("is-open") ?? false;
+    this.filterToggle?.setAttribute("aria-expanded", isOpen.toString());
+  };
+
+  private handleDocumentClick = (event: MouseEvent): void => {
+    const target = event.target;
+    if (!(target instanceof Node) || this.filterRoot?.contains(target)) {
+      return;
+    }
+
+    this.closeFilters();
+  };
+
+  private handleDocumentKeydown = (event: KeyboardEvent): void => {
+    if (event.key === "Escape") {
+      this.closeFilters();
+    }
+  };
+
+  private closeFilters(): void {
+    this.filterRoot?.classList.remove("is-open");
+    this.filterToggle?.setAttribute("aria-expanded", "false");
+  }
+
   private showMapError(error: unknown): void {
     if (!this.canvas) {
       return;
@@ -394,6 +440,13 @@ class InfrastructureMap extends Component {
   }
 
   public destroy(): void {
+    this.filterToggle?.removeEventListener(
+      "click",
+      this.handleFilterToggleClick
+    );
+    document.removeEventListener("click", this.handleDocumentClick);
+    document.removeEventListener("keydown", this.handleDocumentKeydown);
+
     this.filters.forEach((filter) => {
       filter.removeEventListener("click", this.handleFilterClick);
     });

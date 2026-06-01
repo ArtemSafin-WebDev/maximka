@@ -51,8 +51,19 @@
     margin-top: 4rem;
   }
 
+  .infrastructure__button--mobile {
+    display: none;
+  }
+
+  .infrastructure__map-block {
+    position: relative;
+    width: 100%;
+  }
+
   .infrastructure__map {
     position: relative;
+    z-index: 1;
+    isolation: isolate;
     width: 100%;
     height: 88.7rem;
     overflow: hidden;
@@ -68,7 +79,7 @@
     position: absolute;
     top: 4.8rem;
     left: var(--container-padding);
-    z-index: 2;
+    z-index: 5;
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
@@ -77,6 +88,16 @@
     border-radius: 4rem;
     background-color: #ffffff;
     box-shadow: 0 2rem 6rem rgba(51, 51, 51, 0.08);
+  }
+
+  .infrastructure__filter-toggle {
+    display: none;
+  }
+
+  .infrastructure__filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
   }
 
   .infrastructure__filter {
@@ -214,8 +235,8 @@
     .infrastructure__content {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-      padding-bottom: 3.2rem;
+      gap: 1.6rem;
+      padding-bottom: 2.4rem;
     }
 
     .infrastructure__heading {
@@ -233,8 +254,9 @@
     .infrastructure__title {
       order: 2;
       margin-top: 0;
-      font-size: 2.8rem;
-      line-height: 1.2;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1.4;
     }
 
     .infrastructure__intro {
@@ -244,54 +266,116 @@
 
     .infrastructure__description {
       order: 3;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       line-height: 1.4;
     }
 
-    .infrastructure__button {
-      order: 4;
-      width: 100%;
-      margin-top: 0.8rem;
+    .infrastructure__button--desktop {
+      display: none;
+    }
+
+    .infrastructure__button--mobile {
+      display: flex;
+      width: calc(100% - 4rem);
+      margin: 1.6rem auto 0;
     }
 
     .infrastructure__map {
-      height: 68rem;
+      height: 33.6rem;
+      border-radius: 2.4rem;
+    }
+
+    .infrastructure__map-block {
+      width: calc(100% - 4rem);
+      margin: 0 auto;
+      padding-top: 6.2rem;
     }
 
     .infrastructure__filters {
-      top: 2rem;
-      left: 2rem;
-      right: 2rem;
-      flex-flow: row nowrap;
-      gap: 1.2rem;
-      width: auto;
-      padding: 1.2rem;
-      overflow-x: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      display: block;
+      width: 100%;
+      padding: 0;
       border-radius: 2.4rem;
-      scrollbar-width: none;
+      background-color: #ffffff;
+      box-shadow: none;
+    }
 
-      &::-webkit-scrollbar {
-        display: none;
-      }
+    .infrastructure__filter-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.6rem;
+      width: 100%;
+      min-height: 4.6rem;
+      padding: 1.1rem 1.6rem 1.1rem 2rem;
+      border: 0;
+      border-radius: 2.4rem;
+      background: transparent;
+      text-align: left;
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+
+    .infrastructure__filter-toggle-icon {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      background-color: #f7f4ef;
+      color: var(--text-color);
+      transition: transform 0.2s;
+    }
+
+    .infrastructure__filter-toggle-icon svg {
+      display: block;
+      width: 2.4rem;
+      height: 2.4rem;
+      fill: currentColor;
+    }
+
+    .infrastructure__filters.is-open .infrastructure__filter-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .infrastructure__filter-list {
+      display: none;
+      flex-direction: column;
+      gap: 1.8rem;
+      padding: 1.6rem 1.6rem 1.6rem 2rem;
+      border-top: 0.1rem solid rgba(51, 51, 51, 0.12);
+    }
+
+    .infrastructure__filters.is-open .infrastructure__filter-list {
+      display: flex;
     }
 
     .infrastructure__filter {
-      flex: 0 0 auto;
-      width: auto;
-      gap: 0.8rem;
-      padding-right: 0.4rem;
+      width: 100%;
+      gap: 1.8rem;
+      padding: 0;
       font-size: 1.4rem;
+      line-height: 1.2;
       white-space: nowrap;
     }
 
     .infrastructure__filter-icon {
-      width: 4rem;
-      height: 4rem;
+      width: 2.4rem;
+      height: 2.4rem;
     }
 
     .infrastructure-marker {
-      width: 4rem;
-      height: 4rem;
+      width: 3.4rem;
+      height: 3.4rem;
     }
 
     .infrastructure-marker__tooltip {

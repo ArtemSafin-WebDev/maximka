@@ -10,7 +10,7 @@
     <div class="infrastructure__intro">
       <p class="infrastructure__description">{{infrastructure.description}}</p>
       {{> components/button
-        class="infrastructure__button btn--arrow"
+        class="infrastructure__button infrastructure__button--desktop btn--arrow"
         href=infrastructure.cta.href
         label=infrastructure.cta.label
         icon="arrows/right"
@@ -19,7 +19,7 @@
   </div>
 
   <div
-    class="infrastructure__map js-infrastructure-map"
+    class="infrastructure__map-block js-infrastructure-map"
     data-api-key="{{infrastructure.map.apiKey}}"
     data-center="{{infrastructure.map.center}}"
     data-zoom="{{infrastructure.map.zoom}}"
@@ -29,26 +29,43 @@
     data-complex-icon="{{infrastructure.map.complex.icon}}"
     aria-label="{{infrastructure.map.ariaLabel}}"
   >
-    <div class="infrastructure__map-canvas js-infrastructure-map-canvas"></div>
+    <div class="infrastructure__filters js-infrastructure-filters" aria-label="{{infrastructure.filtersLabel}}">
+      <button
+        class="infrastructure__filter-toggle js-infrastructure-filter-toggle"
+        type="button"
+        aria-expanded="false"
+      >
+        <span class="js-infrastructure-filter-current">{{infrastructure.defaultCategoryLabel}}</span>
+        <span class="infrastructure__filter-toggle-icon" aria-hidden="true">
+          <svg width="24" height="24" focusable="false">
+            <use href="#arrows/down"></use>
+          </svg>
+        </span>
+      </button>
 
-    <div class="infrastructure__filters" aria-label="{{infrastructure.filtersLabel}}">
-      {{#each infrastructure.categories}}
-        <button
-          class="infrastructure__filter js-infrastructure-filter{{#if active}} active{{/if}}"
-          type="button"
-          data-category="{{id}}"
-        >
-          <img
-            class="infrastructure__filter-icon"
-            src="{{icon}}"
-            width="56"
-            height="56"
-            alt=""
-            loading="lazy"
+      <div class="infrastructure__filter-list">
+        {{#each infrastructure.categories}}
+          <button
+            class="infrastructure__filter js-infrastructure-filter{{#if active}} active{{/if}}"
+            type="button"
+            data-category="{{id}}"
           >
-          <span>{{label}}</span>
-        </button>
-      {{/each}}
+            <img
+              class="infrastructure__filter-icon"
+              src="{{icon}}"
+              width="56"
+              height="56"
+              alt=""
+              loading="lazy"
+            >
+            <span>{{label}}</span>
+          </button>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="infrastructure__map">
+      <div class="infrastructure__map-canvas js-infrastructure-map-canvas"></div>
     </div>
 
     <ul class="infrastructure__points" hidden>
@@ -66,4 +83,10 @@
       {{/each}}
     </ul>
   </div>
+
+  {{> components/button
+    class="infrastructure__button infrastructure__button--mobile btn--arrow"
+    href=infrastructure.ctaMobile.href
+    label=infrastructure.ctaMobile.label
+  }}
 </section>

@@ -69,6 +69,11 @@ export default {
         label: "Назначить встречу",
         href: "#request-dialog",
       },
+      ctaMobile: {
+        label: "Выбрать квартиру",
+        href: "#layouts",
+      },
+      defaultCategoryLabel: "Вся инфраструктура",
       filtersLabel: "Фильтр инфраструктуры на карте",
       map: {
         apiKey: "80bff7c6-235c-4656-a3f5-125be62881db",
