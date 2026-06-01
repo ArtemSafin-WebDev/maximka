@@ -95,11 +95,6 @@
     display: none;
   }
 
-  .progress__nav:has(.progress__nav-button:not(.swiper-button-disabled):hover) {
-    background-color: var(--primary-color);
-    color: #ffffff;
-  }
-
   .progress__nav-button {
     display: flex;
     align-items: center;
@@ -108,8 +103,15 @@
     height: 7.2rem;
     color: inherit;
     transition: opacity 0.2s ease;
+  }
 
-    &:hover {
+  @include mq.hover {
+    .progress__nav:has(.progress__nav-button:not(.swiper-button-disabled):hover) {
+      background-color: var(--primary-color);
+      color: #ffffff;
+    }
+
+    .progress__nav-button:hover {
       opacity: 0.7;
     }
   }

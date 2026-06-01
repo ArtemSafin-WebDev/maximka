@@ -85,9 +85,17 @@
   .page-footer__made-by,
   .page-footer__legal-link {
     transition: color 0.2s;
+  }
 
-    &:hover {
-      color: var(--primary-color);
+  @include mq.hover {
+    .page-footer__nav-link,
+    .page-footer__callback,
+    .page-footer__phone-link,
+    .page-footer__made-by,
+    .page-footer__legal-link {
+      &:hover {
+        color: var(--primary-color);
+      }
     }
   }
 
@@ -201,9 +209,11 @@
       line-height: 1.1;
       color: #ffffff;
 
-      &:hover {
-        background-color: var(--primary-hover-color);
-        color: #ffffff;
+      @include mq.hover {
+        &:hover {
+          background-color: var(--primary-hover-color);
+          color: #ffffff;
+        }
       }
     }
 

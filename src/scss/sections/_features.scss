@@ -166,12 +166,10 @@
     fill: currentColor;
   }
 
-  .features-card:hover,
   .features-card:focus-visible {
     color: #ffffff;
   }
 
-  .features-card:hover .features-card__image,
   .features-card:focus-visible .features-card__image {
     mask-position: center;
     mask-size: var(--feature-mask-full-width) var(--feature-mask-full-height);
@@ -179,16 +177,38 @@
     -webkit-mask-size: var(--feature-mask-full-width) var(--feature-mask-full-height);
   }
 
-  .features-card:hover::after,
   .features-card:focus-visible::after {
     opacity: 1;
   }
 
-  .features-card:hover .features-card__icon,
   .features-card:focus-visible .features-card__icon {
     color: var(--text-color);
     background-color: #ffffff;
     transform: rotate(0deg);
+  }
+
+  @include mq.hover {
+    .features-card:hover {
+      color: #ffffff;
+    }
+
+    .features-card:hover .features-card__image {
+      mask-position: center;
+      mask-size: var(--feature-mask-full-width) var(--feature-mask-full-height);
+      -webkit-mask-position: center;
+      -webkit-mask-size: var(--feature-mask-full-width)
+        var(--feature-mask-full-height);
+    }
+
+    .features-card:hover::after {
+      opacity: 1;
+    }
+
+    .features-card:hover .features-card__icon {
+      color: var(--text-color);
+      background-color: #ffffff;
+      transform: rotate(0deg);
+    }
   }
 
   .features-modal {
@@ -251,20 +271,22 @@
 
   .features-modal__list {
     display: flex;
+    align-items: stretch;
   }
 
   .features-modal__slide {
     box-sizing: border-box;
+    display: flex;
     width: var(--features-modal-width);
-    height: var(--features-modal-height);
+    height: auto;
   }
 
   .features-modal__panel {
     position: relative;
     display: flex;
+    flex: 1 1 auto;
     align-items: flex-start;
     width: 100%;
-    min-height: var(--features-modal-height);
     margin: 0;
     overflow: hidden;
     border-radius: 7.2rem;
@@ -334,10 +356,16 @@
       color 0.2s ease;
   }
 
-  .features-modal__close:hover,
   .features-modal__close:focus-visible {
     background-color: var(--primary-color);
     color: #ffffff;
+  }
+
+  @include mq.hover {
+    .features-modal__close:hover {
+      background-color: var(--primary-color);
+      color: #ffffff;
+    }
   }
 
   .features-modal__close-icon {
@@ -373,9 +401,14 @@
       color 0.2s ease;
   }
 
-  .features-modal__nav-button:hover,
   .features-modal__nav-button:focus-visible {
     background-color: #d8de5b;
+  }
+
+  @include mq.hover {
+    .features-modal__nav-button:hover {
+      background-color: #d8de5b;
+    }
   }
 
   .features-modal__nav-button--next {
@@ -397,9 +430,14 @@
       color 0.2s ease;
   }
 
-  .features-modal__nav-button:hover .features-modal__nav-icon,
   .features-modal__nav-button:focus-visible .features-modal__nav-icon {
     background-color: #ffffff;
+  }
+
+  @include mq.hover {
+    .features-modal__nav-button:hover .features-modal__nav-icon {
+      background-color: #ffffff;
+    }
   }
 
   .features-modal__nav-icon svg {
@@ -527,12 +565,10 @@
       height: 3.2rem;
     }
 
-    .features-card:hover,
     .features-card:focus-visible {
       color: var(--text-color);
     }
 
-    .features-card:hover .features-card__image,
     .features-card:focus-visible .features-card__image {
       mask-position: right top;
       mask-size: var(--feature-mask-width) var(--feature-mask-height);
@@ -540,15 +576,35 @@
       -webkit-mask-size: var(--feature-mask-width) var(--feature-mask-height);
     }
 
-    .features-card:hover::after,
     .features-card:focus-visible::after {
       opacity: 0;
     }
 
-    .features-card:hover .features-card__icon,
     .features-card:focus-visible .features-card__icon {
       color: var(--text-color);
       transform: rotate(-45deg);
+    }
+
+    @include mq.hover {
+      .features-card:hover {
+        color: var(--text-color);
+      }
+
+      .features-card:hover .features-card__image {
+        mask-position: right top;
+        mask-size: var(--feature-mask-width) var(--feature-mask-height);
+        -webkit-mask-position: right top;
+        -webkit-mask-size: var(--feature-mask-width) var(--feature-mask-height);
+      }
+
+      .features-card:hover::after {
+        opacity: 0;
+      }
+
+      .features-card:hover .features-card__icon {
+        color: var(--text-color);
+        transform: rotate(-45deg);
+      }
     }
 
     .features-modal__content {
@@ -561,7 +617,6 @@
 
     .features-modal__slide {
       width: var(--features-modal-width);
-      height: auto;
     }
 
     .features-modal__panel {
@@ -601,7 +656,7 @@
       flex-basis: auto;
       inline-size: calc(100% - 1.8rem);
       aspect-ratio: 305 / 230;
-      margin: auto 0.9rem 0.9rem;
+      margin: 0 0.9rem 0.9rem;
       border-radius: 1.6rem;
     }
 

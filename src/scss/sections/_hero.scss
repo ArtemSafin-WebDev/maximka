@@ -165,10 +165,12 @@
       -webkit-text-fill-color: var(--text-color);
     }
 
-    &:hover {
-      background-color: var(--primary-color);
-      color: #ffffff;
-      -webkit-text-fill-color: #ffffff;
+    @include mq.hover {
+      &:hover {
+        background-color: var(--primary-color);
+        color: #ffffff;
+        -webkit-text-fill-color: #ffffff;
+      }
     }
   }
 
@@ -326,10 +328,12 @@
         -webkit-text-fill-color: #ffffff;
       }
 
-      &:hover {
-        background-color: var(--primary-hover-color);
-        color: #ffffff;
-        -webkit-text-fill-color: #ffffff;
+      @include mq.hover {
+        &:hover {
+          background-color: var(--primary-hover-color);
+          color: #ffffff;
+          -webkit-text-fill-color: #ffffff;
+        }
       }
     }
 
@@ -337,8 +341,10 @@
       display: none;
     }
 
-    .hero__cta:hover .hero__cta-icon {
-      color: #ffffff;
+    @include mq.hover {
+      .hero__cta:hover .hero__cta-icon {
+        color: #ffffff;
+      }
     }
 
     .hero__chat {

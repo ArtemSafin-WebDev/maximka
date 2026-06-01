@@ -18,9 +18,14 @@
     transition: border-color 0.2s;
   }
 
-  .form-field:hover .form-field__inner,
   .form-field:focus-within .form-field__inner {
     border-color: #999999;
+  }
+
+  @include mq.hover {
+    .form-field:hover .form-field__inner {
+      border-color: #999999;
+    }
   }
 
   .form-field:has(.form-field__control.not-valid) .form-field__inner {

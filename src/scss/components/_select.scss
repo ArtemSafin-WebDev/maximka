@@ -125,9 +125,14 @@
     color: var(--primary-color);
   }
 
-  .select__option:hover .select__input + span,
   .select__input:focus-visible + span {
     color: var(--primary-color);
+  }
+
+  @include mq.hover {
+    .select__option:hover .select__input + span {
+      color: var(--primary-color);
+    }
   }
 
   @include mq.down(sm) {

@@ -123,8 +123,10 @@
       color: var(--text-color);
     }
 
-    &:hover {
-      color: var(--text-color);
+    @include mq.hover {
+      &:hover {
+        color: var(--text-color);
+      }
     }
   }
 
@@ -189,10 +191,16 @@
     }
   }
 
-  .infrastructure-marker:hover .infrastructure-marker__tooltip,
   .infrastructure-marker:focus-visible .infrastructure-marker__tooltip {
     opacity: 1;
     transform: translate(-50%, 0);
+  }
+
+  @include mq.hover {
+    .infrastructure-marker:hover .infrastructure-marker__tooltip {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
   }
 
   .infrastructure-marker__title {
