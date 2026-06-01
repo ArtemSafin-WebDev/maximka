@@ -21,7 +21,13 @@
       <ul class="features__list">
         {{#each features.items}}
           <li class="features__slide">
-            <a class="features-card" href="{{../features.buttonHref}}">
+            <button
+              class="features-card js-features-card"
+              type="button"
+              data-features-index="{{@index}}"
+              data-features-title="{{title}}"
+              aria-label="Открыть подробности: {{title}}"
+            >
               <img
                 class="features-card__image"
                 src="{{image}}"
@@ -42,10 +48,72 @@
                   <use href="#arrows/right"></use>
                 </svg>
               </span>
-            </a>
+            </button>
           </li>
         {{/each}}
       </ul>
     </div>
   </div>
+
+  <dialog class="features-modal js-features-modal" aria-label="{{features.label}}">
+    <div class="features-modal__content">
+      <div class="features-modal__slider swiper js-features-modal-slider">
+        <ul class="features-modal__list swiper-wrapper">
+          {{#each features.items}}
+            <li
+              class="features-modal__slide swiper-slide"
+              data-features-slide-title="{{title}}"
+            >
+              <article class="features-modal__panel">
+                <div class="features-modal__text">
+                  <p class="features-modal__label">{{../features.label}}</p>
+
+                  <h3 class="features-modal__title">
+                    {{#each detail.titleLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
+                  </h3>
+
+                  <p class="features-modal__description">{{detail.description}}</p>
+                </div>
+
+                <img
+                  class="features-modal__image"
+                  src="{{detail.image}}"
+                  width="{{detail.imageWidth}}"
+                  height="{{detail.imageHeight}}"
+                  alt="{{alt}}"
+                  loading="lazy"
+                >
+              </article>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <button class="features-modal__close js-features-modal-close" type="button" aria-label="Закрыть модальное окно">
+        <svg class="features-modal__close-icon" width="21" height="21" aria-hidden="true" focusable="false">
+          <use href="#modal-close"></use>
+        </svg>
+      </button>
+
+      <div class="features-modal__nav" aria-label="Навигация по особенностям проекта">
+        <button class="features-modal__nav-button features-modal__nav-button--prev js-features-modal-prev" type="button">
+          <span class="features-modal__nav-icon" aria-hidden="true">
+            <svg width="32" height="32" focusable="false">
+              <use href="#arrows/right"></use>
+            </svg>
+          </span>
+          <span class="features-modal__nav-text js-features-modal-prev-text"></span>
+        </button>
+
+        <button class="features-modal__nav-button features-modal__nav-button--next js-features-modal-next" type="button">
+          <span class="features-modal__nav-text js-features-modal-next-text"></span>
+          <span class="features-modal__nav-icon" aria-hidden="true">
+            <svg width="32" height="32" focusable="false">
+              <use href="#arrows/right"></use>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </dialog>
 </section>
