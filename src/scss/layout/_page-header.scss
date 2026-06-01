@@ -399,30 +399,18 @@
       min-height: 5rem;
       padding: 1.6rem 2rem;
       border-radius: 3.1rem;
-      background-color: #ffffff;
+      background-color: var(--primary-color);
       font-size: 1.4rem;
-      color: var(--text-color);
+      color: #ffffff;
+    }
+
+    .page-header__button--menu-apartments:hover {
+      background-color: var(--primary-hover-color);
+      color: #ffffff;
     }
 
     .page-header__button--menu-apartments .page-header__button-icon {
       display: none;
-    }
-
-    .page-header__menu-chat {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 5rem;
-      height: 5rem;
-      border-radius: 50%;
-      background-color: var(--primary-color);
-      color: #ffffff;
-    }
-
-    .page-header__menu-chat svg {
-      width: 2rem;
-      height: 2rem;
-      fill: currentColor;
     }
   }
 }

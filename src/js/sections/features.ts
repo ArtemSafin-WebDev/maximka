@@ -1,9 +1,9 @@
-import FeaturesModal from "../classes/components/FeaturesModal";
+import CardsModal from "../classes/components/CardsModal";
 
 export default function initFeatures() {
   document.querySelectorAll<HTMLElement>(".js-features").forEach((element) => {
-    if (!FeaturesModal.getInstanceFor(element)) {
-      new FeaturesModal(element);
+    if (!CardsModal.getInstanceFor(element)) {
+      new CardsModal(element);
     }
   });
 }

@@ -8,9 +8,9 @@ import {
 } from "../../utils/loopSlides";
 import Component from "../Component";
 
-class FeaturesModal extends Component {
+class CardsModal extends Component {
   private readonly dialog: HTMLDialogElement;
-  private readonly cards: HTMLButtonElement[];
+  private readonly triggers: HTMLButtonElement[];
   private readonly closeButtons: HTMLButtonElement[];
   private readonly prevButton: HTMLButtonElement;
   private readonly nextButton: HTMLButtonElement;
@@ -26,44 +26,44 @@ class FeaturesModal extends Component {
     super(element);
 
     this.dialog = element.querySelector<HTMLDialogElement>(
-      ".js-features-modal"
+      ".js-details-modal"
     ) as HTMLDialogElement;
-    this.cards = Array.from(
-      element.querySelectorAll<HTMLButtonElement>(".js-features-card")
+    this.triggers = Array.from(
+      element.querySelectorAll<HTMLButtonElement>(".js-details-modal-trigger")
     );
     this.closeButtons = Array.from(
       this.dialog.querySelectorAll<HTMLButtonElement>(
-        ".js-features-modal-close"
+        ".js-details-modal-close"
       )
     );
     this.prevButton = this.dialog.querySelector<HTMLButtonElement>(
-      ".js-features-modal-prev"
+      ".js-details-modal-prev"
     ) as HTMLButtonElement;
     this.nextButton = this.dialog.querySelector<HTMLButtonElement>(
-      ".js-features-modal-next"
+      ".js-details-modal-next"
     ) as HTMLButtonElement;
     this.prevText = this.dialog.querySelector<HTMLElement>(
-      ".js-features-modal-prev-text"
+      ".js-details-modal-prev-text"
     ) as HTMLElement;
     this.nextText = this.dialog.querySelector<HTMLElement>(
-      ".js-features-modal-next-text"
+      ".js-details-modal-next-text"
     ) as HTMLElement;
     this.slideTitles = Array.from(
-      this.dialog.querySelectorAll<HTMLElement>("[data-features-slide-title]")
-    ).map((slide) => slide.dataset.featuresSlideTitle ?? "");
+      this.dialog.querySelectorAll<HTMLElement>("[data-details-slide-title]")
+    ).map((slide) => slide.dataset.detailsSlideTitle ?? "");
 
     this.slider = this.dialog.querySelector<HTMLElement>(
-      ".js-features-modal-slider"
+      ".js-details-modal-slider"
     ) as HTMLElement;
 
-    this.handleCardClick = this.handleCardClick.bind(this);
+    this.handleTriggerClick = this.handleTriggerClick.bind(this);
     this.handleDialogClick = this.handleDialogClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.updateActiveGeometry = this.updateActiveGeometry.bind(this);
     this.close = this.close.bind(this);
 
-    this.cards.forEach((card) => {
-      card.addEventListener("click", this.handleCardClick);
+    this.triggers.forEach((trigger) => {
+      trigger.addEventListener("click", this.handleTriggerClick);
     });
     this.closeButtons.forEach((button) => {
       button.addEventListener("click", this.close);
@@ -106,11 +106,11 @@ class FeaturesModal extends Component {
     });
   }
 
-  private handleCardClick(event: MouseEvent) {
+  private handleTriggerClick(event: MouseEvent) {
     const trigger = event.currentTarget;
     if (!(trigger instanceof HTMLButtonElement)) return;
 
-    const index = Number(trigger.dataset.featuresIndex ?? 0);
+    const index = Number(trigger.dataset.detailsIndex ?? 0);
     this.open(trigger, Number.isFinite(index) ? index : 0, event.detail === 0);
   }
 
@@ -119,7 +119,7 @@ class FeaturesModal extends Component {
     if (!(target instanceof Element)) return;
 
     const isInteractiveArea = target.closest(
-      ".features-modal__panel, .features-modal__nav"
+      ".js-details-modal-panel, .js-details-modal-nav"
     );
     if (!isInteractiveArea) {
       this.close();
@@ -199,8 +199,8 @@ class FeaturesModal extends Component {
   }
 
   public destroy() {
-    this.cards.forEach((card) => {
-      card.removeEventListener("click", this.handleCardClick);
+    this.triggers.forEach((trigger) => {
+      trigger.removeEventListener("click", this.handleTriggerClick);
     });
     this.closeButtons.forEach((button) => {
       button.removeEventListener("click", this.close);
@@ -215,4 +215,4 @@ class FeaturesModal extends Component {
   }
 }
 
-export default FeaturesModal;
+export default CardsModal;

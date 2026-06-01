@@ -261,9 +261,10 @@
 
   .features-modal__panel {
     position: relative;
-    display: block;
+    display: flex;
+    align-items: flex-start;
     width: 100%;
-    height: 100%;
+    min-height: var(--features-modal-height);
     margin: 0;
     overflow: hidden;
     border-radius: 7.2rem;
@@ -271,11 +272,9 @@
   }
 
   .features-modal__text {
-    position: absolute;
-    top: 8rem;
-    left: 8rem;
-    z-index: 1;
-    width: 62.5rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 8rem 4rem 0 8rem;
   }
 
   .features-modal__label {
@@ -302,12 +301,19 @@
   }
 
   .features-modal__image {
-    position: absolute;
-    top: 2.8rem;
-    right: 3.2rem;
-    width: 67.3rem;
-    height: 70.4rem;
+    position: relative;
+    flex: 0 0 calc(67.3 / 172 * 100%);
+    aspect-ratio: 673 / 704;
+    margin: 2.8rem 3.2rem 2.8rem 0;
+    overflow: hidden;
     border-radius: 2.4rem 5.6rem 5.6rem 2.4rem;
+  }
+
+  .features-modal__image-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 
@@ -567,11 +573,10 @@
     }
 
     .features-modal__text {
-      position: relative;
-      top: auto;
-      left: auto;
       order: 1;
+      flex-basis: auto;
       width: auto;
+      margin: 0;
       padding: 2.4rem 2.4rem 1.6rem;
     }
 
@@ -592,12 +597,9 @@
     }
 
     .features-modal__image {
-      position: relative;
-      top: auto;
-      right: auto;
       order: 2;
-      width: calc(100% - 1.8rem);
-      height: auto;
+      flex-basis: auto;
+      inline-size: calc(100% - 1.8rem);
       aspect-ratio: 305 / 230;
       margin: auto 0.9rem 0.9rem;
       border-radius: 1.6rem;
