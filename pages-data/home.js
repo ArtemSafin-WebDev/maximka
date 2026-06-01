@@ -78,6 +78,8 @@ export default {
         complex: {
           title: "ЖК «Максима»",
           coordinates: "49.10198,55.85944",
+          contour:
+            "49.10134,55.85964;49.10215,55.85975;49.10229,55.85952;49.10262,55.85958;49.10278,55.85932;49.10243,55.85925;49.10234,55.85912;49.10155,55.85923;49.10134,55.85964",
           icon: "/images/infrastructure/complex-marker.svg",
         },
       },
@@ -144,6 +146,8 @@ export default {
         {
           category: "school",
           title: "Школа № 168",
+          description:
+            "Обучение малыми группами для детей с соматическими заболеваниями",
           address: "ул. Годовикова, 8",
           distance: "300 м, 4 мин",
           coordinates: "49.09723,55.85915",
@@ -160,6 +164,8 @@ export default {
         {
           category: "school",
           title: "Школа № 54",
+          description:
+            "Углубленное изучение математики, русского и английского языков",
           address: "ул. Ленинградская, 38",
           distance: "1 км, 12 мин",
           coordinates: "49.08662,55.86496",
@@ -168,6 +174,7 @@ export default {
         {
           category: "school",
           title: "Лицей № 145",
+          description: "Физико-математический лицей",
           address: "ул. Дементьева, 16",
           distance: "800 м, 10 мин",
           coordinates: "49.10193,55.85762",
@@ -176,6 +183,7 @@ export default {
         {
           category: "school",
           title: "Гимназия № 33",
+          description: "Гимназия с углубленным изучением английского и французского",
           address: "ул. Симонова, 17",
           distance: "1,2 км, 15 мин",
           coordinates: "49.08480,55.86538",

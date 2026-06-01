@@ -1,10 +1,11 @@
 import Component from "../Component";
+import mapCustomization from "../../data/infrastructureMapCustomization.json";
 
 type Coordinates = [number, number];
 
 interface YMaps3 {
   ready: Promise<void>;
-  import: (packageName: string) => Promise<unknown>;
+  import: YMaps3Import;
   YMap: new (
     element: HTMLElement,
     options: {
@@ -34,7 +35,15 @@ interface YMaps3 {
       stroke?: CoordinatesStyle[];
     };
   }) => YMapEntity;
+  YMapControls: new (options?: {
+    position?: string;
+    orientation?: "horizontal" | "vertical";
+  }) => YMapControlsEntity;
 }
+
+type YMaps3Import = ((packageName: string) => Promise<unknown>) & {
+  registerCdn?: (cdnTemplate: string, packageNames: string[]) => void;
+};
 
 interface CoordinatesStyle {
   color: string;
@@ -47,11 +56,22 @@ interface YMapInstance {
   destroy?: () => void;
 }
 
-type YMapEntity = object;
+interface YMapEntity {
+  update?: (changedProps: Record<string, unknown>) => void;
+}
+
+interface YMapControlsEntity extends YMapEntity {
+  addChild: (child: YMapEntity) => YMapControlsEntity;
+}
+
+interface YMapDefaultUiTheme {
+  YMapZoomControl: new (options?: Record<string, unknown>) => YMapEntity;
+}
 
 interface InfrastructurePoint {
   category: string;
   title: string;
+  description: string;
   address: string;
   distance: string;
   coordinates: Coordinates;
@@ -150,9 +170,14 @@ class InfrastructureMap extends Component {
     });
 
     this.map
-      .addChild(new ymaps3.YMapDefaultSchemeLayer({ customization: this.getMapTheme() }))
+      .addChild(
+        new ymaps3.YMapDefaultSchemeLayer({
+          customization: mapCustomization as Record<string, unknown>[],
+        })
+      )
       .addChild(new ymaps3.YMapDefaultFeaturesLayer());
 
+    await this.addControls(ymaps3);
     this.addComplexObjects(ymaps3);
     this.points.forEach((point) => {
       point.marker = new ymaps3.YMapMarker(
@@ -174,83 +199,80 @@ class InfrastructureMap extends Component {
     const complexCoordinates = this.parseCoordinates(
       this.element.dataset.complexCoordinates
     );
+    const contour = this.parseContour(this.element.dataset.complexContour);
     const complexTitle = this.element.dataset.complexTitle ?? "ЖК «Максима»";
     const complexIcon = this.element.dataset.complexIcon ?? "";
 
-    this.map.addChild(
-      new ymaps3.YMapFeature({
-        geometry: {
-          type: "Polygon",
-          coordinates: [
-            [
-              [49.10134, 55.85964],
-              [49.10237, 55.85974],
-              [49.10263, 55.8593],
-              [49.10157, 55.85915],
-              [49.10134, 55.85964],
+    if (contour.length > 2) {
+      this.map.addChild(
+        new ymaps3.YMapFeature({
+          geometry: {
+            type: "Polygon",
+            coordinates: [contour],
+          },
+          style: {
+            fill: "rgba(255, 87, 74, 0.38)",
+            stroke: [
+              {
+                color: "#ff574a",
+                width: 2,
+              },
             ],
-          ],
-        },
-        style: {
-          fill: "rgba(255, 87, 74, 0.72)",
-          stroke: [
-            {
-              color: "#ff574a",
-              width: 3,
-            },
-          ],
-        },
-      })
-    );
+          },
+        })
+      );
+    }
 
     if (!complexIcon) {
       return;
     }
 
-    const marker = document.createElement("img");
+    const marker = document.createElement("div");
     marker.className = "infrastructure-complex-marker";
-    marker.src = complexIcon;
-    marker.alt = complexTitle;
-    marker.width = 66;
-    marker.height = 90;
+    marker.setAttribute("aria-label", complexTitle);
+
+    const image = document.createElement("img");
+    image.className = "infrastructure-complex-marker__image";
+    image.src = complexIcon;
+    image.alt = "";
+    image.width = 66;
+    image.height = 90;
+    marker.append(image);
 
     this.map.addChild(
       new ymaps3.YMapMarker(
         {
           coordinates: complexCoordinates,
-          zIndex: 20,
+          zIndex: 100,
         },
         marker
       )
     );
   }
 
-  private getMapTheme(): Record<string, unknown>[] {
-    return [
-      {
-        tags: {
-          any: ["road"],
-        },
-        stylers: [
-          {
-            color: "#d6d6d6",
-          },
-        ],
-      },
-      {
-        tags: {
-          any: ["landscape", "admin", "water", "transit"],
-        },
-        stylers: [
-          {
-            saturation: -0.9,
-          },
-          {
-            opacity: 0.62,
-          },
-        ],
-      },
-    ];
+  private async addControls(ymaps3: YMaps3): Promise<void> {
+    if (!this.map) {
+      return;
+    }
+
+    try {
+      ymaps3.import.registerCdn?.("https://cdn.jsdelivr.net/npm/{package}", [
+        "@yandex/ymaps3-default-ui-theme@0.0",
+      ]);
+
+      const { YMapZoomControl } = (await ymaps3.import(
+        "@yandex/ymaps3-default-ui-theme"
+      )) as YMapDefaultUiTheme;
+
+      this.map.addChild(
+        new ymaps3.YMapControls({
+          position: "right",
+          orientation: "vertical",
+        }).addChild(new YMapZoomControl({}))
+      );
+    } catch (error) {
+      console.warn("Yandex Maps zoom control is unavailable", error);
+    }
   }
 
   private getPoints(): InfrastructurePoint[] {
@@ -259,6 +281,7 @@ class InfrastructureMap extends Component {
     ).map((pointElement) => ({
       category: pointElement.dataset.category ?? "all",
       title: pointElement.dataset.title ?? "",
+      description: pointElement.dataset.description ?? "",
       address: pointElement.dataset.address ?? "",
       distance: pointElement.dataset.distance ?? "",
       coordinates: this.parseCoordinates(pointElement.dataset.coordinates),
@@ -275,11 +298,30 @@ class InfrastructureMap extends Component {
     return [Number(longitude), Number(latitude)];
   }
 
+  private parseContour(value: string | undefined): Coordinates[] {
+    return (value ?? "")
+      .split(";")
+      .map((coordinates) => this.parseCoordinates(coordinates))
+      .filter(([longitude, latitude]) => Number.isFinite(longitude) && Number.isFinite(latitude));
+  }
+
   private createPointElement(point: InfrastructurePoint): HTMLElement {
     const marker = document.createElement("button");
     marker.className = "infrastructure-marker";
     marker.type = "button";
     marker.setAttribute("aria-label", point.title);
+    marker.addEventListener("mouseenter", () => {
+      point.marker?.update?.({ zIndex: 1000 });
+    });
+    marker.addEventListener("mouseleave", () => {
+      point.marker?.update?.({ zIndex: 10 });
+    });
+    marker.addEventListener("focus", () => {
+      point.marker?.update?.({ zIndex: 1000 });
+    });
+    marker.addEventListener("blur", () => {
+      point.marker?.update?.({ zIndex: 10 });
+    });
 
     const icon = document.createElement("img");
     icon.className = "infrastructure-marker__icon";
@@ -297,7 +339,9 @@ class InfrastructureMap extends Component {
 
     const meta = document.createElement("span");
     meta.className = "infrastructure-marker__meta";
-    meta.textContent = [point.address, point.distance].filter(Boolean).join(" · ");
+    meta.textContent =
+      point.description ||
+      [point.address, point.distance].filter(Boolean).join(" · ");
 
     tooltip.append(title, meta);
     marker.append(icon, tooltip);

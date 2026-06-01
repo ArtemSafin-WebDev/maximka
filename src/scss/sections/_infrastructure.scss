@@ -2,7 +2,7 @@
 
 @layer sections {
   .infrastructure {
-    margin-bottom: 4.8rem;
+    margin-bottom: 14rem;
   }
 
   .infrastructure__content {
@@ -136,20 +136,36 @@
   .infrastructure-marker__tooltip {
     position: absolute;
     left: 50%;
-    bottom: calc(100% + 1.2rem);
-    min-width: 20rem;
-    max-width: 28rem;
-    padding: 1.2rem 1.4rem;
-    border-radius: 1.6rem;
+    bottom: calc(100% + 2.8rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: max-content;
+    min-width: 18.3rem;
+    max-width: min(36rem, calc(100vw - 4rem));
+    padding: 1.6rem;
+    border-radius: 1.2rem;
     background-color: #ffffff;
     color: var(--text-color);
-    box-shadow: 0 1.2rem 3.2rem rgba(51, 51, 51, 0.16);
+    filter: drop-shadow(0 0.8rem 1rem rgba(103, 57, 57, 0.14));
     opacity: 0;
     transform: translate(-50%, 0.8rem);
     pointer-events: none;
     transition:
       opacity 0.2s,
       transform 0.2s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: 2rem;
+      height: 1.7rem;
+      background-color: #ffffff;
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
+      transform: translateX(-50%);
+    }
   }
 
   .infrastructure-marker:hover .infrastructure-marker__tooltip,
@@ -160,18 +176,19 @@
 
   .infrastructure-marker__title {
     display: block;
-    font-size: 1.6rem;
-    font-weight: 500;
-    line-height: 1.2;
+    width: 100%;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.3;
   }
 
   .infrastructure-marker__meta {
     display: block;
-    margin-top: 0.6rem;
-    font-size: 1.3rem;
+    width: 100%;
+    font-size: 1.2rem;
     font-weight: 400;
     line-height: 1.3;
-    color: #777777;
+    color: var(--text-color);
   }
 
   .infrastructure-complex-marker {
@@ -180,6 +197,13 @@
     height: 9rem;
     transform: translate(-50%, -100%);
     filter: drop-shadow(0 1rem 2rem rgba(255, 87, 74, 0.28));
+    pointer-events: none;
+  }
+
+  .infrastructure-complex-marker__image {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   @include mq.down(sm) {
@@ -271,7 +295,7 @@
     }
 
     .infrastructure-marker__tooltip {
-      display: none;
+      max-width: min(28rem, calc(100vw - 4rem));
     }
 
     .infrastructure-complex-marker {
