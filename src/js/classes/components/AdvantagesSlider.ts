@@ -2,6 +2,10 @@ import Swiper from "swiper";
 import { Navigation, Scrollbar } from "swiper/modules";
 
 import { MOBILE_BREAKPOINT } from "../../constants/breakpoints";
+import {
+  duplicateLoopSlides,
+  removeLoopSlideDuplicates,
+} from "../../utils/loopSlides";
 import Component from "../Component";
 
 class AdvantagesSlider extends Component {
@@ -20,8 +24,7 @@ class AdvantagesSlider extends Component {
 
   private update() {
     if (this.mediaQuery.matches) {
-      this.swiper?.destroy(true, true);
-      this.swiper = null;
+      this.destroySlider();
 
       return;
     }
@@ -29,6 +32,8 @@ class AdvantagesSlider extends Component {
     if (this.swiper) {
       return;
     }
+
+    duplicateLoopSlides(this.element);
 
     this.swiper = new Swiper(this.element, {
       modules: [Navigation, Scrollbar],
@@ -52,9 +57,14 @@ class AdvantagesSlider extends Component {
 
   public destroy() {
     this.mediaQuery.removeEventListener("change", this.handleMediaChange);
+    this.destroySlider();
+    this.unregister();
+  }
+
+  private destroySlider() {
     this.swiper?.destroy(true, true);
     this.swiper = null;
-    this.unregister();
+    removeLoopSlideDuplicates(this.element);
   }
 }
 

@@ -2,6 +2,10 @@ import Swiper from "swiper";
 import { Navigation, Scrollbar } from "swiper/modules";
 
 import { MOBILE_BREAKPOINT } from "../../constants/breakpoints";
+import {
+  duplicateLoopSlides,
+  removeLoopSlideDuplicates,
+} from "../../utils/loopSlides";
 import Component from "../Component";
 
 interface ProgressItem {
@@ -32,11 +36,15 @@ class ProgressSection extends Component {
   private readonly filterInputs: HTMLInputElement[];
   private readonly emptyElement: HTMLElement | null;
   private readonly dataUrl: string;
+  private readonly mediaQuery = window.matchMedia(
+    `(max-width: ${MOBILE_BREAKPOINT}px)`
+  );
   private abortController: AbortController | null = null;
   private swiper: Swiper | null = null;
   private readonly handleFilterChange = () => this.handleFiltersChange();
   private readonly handleContentUpdate = (event: Event) =>
     this.handleProgressUpdate(event);
+  private readonly handleMediaChange = () => this.reinitSlider();
 
   constructor(element: HTMLElement) {
     super(element);
@@ -54,6 +62,7 @@ class ProgressSection extends Component {
       input.addEventListener("change", this.handleFilterChange);
     });
     this.element.addEventListener("progress:update", this.handleContentUpdate);
+    this.mediaQuery.addEventListener("change", this.handleMediaChange);
 
     this.reinitSlider();
 
@@ -63,12 +72,19 @@ class ProgressSection extends Component {
   }
 
   private initSlider(slider: HTMLElement) {
+    const isMobile = this.mediaQuery.matches;
+
+    if (!isMobile) {
+      duplicateLoopSlides(slider);
+    }
+
     return new Swiper(slider, {
       modules: [Navigation, Scrollbar],
       slidesPerView: "auto",
-      spaceBetween: 20,
+      spaceBetween: isMobile ? 16 : 20,
       speed: 500,
       watchOverflow: true,
+      loop: !isMobile,
       navigation: {
         prevEl: slider.querySelector<HTMLButtonElement>(".js-progress-prev"),
         nextEl: slider.querySelector<HTMLButtonElement>(".js-progress-next"),
@@ -76,16 +92,6 @@ class ProgressSection extends Component {
       scrollbar: {
         el: slider.querySelector<HTMLElement>(".swiper-scrollbar"),
         draggable: true,
-      },
-      breakpoints: {
-        0: {
-          loop: false,
-          spaceBetween: 16,
-        },
-        [MOBILE_BREAKPOINT + 1]: {
-          loop: true,
-          spaceBetween: 20,
-        },
       },
     });
   }
@@ -228,6 +234,8 @@ class ProgressSection extends Component {
   }
 
   private reinitSlider() {
+    this.destroySlider();
+
     const hasSlides = this.hasSlides();
 
     if (this.emptyElement) {
@@ -235,8 +243,6 @@ class ProgressSection extends Component {
     }
 
     this.slider?.classList.toggle("progress__slider--empty", !hasSlides);
-
-    this.destroySlider();
 
     if (this.slider && hasSlides) {
       this.swiper = this.initSlider(this.slider);
@@ -275,6 +281,7 @@ class ProgressSection extends Component {
       "progress:update",
       this.handleContentUpdate
     );
+    this.mediaQuery.removeEventListener("change", this.handleMediaChange);
     this.abortController?.abort();
     this.destroySlider();
     this.unregister();
@@ -283,6 +290,9 @@ class ProgressSection extends Component {
   private destroySlider() {
     this.swiper?.destroy(true, true);
     this.swiper = null;
+    if (this.slider) {
+      removeLoopSlideDuplicates(this.slider);
+    }
   }
 }
 

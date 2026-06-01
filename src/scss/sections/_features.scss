@@ -69,7 +69,10 @@
     --feature-mask-full-height: 166.3rem;
 
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: 100%;
     height: 46.6rem;
     padding: 3.2rem;

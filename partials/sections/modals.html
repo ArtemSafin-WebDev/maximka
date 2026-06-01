@@ -13,7 +13,13 @@
 
       <p class="modal__description">{{description}}</p>
 
-      <form class="modal__form js-form" action="#" method="post">
+      <form
+        class="modal__form js-form"
+        action="#"
+        method="post"
+        data-success-modal="#{{../successModal.id}}"
+        data-error-modal="#{{../errorModal.id}}"
+      >
         <input type="hidden" name="form" value="{{formName}}">
 
         <div class="modal__fields">
@@ -39,3 +45,45 @@
     </div>
   </dialog>
 {{/each}}
+
+<dialog
+  class="modal modal--success js-dialog-modal"
+  id="{{successModal.id}}"
+  aria-labelledby="{{successModal.id}}-title"
+  aria-describedby="{{successModal.id}}-description"
+>
+  <div class="modal__panel">
+    <div class="modal__head">
+      <h2 class="modal__title" id="{{successModal.id}}-title">{{successModal.title}}</h2>
+
+      <button class="modal__close js-dialog-close" type="button" aria-label="Закрыть модальное окно">
+        <svg class="modal__close-icon" width="21" height="21" aria-hidden="true" focusable="false">
+          <use href="#modal-close"></use>
+        </svg>
+      </button>
+    </div>
+
+    <p class="modal__description" id="{{successModal.id}}-description">{{successModal.description}}</p>
+  </div>
+</dialog>
+
+<dialog
+  class="modal modal--error js-dialog-modal"
+  id="{{errorModal.id}}"
+  aria-labelledby="{{errorModal.id}}-title"
+  aria-describedby="{{errorModal.id}}-description"
+>
+  <div class="modal__panel">
+    <div class="modal__head">
+      <h2 class="modal__title" id="{{errorModal.id}}-title">{{errorModal.title}}</h2>
+
+      <button class="modal__close js-dialog-close" type="button" aria-label="Закрыть модальное окно">
+        <svg class="modal__close-icon" width="21" height="21" aria-hidden="true" focusable="false">
+          <use href="#modal-close"></use>
+        </svg>
+      </button>
+    </div>
+
+    <p class="modal__description" id="{{errorModal.id}}-description">{{errorModal.description}}</p>
+  </div>
+</dialog>

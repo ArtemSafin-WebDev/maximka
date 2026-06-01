@@ -1,4 +1,4 @@
-<section class="solutions js-solutions" id="layouts" aria-labelledby="solutions-title">
+<section class="solutions" id="layouts" aria-labelledby="solutions-title">
   <div class="container">
     <div class="solutions__intro">
       <p class="solutions__label">{{solutions.label}}</p>
@@ -12,74 +12,45 @@
       </p>
     </div>
 
-    <div class="solutions__tabs" role="tablist" aria-label="{{solutions.label}}">
-      {{#each solutions.tabs}}
-        <button
-          class="solutions__tab js-solutions-tab"
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="solutions-panel-{{@index}}"
-          id="solutions-tab-{{@index}}"
-        >
-          {{title}}
-        </button>
+    <ul class="solutions__list">
+      {{#each solutions.items}}
+        <li class="solutions__item">
+          <article class="solutions__card">
+            <div class="solutions__card-head">
+              <h3 class="solutions__card-title">{{title}}</h3>
+              <p class="solutions__area">{{area}}<sup>2</sup></p>
+            </div>
+
+            <div class="solutions__image-wrap">
+              <img
+                class="solutions__image"
+                src="{{image}}"
+                width="496"
+                height="402"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="solutions__card-bottom">
+              <p class="solutions__card-description">{{description}}</p>
+
+              <div class="solutions__price">
+                <span class="solutions__price-label">Цена от</span>
+                <span class="solutions__price-value">{{price}}</span>
+              </div>
+
+              {{> components/button
+                class="solutions__button btn--outline"
+                href=buttonHref
+                label=buttonLabel
+                icon="right"
+              }}
+            </div>
+          </article>
+        </li>
       {{/each}}
-    </div>
-
-    <div class="solutions__panels">
-      {{#each solutions.tabs}}
-        <div
-          class="solutions__panel js-solutions-panel"
-          id="solutions-panel-{{@index}}"
-          role="tabpanel"
-          aria-labelledby="solutions-tab-{{@index}}"
-        >
-          <div class="solutions__slider swiper js-solutions-slider">
-            <ul class="solutions__list swiper-wrapper">
-              {{#each items}}
-                <li class="solutions__slide swiper-slide">
-                  <article class="solutions__card">
-                    <div class="solutions__card-head">
-                      <h3 class="solutions__card-title">{{title}}</h3>
-                      <p class="solutions__area">{{area}}<sup>2</sup></p>
-                    </div>
-
-                    <div class="solutions__image-wrap">
-                      <img
-                        class="solutions__image"
-                        src="{{image}}"
-                        width="496"
-                        height="402"
-                        alt=""
-                        aria-hidden="true"
-                        loading="lazy"
-                      >
-                    </div>
-
-                    <div class="solutions__card-bottom">
-                      <p class="solutions__card-description">{{description}}</p>
-
-                      <div class="solutions__price">
-                        <span class="solutions__price-label">Цена от</span>
-                        <span class="solutions__price-value">{{price}}</span>
-                      </div>
-
-                      {{> components/button
-                        class="solutions__button btn--outline"
-                        href=buttonHref
-                        label=buttonLabel
-                      }}
-                    </div>
-                  </article>
-                </li>
-              {{/each}}
-            </ul>
-
-            <div class="solutions__scrollbar swiper-scrollbar"></div>
-          </div>
-        </div>
-      {{/each}}
-    </div>
+    </ul>
   </div>
 </section>

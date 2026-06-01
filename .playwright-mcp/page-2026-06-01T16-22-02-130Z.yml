@@ -1,0 +1,508 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Максима" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+      - link "Выбрать квартиру" [ref=e13] [cursor=pointer]:
+        - /url: "#layouts"
+        - generic [ref=e14]: Выбрать квартиру
+        - img [ref=e16]
+      - navigation "Основная навигация" [ref=e18]:
+        - link "О проекте" [ref=e19] [cursor=pointer]:
+          - /url: "#about"
+        - link "Расположение" [ref=e20] [cursor=pointer]:
+          - /url: "#location"
+        - link "Планировки" [ref=e21] [cursor=pointer]:
+          - /url: "#layouts"
+        - link "Акции" [ref=e22] [cursor=pointer]:
+          - /url: "#promotions"
+        - link "Контакты" [ref=e23] [cursor=pointer]:
+          - /url: "#contacts"
+      - generic [ref=e25]:
+        - link "+7 (4722) 78-95-49" [ref=e26] [cursor=pointer]:
+          - /url: tel:+74722789549
+        - link "Заказать звонок" [ref=e27] [cursor=pointer]:
+          - /url: "#callback-dialog"
+          - img [ref=e29]
+          - generic [ref=e31]: Заказать звонок
+  - main [ref=e32]:
+    - region "Новое качество жизни по доступной цене" [ref=e33]:
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: Жилой комплекс на Максимова
+          - heading "Новое качество жизни по доступной цене" [level=1] [ref=e40]
+        - list "Преимущества жилого комплекса" [ref=e41]:
+          - listitem [ref=e42]:
+            - img [ref=e43]
+            - generic [ref=e44]: Комфорт-класс
+          - listitem [ref=e45]:
+            - img [ref=e46]
+            - generic [ref=e47]: Двор без машин
+          - listitem [ref=e48]:
+            - img [ref=e49]
+            - generic [ref=e50]: Предчистовая отделка
+          - listitem [ref=e51]:
+            - img [ref=e52]
+            - generic [ref=e53]: Подземный паркинг
+          - listitem [ref=e54]:
+            - img [ref=e55]
+            - generic [ref=e56]: 12 мин. до м. Авиастроительная
+      - article "Старт продаж" [ref=e57]:
+        - generic [ref=e59]:
+          - heading "Старт продаж" [level=2] [ref=e60]
+          - paragraph [ref=e61]: Зафиксируйте максимально выгодные условия на старте
+        - link "Оставить заявку" [ref=e62] [cursor=pointer]:
+          - /url: "#request-dialog"
+    - region "ЖК «Максима» — современный дом комфорт-класса с умными планировками в шаговой доступности от метро Авиастроительная" [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - paragraph [ref=e66]: О проекте
+          - heading "ЖК «Максима» — современный дом комфорт-класса с умными планировками в шаговой доступности от метро Авиастроительная" [level=2] [ref=e67]
+        - generic [ref=e68]:
+          - paragraph [ref=e69]: Дом переменной этажности 9–13 этажей из 6 секций на 332 квартиры от 20 до 87м². Вся необходимая инфраструктура на первых этажах
+          - paragraph [ref=e70]: "В «Максиме» будет всё необходимое для комфортной жизни: в коммерческих помещениях на первых этажах откроются минимаркет, кофейня, аптека и салон красоты. Для жителей предусмотрен подземный паркинг с прямым доступом на лифте."
+          - paragraph [ref=e71]: Двор — закрытое приватное пространство без машин и сквозного проезда. Здесь будут ландшафтный дизайн, геопластика и озеленение в несколько уровней. Для детей — площадка с сертифицированным ударопоглощающим покрытием и зонами для малышей и школьников. Для взрослых — воркаут-площадка и лаунж-зона.
+          - paragraph [ref=e72]: Доступны квартиры евроформата с кухней-гостиной и классические с изолированной кухней. В двух — и трёхкомнатных — два санузла. В каждой квартире — балкон или лоджия, увеличенные окна и низкие подоконники. В прихожих — готовые ниши под шкафы. Есть квартиры с мастер-спальнями, гардеробными и просторными кухнями-гостиными, где действительно можно собраться всей семьёй. Все квартиры сдаются с предчистовой отделкой.
+          - button "Подробнее о проекте" [ref=e73] [cursor=pointer]:
+            - generic [ref=e74]: Подробнее о проекте
+    - region "Фотогалерея жилого комплекса" [ref=e75]:
+      - generic [ref=e77]:
+        - list [ref=e78]:
+          - listitem [ref=e79]:
+            - figure "До метро «Авиастроительная» — 12 минут пешком." [ref=e80]:
+              - img "Вид на жилой комплекс со стороны дороги" [ref=e81]
+              - generic [ref=e82]:
+                - img [ref=e83]
+                - generic [ref=e85]: До метро «Авиастроительная» — 12 минут пешком.
+          - listitem [ref=e86]:
+            - figure "До метро «Авиастроительная» — 12 минут пешком." [ref=e87]:
+              - img "Фасад жилого комплекса с озеленением" [ref=e88]
+              - generic [ref=e89]:
+                - img [ref=e90]
+                - generic [ref=e92]: До метро «Авиастроительная» — 12 минут пешком.
+          - listitem [ref=e93]:
+            - figure [ref=e94]:
+              - img "Дворовое пространство жилого комплекса" [ref=e95]
+          - listitem [ref=e96]:
+            - figure [ref=e97]:
+              - img "Входная группа жилого комплекса" [ref=e98]
+          - listitem [ref=e99]:
+            - figure [ref=e100]:
+              - img "Архитектура жилого комплекса" [ref=e101]
+          - listitem [ref=e102]:
+            - figure [ref=e103]:
+              - img "Общий вид жилого комплекса" [ref=e104]
+        - generic "Управление фотогалереей" [ref=e105]:
+          - button "Предыдущее фото" [ref=e106] [cursor=pointer]:
+            - img [ref=e107]
+          - button "Следующее фото" [ref=e109] [cursor=pointer]:
+            - img [ref=e110]
+    - region "Современный дом с продуманной инфраструктурой для всей семьи" [ref=e114]:
+      - generic [ref=e115]:
+        - generic [ref=e116]:
+          - paragraph [ref=e117]: Особенности проекта
+          - heading "Современный дом с продуманной инфраструктурой для всей семьи" [level=2] [ref=e118]
+          - generic [ref=e119]:
+            - paragraph [ref=e120]: Проект сочетает продуманные планировочные решения с собственной инфраструктурой внутри ЖК — для жизни в ритме большого города.
+            - link "Выбрать квартиру" [ref=e121] [cursor=pointer]:
+              - /url: "#layouts"
+              - generic [ref=e122]: Выбрать квартиру
+              - img [ref=e124]
+        - list [ref=e127]:
+          - listitem [ref=e128]:
+            - 'button "Открыть подробности: Архитектура и масштаб" [ref=e129] [cursor=pointer]':
+              - img "Архитектура жилого комплекса" [ref=e130]
+              - generic [ref=e131]: "01"
+              - heading "Архитектура и масштаб" [level=3] [ref=e132]:
+                - text: Архитектура
+                - text: и масштаб
+              - img [ref=e134]
+          - listitem [ref=e136]:
+            - 'button "Открыть подробности: Сервисы внутри дома" [ref=e137] [cursor=pointer]':
+              - img "Фасад с коммерческими помещениями на первых этажах" [ref=e138]
+              - generic [ref=e139]: "02"
+              - heading "Сервисы внутри дома" [level=3] [ref=e140]:
+                - text: Сервисы внутри
+                - text: дома
+              - img [ref=e142]
+          - listitem [ref=e144]:
+            - 'button "Открыть подробности: Закрытый двор без машин" [ref=e145] [cursor=pointer]':
+              - img "Зелёный двор с прогулочной зоной" [ref=e146]
+              - generic [ref=e147]: "03"
+              - heading "Закрытый двор без машин" [level=3] [ref=e148]:
+                - text: Закрытый двор
+                - text: без машин
+              - img [ref=e150]
+          - listitem [ref=e152]:
+            - 'button "Открыть подробности: Планировки для жизни" [ref=e153] [cursor=pointer]':
+              - img "Планировка квартиры с видом сверху" [ref=e154]
+              - generic [ref=e155]: "04"
+              - heading "Планировки для жизни" [level=3] [ref=e156]:
+                - text: Планировки
+                - text: для жизни
+              - img [ref=e158]
+    - region "Ход строительства" [ref=e160]:
+      - generic [ref=e161]:
+        - generic [ref=e162]:
+          - heading "Ход строительства" [level=2] [ref=e163]
+          - generic "Фильтры хода строительства" [ref=e164]:
+            - generic [ref=e165]:
+              - button "Выберите квартал" [ref=e166] [cursor=pointer]:
+                - generic [ref=e167]: 2 квартал
+                - img [ref=e169]
+              - list [ref=e172]:
+                - listitem [ref=e173]:
+                  - generic [ref=e174] [cursor=pointer]:
+                    - radio "1 квартал" [ref=e175]
+                    - text: 1 квартал
+                - listitem [ref=e176]:
+                  - generic [ref=e177] [cursor=pointer]:
+                    - radio "2 квартал" [checked] [ref=e178]
+                    - text: 2 квартал
+                - listitem [ref=e179]:
+                  - generic [ref=e180] [cursor=pointer]:
+                    - radio "3 квартал" [ref=e181]
+                    - text: 3 квартал
+                - listitem [ref=e182]:
+                  - generic [ref=e183] [cursor=pointer]:
+                    - radio "4 квартал" [ref=e184]
+                    - text: 4 квартал
+            - generic [ref=e185]:
+              - button "Выберите год" [ref=e186] [cursor=pointer]:
+                - generic [ref=e187]: 2026 год
+                - img [ref=e189]
+              - list [ref=e192]:
+                - listitem [ref=e193]:
+                  - generic [ref=e194] [cursor=pointer]:
+                    - radio "2026 год" [checked] [ref=e195]
+                    - text: 2026 год
+                - listitem [ref=e196]:
+                  - generic [ref=e197] [cursor=pointer]:
+                    - radio "2027 год" [ref=e198]
+                    - text: 2027 год
+                - listitem [ref=e199]:
+                  - generic [ref=e200] [cursor=pointer]:
+                    - radio "2028 год" [ref=e201]
+                    - text: 2028 год
+        - generic [ref=e202]:
+          - list [ref=e203]:
+            - listitem [ref=e204]:
+              - img "Строительная площадка с краном и грузовой техникой" [ref=e205]
+            - listitem [ref=e206]:
+              - img "Подготовленная дорога на строительной площадке" [ref=e207]
+            - listitem [ref=e208]:
+              - img "Работы на строительной площадке рядом с жилым домом" [ref=e209]
+            - listitem [ref=e210]:
+              - img "Строительная техника на площадке жилого комплекса" [ref=e211]
+            - listitem [ref=e212]:
+              - img "Ход строительных работ на территории комплекса" [ref=e213]
+            - listitem [ref=e214]:
+              - img "Общий вид строительной площадки жилого комплекса" [ref=e215]
+          - generic "Управление слайдером хода строительства" [ref=e216]:
+            - button "Предыдущее фото хода строительства" [ref=e217] [cursor=pointer]:
+              - img [ref=e218]
+            - button "Следующее фото хода строительства" [ref=e220] [cursor=pointer]:
+              - img [ref=e221]
+    - region "Продуманные планировки с акцентом на высокую ликвидность" [ref=e225]:
+      - generic [ref=e226]:
+        - generic [ref=e227]:
+          - paragraph [ref=e228]: Планировочные решения
+          - heading "Продуманные планировки с акцентом на высокую ликвидность" [level=2] [ref=e229]
+          - paragraph [ref=e230]:
+            - text: "Рациональное проектирование без лишних метров: максимум полезной жилплощади"
+            - text: для работы и отдыха всех членов семьи
+        - list [ref=e231]:
+          - listitem [ref=e232]:
+            - article [ref=e233]:
+              - generic [ref=e234]:
+                - heading "Квартира - студия" [level=3] [ref=e235]
+                - paragraph [ref=e236]:
+                  - text: 22,1 м
+                  - superscript [ref=e237]: "2"
+              - img [ref=e239]
+              - generic [ref=e240]:
+                - paragraph [ref=e241]: В прихожей — ниша для хранения, в ванной комнате поместится стиральная машина и в ряде планировок полноценная ванна.
+                - generic [ref=e242]:
+                  - generic [ref=e243]: Цена от
+                  - generic [ref=e244]: 6 735 319 р
+                - link "Подробнее" [ref=e245] [cursor=pointer]:
+                  - /url: "#request-dialog"
+                  - generic [ref=e246]: Подробнее
+          - listitem [ref=e247]:
+            - article [ref=e248]:
+              - generic [ref=e249]:
+                - heading "Квартира - студия" [level=3] [ref=e250]
+                - paragraph [ref=e251]:
+                  - text: 23,8 м
+                  - superscript [ref=e252]: "2"
+              - img [ref=e254]
+              - generic [ref=e255]:
+                - paragraph [ref=e256]: Есть варианты с лоджией, балконом и даже с двумя балконами, а также с ориентацией окон на две стороны света
+                - generic [ref=e257]:
+                  - generic [ref=e258]: Цена от
+                  - generic [ref=e259]: 7 162 322 р
+                - link "Подробнее" [ref=e260] [cursor=pointer]:
+                  - /url: "#request-dialog"
+                  - generic [ref=e261]: Подробнее
+          - listitem [ref=e262]:
+            - article [ref=e263]:
+              - generic [ref=e264]:
+                - 'heading "Евроформат: 2к" [level=3] [ref=e265]'
+                - paragraph [ref=e266]:
+                  - text: 33 м
+                  - superscript [ref=e267]: "2"
+              - img [ref=e269]
+              - generic [ref=e270]:
+                - paragraph [ref=e271]: Современные евро-планировки с кухней-гостиной и изолированной спальней.
+                - generic [ref=e272]:
+                  - generic [ref=e273]: Цена от
+                  - generic [ref=e274]: 8 397 348 р
+                - link "Подробнее" [ref=e275] [cursor=pointer]:
+                  - /url: "#request-dialog"
+                  - generic [ref=e276]: Подробнее
+          - listitem [ref=e277]:
+            - article [ref=e278]:
+              - generic [ref=e279]:
+                - heading "Однокомнатная квартира" [level=3] [ref=e280]
+                - paragraph [ref=e281]:
+                  - text: 34,4 м
+                  - superscript [ref=e282]: "2"
+              - img [ref=e284]
+              - generic [ref=e285]:
+                - paragraph [ref=e286]: Изолированная кухня. Увеличенные окна, балкон или лоджия, встроенные ниши для хранения в прихожей.
+                - generic [ref=e287]:
+                  - generic [ref=e288]: Цена от
+                  - generic [ref=e289]: 8 388 932 р
+                - link "Подробнее" [ref=e290] [cursor=pointer]:
+                  - /url: "#request-dialog"
+                  - generic [ref=e291]: Подробнее
+          - listitem [ref=e292]:
+            - article [ref=e293]:
+              - generic [ref=e294]:
+                - heading "Двухкомнатная квартира" [level=3] [ref=e295]
+                - paragraph [ref=e296]:
+                  - text: 59,2 м
+                  - superscript [ref=e297]: "2"
+              - img [ref=e299]
+              - generic [ref=e300]:
+                - paragraph [ref=e301]: Распашные планировки на две стороны света. Просторные изолированные кухни, отдельная гостиная и спальня.
+                - generic [ref=e302]:
+                  - generic [ref=e303]: Цена от
+                  - generic [ref=e304]: 13 774 248 р
+                - link "Подробнее" [ref=e305] [cursor=pointer]:
+                  - /url: "#request-dialog"
+                  - generic [ref=e306]: Подробнее
+    - region "ЖК «Максима» расположен в центральной части Авиастроительного района — одном из самых самодостаточных в Казани" [ref=e307]:
+      - generic [ref=e308]:
+        - generic [ref=e309]:
+          - paragraph [ref=e310]: Максимум комфорта
+          - heading "ЖК «Максима» расположен в центральной части Авиастроительного района — одном из самых самодостаточных в Казани" [level=2] [ref=e311]
+        - generic [ref=e312]:
+          - paragraph [ref=e313]: До метро — 12 минут пешком, до остановки «Максимова» — 150 метров. Школы, сады, магазины, спорт и медицина — рядом с домом.
+          - link "Назначить встречу" [ref=e314] [cursor=pointer]:
+            - /url: "#request-dialog"
+            - generic [ref=e315]: Назначить встречу
+            - img [ref=e317]
+      - generic "Карта инфраструктуры рядом с ЖК Максима" [ref=e319]:
+        - generic "Фильтр инфраструктуры на карте" [ref=e320]:
+          - generic [ref=e321]:
+            - button "Вся инфраструктура" [ref=e322] [cursor=pointer]:
+              - generic [ref=e323]: Вся инфраструктура
+            - button "Транспорт" [ref=e324] [cursor=pointer]:
+              - generic [ref=e325]: Транспорт
+            - button "Школы" [ref=e326] [cursor=pointer]:
+              - generic [ref=e327]: Школы
+            - button "Детские сады" [ref=e328] [cursor=pointer]:
+              - generic [ref=e329]: Детские сады
+            - button "Спорт для взрослых и детей" [ref=e330] [cursor=pointer]:
+              - generic [ref=e331]: Спорт для взрослых и детей
+            - button "Медицина и здоровье" [ref=e332] [cursor=pointer]:
+              - generic [ref=e333]: Медицина и здоровье
+            - button "Магазины и сервисы" [ref=e334] [cursor=pointer]:
+              - generic [ref=e335]: Магазины и сервисы
+            - button "Парки" [ref=e336] [cursor=pointer]:
+              - generic [ref=e337]: Парки
+    - region "Квартиры в ЖК «Максима» с предчистовой отделкой и повышенным комфортом" [ref=e340]:
+      - generic [ref=e341]:
+        - generic [ref=e342]:
+          - paragraph [ref=e343]: Преимущества ЖК «Максима»
+          - heading "Квартиры в ЖК «Максима» с предчистовой отделкой и повышенным комфортом" [level=2] [ref=e344]
+          - paragraph [ref=e345]: "От компактных студий до семейных форматов: кухни-гостиные, изолированные спальни, ниши для хранения и балкон или лоджия в каждой квартире"
+        - generic [ref=e346]:
+          - list [ref=e347]:
+            - listitem [ref=e348]:
+              - link "Архитектура жилого комплекса Выразительная архитектура" [ref=e349] [cursor=pointer]:
+                - /url: "#layouts"
+                - img "Архитектура жилого комплекса"
+                - generic [ref=e350]:
+                  - heading "Выразительная архитектура" [level=3] [ref=e351]
+                  - img [ref=e353]
+            - listitem [ref=e355]:
+              - link "Лобби с панорамным остеклением Лобби с панорамным остеклением" [ref=e356] [cursor=pointer]:
+                - /url: "#layouts"
+                - img "Лобби с панорамным остеклением"
+                - generic [ref=e357]:
+                  - heading "Лобби с панорамным остеклением" [level=3] [ref=e358]
+                  - img [ref=e360]
+            - listitem [ref=e362]:
+              - link "Интерьер квартиры с продуманной планировкой Умные планировки" [ref=e363] [cursor=pointer]:
+                - /url: "#layouts"
+                - img "Интерьер квартиры с продуманной планировкой"
+                - generic [ref=e364]:
+                  - heading "Умные планировки" [level=3] [ref=e365]
+                  - img [ref=e367]
+            - listitem [ref=e369]:
+              - link "Квартира с предчистовой отделкой Предчистовая отделка" [ref=e370] [cursor=pointer]:
+                - /url: "#layouts"
+                - img "Квартира с предчистовой отделкой"
+                - generic [ref=e371]:
+                  - heading "Предчистовая отделка" [level=3] [ref=e372]
+                  - img [ref=e374]
+            - listitem [ref=e376]:
+              - link "Подземный паркинг жилого комплекса Подземный паркинг" [ref=e377] [cursor=pointer]:
+                - /url: "#layouts"
+                - img "Подземный паркинг жилого комплекса"
+                - generic [ref=e378]:
+                  - heading "Подземный паркинг" [level=3] [ref=e379]
+                  - img [ref=e381]
+          - generic "Управление слайдером преимуществ" [ref=e383]:
+            - button "Предыдущее преимущество" [ref=e384] [cursor=pointer]:
+              - img [ref=e385]
+            - button "Следующее преимущество" [ref=e387] [cursor=pointer]:
+              - img [ref=e388]
+    - region "Акции" [ref=e392]:
+      - generic [ref=e393]:
+        - heading "Акции" [level=2] [ref=e394]
+        - list [ref=e396]:
+          - listitem [ref=e397]:
+            - article [ref=e398]:
+              - generic [ref=e399]:
+                - heading "Старт продаж!" [level=3] [ref=e400]
+                - paragraph [ref=e401]:
+                  - text: Подберём оптимальное
+                  - text: предложение для вас
+              - link "Получить консультацию" [ref=e402] [cursor=pointer]:
+                - /url: "#request-dialog"
+                - generic [ref=e403]: Получить консультацию
+          - listitem [ref=e404]:
+            - article [ref=e405]:
+              - generic [ref=e406]:
+                - heading "Ипотека от 3,5%" [level=3] [ref=e407]
+                - paragraph [ref=e408]:
+                  - text: Подберем для вас выгодную
+                  - text: программу
+              - link "Получить консультацию" [ref=e409] [cursor=pointer]:
+                - /url: "#request-dialog"
+                - generic [ref=e410]: Получить консультацию
+          - listitem [ref=e411]:
+            - article [ref=e412]:
+              - generic [ref=e413]:
+                - heading "Рассрочка от 10%" [level=3] [ref=e414]
+                - paragraph [ref=e415]: Без удорожания стоимости
+              - link "Получить консультацию" [ref=e416] [cursor=pointer]:
+                - /url: "#request-dialog"
+                - generic [ref=e417]: Получить консультацию
+    - region "Получите индивидуальные условия" [ref=e418]:
+      - generic [ref=e420]:
+        - img [ref=e421]
+        - generic [ref=e422]:
+          - generic [ref=e423]:
+            - textbox "Имя*" [ref=e426]
+            - textbox "Почта" [ref=e429]
+            - textbox "Телефон*" [ref=e432]
+            - textbox "Комментарий" [ref=e435]
+          - button "Оставить заявку" [ref=e436] [cursor=pointer]:
+            - generic [ref=e437]: Оставить заявку
+          - generic [ref=e438]:
+            - generic [ref=e439] [cursor=pointer]:
+              - generic [ref=e440]:
+                - checkbox "Я согласен на обработку персональных данных и принимаю условия политики конфиденциальности" [ref=e441]
+                - img [ref=e443]
+              - generic [ref=e445]:
+                - text: Я согласен на обработку персональных данных и принимаю
+                - link "условия политики конфиденциальности" [ref=e446]:
+                  - /url: "#"
+            - generic [ref=e447] [cursor=pointer]:
+              - generic [ref=e448]:
+                - checkbox "Я согласен на получение рекламных и информационных email-рассылок" [ref=e449]
+                - img [ref=e451]
+              - generic [ref=e453]: Я согласен на получение рекламных и информационных email-рассылок
+        - generic [ref=e454]:
+          - heading "Получите индивидуальные условия" [level=2] [ref=e455]
+          - generic [ref=e456]:
+            - generic [ref=e457]: "Телефон:"
+            - link "+7 (495) 132-07-08" [ref=e458] [cursor=pointer]:
+              - /url: tel:+74951320708
+    - region "Надёжность застройщика, скорость строительства и безопасность сделки — самые важные факторы при покупке недвижимости." [ref=e459]:
+      - generic [ref=e461]:
+        - paragraph [ref=e462]: Участники проекта
+        - heading "Надёжность застройщика, скорость строительства и безопасность сделки — самые важные факторы при покупке недвижимости." [level=2] [ref=e463]
+        - list [ref=e464]:
+          - listitem [ref=e465]:
+            - img "КСТ" [ref=e467]
+            - paragraph [ref=e468]:
+              - text: Генеральный
+              - text: подрядчик
+          - listitem [ref=e469]:
+            - img "Альянс Девелопмент" [ref=e471]
+            - paragraph [ref=e472]:
+              - text: Девелопер
+              - text: проекта
+          - listitem [ref=e473]:
+            - img "Сбер Банк" [ref=e475]
+            - paragraph [ref=e476]:
+              - text: Проектное
+              - text: финансирование
+          - listitem [ref=e477]:
+            - img "Altera" [ref=e479]
+            - paragraph [ref=e480]:
+              - text: Партнёр
+              - text: по реализации
+  - contentinfo [ref=e481]:
+    - generic [ref=e482]:
+      - img
+      - generic [ref=e484]:
+        - link "Максима" [ref=e485] [cursor=pointer]:
+          - /url: /
+          - img "Максима" [ref=e486]
+        - navigation "Навигация в подвале" [ref=e487]:
+          - link "О проекте" [ref=e488] [cursor=pointer]:
+            - /url: "#about"
+          - link "Расположение" [ref=e489] [cursor=pointer]:
+            - /url: "#location"
+          - link "Особенности проекта" [ref=e490] [cursor=pointer]:
+            - /url: "#features"
+          - link "Планировки" [ref=e491] [cursor=pointer]:
+            - /url: "#layouts"
+          - link "Инфраструктура" [ref=e492] [cursor=pointer]:
+            - /url: "#infrastructure"
+          - link "Акции" [ref=e493] [cursor=pointer]:
+            - /url: "#promotions"
+          - link "Преимущества" [ref=e494] [cursor=pointer]:
+            - /url: "#benefits"
+          - link "Ход строительства" [ref=e495] [cursor=pointer]:
+            - /url: "#progress"
+          - link "контакты" [ref=e496] [cursor=pointer]:
+            - /url: "#contacts"
+        - generic [ref=e497]:
+          - generic [ref=e498]: "Телефон:"
+          - link "+7 (495) 132-07-08" [ref=e499] [cursor=pointer]:
+            - /url: tel:+74951320708
+        - link "Сайт разработан Mark Weber" [ref=e501] [cursor=pointer]:
+          - /url: https://markweber.ru/
+          - generic [ref=e502]:
+            - generic [ref=e503]: Создание
+            - generic [ref=e504]: сайта
+    - generic [ref=e506]:
+      - generic [ref=e507]:
+        - navigation "Юридическая информация" [ref=e508]:
+          - link "Проектная декларация" [ref=e509] [cursor=pointer]:
+            - /url: "#"
+          - link "Документы" [ref=e510] [cursor=pointer]:
+            - /url: "#"
+          - link "Политика конфиденциальности" [ref=e511] [cursor=pointer]:
+            - /url: "#"
+        - generic [ref=e512]: ©2026
+      - paragraph [ref=e513]: ПРЕДСТАВЛЕННАЯ ИНФОРМАЦИЯ НОСИТ ИСКЛЮЧИТЕЛЬНО ОЗНАКОМИТЕЛЬНЫЙ ХАРАКТЕР, НИ ПРИ КАКИХ ОБСТОЯТЕЛЬСТВАХ НЕ ЯВЛЯЕТСЯ ПУБЛИЧНОЙ ОФЕРТОЙ, ОПРЕДЕЛЯЕМОЙ ПОЛОЖЕНИЯМИ СТАТЬИ 437 ГК РФ. ПОСТРОЕННЫЕ ОБЪЕКТЫ МОГУТ ОТЛИЧАТЬСЯ ОТ ПРЕДСТАВЛЕННЫХ 3D-ВИЗУАЛИЗАЦИЙ, ИЗОБРАЖЕНИЙ. ВСЕ ПРЕДСТАВЛЕННЫЕ МАТЕРИАЛЫ, ИЗОБРАЖЕНИЯ ЯВЛЯЮТСЯ ОРИЕНТИРОВОЧНЫМИ, В НИХ МОГУТ БЫТЬ ВНЕСЕНЫ ЛЮБЫЕ ИЗМЕНЕНИЯ И ДОПОЛНЕНИЯ.
+  - img

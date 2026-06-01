@@ -9,12 +9,14 @@
 
     <div class="infrastructure__intro">
       <p class="infrastructure__description">{{infrastructure.description}}</p>
-      {{> components/button
-        class="infrastructure__button infrastructure__button--desktop btn--arrow"
-        href=infrastructure.cta.href
-        label=infrastructure.cta.label
-        icon="arrows/right"
-      }}
+      {{#if infrastructure.cta}}
+        {{> components/button
+          class="infrastructure__button infrastructure__button--desktop btn--arrow"
+          href=infrastructure.cta.href
+          label=infrastructure.cta.label
+          icon="arrows/right"
+        }}
+      {{/if}}
     </div>
   </div>
 

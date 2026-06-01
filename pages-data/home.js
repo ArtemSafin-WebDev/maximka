@@ -14,7 +14,7 @@ export default {
         image: "/images/hero/card-bg.svg",
         imageMobile: "/images/hero/card-bg-mobile.svg",
         title: "Старт продаж",
-        description: "Подберём оптимальное предложение для вас",
+        description: "Зафиксируйте максимально выгодные условия на старте",
         buttonLabel: "Оставить заявку",
         buttonHref: "#request-dialog",
       },
@@ -47,9 +47,9 @@ export default {
       imageMobile: "/images/about-project/bg-mobile.svg",
       label: "О проекте",
       title:
-        "ЖК «Максима» — современный дом комфорт-класса с умными планировками в шаговой доступности от метро Авиастроительная",
+        "ЖК «Максима» — современный дом комфорт-класса с продуманными ликвидными планировками в шаговой доступности от метро Авиастроительная",
       summary:
-        "Дом переменной этажности 9–13 этажей из 6 секций на 332 квартиры от 20 до 87м². Вся необходимая инфраструктура на первых этажах",
+        "Дом переменной этажности 9-13 этажей на 332 квартиры с предчистовой отделкой. Вся необходимая инфраструктура на первых этажах.",
       openLabel: "Подробнее о проекте",
       closeLabel: "Скрыть подробную информацию",
       mobileCloseLabel: "Скрыть",
@@ -65,10 +65,8 @@ export default {
         "ЖК «Максима» расположен в центральной части Авиастроительного района — одном из самых самодостаточных в Казани",
       description:
         "До метро — 12 минут пешком, до остановки «Максимова» — 150 метров. Школы, сады, магазины, спорт и медицина — рядом с домом.",
-      cta: {
-        label: "Назначить встречу",
-        href: "#request-dialog",
-      },
+      // Временно скрыто: кнопка "Назначить встречу".
+      cta: null,
       ctaMobile: {
         label: "Выбрать квартиру",
         href: "#layouts",
@@ -188,7 +186,8 @@ export default {
         {
           category: "school",
           title: "Гимназия № 33",
-          description: "Гимназия с углубленным изучением английского и французского",
+          description:
+            "Гимназия с углубленным изучением английского и французского",
           address: "ул. Симонова, 17",
           distance: "1,2 км, 15 мин",
           coordinates: "49.08480,55.86538",
@@ -608,76 +607,56 @@ export default {
         "Рациональное проектирование без лишних метров: максимум полезной жилплощади",
         "для работы и отдыха всех членов семьи",
       ],
-      tabs: [
+      items: [
         {
-          title: "Классические планировки",
-          items: [
-            {
-              image: "/images/solutions/1.webp",
-              title: "Квартиры-студии",
-              area: "от 20 до 26 м",
-              description:
-                "В прихожей — ниша для хранения, в ванной комнате поместится стиральная машина и в ряде планировок полноценная ванна.",
-              price: "12 455 000 р",
-              buttonLabel: "Подобрать квартиру",
-              buttonHref: "#request-dialog",
-            },
-            {
-              image: "/images/solutions/2.webp",
-              title: "Однокомнатные",
-              area: "от 32,2 до 36,3 м",
-              description:
-                "Изолированная кухня. Увеличенные окна, балкон или лоджия, встроенные ниши для хранения в прихожей.",
-              price: "12 455 000 р",
-              buttonLabel: "Подобрать квартиру",
-              buttonHref: "#request-dialog",
-            },
-            {
-              image: "/images/solutions/3.webp",
-              title: "Двухкомнатные",
-              area: "от 55,9 до 59,3 м",
-              description:
-                "Распашные планировки на две стороны света. Просторные изолированные кухни, отдельная гостиная и спальня.",
-              price: "12 455 000 р",
-              buttonLabel: "Подобрать квартиру",
-              buttonHref: "#request-dialog",
-            },
-          ],
+          image: "/images/solutions/1.webp",
+          title: "Квартира - студия",
+          area: "22,1 м",
+          description:
+            "В прихожей — ниша для хранения, в ванной комнате поместится стиральная машина и в ряде планировок полноценная ванна.",
+          price: "6 735 319 р",
+          buttonLabel: "Подробнее",
+          buttonHref: "#request-dialog",
         },
         {
-          title: "Евроформат",
-          items: [
-            {
-              image: "/images/solutions/4.webp",
-              title: "2К",
-              area: "от 33 до 40,7 м",
-              description:
-                "Современные евро-планировки с кухней-гостиной и изолированной спальней. Компактный метраж не в ущерб приватности: общая зона подходит для семейных вечеров, а спальня остаётся тихим личным пространством.",
-              price: "12 455 000 р",
-              buttonLabel: "Подобрать квартиру",
-              buttonHref: "#request-dialog",
-            },
-            {
-              image: "/images/solutions/5.webp",
-              title: "3К",
-              area: "от 59,9 до 67,5 м",
-              description:
-                "Евроформат с просторной кухней-гостиной и двумя изолированными спальнями. Два санузла, вместительная прихожая. Отдельные спальни позволяют каждому иметь своё приватное пространство.",
-              price: "12 455 000 р",
-              buttonLabel: "Подобрать квартиру",
-              buttonHref: "#request-dialog",
-            },
-            {
-              image: "/images/solutions/6.webp",
-              title: "4К",
-              area: "72,7 м",
-              description:
-                "Просторная кухня-гостиная наполнена светом благодаря двум широким окнам. Компактный кабинет идеально подходит для работы или творчества, а рядом расположена уютная детская комната.",
-              price: "12 455 000 р",
-              buttonLabel: "Подобрать квартиру",
-              buttonHref: "#request-dialog",
-            },
-          ],
+          image: "/images/solutions/2.webp",
+          title: "Квартира - студия",
+          area: "23,8 м",
+          description:
+            "Есть варианты с лоджией, балконом и даже с двумя балконами, а также с ориентацией окон на две стороны света",
+          price: "7 162 322 р",
+          buttonLabel: "Подробнее",
+          buttonHref: "#request-dialog",
+        },
+        {
+          image: "/images/solutions/3.webp",
+          title: "Евроформат: 2к",
+          area: "33 м",
+          description:
+            "Современные евро-планировки с кухней-гостиной и изолированной спальней.",
+          price: "8 397 348 р",
+          buttonLabel: "Подробнее",
+          buttonHref: "#request-dialog",
+        },
+        {
+          image: "/images/solutions/4.webp",
+          title: "Однокомнатная квартира",
+          area: "34,4 м",
+          description:
+            "Изолированная кухня. Увеличенные окна, балкон или лоджия, встроенные ниши для хранения в прихожей.",
+          price: "8 388 932 р",
+          buttonLabel: "Подробнее",
+          buttonHref: "#request-dialog",
+        },
+        {
+          image: "/images/solutions/5.webp",
+          title: "Двухкомнатная квартира",
+          area: "59,2 м",
+          description:
+            "Распашные планировки на две стороны света. Просторные изолированные кухни, отдельная гостиная и спальня.",
+          price: "13 774 248 р",
+          buttonLabel: "Подробнее",
+          buttonHref: "#request-dialog",
         },
       ],
     },
@@ -772,7 +751,7 @@ export default {
           image: "/images/promos/3.svg",
           imageMobile: "/images/promos/mobile-3.svg",
           themeClass: "promos__card--dark",
-          title: "Рассрочка от 10%",
+          title: "Рассрочка от 15%",
           descriptionLines: ["Без удорожания стоимости"],
           buttonLabel: "Получить консультацию",
           buttonHref: "#request-dialog",
@@ -785,14 +764,14 @@ export default {
         "Надёжность застройщика, скорость строительства и безопасность сделки — самые важные факторы при покупке недвижимости.",
       items: [
         {
-          image: "/images/participants/1.webp",
-          alt: "КСТ",
-          roleLines: ["Генеральный", "подрядчик"],
-        },
-        {
           image: "/images/participants/2.webp",
           alt: "Альянс Девелопмент",
           roleLines: ["Девелопер", "проекта"],
+        },
+        {
+          image: "/images/participants/1.webp",
+          alt: "КСТ",
+          roleLines: ["Генеральный", "подрядчик"],
         },
         {
           image: "/images/participants/3.webp",
@@ -851,6 +830,7 @@ export default {
         agreements: [
           {
             name: "personal-data",
+            required: true,
             textBefore:
               "Я согласен на обработку персональных данных и принимаю ",
             policy: {
@@ -894,6 +874,7 @@ export default {
         agreements: [
           {
             name: "personal-data",
+            required: true,
             textBefore:
               "Я согласен на обработку персональных данных и принимаю ",
             policy: {
@@ -903,19 +884,31 @@ export default {
           },
           {
             name: "newsletter",
-            text:
-              "Я согласен на получение рекламных и информационных email-рассылок",
+            required: true,
+            text: "Я согласен на получение рекламных и информационных email-рассылок",
           },
         ],
       },
     ],
+    successModal: {
+      id: "success-dialog",
+      title: "Спасибо! Ваша заявка отправлена",
+      description:
+        "Менеджер свяжется с вами для подтверждения заявки и согласует время консультации",
+    },
+    errorModal: {
+      id: "error-dialog",
+      title: "Заявку не удалось отправить",
+      description:
+        "Попробуйте отправить форму ещё раз или свяжитесь с нами по телефону",
+    },
     individualConditions: {
       image: "/images/individual-conditions/bg.webp",
       imageMobile: "/images/individual-conditions/bg-mobile.svg",
       title: "Получите индивидуальные условия",
       phoneLabel: "Телефон:",
-      phone: "+7 (495) 132-07-08",
-      phoneHref: "tel:+74951320708",
+      phone: "+7 (927) 249-40-69",
+      phoneHref: "tel:+79272494069",
       submitLabel: "Оставить заявку",
       fields: [
         {
@@ -945,8 +938,8 @@ export default {
       agreements: [
         {
           name: "personal-data",
-          textBefore:
-            "Я согласен на обработку персональных данных и принимаю ",
+          required: true,
+          textBefore: "Я согласен на обработку персональных данных и принимаю ",
           policy: {
             href: "#",
             label: "условия политики конфиденциальности",
@@ -954,8 +947,8 @@ export default {
         },
         {
           name: "newsletter",
-          text:
-            "Я согласен на получение рекламных и информационных email-рассылок",
+          required: true,
+          text: "Я согласен на получение рекламных и информационных email-рассылок",
         },
       ],
     },

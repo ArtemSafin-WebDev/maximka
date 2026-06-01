@@ -2,6 +2,10 @@ import Swiper from "swiper";
 import { Navigation } from "swiper/modules";
 
 import { MOBILE_BREAKPOINT } from "../../constants/breakpoints";
+import {
+  duplicateLoopSlides,
+  removeLoopSlideDuplicates,
+} from "../../utils/loopSlides";
 import Component from "../Component";
 
 class FeaturesModal extends Component {
@@ -73,6 +77,8 @@ class FeaturesModal extends Component {
 
   private initSlider() {
     if (this.swiper) return;
+
+    duplicateLoopSlides(this.slider);
 
     this.swiper = new Swiper(this.slider, {
       modules: [Navigation],
@@ -204,6 +210,7 @@ class FeaturesModal extends Component {
     window.removeEventListener("resize", this.updateActiveGeometry);
     this.swiper?.destroy(true, true);
     this.swiper = null;
+    removeLoopSlideDuplicates(this.slider);
     this.unregister();
   }
 }

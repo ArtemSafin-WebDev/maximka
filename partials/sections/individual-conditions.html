@@ -19,7 +19,13 @@
         >
       </picture>
 
-      <form class="individual-conditions__form js-form" action="#" method="post">
+      <form
+        class="individual-conditions__form js-form"
+        action="#"
+        method="post"
+        data-success-modal="#{{successModal.id}}"
+        data-error-modal="#{{errorModal.id}}"
+      >
         <div class="individual-conditions__fields">
           {{#each individualConditions.fields}}
             {{> components/text-field }}
@@ -46,12 +52,14 @@
           {{individualConditions.title}}
         </h2>
 
-        <div class="individual-conditions__phone">
-          <span class="individual-conditions__phone-label">{{individualConditions.phoneLabel}}</span>
-          <a class="individual-conditions__phone-link" href="{{individualConditions.phoneHref}}">
-            {{individualConditions.phone}}
-          </a>
-        </div>
+        {{#if individualConditions.phone}}
+          <div class="individual-conditions__phone">
+            <span class="individual-conditions__phone-label">{{individualConditions.phoneLabel}}</span>
+            <a class="individual-conditions__phone-link" href="{{individualConditions.phoneHref}}">
+              {{individualConditions.phone}}
+            </a>
+          </div>
+        {{/if}}
       </div>
     </div>
   </div>

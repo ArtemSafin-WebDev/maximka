@@ -32,8 +32,9 @@ class AJAXForm extends Component {
       null;
 
     if (successSelector)
-      this.successModal = document.querySelector(successSelector);
-    if (errorSelector) this.errorModal = document.querySelector(errorSelector);
+      this.successModal = document.querySelector<HTMLElement>(successSelector);
+    if (errorSelector)
+      this.errorModal = document.querySelector<HTMLElement>(errorSelector);
 
     this.submitBtn = form.querySelector<HTMLButtonElement>(
       'button[type="submit"]'
@@ -63,22 +64,33 @@ class AJAXForm extends Component {
         signal: this.abortController.signal,
       });
       if (!res.ok) throw new Error(`Response is not ok: ${res.status}`);
-      if (this.successModal) {
-        this.successModal.classList.add("active");
-        document.body.classList.add("modal-open");
-      }
+      if (this.successModal) this.openStateModal(this.successModal);
       this.element.classList.add("form-sent");
       (this.element as HTMLFormElement).reset();
     } catch (error) {
-      if (this.errorModal) {
-        this.errorModal.classList.add("active");
-        document.body.classList.add("modal-open");
-      }
+      if (this.errorModal) this.openStateModal(this.errorModal);
       console.error(error);
     } finally {
       this.isSubmitting = false;
       if (this.submitBtn) this.submitBtn.disabled = false;
     }
+  }
+
+  private openStateModal(modal: HTMLElement) {
+    const currentDialog =
+      this.element.closest<HTMLDialogElement>("dialog[open]");
+
+    if (currentDialog && currentDialog !== modal) {
+      currentDialog.close();
+    }
+
+    if (modal instanceof HTMLDialogElement) {
+      if (!modal.open) modal.showModal();
+    } else {
+      modal.classList.add("active");
+    }
+
+    document.body.classList.add("modal-open");
   }
 
   destroy() {

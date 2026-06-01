@@ -180,20 +180,32 @@
     fill: currentColor;
   }
 
-  .advantages-card:hover,
-  .advantages-card:focus-within {
+  .advantages-card:focus-visible {
     color: #ffffff;
   }
 
-  .advantages-card:hover .advantages-card__content,
-  .advantages-card:focus-within .advantages-card__content {
+  .advantages-card:focus-visible .advantages-card__content {
     background-color: transparent;
     background-image: none;
   }
 
-  .advantages-card:hover::after,
-  .advantages-card:focus-within::after {
+  .advantages-card:focus-visible::after {
     opacity: 1;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .advantages-card:hover {
+      color: #ffffff;
+    }
+
+    .advantages-card:hover .advantages-card__content {
+      background-color: transparent;
+      background-image: none;
+    }
+
+    .advantages-card:hover::after {
+      opacity: 1;
+    }
   }
 
   .advantages__nav {

@@ -1,8 +1,8 @@
 export default {
   title: "Vite starter title",
   header: {
-    phone: "+7 (4722) 78-95-49",
-    phoneHref: "tel:+74722789549",
+    phone: "+7 (927) 249-40-69",
+    phoneHref: "tel:+79272494069",
     nav: [
       { label: "О проекте", href: "#about" },
       { label: "Расположение", href: "#location" },
@@ -18,7 +18,6 @@ export default {
       { label: "Инфраструктура", href: "#infrastructure" },
       { label: "Преимущества", href: "#benefits" },
       { label: "Акции", href: "#promotions" },
-      { label: "Как купить", href: "#buy" },
     ],
     apartments: {
       label: "Выбрать квартиру",
@@ -30,8 +29,8 @@ export default {
     },
   },
   footer: {
-    phone: "+7 (495) 132-07-08",
-    phoneHref: "tel:+74951320708",
+    phone: "+7 (927) 249-40-69",
+    phoneHref: "tel:+79272494069",
     nav: [
       { label: "О проекте", href: "#about" },
       { label: "Расположение", href: "#location" },
@@ -40,7 +39,6 @@ export default {
       { label: "Инфраструктура", href: "#infrastructure" },
       { label: "Акции", href: "#promotions" },
       { label: "Преимущества", href: "#benefits" },
-      { label: "Как купить", href: "#buy" },
       { label: "Ход строительства", href: "#progress" },
       { label: "контакты", href: "#contacts" },
     ],
