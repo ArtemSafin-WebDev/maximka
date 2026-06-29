@@ -64,6 +64,10 @@ class AJAXForm extends Component {
         signal: this.abortController.signal,
       });
       if (!res.ok) throw new Error(`Response is not ok: ${res.status}`);
+      const result = await res.json().catch(() => null);
+      if (result?.status && result.status !== "mail_sent") {
+        throw new Error(`Form was not sent: ${result.status}`);
+      }
       if (this.successModal) this.openStateModal(this.successModal);
       this.element.classList.add("form-sent");
       (this.element as HTMLFormElement).reset();

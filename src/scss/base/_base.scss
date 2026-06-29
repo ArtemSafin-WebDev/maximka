@@ -4,6 +4,7 @@
   html {
     font-size: 62.5%;
     -webkit-font-smoothing: antialiased;
+    font-synthesis: none;
     scrollbar-gutter: stable;
     scroll-behavior: smooth;
     font-size: clamp(2px, 0.45vw, 125px);
@@ -22,8 +23,13 @@
     flex-direction: column;
     overscroll-behavior-y: none;
     font-family: var(--tt-fors);
+    font-style: normal;
     color: var(--text-color);
     background-color: var(--bg-color);
+  }
+
+  :where(address, cite, dfn, em, i, var) {
+    font-style: normal;
   }
 
   :where(a, button) {

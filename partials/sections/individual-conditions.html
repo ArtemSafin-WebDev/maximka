@@ -12,7 +12,7 @@
           class="individual-conditions__bg"
           src="{{individualConditions.image}}"
           width="3444"
-          height="1518"
+          height="1570"
           alt=""
           aria-hidden="true"
           loading="lazy"
@@ -26,24 +26,30 @@
         data-success-modal="#{{successModal.id}}"
         data-error-modal="#{{errorModal.id}}"
       >
-        <div class="individual-conditions__fields">
-          {{#each individualConditions.fields}}
-            {{> components/text-field }}
-          {{/each}}
+        <div class="individual-conditions__body">
+          <p class="individual-conditions__form-title">{{individualConditions.formTitle}}</p>
 
-          <p class="individual-conditions__required-note">* поле обязательно для заполнения</p>
+          <div class="individual-conditions__fields">
+            {{#each individualConditions.fields}}
+              {{> components/text-field }}
+            {{/each}}
+
+            <p class="individual-conditions__required-note">* поле обязательно для заполнения</p>
+          </div>
         </div>
 
-        {{> components/button
-          class="individual-conditions__submit btn--full"
-          type="submit"
-          label=individualConditions.submitLabel
-        }}
+        <div class="individual-conditions__actions">
+          {{> components/button
+            class="individual-conditions__submit btn--full"
+            type="submit"
+            label=individualConditions.submitLabel
+          }}
 
-        <div class="individual-conditions__agreements">
-          {{#each individualConditions.agreements}}
-            {{> components/checkbox }}
-          {{/each}}
+          <div class="individual-conditions__agreements">
+            {{#each individualConditions.agreements}}
+              {{> components/checkbox }}
+            {{/each}}
+          </div>
         </div>
       </form>
 

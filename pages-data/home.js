@@ -946,6 +946,7 @@ export default {
       image: "/images/individual-conditions/bg.webp",
       imageMobile: "/images/individual-conditions/bg-mobile.svg",
       title: "Получите индивидуальные условия",
+      formTitle: "Мы свяжемся с вами в ближайшее время",
       phoneLabel: "Телефон:",
       phone: "+7 (927) 249-40-69",
       phoneHref: "tel:+79272494069",
@@ -969,7 +970,6 @@ export default {
           required: true,
         },
         {
-          textarea: true,
           type: "text",
           name: "comment",
           placeholder: "Комментарий",
