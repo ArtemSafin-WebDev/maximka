@@ -32,6 +32,12 @@
           {{/each}}
         </nav>
 
+        <nav class="page-footer__mobile-nav" aria-label="Навигация в подвале">
+          {{#each footer.mobileNav}}
+            <a class="page-footer__nav-link" href="{{href}}">{{label}}</a>
+          {{/each}}
+        </nav>
+
         <div class="page-footer__phone">
           <span class="page-footer__phone-label">Телефон:</span>
           <a class="page-footer__phone-link" href="{{footer.phoneHref}}">{{footer.phone}}</a>
@@ -45,17 +51,19 @@
             rel="noopener noreferrer"
             aria-label="Сайт разработан Mark Weber"
           >
+            <span class="page-footer__made-by-logo-wrap" aria-hidden="true">
+              <img
+                class="page-footer__made-by-logo"
+                src="/images/shared/made-by.svg"
+                width="38"
+                height="55"
+                alt=""
+              >
+            </span>
             <span class="page-footer__made-by-text">
               <span>Создание</span>
               <span>сайта</span>
             </span>
-            <img
-              class="page-footer__made-by-logo"
-              src="/images/shared/made-by.svg"
-              width="38"
-              height="55"
-              alt=""
-            >
           </a>
           <span class="page-footer__year">©{{footer.year}}</span>
         </div>
