@@ -5,6 +5,7 @@ class AboutProject extends Component {
   private buttonText: HTMLElement | null;
   private more: HTMLElement | null;
   private openLabel: string;
+  private mobileOpenLabel: string;
   private closeLabel: string;
   private mobileCloseLabel: string;
   private mobileMedia: MediaQueryList;
@@ -15,11 +16,13 @@ class AboutProject extends Component {
     this.button = this.element.querySelector<HTMLButtonElement>(
       ".js-about-project-toggle"
     );
-    this.buttonText = this.button?.querySelector("span") ?? null;
+    this.buttonText = this.button?.querySelector(".btn__label") ?? null;
     this.more = this.element.querySelector<HTMLElement>(
       ".js-about-project-more"
     );
     this.openLabel = this.button?.dataset.openLabel ?? "Подробнее";
+    this.mobileOpenLabel =
+      this.button?.dataset.mobileOpenLabel ?? this.openLabel;
     this.closeLabel = this.button?.dataset.closeLabel ?? "Скрыть";
     this.mobileCloseLabel =
       this.button?.dataset.mobileCloseLabel ?? this.closeLabel;
@@ -27,6 +30,7 @@ class AboutProject extends Component {
 
     this.button?.addEventListener("click", this.handleClick);
     this.mobileMedia.addEventListener("change", this.handleMediaChange);
+    this.updateButtonText(false);
   }
 
   public destroy() {
@@ -40,11 +44,19 @@ class AboutProject extends Component {
     this.button?.setAttribute("aria-expanded", String(expanded));
     this.more?.setAttribute("aria-hidden", String(!expanded));
 
-    if (this.buttonText) {
-      this.buttonText.textContent = expanded
-        ? this.currentCloseLabel
-        : this.openLabel;
-    }
+    this.updateButtonText(expanded);
+  }
+
+  private updateButtonText(expanded: boolean) {
+    if (!this.buttonText) return;
+
+    this.buttonText.textContent = expanded
+      ? this.currentCloseLabel
+      : this.currentOpenLabel;
+  }
+
+  private get currentOpenLabel() {
+    return this.mobileMedia.matches ? this.mobileOpenLabel : this.openLabel;
   }
 
   private get currentCloseLabel() {
@@ -56,9 +68,7 @@ class AboutProject extends Component {
   };
 
   private handleMediaChange = () => {
-    if (this.element.classList.contains("is-expanded")) {
-      this.setExpanded(true);
-    }
+    this.updateButtonText(this.element.classList.contains("is-expanded"));
   };
 }
 

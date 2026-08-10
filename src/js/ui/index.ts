@@ -1,4 +1,5 @@
 import accordions from "./accordions";
+import contactsLead from "./contactsLead";
 import modals from "./modals";
 import pageHeader from "./pageHeader";
 import selects from "./selects";
@@ -6,6 +7,7 @@ import selects from "./selects";
 export default function ui() {
   pageHeader();
   accordions();
+  contactsLead();
   modals();
   selects();
 }

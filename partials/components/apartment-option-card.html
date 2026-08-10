@@ -1,0 +1,41 @@
+<article class="apartment-option-card apartment-option-card--{{theme}}">
+  <picture class="apartment-option-card__media">
+    <source media="(max-width: 576px)" srcset="{{imageMobile}}">
+    <img
+      class="apartment-option-card__image"
+      src="{{image}}"
+      width="{{imageWidth}}"
+      height="{{imageHeight}}"
+      alt="{{alt}}"
+      loading="lazy"
+    >
+  </picture>
+
+  <div class="apartment-option-card__content">
+    <div class="apartment-option-card__text">
+      <h3 class="apartment-option-card__title">
+        {{#each titleLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
+      </h3>
+
+      <p class="apartment-option-card__description">
+        {{#each descriptionLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
+      </p>
+    </div>
+
+    {{> components/button
+      class="apartment-option-card__button btn--promo"
+      href=buttonHref
+      label=buttonLabel
+    }}
+
+    <a
+      class="apartment-option-card__mobile-button"
+      href="{{buttonHref}}"
+      aria-label="{{buttonLabel}}: {{title}}"
+    >
+      <svg width="32" height="32" aria-hidden="true" focusable="false">
+        <use href="#arrows/right"></use>
+      </svg>
+    </a>
+  </div>
+</article>

@@ -96,6 +96,7 @@ class InfrastructureMap extends Component {
   private points: InfrastructurePoint[];
   private map: YMapInstance | null = null;
   private visibleMarkers = new Set<YMapEntity>();
+  private mapControlsObserver: MutationObserver | null = null;
 
   constructor(element: HTMLElement) {
     super(element);
@@ -185,6 +186,8 @@ class InfrastructureMap extends Component {
       behaviors: ["drag", "pinchZoom", "dblClick"],
     });
 
+    this.hideConfiguredMapControls();
+
     this.map
       .addChild(
         new ymaps3.YMapDefaultSchemeLayer({
@@ -205,6 +208,43 @@ class InfrastructureMap extends Component {
       );
     });
     this.setActiveCategory("all");
+  }
+
+  private hideConfiguredMapControls(): void {
+    if (
+      !this.canvas ||
+      this.element.dataset.hideMapOpenButton !== "true"
+    ) {
+      return;
+    }
+
+    const hideMapOpenButton = () => {
+      this.canvas?.querySelectorAll<HTMLElement>(
+        'a, button, [role="button"]'
+      ).forEach((control) => {
+        const accessibleText = [
+          control.textContent,
+          control.getAttribute("aria-label"),
+          control.getAttribute("title"),
+        ]
+          .filter(Boolean)
+          .join(" ");
+
+        if (!/открыть\s+яндекс\s*карты/i.test(accessibleText)) {
+          return;
+        }
+
+        control.style.setProperty("display", "none", "important");
+        control.setAttribute("aria-hidden", "true");
+      });
+    };
+
+    hideMapOpenButton();
+    this.mapControlsObserver = new MutationObserver(hideMapOpenButton);
+    this.mapControlsObserver.observe(this.canvas, {
+      childList: true,
+      subtree: true,
+    });
   }
 
   private addComplexObjects(ymaps3: YMaps3): void {
@@ -451,6 +491,7 @@ class InfrastructureMap extends Component {
       filter.removeEventListener("click", this.handleFilterClick);
     });
 
+    this.mapControlsObserver?.disconnect();
     this.map?.destroy?.();
     this.unregister();
   }

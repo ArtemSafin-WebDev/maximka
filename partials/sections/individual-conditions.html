@@ -1,21 +1,25 @@
-<section class="individual-conditions" id="individual-conditions" aria-labelledby="individual-conditions-title">
+<section
+  class="individual-conditions{{#if individualConditions.modifier}} individual-conditions--{{individualConditions.modifier}}{{/if}}"
+  id="individual-conditions"
+  aria-labelledby="individual-conditions-title"
+>
   <div class="container">
     <div class="individual-conditions__inner">
       <picture class="individual-conditions__picture">
         <source
           srcset="{{individualConditions.imageMobile}}"
           media="(max-width: 576px)"
-          width="335"
-          height="594"
+          width="{{individualConditions.imageMobileWidth}}"
+          height="{{individualConditions.imageMobileHeight}}"
         >
         <img
           class="individual-conditions__bg"
           src="{{individualConditions.image}}"
-          width="3444"
-          height="1570"
+          width="{{individualConditions.imageWidth}}"
+          height="{{individualConditions.imageHeight}}"
           alt=""
           aria-hidden="true"
-          loading="lazy"
+          loading="{{individualConditions.imageLoading}}"
         >
       </picture>
 
@@ -57,6 +61,18 @@
         <h2 class="individual-conditions__title" id="individual-conditions-title">
           {{individualConditions.title}}
         </h2>
+
+        {{#if individualConditions.subtitle}}
+          <p class="individual-conditions__subtitle">
+            {{#if individualConditions.subtitleLines}}
+              {{#each individualConditions.subtitleLines}}
+                <span>{{this}}</span>
+              {{/each}}
+            {{else}}
+              {{individualConditions.subtitle}}
+            {{/if}}
+          </p>
+        {{/if}}
 
         {{#if individualConditions.phone}}
           <div class="individual-conditions__phone">

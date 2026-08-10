@@ -8,7 +8,7 @@ export default {
       { label: "Расположение", href: "#location" },
       { label: "Планировки", href: "#layouts" },
       { label: "Акции", href: "#promotions" },
-      { label: "Контакты", href: "#contacts" },
+      { label: "Контакты", href: "/contacts.html" },
     ],
     mobileNav: [
       { label: "О проекте", href: "#about" },
@@ -41,7 +41,7 @@ export default {
       { label: "Преимущества", href: "#benefits" },
       { label: "Как купить", href: "#buy" },
       { label: "Ход строительства", href: "#progress" },
-      { label: "контакты", href: "#contacts" },
+      { label: "контакты", href: "/contacts.html" },
     ],
     mobileNav: [
       { label: "О проекте", href: "#about" },

@@ -1,0 +1,17 @@
+<section class="apartment-benefits" aria-labelledby="apartment-benefits-title">
+  <div class="container">
+    <p class="apartment-benefits__eyebrow">{{apartmentBenefits.eyebrow}}</p>
+
+    <h2 class="apartment-benefits__title" id="apartment-benefits-title">
+      {{apartmentBenefits.title}}
+    </h2>
+
+    <ul class="apartment-benefits__list">
+      {{#each apartmentBenefits.items}}
+        <li class="apartment-benefits__item">
+          {{> components/apartment-benefit-card }}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>

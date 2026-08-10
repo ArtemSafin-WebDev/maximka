@@ -1,0 +1,86 @@
+<section class="contacts-faq" aria-labelledby="contacts-faq-title">
+  <div class="container">
+    <h2 class="contacts-faq__title" id="contacts-faq-title">{{contactsFaq.title}}</h2>
+  </div>
+
+  <div class="contacts-faq__surface">
+    <div class="contacts-faq__content container js-contacts-faq">
+      <div class="contacts-faq__tabs" role="tablist" aria-label="Темы частых вопросов">
+        {{#each contactsFaq.tabs}}
+          <button
+            class="contacts-faq__tab js-contacts-faq-tab{{#if active}} active{{/if}}"
+            id="contacts-faq-tab-{{id}}"
+            type="button"
+            role="tab"
+            aria-controls="contacts-faq-panel-{{id}}"
+            aria-selected="{{#if active}}true{{else}}false{{/if}}"
+            tabindex="{{tabindex}}"
+          >
+            <span class="contacts-faq__tab-label contacts-faq__tab-label--desktop">{{label}}</span>
+            <span class="contacts-faq__tab-label contacts-faq__tab-label--mobile">{{mobileLabel}}</span>
+            <span class="contacts-faq__tab-icon" aria-hidden="true">
+              <svg width="32" height="32" focusable="false">
+                <use href="#contact-tab-arrow"></use>
+              </svg>
+            </span>
+          </button>
+        {{/each}}
+      </div>
+
+      <div class="contacts-faq__panels">
+        {{#each contactsFaq.tabs}}
+          <div
+            class="contacts-faq__panel js-contacts-faq-panel{{#if active}} active{{/if}}"
+            id="contacts-faq-panel-{{id}}"
+            role="tabpanel"
+            aria-labelledby="contacts-faq-tab-{{id}}"
+            {{#unless active}}hidden{{/unless}}
+          >
+            <ul class="contacts-faq__list">
+              {{#each items}}
+                <li class="contacts-faq__item js-contacts-faq-item">
+                  <button
+                    class="contacts-faq__question js-contacts-faq-question"
+                    id="contacts-faq-question-{{../id}}-{{@index}}"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="contacts-faq-answer-{{../id}}-{{@index}}"
+                  >
+                    <span>
+                      {{#if questionMobileLineTwo}}
+                        {{questionMobileLineOne}}<br class="contacts-faq__mobile-break">{{questionMobileLineTwo}}
+                      {{else}}
+                        {{question}}
+                      {{/if}}
+                    </span>
+                    <span class="contacts-faq__question-icon" aria-hidden="true">
+                      <svg width="24" height="24" focusable="false">
+                        <use href="#contact-accordion-arrow"></use>
+                      </svg>
+                    </span>
+                  </button>
+
+                  <div
+                    class="contacts-faq__answer js-contacts-faq-answer"
+                    id="contacts-faq-answer-{{../id}}-{{@index}}"
+                    role="region"
+                    aria-labelledby="contacts-faq-question-{{../id}}-{{@index}}"
+                    aria-hidden="true"
+                  >
+                    <div class="contacts-faq__answer-clip">
+                      <div class="contacts-faq__answer-content">
+                        {{#each answer}}
+                          <p>{{this}}</p>
+                        {{/each}}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section>

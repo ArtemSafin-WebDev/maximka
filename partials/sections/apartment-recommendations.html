@@ -1,0 +1,49 @@
+<section
+  class="apartment-recommendations js-apartment-recommendations"
+  aria-labelledby="apartment-recommendations-title"
+>
+  <div class="container">
+    <div class="apartment-recommendations__header">
+      <h1
+        class="apartment-recommendations__title"
+        id="apartment-recommendations-title"
+      >
+        <span>{{apartmentRecommendations.titleFirstLine}}</span>
+        <span>{{apartmentRecommendations.titleSecondLine}}</span>
+      </h1>
+
+      <div class="apartment-recommendations__navigation">
+        <button
+          class="apartment-recommendations__navigation-button js-apartment-recommendations-prev"
+          type="button"
+          aria-label="Предыдущие квартиры"
+        >
+          <svg width="24" height="24" aria-hidden="true" focusable="false">
+            <use href="#apartment-slider-left"></use>
+          </svg>
+        </button>
+        <button
+          class="apartment-recommendations__navigation-button js-apartment-recommendations-next"
+          type="button"
+          aria-label="Следующие квартиры"
+        >
+          <svg width="24" height="24" aria-hidden="true" focusable="false">
+            <use href="#apartment-slider-right"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="apartment-recommendations__slider swiper js-apartment-recommendations-slider">
+      <ul class="apartment-recommendations__list swiper-wrapper">
+        {{#each apartmentRecommendations.items}}
+          <li class="apartment-recommendations__slide swiper-slide">
+            {{> components/apartment-card }}
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="apartment-recommendations__scrollbar swiper-scrollbar"></div>
+    </div>
+  </div>
+</section>

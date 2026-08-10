@@ -1,0 +1,36 @@
+@use "tools/media" as mq;
+
+@layer components {
+  .page-heading {
+    flex: 0 0 auto;
+    padding-top: 15.2rem;
+    padding-bottom: 6rem;
+  }
+
+  .page-heading__title {
+    margin-top: 3rem;
+    font-size: 8rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  @include mq.down(sm) {
+    .page-heading {
+      margin-bottom: 2rem;
+      padding-top: 8.4rem;
+      padding-bottom: 3.2rem;
+      border-radius: 0 0 3.2rem 3.2rem;
+      background-color: #ffffff;
+    }
+
+    .page-heading__breadcrumbs {
+      display: none;
+    }
+
+    .page-heading__title {
+      margin-top: 0;
+      font-size: 3rem;
+      line-height: 1.1;
+    }
+  }
+}

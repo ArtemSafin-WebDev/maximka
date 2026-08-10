@@ -1,0 +1,19 @@
+<nav class="breadcrumbs{{#if class}} {{class}}{{/if}}" aria-label="{{ariaLabel}}">
+  <ol class="breadcrumbs__list">
+    {{#each items}}
+      <li class="breadcrumbs__item">
+        {{#if href}}
+          <a class="breadcrumbs__link" href="{{href}}">{{label}}</a>
+        {{else}}
+          <span class="breadcrumbs__current" aria-current="page">{{label}}</span>
+        {{/if}}
+
+        {{#unless @last}}
+          <svg class="breadcrumbs__separator" width="20" height="20" aria-hidden="true" focusable="false">
+            <use href="#breadcrumb-arrow"></use>
+          </svg>
+        {{/unless}}
+      </li>
+    {{/each}}
+  </ol>
+</nav>

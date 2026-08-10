@@ -119,6 +119,16 @@
     text-transform: uppercase;
   }
 
+  .individual-conditions__subtitle {
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .individual-conditions__subtitle span {
+    display: block;
+  }
+
   .individual-conditions__phone {
     display: none;
     flex-direction: column;
@@ -142,6 +152,51 @@
 
   .individual-conditions .form-field__inner {
     background-color: #ffffff;
+  }
+
+  .individual-conditions--apartment .individual-conditions__picture::after {
+    background-image:
+      linear-gradient(162.95deg, rgb(0 0 0 / 20%) 17.93%, rgb(0 0 0 / 0%) 46.01%),
+      linear-gradient(rgb(0 0 0 / 5%), rgb(0 0 0 / 5%));
+  }
+
+  .individual-conditions--apartment {
+    margin-bottom: 12rem;
+  }
+
+  .individual-conditions--apartment .individual-conditions__bg {
+    object-position: center 55%;
+  }
+
+  .individual-conditions--apartment .individual-conditions__form {
+    gap: 4rem;
+    padding: 4rem;
+  }
+
+  .individual-conditions--apartment .individual-conditions__form-title {
+    max-width: 35.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .individual-conditions--apartment .individual-conditions__fields .form-field {
+    order: initial;
+  }
+
+  .individual-conditions--apartment .form-field--textarea .form-field__inner {
+    min-height: 15.7rem;
+    border-radius: 3.5rem;
+  }
+
+  .individual-conditions--apartment .individual-conditions__actions {
+    gap: 3rem;
+  }
+
+  .individual-conditions--apartment .checkbox {
+    font-size: 1.2rem;
+  }
+
+  .individual-conditions--apartment .individual-conditions__content {
+    gap: 3rem;
   }
 
   @include mq.down(sm) {
@@ -267,6 +322,12 @@
       text-transform: none;
     }
 
+    .individual-conditions__subtitle {
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
     .individual-conditions__agreements {
       gap: 1.6rem;
     }
@@ -279,6 +340,87 @@
 
     .individual-conditions__phone {
       display: none;
+    }
+
+    .individual-conditions--apartment .individual-conditions__inner {
+      padding: 11.2rem 2rem 2rem;
+      background-color: #39a2ae;
+    }
+
+    .individual-conditions--apartment {
+      margin-bottom: 4.8rem;
+    }
+
+    .individual-conditions--apartment .individual-conditions__bg {
+      top: calc(50% + 0.05rem);
+      left: calc(50% + 1.95rem);
+      width: 175.6rem;
+      max-width: none;
+      height: 117.4rem;
+      object-fit: fill;
+      object-position: center;
+      transform: translate(-50%, -50%);
+    }
+
+    .individual-conditions--apartment .individual-conditions__form {
+      gap: 2.4rem;
+      padding: 0;
+    }
+
+    .individual-conditions--apartment .form-field--textarea .form-field__inner {
+      min-height: 9rem;
+      border-radius: 2.4rem;
+    }
+
+    .individual-conditions--apartment .form-field__control--textarea {
+      min-height: 5.6rem;
+    }
+
+    .individual-conditions--apartment .individual-conditions__fields .form-field {
+      order: initial;
+    }
+
+    .individual-conditions--apartment .individual-conditions__required-note {
+      color: #ffffff;
+    }
+
+    .individual-conditions--apartment .individual-conditions__actions {
+      gap: 2.4rem;
+    }
+
+    .individual-conditions--apartment .individual-conditions__submit {
+      background-color: #d8de5b;
+      color: var(--text-color);
+    }
+
+    .individual-conditions--apartment .individual-conditions__content {
+      top: 3rem;
+      right: 2rem;
+      left: 2rem;
+      align-items: center;
+      gap: 0.8rem;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .individual-conditions--apartment .individual-conditions__title {
+      width: 100%;
+    }
+
+    .individual-conditions--apartment .individual-conditions__subtitle {
+      width: 100%;
+    }
+
+    .individual-conditions--apartment .individual-conditions__subtitle span {
+      display: inline;
+    }
+
+    .individual-conditions--apartment .individual-conditions__subtitle span + span::before {
+      content: " ";
+    }
+
+    .individual-conditions--apartment .checkbox {
+      color: #ffffff;
     }
   }
 }

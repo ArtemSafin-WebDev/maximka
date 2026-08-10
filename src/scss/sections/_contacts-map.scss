@@ -1,0 +1,330 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  .contacts-map {
+    margin-bottom: 12rem;
+  }
+
+  .contacts-map__frame {
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
+    height: 88rem;
+    overflow: hidden;
+    border-radius: 5.6rem;
+    background-color: #ecebea;
+  }
+
+  .contacts-map__desktop-map,
+  .contacts-map__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .contacts-map__desktop-map {
+    z-index: 0;
+  }
+
+  .contacts-map__card {
+    position: absolute;
+    top: 50%;
+    left: 5rem;
+    z-index: 2;
+    width: 56rem;
+    height: 78.5rem;
+    overflow: hidden;
+    border-radius: 5.6rem;
+    background-color: #ffffff;
+    transform: translateY(-50%);
+  }
+
+  .contacts-map__details {
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    width: 46rem;
+  }
+
+  .contacts-map__title {
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .contacts-map__contact-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4rem;
+    margin-top: 5rem;
+  }
+
+  .contacts-map__phone {
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .contacts-map__contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .contacts-map__contact-label {
+    font-size: 1.8rem;
+    opacity: 0.5;
+  }
+
+  .contacts-map__contact-value {
+    font-size: 2.2rem;
+  }
+
+  .contacts-map__hours {
+    display: flex;
+    gap: 1.2rem;
+    white-space: nowrap;
+  }
+
+  .contacts-map__messenger {
+    position: absolute;
+    bottom: 5rem;
+    left: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    width: 46rem;
+  }
+
+  .contacts-map__messenger-icon-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 8rem;
+  }
+
+  .contacts-map__messenger-icon-row::before,
+  .contacts-map__messenger-icon-row::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 15.2rem;
+    height: 0.1rem;
+    background-color: #e5e5e5;
+  }
+
+  .contacts-map__messenger-icon-row::before {
+    left: 0;
+  }
+
+  .contacts-map__messenger-icon-row::after {
+    right: 0;
+  }
+
+  .contacts-map__messenger-icon {
+    width: 6.4rem;
+    height: 6.4rem;
+    object-fit: contain;
+  }
+
+  .contacts-map__messenger-title {
+    width: 100%;
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .contacts-map__messenger-button {
+    width: 100%;
+  }
+
+  .contacts-map__mobile-map {
+    display: none;
+  }
+
+  .contacts-map :where(a):focus-visible {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.3rem;
+  }
+
+  @include mq.hover {
+    .contacts-map__phone:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  @include mq.down(sm) {
+    .contacts-map {
+      margin-bottom: 4.8rem;
+    }
+
+    .contacts-map__frame {
+      height: auto;
+      overflow: visible;
+      border-radius: 0;
+      background-color: transparent;
+    }
+
+    .contacts-map__desktop-map {
+      display: none;
+    }
+
+    .contacts-map__card {
+      position: static;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+      border-radius: 0;
+      background-color: transparent;
+      transform: none;
+    }
+
+    .contacts-map__details {
+      position: static;
+      width: 100%;
+      height: 27.7rem;
+      padding: 3.2rem 2rem;
+      border-radius: 2.8rem;
+      background-color: #ffffff;
+    }
+
+    .contacts-map__title {
+      font-size: 2.2rem;
+      line-height: 1.1;
+    }
+
+    .contacts-map__contact-list {
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .contacts-map__phone {
+      font-size: 2.6rem;
+      line-height: 1.1;
+    }
+
+    .contacts-map__contact-item {
+      gap: 0.5rem;
+      line-height: 1;
+    }
+
+    .contacts-map__contact-item + .contacts-map__contact-item {
+      margin-top: -1rem;
+    }
+
+    .contacts-map__contact-label {
+      font-size: 1.3rem;
+    }
+
+    .contacts-map__contact-value {
+      font-size: 1.6rem;
+      line-height: 1.4;
+    }
+
+    .contacts-map__hours {
+      gap: 1.2rem;
+    }
+
+    .contacts-map__messenger {
+      position: static;
+      gap: 3rem;
+      width: 100%;
+      height: 24.3rem;
+      padding: 2rem;
+      border-radius: 2.8rem;
+      background-color: #ffffff;
+    }
+
+    .contacts-map__messenger-icon-row {
+      height: 4.8rem;
+    }
+
+    .contacts-map__messenger-icon-row::before,
+    .contacts-map__messenger-icon-row::after {
+      display: none;
+    }
+
+    .contacts-map__messenger-icon {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    .contacts-map__messenger-title {
+      max-width: 31.1rem;
+      font-size: 2.2rem;
+      line-height: 1.1;
+    }
+
+    .contacts-map__messenger-button {
+      min-height: 4.8rem;
+      padding: 1.6rem 2rem;
+      font-size: 1.4rem;
+    }
+
+    .contacts-map__mobile-map {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 12rem;
+      margin-top: 2rem;
+      overflow: hidden;
+      border-radius: 2.8rem;
+      background-color: #e5e5e5;
+    }
+
+    .contacts-map__mobile-map-image,
+    .contacts-map__mobile-map-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .contacts-map__mobile-map-image {
+      object-fit: cover;
+    }
+
+    .contacts-map__mobile-map-overlay {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .contacts-map__map-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: calc(100% - 4rem);
+      min-height: 4.8rem;
+      padding: 1.6rem 2rem;
+      border-radius: 3.1rem;
+      background-color: #ffffff;
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 1.1;
+      transform: translate(-50%, -50%);
+    }
+
+    @include mq.hover {
+      .contacts-map__map-button:hover {
+        background-color: var(--primary-color);
+        color: #ffffff;
+      }
+    }
+  }
+}

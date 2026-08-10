@@ -47,10 +47,11 @@ export default {
       imageMobile: "/images/about-project/bg-mobile.svg",
       label: "О проекте",
       title:
-        "ЖК «Максима» — современный дом комфорт-класса с продуманными ликвидными планировками в шаговой доступности от метро Авиастроительная",
+        "ЖК «Максима» — современный дом комфорт-класса с умными планировками в шаговой доступности от метро Авиастроительная.",
       summary:
-        "Дом переменной этажности 9-13 этажей на 332 квартиры с предчистовой отделкой. Вся необходимая инфраструктура на первых этажах.",
+        "Дом переменной этажности 9–13 этажей из 6 секций на 332 квартиры от 20 до 87м². Вся необходимая инфраструктура на первых этажах",
       openLabel: "Подробнее о проекте",
+      mobileOpenLabel: "Подробнее",
       closeLabel: "Скрыть подробную информацию",
       mobileCloseLabel: "Скрыть",
       details: [
@@ -945,6 +946,11 @@ export default {
     individualConditions: {
       image: "/images/individual-conditions/bg.webp",
       imageMobile: "/images/individual-conditions/bg-mobile.svg",
+      imageWidth: 3444,
+      imageHeight: 1570,
+      imageMobileWidth: 335,
+      imageMobileHeight: 594,
+      imageLoading: "lazy",
       title: "Получите индивидуальные условия",
       formTitle: "Мы свяжемся с вами в ближайшее время",
       phoneLabel: "Телефон:",

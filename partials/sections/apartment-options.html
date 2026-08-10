@@ -1,0 +1,15 @@
+<section class="apartment-options" aria-labelledby="apartment-options-title">
+  <div class="container">
+    <h2 class="apartment-options__title" id="apartment-options-title">
+      {{apartmentOptions.title}}
+    </h2>
+
+    <ul class="apartment-options__list">
+      {{#each apartmentOptions.items}}
+        <li class="apartment-options__item">
+          {{> components/apartment-option-card }}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  {{> layout/meta }}
+</head>
+
+<body class="apartment-page">
+  {{> layout/header }}
+
+  <main class="page-main apartment-page__main">
+    {{> sections/apartment-benefits }}
+    {{> sections/individual-conditions }}
+    {{> sections/promos }}
+    {{> sections/apartment-recommendations }}
+    {{> sections/apartment-options }}
+  </main>
+
+  {{> layout/footer }}
+  {{> sections/modals }}
+
+  <script type="module" src="/src/js/main.ts"></script>
+</body>
+
+</html>

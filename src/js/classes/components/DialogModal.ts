@@ -40,6 +40,12 @@ class DialogModal extends Component {
   }
 
   private handleDialogClick(event: MouseEvent) {
+    const target = event.target;
+    if (target instanceof Element && target.closest(".js-dialog-close")) {
+      this.close();
+      return;
+    }
+
     if (event.target === this.dialog) {
       this.close();
     }

@@ -1,0 +1,26 @@
+<article class="apartment-benefit-card">
+  <div class="apartment-benefit-card__media" aria-hidden="true">
+    <img
+      class="apartment-benefit-card__image"
+      src="{{image}}"
+      width="{{imageWidth}}"
+      height="{{imageHeight}}"
+      alt=""
+      loading="lazy"
+    >
+  </div>
+
+  <span class="apartment-benefit-card__shade" aria-hidden="true"></span>
+
+  <div class="apartment-benefit-card__content">
+    <h3 class="apartment-benefit-card__title">
+      {{#if titleMobile}}
+        <span class="apartment-benefit-card__desktop-title">{{title}}</span>
+        <span class="apartment-benefit-card__mobile-title">{{titleMobile}}</span>
+      {{else}}
+        {{title}}
+      {{/if}}
+    </h3>
+    <p class="apartment-benefit-card__description">{{description}}</p>
+  </div>
+</article>

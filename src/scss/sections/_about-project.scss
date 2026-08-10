@@ -157,7 +157,7 @@
     .about-project__body {
       display: flex;
       flex-direction: column;
-      padding-top: 1.2rem;
+      padding-top: 0;
     }
 
     .about-project__summary,
@@ -180,22 +180,18 @@
     }
 
     .about-project__button {
+      justify-content: center;
+      width: 29rem;
       margin-top: 3.2rem;
-      padding: 0;
-      border: 0;
-      appearance: none;
-      background-color: transparent;
+      min-height: auto;
+      padding: 1.6rem 2rem;
+      gap: 1.2rem;
       font-size: 1.4rem;
-      font-weight: 400;
       line-height: 1.1;
-      color: #999999;
+    }
 
-      @include mq.hover {
-        &:not(:disabled):hover {
-          background-color: transparent;
-          color: #999999;
-        }
-      }
+    .about-project__button .btn__icon {
+      display: none;
     }
   }
 }

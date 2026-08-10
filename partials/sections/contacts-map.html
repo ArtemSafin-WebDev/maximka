@@ -1,0 +1,86 @@
+<section class="contacts-map" aria-labelledby="contacts-map-title">
+  <div class="container">
+    <div class="contacts-map__frame">
+      <div
+        class="contacts-map__desktop-map js-infrastructure-map"
+        data-api-key="{{contactsMap.map.apiKey}}"
+        data-center="{{contactsMap.map.center}}"
+        data-zoom="{{contactsMap.map.zoom}}"
+        data-complex-coordinates="{{contactsMap.map.complex.coordinates}}"
+        data-complex-contour="{{contactsMap.map.complex.contour}}"
+        data-complex-title="{{contactsMap.map.complex.title}}"
+        data-complex-icon="{{contactsMap.map.complex.icon}}"
+        data-hide-map-open-button="true"
+        aria-label="{{contactsMap.map.ariaLabel}}"
+      >
+        <div class="contacts-map__canvas js-infrastructure-map-canvas"></div>
+      </div>
+
+      <div class="contacts-map__card">
+        <div class="contacts-map__details">
+          <h2 class="contacts-map__title" id="contacts-map-title">{{contactsMap.title}}</h2>
+
+          <div class="contacts-map__contact-list">
+            <a class="contacts-map__phone" href="{{contactsMap.phoneHref}}">{{contactsMap.phone}}</a>
+
+            <div class="contacts-map__contact-item">
+              <span class="contacts-map__contact-label">{{contactsMap.officeLabel}}</span>
+              <address class="contacts-map__contact-value">{{contactsMap.office}}</address>
+            </div>
+
+            <div class="contacts-map__contact-item">
+              <span class="contacts-map__contact-label">{{contactsMap.hoursLabel}}</span>
+              <span class="contacts-map__contact-value contacts-map__hours">
+                <span>{{contactsMap.hours}}</span>
+                <span>{{contactsMap.daysOff}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contacts-map__messenger">
+          <div class="contacts-map__messenger-icon-row" aria-hidden="true">
+            <img
+              class="contacts-map__messenger-icon"
+              src="{{contactsMap.messenger.image}}"
+              width="64"
+              height="64"
+              alt=""
+            >
+          </div>
+
+          <p class="contacts-map__messenger-title">{{contactsMap.messenger.title}}</p>
+
+          <a
+            class="btn contacts-map__messenger-button"
+            href="{{contactsMap.messenger.href}}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{contactsMap.messenger.buttonLabel}}
+          </a>
+        </div>
+      </div>
+
+      <div class="contacts-map__mobile-map">
+        <img
+          class="contacts-map__mobile-map-image"
+          src="{{contactsMap.map.staticImage}}"
+          width="670"
+          height="240"
+          alt=""
+          loading="lazy"
+        >
+        <span class="contacts-map__mobile-map-overlay" aria-hidden="true"></span>
+        <a
+          class="contacts-map__map-button"
+          href="{{contactsMap.map.link}}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{contactsMap.map.buttonLabel}}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

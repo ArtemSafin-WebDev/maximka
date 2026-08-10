@@ -1,0 +1,108 @@
+<section class="contacts-lead js-contacts-lead" aria-labelledby="contacts-lead-title">
+  <div class="container">
+    <div class="contacts-lead__inner">
+      <div class="contacts-lead__media">
+        <picture class="contacts-lead__picture">
+          <source
+            srcset="{{contactsLead.imageMobile}}"
+            media="(max-width: 576px)"
+            width="{{contactsLead.imageMobileWidth}}"
+            height="{{contactsLead.imageMobileHeight}}"
+          >
+          <img
+            class="contacts-lead__image"
+            src="{{contactsLead.image}}"
+            width="{{contactsLead.imageWidth}}"
+            height="{{contactsLead.imageHeight}}"
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+          >
+        </picture>
+
+        <h2 class="contacts-lead__title" id="contacts-lead-title">{{contactsLead.title}}</h2>
+
+        <button
+          class="contacts-lead__open btn btn--full"
+          type="button"
+          data-dialog-target="{{contactsLead.dialogId}}"
+          aria-haspopup="dialog"
+          aria-controls="{{contactsLead.dialogId}}"
+        >
+          <span>{{contactsLead.submitLabel}}</span>
+          <span class="contacts-lead__open-icon" aria-hidden="true">
+            <svg width="20" height="20" focusable="false">
+              <use href="#arrows/right"></use>
+            </svg>
+          </span>
+        </button>
+      </div>
+
+      <div class="contacts-lead__desktop-slot js-contacts-lead-desktop-slot">
+        <div class="contacts-lead__panel js-contacts-lead-panel">
+          <div class="contacts-lead__panel-head">
+            <h3 class="contacts-lead__dialog-title" id="{{contactsLead.dialogId}}-title">
+              {{contactsLead.dialogTitle}}
+            </h3>
+
+            <button
+              class="contacts-lead__close js-dialog-close"
+              type="button"
+              aria-label="Закрыть модальное окно"
+            >
+              <svg width="12" height="12" aria-hidden="true" focusable="false">
+                <use href="#modal-close"></use>
+              </svg>
+            </button>
+          </div>
+
+          <p class="contacts-lead__description" id="{{contactsLead.dialogId}}-description">
+            {{contactsLead.description}}
+          </p>
+
+          <form
+            class="contacts-lead__form js-form"
+            action="#"
+            method="post"
+            data-success-modal="#{{successModal.id}}"
+            data-error-modal="#{{errorModal.id}}"
+          >
+            <input type="hidden" name="form" value="{{contactsLead.formName}}">
+
+            <div class="contacts-lead__fields">
+              {{#each contactsLead.fields}}
+                {{> components/text-field }}
+              {{/each}}
+
+              <p class="contacts-lead__required-note">* поле обязательно для заполнения</p>
+            </div>
+
+            <div class="contacts-lead__actions">
+              {{> components/button
+                class="contacts-lead__submit btn--full"
+                type="submit"
+                label=contactsLead.submitLabel
+                labelMobile=contactsLead.submitLabelMobile
+              }}
+
+              <div class="contacts-lead__agreements">
+                {{#each contactsLead.agreements}}
+                  {{> components/checkbox }}
+                {{/each}}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <dialog
+        class="contacts-lead__dialog modal js-dialog-modal"
+        id="{{contactsLead.dialogId}}"
+        aria-labelledby="{{contactsLead.dialogId}}-title"
+        aria-describedby="{{contactsLead.dialogId}}-description"
+      >
+        <div class="contacts-lead__mobile-slot js-contacts-lead-mobile-slot"></div>
+      </dialog>
+    </div>
+  </div>
+</section>

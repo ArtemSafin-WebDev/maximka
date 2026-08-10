@@ -1,0 +1,239 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  .apartment-benefits {
+    margin-bottom: 12rem;
+  }
+
+  .apartment-benefits__eyebrow {
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #999999;
+    text-transform: uppercase;
+  }
+
+  .apartment-benefits__title {
+    margin-bottom: 8rem;
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .apartment-benefits__list {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .apartment-benefits__item {
+    min-width: 0;
+  }
+
+  .apartment-benefit-card {
+    display: grid;
+    overflow: hidden;
+    border-radius: 3.2rem;
+    color: #ffffff;
+    isolation: isolate;
+  }
+
+  .apartment-benefit-card::before,
+  .apartment-benefit-card__media,
+  .apartment-benefit-card__shade,
+  .apartment-benefit-card__content {
+    grid-area: 1 / 1;
+  }
+
+  .apartment-benefit-card::before {
+    content: "";
+    padding-bottom: calc(377 / 270 * 100%);
+  }
+
+  .apartment-benefit-card__media {
+    position: relative;
+    z-index: -2;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .apartment-benefit-card__image {
+    position: absolute;
+    display: block;
+    max-width: none;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+  }
+
+  .apartment-benefit-card__shade {
+    z-index: -1;
+    background:
+      linear-gradient(rgb(0 0 0 / 10%), rgb(0 0 0 / 10%)),
+      linear-gradient(180deg, rgb(0 0 0 / 0%) 50%, rgb(0 0 0 / 40%) 100%);
+  }
+
+  .apartment-benefit-card__content {
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-width: 0;
+    padding: 2.4rem;
+  }
+
+  .apartment-benefit-card__title {
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .apartment-benefit-card__description {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .apartment-benefit-card__mobile-title {
+    display: none;
+  }
+
+  .apartment-benefits__item:nth-child(1) .apartment-benefit-card__image {
+    top: 41.8%;
+    left: 20.4%;
+    width: 166.7%;
+    height: 125%;
+  }
+
+  .apartment-benefits__item:nth-child(2) .apartment-benefit-card__image {
+    top: 9.7%;
+    left: 43.3%;
+    width: 237%;
+    height: 254.9%;
+  }
+
+  .apartment-benefits__item:nth-child(3) .apartment-benefit-card__image {
+    top: 46.8%;
+    left: 81.9%;
+    width: 302.2%;
+    height: 107.4%;
+  }
+
+  .apartment-benefits__item:nth-child(4) .apartment-benefit-card__image {
+    top: 50%;
+    left: 50%;
+    width: 121.5%;
+    height: 130.2%;
+  }
+
+  .apartment-benefits__item:nth-child(5) .apartment-benefit-card__image {
+    top: 39.5%;
+    left: 63.9%;
+    width: 161.1%;
+    height: 121%;
+  }
+
+  .apartment-benefits__item:nth-child(6) .apartment-benefit-card__image {
+    top: 52.3%;
+    left: 50%;
+    width: 119.3%;
+    height: 119.4%;
+    object-position: 55% center;
+  }
+
+  @include mq.down(sm) {
+    .apartment-benefits {
+      margin-bottom: 4.8rem;
+    }
+
+    .apartment-benefits__eyebrow {
+      display: none;
+    }
+
+    .apartment-benefits__title {
+      max-width: 24rem;
+      margin-bottom: 2.4rem;
+      font-size: 1.8rem;
+      line-height: 1.3;
+    }
+
+    .apartment-benefits__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .apartment-benefit-card {
+      border-radius: 1.2rem;
+    }
+
+    .apartment-benefit-card::before {
+      padding-bottom: calc(225 / 162 * 100%);
+    }
+
+    .apartment-benefit-card__shade {
+      background:
+        linear-gradient(rgb(0 0 0 / 10%), rgb(0 0 0 / 10%)),
+        linear-gradient(180deg, rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 40%) 100%);
+    }
+
+    .apartment-benefit-card__content {
+      gap: 1rem;
+      padding: 1.2rem;
+    }
+
+    .apartment-benefit-card__title {
+      font-size: 1.4rem;
+    }
+
+    .apartment-benefit-card__description {
+      font-size: 1rem;
+    }
+
+    .apartment-benefit-card__desktop-title {
+      display: none;
+    }
+
+    .apartment-benefit-card__mobile-title {
+      display: inline;
+    }
+
+    .apartment-benefits__item:nth-child(1) .apartment-benefit-card__image {
+      top: 50%;
+      left: 16.7%;
+      width: 154.3%;
+      height: 116%;
+    }
+
+    .apartment-benefits__item:nth-child(2) .apartment-benefit-card__image {
+      top: 8.2%;
+      left: 44.8%;
+      width: 231.5%;
+      height: 250.2%;
+    }
+
+    .apartment-benefits__item:nth-child(3) .apartment-benefit-card__image {
+      top: 38.7%;
+      left: 73.5%;
+      width: 340.7%;
+      height: 121.8%;
+    }
+
+    .apartment-benefits__item:nth-child(4) .apartment-benefit-card__image {
+      width: 117.3%;
+      height: 126.7%;
+    }
+
+    .apartment-benefits__item:nth-child(5) .apartment-benefit-card__image {
+      top: 48.4%;
+      left: 50%;
+      width: 137%;
+      height: 103.1%;
+    }
+
+    .apartment-benefits__item:nth-child(6) .apartment-benefit-card__image {
+      top: 50.2%;
+      width: 109.9%;
+      height: 110.2%;
+    }
+  }
+}

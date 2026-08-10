@@ -1,0 +1,359 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  .contacts-lead {
+    margin-bottom: 12rem;
+  }
+
+  .contacts-lead__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 114.1rem) 56rem;
+    gap: 2rem;
+    min-height: 78.5rem;
+  }
+
+  .contacts-lead__media {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 78.5rem;
+    padding: 5rem;
+    overflow: hidden;
+    border-radius: 5.6rem;
+    background-color: #e3e3e3;
+  }
+
+  .contacts-lead__picture {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+
+  .contacts-lead__picture::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(
+        162.94deg,
+        rgb(0 0 0 / 30%) 17.93%,
+        rgb(0 0 0 / 0%) 46.01%
+      ),
+      linear-gradient(rgb(0 0 0 / 5%), rgb(0 0 0 / 5%));
+  }
+
+  .contacts-lead__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .contacts-lead__title {
+    position: relative;
+    z-index: 1;
+    max-width: 60rem;
+    font-size: 4.4rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #ffffff;
+  }
+
+  .contacts-lead__open {
+    display: none;
+  }
+
+  .contacts-lead__desktop-slot,
+  .contacts-lead__panel {
+    width: 100%;
+    height: 100%;
+  }
+
+  .contacts-lead__desktop-slot {
+    min-height: 78.5rem;
+  }
+
+  .contacts-lead__panel {
+    display: flex;
+    flex-direction: column;
+    padding: 3.5rem 7rem;
+    border-radius: 5.6rem;
+    background-color: #ffffff;
+  }
+
+  .contacts-lead__panel-head {
+    display: none;
+  }
+
+  .contacts-lead__description {
+    margin-bottom: 4rem;
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .contacts-lead__form {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .contacts-lead__fields,
+  .contacts-lead__actions,
+  .contacts-lead__agreements {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contacts-lead__fields,
+  .contacts-lead__agreements {
+    gap: 1.6rem;
+  }
+
+  .contacts-lead__actions {
+    gap: 4rem;
+  }
+
+  .contacts-lead__required-note {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.015em;
+    color: #999999;
+  }
+
+  .contacts-lead .form-field__inner {
+    background-color: #ffffff;
+  }
+
+  .contacts-lead .form-field--textarea .form-field__inner {
+    min-height: 15.7rem;
+    border-radius: 3.5rem;
+  }
+
+  .contacts-lead .form-field__control--textarea {
+    min-height: 10.7rem;
+  }
+
+  .contacts-lead .checkbox {
+    font-size: 1.2rem;
+  }
+
+  .contacts-lead__submit {
+    margin: 0;
+  }
+
+  .contacts-lead__dialog {
+    display: none;
+  }
+
+  .contacts-lead :where(button, a):focus-visible {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.3rem;
+  }
+
+  @include mq.down(sm) {
+    .contacts-lead {
+      margin-bottom: 2rem;
+    }
+
+    .contacts-lead__inner {
+      display: block;
+      min-height: 0;
+    }
+
+    .contacts-lead__media {
+      min-height: 42rem;
+      padding: 2rem;
+      border-radius: 2.8rem;
+    }
+
+    .contacts-lead__picture::after {
+      background-image:
+        linear-gradient(
+          174.07deg,
+          rgb(0 0 0 / 40%) 17.87%,
+          rgb(0 0 0 / 0%) 50.71%
+        ),
+        linear-gradient(rgb(0 0 0 / 5%), rgb(0 0 0 / 5%));
+    }
+
+    .contacts-lead__image {
+      object-position: center;
+    }
+
+    .contacts-lead__title {
+      font-size: 2.2rem;
+      line-height: 1.1;
+    }
+
+    .contacts-lead__open {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 1.2rem;
+      width: 100%;
+      min-height: 5rem;
+      margin-top: auto;
+      padding: 1.6rem 2rem;
+      border-radius: 3.1rem;
+      box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+      font-size: 1.4rem;
+      line-height: 1.1;
+    }
+
+    .contacts-lead__open-icon,
+    .contacts-lead__open-icon svg {
+      display: block;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .contacts-lead__open-icon {
+      flex: 0 0 auto;
+      color: #ffffff;
+    }
+
+    .contacts-lead__open-icon svg {
+      fill: currentcolor;
+    }
+
+    .contacts-lead__desktop-slot {
+      display: none;
+    }
+
+    .contacts-lead__dialog {
+      top: auto;
+      right: 0;
+      bottom: 2rem;
+      left: 0;
+      width: calc(100% - 3.8rem);
+      max-height: calc(100dvh - 4rem);
+      margin: 0 auto;
+      overflow: auto;
+      border-radius: 2.8rem;
+      transform: translateY(2rem);
+      overscroll-behavior: contain;
+    }
+
+    .contacts-lead__dialog[open] {
+      display: block;
+      transform: translateY(0);
+    }
+
+    .contacts-lead__dialog::backdrop {
+      background-color: rgb(0 0 0 / 20%);
+      backdrop-filter: none;
+    }
+
+    @starting-style {
+      .contacts-lead__dialog[open] {
+        transform: translateY(2rem);
+      }
+    }
+
+    .contacts-lead__mobile-slot {
+      width: 100%;
+    }
+
+    .contacts-lead__panel {
+      gap: 1.6rem;
+      height: auto;
+      padding: 2.8rem 2.4rem;
+      border-radius: 2.8rem;
+    }
+
+    .contacts-lead__panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2.4rem;
+    }
+
+    .contacts-lead__dialog-title {
+      min-width: 0;
+      font-size: 2.4rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .contacts-lead__close {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 3.6rem;
+      height: 3.6rem;
+      border: 0.1rem solid #999999;
+      border-radius: 50%;
+      color: #999999;
+    }
+
+    .contacts-lead__close svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      fill: currentcolor;
+    }
+
+    .contacts-lead__description {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .contacts-lead__form {
+      flex: 0 0 auto;
+      gap: 2.4rem;
+      margin-top: 0;
+    }
+
+    .contacts-lead__fields,
+    .contacts-lead__agreements {
+      gap: 1.6rem;
+    }
+
+    .contacts-lead__actions {
+      gap: 2.4rem;
+    }
+
+    .contacts-lead .form-field__inner {
+      min-height: 4.4rem;
+      padding: 1.6rem;
+      background-color: var(--bg-color);
+      border-color: rgb(153 153 153 / 24%);
+      border-radius: 2.4rem;
+    }
+
+    .contacts-lead .form-field__control {
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .contacts-lead .form-field--textarea .form-field__inner {
+      min-height: 9.2rem;
+      border-radius: 2.4rem;
+    }
+
+    .contacts-lead .form-field__control--textarea {
+      min-height: 5.8rem;
+    }
+
+    .contacts-lead__required-note {
+      font-size: 1.2rem;
+    }
+
+    .contacts-lead__submit {
+      min-height: 4.8rem;
+      padding: 1.6rem 2rem;
+      font-size: 1.4rem;
+      line-height: 1.1;
+    }
+
+    .contacts-lead .checkbox {
+      font-size: 1.2rem;
+      line-height: 1.2;
+    }
+  }
+}

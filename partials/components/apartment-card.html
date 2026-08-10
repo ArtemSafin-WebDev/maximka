@@ -1,0 +1,55 @@
+<article class="apartment-card">
+  <header class="apartment-card__header">
+    <h3 class="apartment-card__title">{{title}}</h3>
+    <p class="apartment-card__meta">
+      <span>{{area}}</span>
+      <span class="apartment-card__separator" aria-hidden="true"></span>
+      <span>{{floor}}</span>
+    </p>
+  </header>
+
+  <div class="apartment-card__media">
+    <img
+      class="apartment-card__image"
+      src="{{image}}"
+      width="{{imageWidth}}"
+      height="{{imageHeight}}"
+      alt="{{imageAlt}}"
+      loading="lazy"
+    >
+  </div>
+
+  <div class="apartment-card__price-block">
+    <div class="apartment-card__price">
+      <span class="apartment-card__price-label">Цена</span>
+      <strong>{{price}}</strong>
+    </div>
+
+    <div class="apartment-card__discount">
+      <del>{{oldPrice}}</del>
+      <span class="apartment-card__separator apartment-card__separator--dark" aria-hidden="true"></span>
+      <span>{{discount}}</span>
+      <img
+        class="apartment-card__discount-icon"
+        src="/src/icons/discount.svg"
+        width="18"
+        height="18"
+        alt=""
+        aria-hidden="true"
+      >
+    </div>
+  </div>
+
+  <div class="apartment-card__divider" aria-hidden="true"></div>
+
+  <div class="apartment-card__features">
+    <div class="apartment-card__feature-list">
+      {{#each features}}
+        <span class="apartment-card__feature">{{this}}</span>
+      {{/each}}
+    </div>
+    <span class="apartment-card__feature apartment-card__feature--count">
+      +{{featuresRemaining}}
+    </span>
+  </div>
+</article>

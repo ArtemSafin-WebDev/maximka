@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  {{> layout/meta }}
+</head>
+
+<body class="contacts-page">
+  {{> layout/header }}
+
+  <main class="page-main contacts-page__main">
+    {{> components/page-heading pageHeading }}
+    {{> sections/contacts-lead }}
+    {{> sections/contacts-map }}
+    {{> sections/contacts-faq }}
+  </main>
+
+  {{> layout/footer }}
+  {{> sections/modals }}
+
+  <script type="module" src="/src/js/main.ts"></script>
+</body>
+
+</html>
