@@ -7,6 +7,7 @@ import initGallery from "./gallery";
 import initInfrastructure from "./infrastructure";
 import initProgress from "./progress";
 import initPromos from "./promos";
+import initProjectLocation from "./projectLocation";
 import initSolutions from "./solutions";
 
 export default function sections() {
@@ -20,4 +21,5 @@ export default function sections() {
   initAdvantages();
   initInfrastructure();
   initPromos();
+  initProjectLocation();
 }

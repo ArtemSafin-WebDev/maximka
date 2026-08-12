@@ -1,0 +1,45 @@
+<section
+  class="project-location js-project-location"
+  id="location"
+  aria-labelledby="project-location-title"
+>
+  <div class="container">
+    <div class="project-location__intro">
+      <h1 class="project-location__title" id="project-location-title">
+        {{#each projectLocation.titleLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
+      </h1>
+
+      <p class="project-location__description">
+        {{projectLocation.description}}
+      </p>
+    </div>
+
+    <div class="project-location__slider swiper js-project-location-slider">
+      <ul class="project-location__list swiper-wrapper">
+        {{#each projectLocation.cards}}
+          <li class="project-location__slide swiper-slide">
+            <article class="project-location-card">
+              <picture class="project-location-card__media" aria-hidden="true">
+                <img
+                  class="project-location-card__image {{imageClass}}"
+                  src="{{image}}"
+                  width="1120"
+                  height="1480"
+                  alt=""
+                  loading="{{imageLoading}}"
+                >
+              </picture>
+
+              <div class="project-location-card__content">
+                <h2 class="project-location-card__title">{{title}}</h2>
+                <p class="project-location-card__description">{{description}}</p>
+              </div>
+            </article>
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="project-location__pagination swiper-pagination"></div>
+    </div>
+  </div>
+</section>
