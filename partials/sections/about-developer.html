@@ -1,0 +1,19 @@
+<section class="about-developer" aria-labelledby="about-developer-title">
+  <div class="about-developer__card">
+    <p class="about-developer__label">{{aboutDeveloper.label}}</p>
+
+    <div class="about-developer__content">
+      <h2 class="about-developer__title" id="about-developer-title">
+        {{#each aboutDeveloper.titleSegments}}
+          {{text}}{{#if desktopBreak}}<br class="about-developer__break about-developer__break--desktop">{{/if}}{{#if mobileBreak}}<br class="about-developer__break about-developer__break--mobile">{{/if}}
+        {{/each}}
+      </h2>
+
+      <p class="about-developer__description">
+        {{#each aboutDeveloper.descriptionSegments}}
+          {{text}}{{#if desktopBreak}}<br class="about-developer__break about-developer__break--desktop">{{/if}}{{#if mobileBreak}}<br class="about-developer__break about-developer__break--mobile">{{/if}}
+        {{/each}}
+      </p>
+    </div>
+  </div>
+</section>

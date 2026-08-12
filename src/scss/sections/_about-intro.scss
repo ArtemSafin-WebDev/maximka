@@ -1,0 +1,358 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  .about-page .project-page__main {
+    padding-top: 0;
+  }
+
+  .project-page.about-page .page-header:not(.is-scrolled) {
+    color: #ffffff;
+  }
+
+  .about-intro {
+    position: relative;
+    margin-bottom: 14rem;
+    color: #ffffff;
+  }
+
+  .about-intro__hero {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 0 0 4rem 4rem;
+    background-color: #21344e;
+    isolation: isolate;
+  }
+
+  .about-intro__picture,
+  .about-intro__image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .about-intro__image {
+    object-fit: cover;
+  }
+
+  .about-intro__hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(
+        85.46deg,
+        rgb(35 24 21 / 40%) 0.42%,
+        rgb(27 19 17 / 0%) 44.87%
+      ),
+      rgb(0 0 0 / 30%);
+    pointer-events: none;
+  }
+
+  .about-intro__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 32.8rem;
+    grid-template-rows: auto auto 1fr;
+    align-content: start;
+    row-gap: 13rem;
+    align-items: start;
+    width: 100%;
+    min-height: min(100svh, 120rem);
+    padding-top: 23rem;
+    padding-bottom: 10rem;
+  }
+
+  .about-intro__copy {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .about-intro__title {
+    max-width: 139rem;
+    font-size: 8rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .about-intro__description {
+    max-width: 65.5rem;
+    margin-top: 4.8rem;
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .about-intro__stats {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    gap: 3rem;
+  }
+
+  .about-intro__stat {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    width: 16rem;
+  }
+
+  .about-intro__stat:nth-child(2) {
+    width: 30rem;
+  }
+
+  .about-intro__stat-value {
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .about-intro__stat-label {
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .about-intro__actions {
+    grid-column: 1;
+    grid-row: 3;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    align-self: flex-end;
+  }
+
+  .about-intro__action {
+    min-height: 8.8rem;
+    font-size: 2.4rem;
+  }
+
+  .about-intro__action--primary {
+    gap: 1.8rem;
+    padding: 2.8rem 2.4rem 2.8rem 3.2rem;
+  }
+
+  .about-intro__action--secondary {
+    padding: 2.8rem 3.2rem;
+  }
+
+  .about-intro__action .btn__icon,
+  .about-intro__action .btn__icon svg {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  .about-intro__status {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32.8rem;
+    height: 24rem;
+    padding: 2rem;
+    overflow: hidden;
+    border-radius: 3.2rem;
+    box-shadow: 0 0.4rem 20rem rgb(0 0 0 / 20%);
+    color: #ffffff;
+    isolation: isolate;
+  }
+
+  .about-intro__status-image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+  }
+
+  .about-intro__status-image {
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+
+  .about-intro__status-label {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+
+  .about-intro__status-bottom {
+    display: flex;
+    align-items: flex-end;
+    gap: 4.9rem;
+  }
+
+  .about-intro__status-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  .about-intro__status-icon {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: var(--text-color);
+    transition:
+      background-color 0.2s,
+      color 0.2s,
+      transform 0.2s;
+  }
+
+  .about-intro__status-icon svg {
+    display: block;
+    width: 3.2rem;
+    height: 3.2rem;
+    fill: currentColor;
+  }
+
+  @include mq.hover {
+    .about-intro__status:hover .about-intro__status-image {
+      transform: scale(1.025);
+    }
+
+    .about-intro__status:hover .about-intro__status-icon {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      transform: translate(0.2rem, -0.2rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-intro__status-image,
+    .about-intro__status-icon {
+      transition: none;
+    }
+  }
+
+  @include mq.down(sm) {
+    .project-page.about-page .page-header:not(.is-scrolled) {
+      color: var(--text-color);
+    }
+
+    .about-intro {
+      min-height: 0;
+      margin-bottom: 12rem;
+    }
+
+    .about-intro__hero {
+      bottom: auto;
+      width: 100%;
+      height: 62.2rem;
+      border-radius: 3.2rem;
+    }
+
+    .about-intro__image {
+      top: 5.2rem;
+      height: 62.2rem;
+      object-position: center center;
+    }
+
+    .about-intro__hero::after {
+      background:
+        linear-gradient(
+          98.76deg,
+          rgb(0 0 0 / 40%) 10.74%,
+          rgb(0 0 0 / 0%) 52.75%
+        ),
+        rgb(0 0 0 / 30%);
+    }
+
+    .about-intro__content {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      padding-top: 14.7rem;
+      padding-bottom: 0;
+      row-gap: 0;
+    }
+
+    .about-intro__title {
+      max-width: 33.5rem;
+      font-size: 3rem;
+      line-height: 1.1;
+    }
+
+    .about-intro__description {
+      max-width: 30.4rem;
+      margin-top: 3rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .about-intro__stats {
+      gap: 3rem;
+      width: 100%;
+      margin-top: 5.7rem;
+    }
+
+    .about-intro__stat,
+    .about-intro__stat:nth-child(2) {
+      flex: 1 1 0;
+      gap: 1rem;
+      width: auto;
+    }
+
+    .about-intro__stat-value {
+      font-size: 3rem;
+    }
+
+    .about-intro__stat-label {
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .about-intro__actions {
+      display: none;
+    }
+
+    .about-intro__status {
+      width: 100%;
+      height: 20rem;
+      margin-top: 13.36rem;
+      padding: 2rem;
+      border-radius: 2.8rem;
+      box-shadow: none;
+    }
+
+    .about-intro__status-label {
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .about-intro__status-bottom {
+      gap: 2rem;
+    }
+
+    .about-intro__status-title {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .about-intro__status-icon,
+    .about-intro__status-icon svg {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+  }
+}

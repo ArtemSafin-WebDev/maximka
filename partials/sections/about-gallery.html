@@ -1,0 +1,37 @@
+<section class="about-gallery js-about-gallery" aria-labelledby="about-gallery-title">
+  <div class="about-gallery__inner">
+    <h2 class="about-gallery__title" id="about-gallery-title">{{aboutGallery.title}}</h2>
+
+    <ul class="about-gallery__list" id="about-gallery-list">
+      {{#each aboutGallery.items}}
+        <li class="about-gallery__item">
+          <a
+            class="about-gallery__link"
+            href="{{image}}"
+            data-fancybox="about-gallery"
+            data-caption="{{alt}}"
+            aria-label="Открыть изображение: {{alt}}"
+          >
+            <img
+              class="about-gallery__image"
+              src="{{image}}"
+              width="{{width}}"
+              height="{{height}}"
+              alt="{{alt}}"
+              loading="lazy"
+            >
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+
+    <button
+      class="about-gallery__more js-about-gallery-more"
+      type="button"
+      aria-controls="about-gallery-list"
+      aria-expanded="false"
+    >
+      {{aboutGallery.moreLabel}}
+    </button>
+  </div>
+</section>

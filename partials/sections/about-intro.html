@@ -1,0 +1,63 @@
+<section class="about-intro" aria-labelledby="about-intro-title">
+  <div class="about-intro__hero">
+    <picture class="about-intro__picture" aria-hidden="true">
+      <source media="(max-width: 576px)" srcset="{{aboutIntro.imageMobile}}">
+      <img
+        class="about-intro__image"
+        src="{{aboutIntro.image}}"
+        width="3840"
+        height="2250"
+        alt=""
+      >
+    </picture>
+  </div>
+
+  <div class="about-intro__content container">
+    <div class="about-intro__copy">
+      <h1 class="about-intro__title" id="about-intro-title">{{aboutIntro.title}}</h1>
+      <p class="about-intro__description">{{aboutIntro.description}}</p>
+    </div>
+
+    <dl class="about-intro__stats">
+      {{#each aboutIntro.stats}}
+        <div class="about-intro__stat">
+          <dt class="about-intro__stat-label">{{label}}</dt>
+          <dd class="about-intro__stat-value">{{value}}</dd>
+        </div>
+      {{/each}}
+    </dl>
+
+    <div class="about-intro__actions">
+      {{> components/button
+        class="btn--arrow about-intro__action about-intro__action--primary"
+        href=aboutIntro.primaryAction.href
+        label=aboutIntro.primaryAction.label
+        icon="about-intro-right"
+      }}
+      {{> components/button
+        class="btn--promo about-intro__action about-intro__action--secondary"
+        href=aboutIntro.secondaryAction.href
+        label=aboutIntro.secondaryAction.label
+      }}
+    </div>
+
+    <a class="about-intro__status" href="{{aboutIntro.status.href}}">
+      <img
+        class="about-intro__status-image"
+        src="{{aboutIntro.status.image}}"
+        width="656"
+        height="480"
+        alt=""
+      >
+      <span class="about-intro__status-label">{{aboutIntro.status.label}}</span>
+      <span class="about-intro__status-bottom">
+        <span class="about-intro__status-title">{{aboutIntro.status.title}}</span>
+        <span class="about-intro__status-icon" aria-hidden="true">
+          <svg width="32" height="32" focusable="false">
+            <use href="#about-intro-diagonal"></use>
+          </svg>
+        </span>
+      </span>
+    </a>
+  </div>
+</section>

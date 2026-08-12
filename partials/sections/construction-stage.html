@@ -1,0 +1,39 @@
+<section class="construction-stage" id="construction-stage" aria-labelledby="construction-stage-title">
+  <div class="construction-stage__card">
+    <h2 class="construction-stage__label" id="construction-stage-title">
+      <span class="construction-stage__label-text construction-stage__label-text--desktop">{{constructionStage.label}}</span>
+      <span class="construction-stage__label-text construction-stage__label-text--mobile">{{constructionStage.mobileLabel}}</span>
+    </h2>
+
+    <div class="construction-stage__info">
+      <h3 class="construction-stage__title">{{constructionStage.title}}</h3>
+      <p class="construction-stage__completion">{{constructionStage.completion}}</p>
+    </div>
+
+    <button
+      class="construction-stage__media"
+      type="button"
+      aria-label="{{constructionStage.playLabel}}"
+    >
+      <img
+        class="construction-stage__image"
+        src="{{constructionStage.image}}"
+        width="1992"
+        height="1240"
+        alt="{{constructionStage.imageAlt}}"
+        loading="lazy"
+      >
+
+      <span class="construction-stage__online">
+        <span class="construction-stage__online-dot" aria-hidden="true"></span>
+        <span>{{constructionStage.onlineLabel}}</span>
+      </span>
+
+      <span class="construction-stage__play" aria-hidden="true">
+        <svg class="construction-stage__play-icon" width="32" height="32" aria-hidden="true" focusable="false">
+          <use href="#play"></use>
+        </svg>
+      </span>
+    </button>
+  </div>
+</section>

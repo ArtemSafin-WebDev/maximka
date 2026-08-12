@@ -1,0 +1,41 @@
+<section class="reliable-partner" aria-labelledby="reliable-partner-title">
+  <div class="container">
+    <div class="reliable-partner__layout">
+      <p class="reliable-partner__label">{{reliablePartner.label}}</p>
+
+      <div class="reliable-partner__card">
+        <p class="reliable-partner__card-label">{{reliablePartner.label}}</p>
+
+        <div class="reliable-partner__logo" aria-hidden="true">
+          <img
+            class="reliable-partner__logo-image"
+            src="{{reliablePartner.logo}}"
+            width="145"
+            height="60"
+            alt=""
+          >
+        </div>
+
+        <div class="reliable-partner__content">
+          <h2 class="reliable-partner__title" id="reliable-partner-title">
+            {{reliablePartner.name}}
+          </h2>
+          <p class="reliable-partner__description">
+            {{#each reliablePartner.descriptionSegments}}
+              {{text}}{{#if desktopBreak}}<br class="reliable-partner__break reliable-partner__break--desktop">{{/if}}{{#if mobileBreak}}<br class="reliable-partner__break reliable-partner__break--mobile">{{/if}}
+            {{/each}}
+          </p>
+        </div>
+
+        <img
+          class="reliable-partner__illustration"
+          src="{{reliablePartner.illustration}}"
+          width="848"
+          height="685"
+          alt=""
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </div>
+</section>

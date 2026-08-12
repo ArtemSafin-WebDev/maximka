@@ -1,3 +1,5 @@
+import homePages from "./home.js";
+
 const callbackModal = {
   id: "callback-dialog",
   formName: "callback",
@@ -35,6 +37,37 @@ const callbackModal = {
 export default {
   "/about.html": {
     title: "О проекте — ЖК «Максима»",
+    aboutIntro: {
+      image: "/images/about-intro/bg.webp",
+      imageMobile: "/images/about-intro/bg-mobile.webp",
+      title: "ЖК «Максима» — современный комфорт в\u00a0привычном\u00a0районе",
+      description:
+        "Новый монолитно-кирпичный дом. Все жилые помещения будут сдаваться с качественной предчистовой отделкой (white box), что позволит вам избежать черновых строительных работ и быстро сделать финальный ремонт",
+      stats: [
+        {
+          value: "332",
+          label: "Квартиры",
+        },
+        {
+          value: "9–13",
+          label: "Переменная этажность",
+        },
+      ],
+      primaryAction: {
+        label: "Выбрать квартиру",
+        href: "/#layouts",
+      },
+      secondaryAction: {
+        label: "Записаться на встречу",
+        href: "#callback-dialog",
+      },
+      status: {
+        label: "Статус проекта",
+        title: "Возведение монолитного каркаса",
+        href: "#construction-stage",
+        image: "/images/about-intro/status.webp",
+      },
+    },
     projectLocation: {
       titleLines: [
         "Локация и инфраструктура:",
@@ -68,6 +101,119 @@ export default {
             "Проектом предусмотрен закрытый безопасный двор без машин с круглосуточным видеонаблюдением, собственный подземный паркинг и коммерческие помещения под магазины и аптеки на первом этаже дома",
         },
       ],
+    },
+    aboutDeveloper: {
+      label: "О застройщике",
+      titleSegments: [
+        {
+          text: "Альянс Девелопмент — компания более 9 лет проектирует",
+          desktopBreak: true,
+        },
+        {
+          text: "и реализует жилые комплексы",
+          mobileBreak: true,
+        },
+        {
+          text: "и коттеджные поселки нового поколения в Москве и Казани",
+        },
+      ],
+      descriptionSegments: [
+        {
+          text: "Каждый проект — это тщательно продуманная концепция, современная архитектура, развитая инфраструктура",
+          mobileBreak: true,
+        },
+        {
+          text: "и пространство, созданное",
+          desktopBreak: true,
+        },
+        {
+          text: "для комфортной жизни",
+        },
+      ],
+    },
+    reliablePartner: {
+      label: "Надежный партнер",
+      name: "Сбер Банк",
+      descriptionSegments: [
+        {
+          text: "Проектное финансирование",
+          mobileBreak: true,
+        },
+        {
+          text: " и безопасность",
+          desktopBreak: true,
+        },
+        {
+          text: " каждой сделки",
+        },
+      ],
+      logo: "/images/reliable-partner/sber-bank.svg",
+      illustration: "/images/reliable-partner/security.webp",
+    },
+    constructionStage: {
+      label: "Этап строительства",
+      mobileLabel: "Этапы строительства",
+      title: "Котлован",
+      completion: "Завершение этапа: 3 квартал 2026 года",
+      onlineLabel: "Сейчас онлайн",
+      image: "/images/construction-stage/excavation.webp",
+      imageAlt: "Вид на строящийся жилой комплекс «Максима»",
+      playLabel: "Смотреть трансляцию со стройплощадки",
+    },
+    progress: homePages["/index.html"].progress,
+    aboutGallery: {
+      title: "Галерея",
+      moreLabel: "Загрузить еще",
+      items: [
+        {
+          image: "/images/about-gallery/1.webp",
+          width: 1280,
+          height: 837,
+          alt: "Семейная пара в новой квартире",
+        },
+        {
+          image: "/images/about-gallery/2.webp",
+          width: 1280,
+          height: 840,
+          alt: "Отец играет с ребенком в парке",
+        },
+        {
+          image: "/images/about-gallery/3.webp",
+          width: 1280,
+          height: 853,
+          alt: "Семья с маленьким ребенком дома",
+        },
+        {
+          image: "/images/about-gallery/4.webp",
+          width: 1280,
+          height: 853,
+          alt: "Родители играют с ребенком на прогулке",
+        },
+        {
+          image: "/images/about-gallery/5.webp",
+          width: 1280,
+          height: 853,
+          alt: "Девушка читает книгу в кафе",
+        },
+        {
+          image: "/images/about-gallery/6.webp",
+          width: 1280,
+          height: 844,
+          alt: "Мама гуляет с ребенком в зеленом парке",
+        },
+      ],
+    },
+    meetingCta: {
+      title: "Запишитесь на встречу",
+      descriptionStart:
+        "Подберем планировку под ваши задачи, расскажем",
+      descriptionEnd:
+        "о преимуществах проекта и поможем выбрать наиболее выгодный вариант покупки.",
+      buttonLabel: "Выбрать дату встречи",
+      buttonLabelMobile: "Записаться на экскурсию",
+      href: "#callback-dialog",
+      image: "/images/meeting-cta/bg.svg",
+      imageMobile: "/images/meeting-cta/bg-mobile.svg",
     },
     modals: [callbackModal],
     successModal: {

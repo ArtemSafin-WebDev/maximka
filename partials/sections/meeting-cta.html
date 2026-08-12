@@ -1,0 +1,37 @@
+<section class="meeting-cta" aria-labelledby="meeting-cta-title">
+  <div class="container">
+    <div class="meeting-cta__inner">
+      <picture class="meeting-cta__picture">
+        <source
+          srcset="{{meetingCta.imageMobile}}"
+          media="(max-width: 576px)"
+          width="335"
+          height="270"
+        >
+        <img
+          class="meeting-cta__image"
+          src="{{meetingCta.image}}"
+          width="1720"
+          height="300"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        >
+      </picture>
+
+      <h2 class="meeting-cta__title" id="meeting-cta-title">{{meetingCta.title}}</h2>
+
+      <p class="meeting-cta__description">
+        {{meetingCta.descriptionStart}}<br class="meeting-cta__break">
+        {{meetingCta.descriptionEnd}}
+      </p>
+
+      {{> components/button
+        class="meeting-cta__button"
+        href=meetingCta.href
+        label=meetingCta.buttonLabel
+        labelMobile=meetingCta.buttonLabelMobile
+      }}
+    </div>
+  </div>
+</section>
