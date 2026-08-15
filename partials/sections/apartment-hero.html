@@ -1,0 +1,186 @@
+<section class="apartment-hero js-apartment-hero" aria-labelledby="apartment-hero-title">
+  <div class="container">
+    {{> components/breadcrumbs apartmentHero.breadcrumbs class="apartment-hero__breadcrumbs" }}
+
+    <div class="apartment-hero__card">
+      <div class="apartment-hero__visual">
+        <div class="apartment-hero__visual-head">
+          <a class="apartment-hero__back" href="{{apartmentHero.backHref}}">
+            <svg width="32" height="32" aria-hidden="true" focusable="false">
+              <use href="#apartment-back"></use>
+            </svg>
+            <span>{{apartmentHero.backLabel}}</span>
+          </a>
+
+          <button
+            class="apartment-hero__sun-toggle apartment-hero__sun-toggle--desktop js-apartment-sun-toggle"
+            type="button"
+            role="switch"
+            aria-checked="false"
+          >
+            <span class="apartment-hero__switch" aria-hidden="true"></span>
+            <span>{{apartmentHero.sunLabel}}</span>
+          </button>
+
+          <div class="apartment-hero__mobile-actions">
+            <button class="apartment-hero__round-action js-apartment-share" type="button" aria-label="Поделиться">
+              <svg width="36" height="36" aria-hidden="true" focusable="false">
+                <use href="#apartment-share"></use>
+              </svg>
+            </button>
+            <button class="apartment-hero__round-action js-apartment-print" type="button" aria-label="Напечатать">
+              <svg width="36" height="36" aria-hidden="true" focusable="false">
+                <use href="#apartment-print"></use>
+              </svg>
+            </button>
+            <button
+              class="apartment-hero__round-action apartment-hero__round-action--sun js-apartment-sun-toggle"
+              type="button"
+              role="switch"
+              aria-checked="false"
+              aria-label="Показать направление солнца"
+            >
+              <svg width="36" height="36" aria-hidden="true" focusable="false">
+                <use href="#apartment-sun"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="apartment-hero__stage">
+          <div class="apartment-hero__sun-path" aria-hidden="true">
+            <span class="apartment-hero__sun-orbit"></span>
+            <span class="apartment-hero__sun-marker apartment-hero__sun-marker--sunset">
+              <span class="apartment-hero__sun-marker-icon">
+                <svg width="18" height="18" focusable="false">
+                  <use href="#apartment-sunset"></use>
+                </svg>
+              </span>
+              <span class="apartment-hero__sun-marker-label">Закат</span>
+            </span>
+            <span class="apartment-hero__sun-marker apartment-hero__sun-marker--sunrise">
+              <span class="apartment-hero__sun-marker-icon">
+                <svg width="18" height="18" focusable="false">
+                  <use href="#apartment-sunrise"></use>
+                </svg>
+              </span>
+              <span class="apartment-hero__sun-marker-label">Восход</span>
+            </span>
+          </div>
+
+          <div class="apartment-hero__plans">
+            {{#each apartmentHero.tabs}}
+              <div
+                class="apartment-hero__plan js-apartment-plan{{#if active}} is-active{{/if}}"
+                id="apartment-plan-{{@index}}"
+                role="tabpanel"
+                aria-labelledby="apartment-tab-{{@index}}"
+                aria-hidden="{{#if active}}false{{else}}true{{/if}}"
+              >
+                <img
+                  class="apartment-hero__plan-image"
+                  src="{{image}}"
+                  width="{{imageWidth}}"
+                  height="{{imageHeight}}"
+                  alt="{{imageAlt}}"
+                  {{#unless active}}loading="lazy"{{/unless}}
+                >
+              </div>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="apartment-hero__tabs-wrap">
+          <div class="apartment-hero__tabs" role="tablist" aria-label="Вид планировки">
+            {{#each apartmentHero.tabs}}
+              <button
+                class="apartment-hero__tab js-apartment-tab{{#if active}} is-active{{/if}}"
+                id="apartment-tab-{{@index}}"
+                type="button"
+                role="tab"
+                aria-controls="apartment-plan-{{@index}}"
+                aria-selected="{{selected}}"
+                tabindex="{{tabIndex}}"
+              >
+                {{label}}
+              </button>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+
+      <div class="apartment-hero__details">
+        <div class="apartment-hero__title-row">
+          <h1 class="apartment-hero__title" id="apartment-hero-title">{{apartmentHero.title}}</h1>
+          <div class="apartment-hero__desktop-actions">
+            <button class="apartment-hero__icon-action js-apartment-share" type="button" aria-label="Поделиться">
+              <svg width="32" height="32" aria-hidden="true" focusable="false">
+                <use href="#apartment-share"></use>
+              </svg>
+            </button>
+            <button class="apartment-hero__icon-action js-apartment-print" type="button" aria-label="Напечатать">
+              <svg width="32" height="32" aria-hidden="true" focusable="false">
+                <use href="#apartment-print"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <p class="apartment-hero__description">{{apartmentHero.description}}</p>
+
+        <div class="apartment-hero__price-block">
+          <p class="apartment-hero__price-label">{{apartmentHero.priceLabel}}</p>
+          <div class="apartment-hero__prices">
+            <strong class="apartment-hero__price">{{apartmentHero.price}}</strong>
+            <del class="apartment-hero__old-price">{{apartmentHero.oldPrice}}</del>
+          </div>
+          <div class="apartment-hero__price-meta">
+            <span class="apartment-hero__mortgage">{{apartmentHero.mortgage}}</span>
+            <span class="apartment-hero__discount">
+              <svg width="18" height="18" aria-hidden="true" focusable="false">
+                <use href="#discount"></use>
+              </svg>
+              <span>{{apartmentHero.discount}}</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="apartment-hero__characteristics">
+          <dl class="apartment-hero__characteristics-list js-apartment-characteristics">
+            {{#each apartmentHero.characteristics}}
+              <div class="apartment-hero__characteristic">
+                <dt>{{label}}</dt>
+                <dd>{{value}}</dd>
+              </div>
+            {{/each}}
+          </dl>
+          <button
+            class="apartment-hero__characteristics-toggle js-apartment-characteristics-toggle"
+            type="button"
+            aria-expanded="false"
+          >
+            {{apartmentHero.characteristicsLabel}}
+          </button>
+        </div>
+
+        <a class="apartment-hero__desktop-cta btn btn--full" href="{{apartmentHero.ctaHref}}">
+          {{apartmentHero.ctaLabel}}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="apartment-booking-bar js-apartment-booking-bar">
+    <a class="apartment-booking-bar__cta apartment-booking-bar__cta--full" href="{{apartmentHero.ctaHref}}">
+      {{apartmentHero.ctaLabel}}
+    </a>
+    <a class="apartment-booking-bar__cta apartment-booking-bar__cta--compact" href="{{apartmentHero.ctaHref}}">
+      {{apartmentHero.ctaShortLabel}}
+    </a>
+    <button class="apartment-booking-bar__up js-apartment-scroll-top" type="button" aria-label="Наверх">
+      <svg width="50" height="50" aria-hidden="true" focusable="false">
+        <use href="#apartment-up"></use>
+      </svg>
+    </button>
+  </div>
+</section>

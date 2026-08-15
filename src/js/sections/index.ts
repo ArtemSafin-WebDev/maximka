@@ -1,5 +1,6 @@
 import initAboutProject from "./aboutProject";
 import initAboutGallery from "./aboutGallery";
+import initApartmentHero from "./apartmentHero";
 import initApartmentRecommendations from "./apartmentRecommendations";
 import initAdvantages from "./advantages";
 import initContactsFaq from "./contactsFaq";
@@ -13,6 +14,7 @@ import initSolutions from "./solutions";
 
 export default function sections() {
   initAboutGallery();
+  initApartmentHero();
   initApartmentRecommendations();
   initAboutProject();
   initContactsFaq();
