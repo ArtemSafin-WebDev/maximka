@@ -152,6 +152,142 @@
     display: none;
   }
 
+  .contacts-map-dialog {
+    position: fixed;
+    inset: 7.2rem 0 0;
+    width: 100%;
+    max-width: none;
+    height: calc(100dvh - 7.2rem);
+    max-height: none;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 2.4rem 2.4rem 0 0;
+    background-color: #ecebea;
+    color: var(--text-color);
+    opacity: 0;
+    transform: translateY(2.4rem);
+    transition:
+      opacity 0.32s ease,
+      transform 0.44s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .contacts-map-dialog[open] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @starting-style {
+    .contacts-map-dialog[open] {
+      opacity: 0;
+      transform: translateY(2.4rem);
+    }
+  }
+
+  .contacts-map-dialog::backdrop {
+    background-color: transparent;
+  }
+
+  .contacts-map-dialog__map,
+  .contacts-map-dialog__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .contacts-map-dialog__map-fallback {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 2.8rem);
+    width: auto;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    transform: translateX(-50%);
+  }
+
+  .contacts-map-dialog__canvas {
+    z-index: 1;
+    font-size: 0;
+  }
+
+  .contacts-map-dialog__back {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: var(--text-color);
+    box-shadow: 0 0.4rem 1.6rem rgb(0 0 0 / 10%);
+  }
+
+  .contacts-map-dialog__back svg {
+    width: 3.6rem;
+    height: 3.6rem;
+    fill: currentcolor;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contacts-map-dialog {
+      transition: none;
+    }
+  }
+
+  .contacts-map-dialog__route-panel {
+    position: absolute;
+    right: 2rem;
+    bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    left: 2rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2.8rem 2.4rem;
+    border-radius: 2.8rem;
+    background-color: #ffffff;
+  }
+
+  .contacts-map-dialog__title {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .contacts-map-dialog__services {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .contacts-map-dialog__service {
+    display: grid;
+    place-items: center;
+    width: 7.2rem;
+    height: 7.2rem;
+    overflow: hidden;
+    border: 0.1rem solid rgb(153 153 153 / 18%);
+    border-radius: 2rem;
+    background-color: #ffffff;
+  }
+
+  .contacts-map-dialog__service-icon {
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+  }
+
+  .contacts-map-dialog :where(button, a):focus-visible {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.3rem;
+  }
+
   .contacts-map :where(a):focus-visible {
     outline: 0.2rem solid var(--primary-color);
     outline-offset: 0.3rem;
@@ -320,10 +456,19 @@
       transform: translate(-50%, -50%);
     }
 
+    .contacts-map-dialog:not([open]) {
+      display: none;
+    }
+
     @include mq.hover {
       .contacts-map__map-button:hover {
         background-color: var(--primary-color);
         color: #ffffff;
+      }
+
+      .contacts-map-dialog__service:hover,
+      .contacts-map-dialog__back:hover {
+        background-color: var(--bg-color);
       }
     }
   }

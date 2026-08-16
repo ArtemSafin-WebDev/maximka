@@ -254,6 +254,13 @@
     height: 1.8rem;
   }
 
+  .apartment-card__mortgage {
+    color: #999999;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
   .apartment-card__divider {
     flex: 0 0 auto;
     width: 100%;
@@ -366,6 +373,96 @@
     transition-delay: 0s;
   }
 
+  .apartment-card__reserved-scrim {
+    position: absolute;
+    z-index: 4;
+    inset: 0;
+    border-radius: inherit;
+    background-color: rgb(249 247 243 / 62%);
+  }
+
+  .apartment-card__reserved-status {
+    position: absolute;
+    z-index: 5;
+    top: 32.5rem;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 27.6rem;
+    min-height: 5.6rem;
+    padding: 1.9rem 2rem;
+    border-radius: 10rem;
+    background-color: #ffffff;
+    box-shadow: 0 1.2rem 1.5rem rgb(0 0 0 / 5%);
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    transform: translateX(-50%);
+  }
+
+  .apartment-card__reserved-icon {
+    flex: 0 0 auto;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .apartment-card--catalog {
+    width: 56rem;
+    height: 84.6rem;
+    padding-bottom: 4rem;
+  }
+
+  .apartment-card--catalog .apartment-card__title {
+    font-size: 4rem;
+  }
+
+  .apartment-card--catalog .apartment-card__meta {
+    gap: 1.2rem;
+    font-size: 2.8rem;
+  }
+
+  .apartment-card--catalog .apartment-card__media {
+    height: 40.2rem;
+  }
+
+  .apartment-card--catalog .apartment-card__image {
+    max-width: 38.4rem;
+    height: 32.8rem;
+  }
+
+  .apartment-card--catalog .apartment-card__price-block {
+    gap: 2.4rem;
+  }
+
+  .apartment-card--catalog .apartment-card__price {
+    gap: 1.2rem;
+  }
+
+  .apartment-card--catalog .apartment-card__price-label {
+    font-size: 2.4rem;
+  }
+
+  .apartment-card--catalog .apartment-card__price strong {
+    font-size: 4rem;
+  }
+
+  .apartment-card--catalog .apartment-card__discount,
+  .apartment-card--catalog .apartment-card__mortgage {
+    font-size: 2rem;
+  }
+
+  .apartment-card--catalog .apartment-card__discount {
+    gap: 1.2rem;
+  }
+
+  .apartment-card--catalog .apartment-card__discount-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
   .apartment-recommendations__scrollbar.swiper-scrollbar {
     display: none;
   }
@@ -459,6 +556,64 @@
 
     .apartment-card__discount {
       gap: 0.6rem;
+      font-size: 1.4rem;
+    }
+
+    .apartment-card__mortgage {
+      font-size: 1.4rem;
+    }
+
+    .apartment-card--catalog {
+      width: 100%;
+      height: auto;
+      min-height: 57rem;
+      padding-bottom: 2rem;
+    }
+
+    .apartment-card--catalog .apartment-card__title {
+      font-size: 1.8rem;
+    }
+
+    .apartment-card--catalog .apartment-card__meta {
+      gap: 0.6rem;
+      font-size: 1.4rem;
+    }
+
+    .apartment-card--catalog .apartment-card__media {
+      height: 22rem;
+    }
+
+    .apartment-card--catalog .apartment-card__image {
+      max-width: 21.1rem;
+      height: 18.1rem;
+    }
+
+    .apartment-card--catalog .apartment-card__price-block {
+      gap: 1.2rem;
+    }
+
+    .apartment-card--catalog .apartment-card__price {
+      gap: 0.8rem;
+    }
+
+    .apartment-card--catalog .apartment-card__price-label {
+      font-size: 1.4rem;
+    }
+
+    .apartment-card--catalog .apartment-card__price strong {
+      font-size: 2.4rem;
+    }
+
+    .apartment-card--catalog .apartment-card__discount,
+    .apartment-card--catalog .apartment-card__mortgage {
+      font-size: 1.4rem;
+    }
+
+    .apartment-card__reserved-status {
+      top: 21.5rem;
+      width: 20rem;
+      min-height: 4.8rem;
+      padding: 1.5rem 1.6rem;
       font-size: 1.4rem;
     }
 

@@ -26,6 +26,12 @@
     white-space: nowrap;
   }
 
+  .breadcrumbs__link {
+    transition:
+      color 0.2s,
+      opacity 0.2s;
+  }
+
   .breadcrumbs__separator {
     flex: 0 0 auto;
     width: 2rem;

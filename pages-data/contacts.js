@@ -124,8 +124,29 @@ export default {
           icon: "/images/infrastructure/complex-marker.svg",
         },
         staticImage: "/images/contacts/map-mobile.webp",
-        link: "https://yandex.ru/maps/?ll=49.096335%2C55.860822&z=16",
         buttonLabel: "Показать на карте",
+        routeDialog: {
+          id: "contacts-route-dialog",
+          title: "Проложить маршрут",
+          backgroundImage: "/images/contacts/map-dialog-background.webp",
+          services: [
+            {
+              name: "Яндекс Картах",
+              image: "/images/contacts/map-services/yandex.webp",
+              href: "https://yandex.ru/maps/?rtext=~55.860822%2C49.096335&rtt=auto",
+            },
+            {
+              name: "Google Картах",
+              image: "/images/contacts/map-services/google.webp",
+              href: "https://www.google.com/maps/dir/?api=1&destination=55.860822%2C49.096335",
+            },
+            {
+              name: "2ГИС",
+              image: "/images/contacts/map-services/2gis.webp",
+              href: "https://2gis.ru/kazan/directions/points/%7C49.096335%2C55.860822",
+            },
+          ],
+        },
       },
     },
     contactsFaq: {

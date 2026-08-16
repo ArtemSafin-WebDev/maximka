@@ -1,0 +1,710 @@
+@use "tools/media" as mq;
+
+@layer sections {
+  html:has(.catalog-page) {
+    font-size: clamp(2px, 0.525vw, 125px);
+  }
+
+  .catalog-page .page-header {
+    color: var(--text-color);
+  }
+
+  .catalog-page .page-header__button--apartments {
+    display: none;
+  }
+
+  .catalog-page .page-header__nav {
+    margin-left: 26.6rem;
+  }
+
+  .catalog-page .page-header__button--callback {
+    background-color: var(--primary-color);
+    color: #ffffff;
+  }
+
+  .catalog-page .page-header__button--callback .page-header__button-icon {
+    color: #ffffff;
+  }
+
+  .apartment-catalog__intro {
+    min-height: 70.4rem;
+    padding-top: 15.2rem;
+    border-radius: 0 0 4rem 4rem;
+    background-color: #ffffff;
+  }
+
+  .apartment-catalog__breadcrumbs {
+    margin-bottom: 3rem;
+  }
+
+  .apartment-catalog__title {
+    margin-bottom: 2.9rem;
+    font-size: 8rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .catalog-filter {
+    display: grid;
+    grid-template-columns: 25.9rem 31.3rem 18rem 32rem 48.8rem;
+    column-gap: 4rem;
+    row-gap: 4rem;
+  }
+
+  .catalog-filter__group {
+    min-width: 0;
+  }
+
+  .catalog-filter__label {
+    display: block;
+    margin-bottom: 1.6rem;
+    color: #999999;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+
+  .catalog-filter__chips {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .catalog-chip,
+  .catalog-feature {
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+
+  :is(.catalog-chip, .catalog-feature) input,
+  :is(.catalog-check, .catalog-reserved-toggle) input {
+    position: absolute;
+    width: 0.1rem;
+    height: 0.1rem;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .catalog-chip > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+    border: 0.1rem solid rgb(153 153 153 / 18%);
+    border-radius: 50%;
+    background-color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    transition:
+      border-color 0.2s,
+      background-color 0.2s;
+  }
+
+  .catalog-chip--wide > span {
+    width: 9.7rem;
+    padding-inline: 2rem;
+    border-radius: 10rem;
+  }
+
+  .catalog-chip input:checked + span,
+  .catalog-feature input:checked + span {
+    border-color: #d8de5b;
+    background-color: #d8de5b;
+  }
+
+  :is(.catalog-chip, .catalog-feature) input:focus-visible + span {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.2rem;
+  }
+
+  @include mq.hover {
+    :is(.catalog-chip, .catalog-feature):hover > span {
+      border-color: #999999;
+    }
+
+    :is(.catalog-chip, .catalog-feature):has(input:checked):hover > span {
+      border-color: #c4cb3b;
+      background-color: #c4cb3b;
+    }
+  }
+
+  .catalog-range__control {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1.6rem minmax(0, 1fr);
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    padding-inline: 2rem;
+    border: 0.1rem solid rgb(153 153 153 / 18%);
+    border-radius: 10rem;
+    background-color: #ffffff;
+  }
+
+  .catalog-range__value {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+    color: var(--text-color);
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+
+  .catalog-range__value--max {
+    justify-content: flex-end;
+  }
+
+  .catalog-range__value > span {
+    flex: 0 0 auto;
+    color: rgb(51 51 51 / 20%);
+  }
+
+  .catalog-range__value input {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+  }
+
+  .catalog-range__value--max input {
+    text-align: right;
+  }
+
+  .catalog-range__separator {
+    position: relative;
+    z-index: 4;
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .catalog-range__separator::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.8rem;
+    height: 0.1rem;
+    background-color: rgb(51 51 51 / 20%);
+    transform: translate(-50%, -50%);
+  }
+
+  .catalog-range__slider {
+    position: absolute;
+    right: 1.9rem;
+    bottom: -0.1rem;
+    left: 1.9rem;
+    z-index: 1;
+    height: 0.2rem;
+    background: linear-gradient(
+      to right,
+      #e8e8e8 0 var(--range-min, 0%),
+      #d8de5b var(--range-min, 0%) var(--range-max, 100%),
+      #e8e8e8 var(--range-max, 100%) 100%
+    );
+    pointer-events: none;
+  }
+
+  .catalog-range__native {
+    position: absolute;
+    right: -0.3rem;
+    bottom: -2.2rem;
+    left: -0.3rem;
+    z-index: 2;
+    width: calc(100% + 0.6rem);
+    height: 4.4rem;
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    background: transparent;
+    pointer-events: none;
+    touch-action: none;
+  }
+
+  .catalog-range__native::-webkit-slider-runnable-track {
+    height: 0.2rem;
+    background: transparent;
+  }
+
+  .catalog-range__native::-moz-range-track {
+    height: 0.2rem;
+    background: transparent;
+  }
+
+  .catalog-range__native::-webkit-slider-thumb {
+    width: 4.4rem;
+    height: 4.4rem;
+    margin-top: -2.1rem;
+    border: 0;
+    border-radius: 50%;
+    appearance: none;
+    background: radial-gradient(circle, #d8de5b 0 0.6rem, transparent 0.65rem);
+    cursor: grab;
+    pointer-events: auto;
+    touch-action: none;
+  }
+
+  .catalog-range__native::-moz-range-thumb {
+    width: 4.4rem;
+    height: 4.4rem;
+    border: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, #d8de5b 0 0.6rem, transparent 0.65rem);
+    cursor: grab;
+    pointer-events: auto;
+    touch-action: none;
+  }
+
+  .catalog-range__native:focus-visible::-webkit-slider-thumb {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.2rem;
+  }
+
+  .catalog-range__native:focus-visible::-moz-range-thumb {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.2rem;
+  }
+
+  .catalog-filter__floor-control {
+    display: flex;
+  }
+
+  .catalog-range--floor {
+    flex: 0 0 17rem;
+  }
+
+  .catalog-range--floor .catalog-range__control {
+    border-radius: 10rem 0 0 10rem;
+  }
+
+  .catalog-filter__floor-options {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-width: 0;
+    height: 5rem;
+    margin-left: -0.1rem;
+    padding-inline: 2rem;
+    border: 0.1rem solid rgb(153 153 153 / 18%);
+    border-radius: 0 10rem 10rem 0;
+    background-color: #ffffff;
+  }
+
+  .catalog-check,
+  .catalog-reserved-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .catalog-check__box {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 0.6rem;
+    background-color: var(--bg-color);
+    transition: background-color 0.2s;
+  }
+
+  .catalog-check__box svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: var(--text-color);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  :is(.catalog-check, .catalog-reserved-toggle) input:checked + .catalog-check__box {
+    background-color: #d8de5b;
+  }
+
+  :is(.catalog-check, .catalog-reserved-toggle) input:checked + .catalog-check__box svg {
+    opacity: 1;
+  }
+
+  :is(.catalog-check, .catalog-reserved-toggle) input:focus-visible + .catalog-check__box {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.2rem;
+  }
+
+  .catalog-filter__group--features {
+    grid-column: 1 / -1;
+  }
+
+  .catalog-filter__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .catalog-feature > span {
+    display: flex;
+    align-items: center;
+    min-height: 5rem;
+    padding: 1.6rem 2rem;
+    border: 0.1rem solid rgb(153 153 153 / 18%);
+    border-radius: 10rem;
+    background-color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    transition:
+      border-color 0.2s,
+      background-color 0.2s;
+  }
+
+  .catalog-filter__actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .catalog-filter__submit,
+  .catalog-filter__reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 5.6rem;
+    border-radius: 10rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+
+  .catalog-filter__submit {
+    padding: 1.9rem 2rem;
+    background-color: var(--primary-color);
+    color: #ffffff;
+  }
+
+  .catalog-filter__reset {
+    gap: 1.8rem;
+    padding: 1.2rem 1.2rem 1.2rem 2rem;
+    border: 0.1rem solid #999999;
+  }
+
+  .catalog-filter__reset svg {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    fill: currentcolor;
+  }
+
+  @include mq.hover {
+    .catalog-filter__submit:hover {
+      background-color: var(--primary-hover-color);
+    }
+
+    .catalog-filter__reset:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+  }
+
+  .apartment-catalog__results {
+    padding-top: 9rem;
+  }
+
+  .apartment-catalog__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  .apartment-catalog__count {
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .apartment-catalog__count output {
+    color: var(--primary-color);
+  }
+
+  .apartment-catalog__controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .catalog-sort,
+  .catalog-reserved-toggle {
+    position: relative;
+    height: 5rem;
+    border: 0.1rem solid rgb(153 153 153 / 50%);
+    border-radius: 10rem;
+    background-color: #ffffff;
+  }
+
+  .catalog-sort {
+    width: 22.5rem;
+  }
+
+  .catalog-sort::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0.9rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background-color: #d8de5b;
+    background-image: linear-gradient(45deg, transparent 50%, #333333 50%),
+      linear-gradient(135deg, #333333 50%, transparent 50%);
+    background-position:
+      calc(50% - 0.3rem) 50%,
+      calc(50% + 0.3rem) 50%;
+    background-repeat: no-repeat;
+    background-size: 0.4rem 0.4rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .catalog-sort select {
+    width: 100%;
+    height: 100%;
+    padding: 1.6rem 5rem 1.6rem 2rem;
+    border: 0;
+    outline: 0;
+    appearance: none;
+    background-color: transparent;
+    font: inherit;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--text-color);
+    cursor: pointer;
+  }
+
+  .catalog-sort:focus-within {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.2rem;
+  }
+
+  .catalog-reserved-toggle {
+    width: 35rem;
+    padding-inline: 2rem;
+  }
+
+  .apartment-catalog__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    margin-top: 6rem;
+  }
+
+  .apartment-catalog__item {
+    min-width: 0;
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+  }
+
+  .apartment-catalog__item[hidden] {
+    display: none;
+  }
+
+  .apartment-catalog__item--mortgage {
+    grid-column: 1 / -1;
+  }
+
+  .apartment-catalog__more {
+    min-height: 7rem;
+    margin: 8rem auto;
+    padding: 2.2rem 3.2rem;
+    border: 0.1rem solid #999999;
+    border-radius: 10rem;
+    background-color: transparent;
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .apartment-catalog__more span {
+    color: var(--primary-color);
+  }
+
+  .apartment-catalog__more:focus-visible {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.3rem;
+  }
+
+  @include mq.hover {
+    .apartment-catalog__more:hover {
+      border-color: var(--primary-color);
+      background-color: var(--primary-color);
+      color: #ffffff;
+    }
+
+    .apartment-catalog__more:hover span {
+      color: inherit;
+    }
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 0.1rem;
+    height: 0.1rem;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @include mq.down(sm) {
+    html:has(.catalog-page) {
+      font-size: 10px;
+    }
+
+    .apartment-catalog__intro {
+      min-height: 0;
+      padding-block: 10rem 3.2rem;
+      border-radius: 0 0 2.4rem 2.4rem;
+    }
+
+    .apartment-catalog__breadcrumbs {
+      margin-bottom: 2rem;
+      overflow-x: auto;
+    }
+
+    .apartment-catalog__title {
+      margin-bottom: 3.2rem;
+      font-size: 4rem;
+    }
+
+    .catalog-page .page-header__nav {
+      margin-left: 0;
+    }
+
+    .catalog-filter {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+
+    .catalog-filter__chips,
+    .catalog-filter__features {
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .catalog-filter__chips::-webkit-scrollbar,
+    .catalog-filter__features::-webkit-scrollbar {
+      display: none;
+    }
+
+    .catalog-filter__group--floor {
+      order: 5;
+    }
+
+    .catalog-filter__group--features {
+      order: 6;
+    }
+
+    .catalog-filter__actions {
+      order: 7;
+      margin-top: 0.8rem;
+    }
+
+    .catalog-filter__floor-control {
+      display: block;
+    }
+
+    .catalog-range--floor {
+      width: 100%;
+    }
+
+    .catalog-range--floor .catalog-range__control {
+      border-radius: 10rem;
+    }
+
+    .catalog-filter__floor-options {
+      width: 100%;
+      margin-top: 1.2rem;
+      margin-left: 0;
+      border-radius: 10rem;
+    }
+
+    .catalog-feature > span {
+      font-size: 1.4rem;
+    }
+
+    .catalog-filter__actions > * {
+      flex: 1 1 0;
+    }
+
+    .apartment-catalog__results {
+      padding-top: 4.8rem;
+    }
+
+    .apartment-catalog__toolbar {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+
+    .apartment-catalog__count {
+      font-size: 2.4rem;
+    }
+
+    .apartment-catalog__controls {
+      align-items: stretch;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .catalog-sort,
+    .catalog-reserved-toggle {
+      width: 100%;
+    }
+
+    .apartment-catalog__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 3.2rem;
+    }
+
+    .apartment-catalog__item--mortgage {
+      grid-column: auto;
+      margin-top: 0.8rem;
+    }
+
+    .apartment-catalog__item--contact .contact-request-card {
+      width: 100%;
+    }
+
+    .apartment-catalog__more {
+      min-height: 5.6rem;
+      margin-block: 4rem 4.8rem;
+      padding: 1.9rem 2rem;
+      font-size: 1.6rem;
+    }
+  }
+}

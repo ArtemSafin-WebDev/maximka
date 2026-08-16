@@ -1,9 +1,11 @@
-<article class="apartment-card">
-  <a
-    class="apartment-card__link"
-    href="{{href}}"
-    aria-label="Открыть {{title}}, {{area}}, {{floor}}"
-  ></a>
+<article class="apartment-card{{#if modifier}} apartment-card--{{modifier}}{{/if}}{{#if reserved}} is-reserved{{/if}}"{{#if reserved}} aria-disabled="true"{{/if}}>
+  {{#unless reserved}}
+    <a
+      class="apartment-card__link"
+      href="{{href}}"
+      aria-label="Открыть {{title}}, {{area}}, {{floor}}"
+    ></a>
+  {{/unless}}
 
   <header class="apartment-card__header">
     <h3 class="apartment-card__title">{{title}}</h3>
@@ -42,19 +44,23 @@
       <strong>{{price}}</strong>
     </div>
 
-    <div class="apartment-card__discount">
-      <del>{{oldPrice}}</del>
-      <span class="apartment-card__separator apartment-card__separator--dark" aria-hidden="true"></span>
-      <span>{{discount}}</span>
-      <img
-        class="apartment-card__discount-icon"
-        src="/src/icons/discount.svg"
-        width="18"
-        height="18"
-        alt=""
-        aria-hidden="true"
-      >
-    </div>
+    {{#if mortgage}}
+      <p class="apartment-card__mortgage">{{mortgage}}</p>
+    {{else}}
+      <div class="apartment-card__discount">
+        <del>{{oldPrice}}</del>
+        <span class="apartment-card__separator apartment-card__separator--dark" aria-hidden="true"></span>
+        <span>{{discount}}</span>
+        <img
+          class="apartment-card__discount-icon"
+          src="/src/icons/discount.svg"
+          width="18"
+          height="18"
+          alt=""
+          aria-hidden="true"
+        >
+      </div>
+    {{/if}}
   </div>
 
   <div class="apartment-card__divider" aria-hidden="true"></div>
@@ -74,6 +80,7 @@
       aria-expanded="false"
       aria-controls="apartment-features-{{id}}"
       aria-label="Показать все особенности квартиры"
+      {{#if reserved}}disabled{{/if}}
     >
       +{{featuresRemaining}}
     </button>
@@ -89,4 +96,14 @@
       {{/each}}
     </div>
   </div>
+
+  {{#if reserved}}
+    <span class="apartment-card__reserved-scrim" aria-hidden="true"></span>
+    <span class="apartment-card__reserved-status" role="status">
+      <svg class="apartment-card__reserved-icon" width="18" height="18" aria-hidden="true" focusable="false">
+        <use href="#apartment-reserved"></use>
+      </svg>
+      <span>Забронировано</span>
+    </span>
+  {{/if}}
 </article>

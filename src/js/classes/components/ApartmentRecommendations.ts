@@ -33,7 +33,7 @@ class ApartmentRecommendations extends Component {
       .map((galleryElement) => {
         const card = galleryElement.closest<HTMLElement>(".apartment-card");
 
-        if (!card) return null;
+        if (!card || card.classList.contains("is-reserved")) return null;
 
         return {
           card,

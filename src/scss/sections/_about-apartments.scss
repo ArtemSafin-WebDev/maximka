@@ -6,18 +6,50 @@
     padding-inline: 2rem;
   }
 
+  .about-apartments__slider {
+    max-width: 188rem;
+    margin-inline: auto;
+    overflow: visible;
+  }
+
+  .about-apartments__list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
+    padding-block: 12rem 0;
+    overflow: visible;
+    box-sizing: border-box;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 4rem;
+    }
+  }
+
+  .about-apartments__slide {
+    position: sticky;
+    top: var(--stack-top, 16rem);
+    z-index: var(--stack-z-index, 1);
+    height: 78rem;
+    box-sizing: border-box;
+
+    & + & {
+      margin-top: max(24rem, calc(100svh - 78rem));
+    }
+  }
+
   .about-apartments__card {
     display: grid;
     grid-template-columns: 56rem 99.6rem;
     grid-template-areas: "content media";
     gap: 16.5rem;
     width: 100%;
-    max-width: 188rem;
-    min-height: 78rem;
-    margin-inline: auto;
+    height: 100%;
     padding: 8rem 7.9rem 8rem 8rem;
     overflow: hidden;
     border-radius: 4rem;
+    box-sizing: border-box;
     background-color: #ffffff;
   }
 
@@ -51,13 +83,30 @@
 
   .about-apartments__image {
     position: absolute;
-    top: -20.32%;
-    left: -10.04%;
     display: block;
-    width: 121.69%;
-    height: 130.32%;
     max-width: none;
     object-fit: cover;
+  }
+
+  .about-apartments__image--interior {
+    top: -20.32%;
+    left: -10.04%;
+    width: 121.69%;
+    height: 130.32%;
+  }
+
+  .about-apartments__image--white-box {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .about-apartments__image--natural-light {
+    top: -11.13%;
+    left: -2.91%;
+    width: 121.99%;
+    height: 130.65%;
+    transform: scaleX(-1);
   }
 
   .about-apartments__pagination {
@@ -69,14 +118,45 @@
       margin-bottom: 4.8rem;
     }
 
+    .about-apartments__slider {
+      overflow: visible;
+    }
+
+    .about-apartments__list {
+      display: flex;
+      row-gap: 0;
+      padding-block: 0;
+      overflow: hidden;
+      border-radius: 2.8rem;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .about-apartments__slide {
+      position: relative;
+      top: auto;
+      z-index: auto;
+      height: auto;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      & + & {
+        margin-top: 0;
+      }
+    }
+
     .about-apartments__card {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0;
+      height: auto;
       min-height: 42.2rem;
       padding: 1rem 1rem 2.8rem;
-      border-radius: 2.8rem;
+      overflow: visible;
+      border-radius: 0;
     }
 
     .about-apartments__content {
@@ -84,7 +164,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 26rem;
+      align-self: stretch;
+      width: 100%;
       margin-top: 2rem;
       text-align: center;
     }
@@ -109,7 +190,7 @@
       border-radius: 1.8rem;
     }
 
-    .about-apartments__image {
+    .about-apartments__image--interior {
       top: 50%;
       left: 50%;
       width: 107.3%;
@@ -117,23 +198,43 @@
       transform: translate(-50%, -50%);
     }
 
-    .about-apartments__pagination {
+    .about-apartments__image--white-box {
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .about-apartments__image--natural-light {
+      top: 50%;
+      left: 50%;
+      width: 107.3%;
+      height: 122.28%;
+      transform: translate(-50%, -50%) scaleX(-1);
+    }
+
+    .about-apartments__pagination.swiper-pagination {
+      position: static;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.8rem;
+      width: 100%;
       height: 3.2rem;
     }
 
-    .about-apartments__pagination-item {
+    .about-apartments__pagination .swiper-pagination-bullet {
       width: 0.5rem;
       height: 0.5rem;
+      margin: 0;
       border-radius: 3rem;
       background-color: var(--primary-color);
       opacity: 0.6;
+      transition:
+        width 0.2s ease,
+        opacity 0.2s ease;
     }
 
-    .about-apartments__pagination-item--active {
+    .about-apartments__pagination .swiper-pagination-bullet-active {
       width: 1.2rem;
       opacity: 1;
     }

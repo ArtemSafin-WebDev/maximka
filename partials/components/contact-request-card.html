@@ -42,11 +42,13 @@
         }}
       </div>
 
-      <div class="contact-request-card__agreements">
-        {{#each agreements}}
-          {{> components/checkbox }}
-        {{/each}}
-      </div>
+      {{#if agreements}}
+        <div class="contact-request-card__agreements">
+          {{#each agreements}}
+            {{> components/checkbox }}
+          {{/each}}
+        </div>
+      {{/if}}
     </form>
   </div>
 </section>

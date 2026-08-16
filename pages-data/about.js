@@ -162,11 +162,45 @@ export default {
     },
     progress: homePages["/index.html"].progress,
     aboutApartments: {
-      title: "Каждый метр работает для вас",
-      description:
-        "Без длинных коридоров и пустых метров. Просторные кухни-гостиные, места для хранения, балконы и продуманные решения делают каждую квартиру комфортной",
-      image: "/images/about-apartments/interior.webp",
-      imageAlt: "Светлая кухня-гостиная с продуманной зоной отдыха",
+      sliderLabel: "Преимущества квартир",
+      slides: [
+        {
+          title: "Каждый метр работает для вас",
+          description:
+            "Без длинных коридоров и пустых метров. Просторные кухни-гостиные, места для хранения, балконы и продуманные решения делают каждую квартиру комфортной",
+          images: [
+            {
+              src: "/images/about-apartments/interior.webp",
+              alt: "Светлая кухня-гостиная с продуманной зоной отдыха",
+              className: "about-apartments__image--interior",
+            },
+          ],
+        },
+        {
+          title: "Меньше ремонта — больше времени на переезд",
+          description:
+            "Все основные работы уже выполнены: стены подготовлены, пол выровнен, коммуникации разведены. Остается только выбрать материалы и оформить интерьер по своему вкусу.",
+          images: [
+            {
+              src: "/images/about-apartments/white-box.webp",
+              alt: "Квартира с предчистовой отделкой и панорамным окном",
+              className: "about-apartments__image--white-box",
+            },
+          ],
+        },
+        {
+          title: "Больше естественного света каждый день",
+          description:
+            "Увеличенные окна делают квартиры визуально просторнее и наполняют комнаты светом даже в пасмурные дни",
+          images: [
+            {
+              src: "/images/about-apartments/natural-light.webp",
+              alt: "Светлая кухня с увеличенным окном",
+              className: "about-apartments__image--natural-light",
+            },
+          ],
+        },
+      ],
     },
     aboutGallery: {
       title: "Галерея",

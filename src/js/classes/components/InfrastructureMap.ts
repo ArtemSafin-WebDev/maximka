@@ -307,7 +307,7 @@ class InfrastructureMap extends Component {
   }
 
   private async addControls(ymaps3: YMaps3): Promise<void> {
-    if (!this.map) {
+    if (!this.map || this.element.dataset.hideZoomControls === "true") {
       return;
     }
 

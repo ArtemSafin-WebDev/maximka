@@ -1,29 +1,34 @@
-<section class="about-apartments" aria-labelledby="about-apartments-title">
-  <div class="about-apartments__card">
-    <div class="about-apartments__content">
-      <h2 class="about-apartments__title" id="about-apartments-title">
-        {{aboutApartments.title}}
-      </h2>
-      <p class="about-apartments__description">
-        {{aboutApartments.description}}
-      </p>
-    </div>
+<section class="about-apartments">
+  <div
+    class="about-apartments__slider swiper js-about-apartments-slider"
+    aria-label="{{aboutApartments.sliderLabel}}"
+  >
+    <ul class="about-apartments__list swiper-wrapper">
+      {{#each aboutApartments.slides}}
+        <li class="about-apartments__slide swiper-slide">
+          <article class="about-apartments__card">
+            <div class="about-apartments__content">
+              <h2 class="about-apartments__title">{{title}}</h2>
+              <p class="about-apartments__description">{{description}}</p>
+            </div>
 
-    <div class="about-apartments__media">
-      <img
-        class="about-apartments__image"
-        src="{{aboutApartments.image}}"
-        width="1024"
-        height="683"
-        alt="{{aboutApartments.imageAlt}}"
-        loading="lazy"
-      >
-    </div>
-  </div>
+            <div class="about-apartments__media">
+              {{#each images}}
+                <img
+                  class="about-apartments__image {{className}}"
+                  src="{{src}}"
+                  width="1536"
+                  height="1024"
+                  alt="{{alt}}"
+                  loading="lazy"
+                >
+              {{/each}}
+            </div>
+          </article>
+        </li>
+      {{/each}}
+    </ul>
 
-  <div class="about-apartments__pagination" aria-hidden="true">
-    <span class="about-apartments__pagination-item about-apartments__pagination-item--active"></span>
-    <span class="about-apartments__pagination-item"></span>
-    <span class="about-apartments__pagination-item"></span>
+    <div class="about-apartments__pagination swiper-pagination"></div>
   </div>
 </section>

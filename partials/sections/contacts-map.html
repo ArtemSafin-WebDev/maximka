@@ -72,15 +72,82 @@
           loading="lazy"
         >
         <span class="contacts-map__mobile-map-overlay" aria-hidden="true"></span>
-        <a
+        <button
           class="contacts-map__map-button"
-          href="{{contactsMap.map.link}}"
-          target="_blank"
-          rel="noopener noreferrer"
+          type="button"
+          data-dialog-target="{{contactsMap.map.routeDialog.id}}"
         >
           {{contactsMap.map.buttonLabel}}
-        </a>
+        </button>
       </div>
     </div>
   </div>
 </section>
+
+<dialog
+  class="contacts-map-dialog js-dialog-modal"
+  id="{{contactsMap.map.routeDialog.id}}"
+  aria-labelledby="{{contactsMap.map.routeDialog.id}}-title"
+>
+  <div
+    class="contacts-map-dialog__map js-infrastructure-map"
+    data-api-key="{{contactsMap.map.apiKey}}"
+    data-center="{{contactsMap.map.center}}"
+    data-zoom="{{contactsMap.map.zoom}}"
+    data-complex-coordinates="{{contactsMap.map.complex.coordinates}}"
+    data-complex-contour="{{contactsMap.map.complex.contour}}"
+    data-complex-title="{{contactsMap.map.complex.title}}"
+    data-complex-icon="{{contactsMap.map.complex.icon}}"
+    data-hide-map-open-button="true"
+    data-hide-zoom-controls="true"
+    aria-label="{{contactsMap.map.ariaLabel}}"
+  >
+    <img
+      class="contacts-map-dialog__map-fallback"
+      src="{{contactsMap.map.routeDialog.backgroundImage}}"
+      width="1838"
+      height="919"
+      alt=""
+    >
+    <div class="contacts-map-dialog__canvas js-infrastructure-map-canvas"></div>
+  </div>
+
+  <button
+    class="contacts-map-dialog__back js-dialog-close"
+    type="button"
+    aria-label="Закрыть карту"
+  >
+    <svg width="36" height="36" aria-hidden="true" focusable="false">
+      <use href="#contacts-map-back"></use>
+    </svg>
+  </button>
+
+  <div class="contacts-map-dialog__route-panel">
+    <h2
+      class="contacts-map-dialog__title"
+      id="{{contactsMap.map.routeDialog.id}}-title"
+    >
+      {{contactsMap.map.routeDialog.title}}
+    </h2>
+
+    <div class="contacts-map-dialog__services">
+      {{#each contactsMap.map.routeDialog.services}}
+        <a
+          class="contacts-map-dialog__service"
+          href="{{href}}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Открыть маршрут в {{name}}"
+        >
+          <img
+            class="contacts-map-dialog__service-icon"
+            src="{{image}}"
+            width="40"
+            height="40"
+            alt=""
+          >
+        </a>
+      {{/each}}
+    </div>
+  </div>
+</dialog>

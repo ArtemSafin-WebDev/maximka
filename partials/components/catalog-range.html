@@ -1,0 +1,57 @@
+<div
+  class="catalog-filter__group catalog-range{{#if class}} {{class}}{{/if}} js-catalog-range"
+  data-min="{{min}}"
+  data-max="{{max}}"
+  data-initial-min="{{valueMin}}"
+  data-initial-max="{{valueMax}}"
+>
+  <p class="catalog-filter__label">{{label}}</p>
+
+  <div class="catalog-range__control">
+    <label class="catalog-range__value">
+      <span>от</span>
+      <input
+        class="js-catalog-range-value-min"
+        type="text"
+        value="{{displayMin}}"
+        inputmode="numeric"
+        autocomplete="off"
+        aria-label="{{label}}, от"
+      >
+    </label>
+
+    <span class="catalog-range__separator" aria-hidden="true"></span>
+
+    <label class="catalog-range__value catalog-range__value--max">
+      <span>до</span>
+      <input
+        class="js-catalog-range-value-max"
+        type="text"
+        value="{{displayMax}}"
+        inputmode="numeric"
+        autocomplete="off"
+        aria-label="{{label}}, до"
+      >
+    </label>
+
+    <span class="catalog-range__slider" aria-hidden="true"></span>
+    <input
+      class="catalog-range__native catalog-range__native--min js-catalog-range-min"
+      type="range"
+      min="{{min}}"
+      max="{{max}}"
+      value="{{valueMin}}"
+      step="{{step}}"
+      aria-label="{{label}}, минимальное значение"
+    >
+    <input
+      class="catalog-range__native catalog-range__native--max js-catalog-range-max"
+      type="range"
+      min="{{min}}"
+      max="{{max}}"
+      value="{{valueMax}}"
+      step="{{step}}"
+      aria-label="{{label}}, максимальное значение"
+    >
+  </div>
+</div>

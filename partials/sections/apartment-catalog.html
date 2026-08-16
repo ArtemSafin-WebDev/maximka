@@ -1,0 +1,155 @@
+<section class="apartment-catalog js-apartment-catalog" aria-labelledby="apartment-catalog-title">
+  <div class="apartment-catalog__intro">
+    <div class="container">
+      {{> components/breadcrumbs
+        class="apartment-catalog__breadcrumbs"
+        ariaLabel=catalog.breadcrumbs.ariaLabel
+        items=catalog.breadcrumbs.items
+      }}
+
+      <h1 class="apartment-catalog__title" id="apartment-catalog-title">{{catalog.title}}</h1>
+
+      <form class="catalog-filter js-catalog-filter">
+        <fieldset class="catalog-filter__group catalog-filter__group--rooms">
+          <legend class="catalog-filter__label">Количество комнат</legend>
+          <div class="catalog-filter__chips">
+            {{#each catalog.filters.rooms}}
+              <label class="catalog-chip{{#if wide}} catalog-chip--wide{{/if}}">
+                <input type="checkbox" name="rooms" value="{{value}}" {{#if checked}}checked{{/if}}>
+                <span>{{label}}</span>
+              </label>
+            {{/each}}
+          </div>
+        </fieldset>
+
+        {{> components/catalog-range catalog.filters.price }}
+        {{> components/catalog-range catalog.filters.area }}
+
+        <fieldset class="catalog-filter__group catalog-filter__group--entrances">
+          <legend class="catalog-filter__label">Подъезд</legend>
+          <div class="catalog-filter__chips">
+            {{#each catalog.filters.entrances}}
+              <label class="catalog-chip">
+                <input type="checkbox" name="entrances" value="{{value}}" {{#if checked}}checked{{/if}}>
+                <span>{{label}}</span>
+              </label>
+            {{/each}}
+          </div>
+        </fieldset>
+
+        <fieldset class="catalog-filter__group catalog-filter__group--floor">
+          <legend class="catalog-filter__label">Этаж</legend>
+          <div class="catalog-filter__floor-control">
+            <div
+              class="catalog-range catalog-range--floor js-catalog-range"
+              data-min="{{catalog.filters.floor.min}}"
+              data-max="{{catalog.filters.floor.max}}"
+              data-initial-min="{{catalog.filters.floor.valueMin}}"
+              data-initial-max="{{catalog.filters.floor.valueMax}}"
+            >
+              <div class="catalog-range__control">
+                <label class="catalog-range__value">
+                  <span>от</span>
+                  <input class="js-catalog-range-value-min" type="text" value="{{catalog.filters.floor.displayMin}}" inputmode="numeric" autocomplete="off" aria-label="Этаж, от">
+                </label>
+                <span class="catalog-range__separator" aria-hidden="true"></span>
+                <label class="catalog-range__value catalog-range__value--max">
+                  <span>до</span>
+                  <input class="js-catalog-range-value-max" type="text" value="{{catalog.filters.floor.displayMax}}" inputmode="numeric" autocomplete="off" aria-label="Этаж, до">
+                </label>
+                <span class="catalog-range__slider" aria-hidden="true"></span>
+                <input class="catalog-range__native catalog-range__native--min js-catalog-range-min" type="range" min="{{catalog.filters.floor.min}}" max="{{catalog.filters.floor.max}}" value="{{catalog.filters.floor.valueMin}}" step="1" aria-label="Минимальный этаж">
+                <input class="catalog-range__native catalog-range__native--max js-catalog-range-max" type="range" min="{{catalog.filters.floor.min}}" max="{{catalog.filters.floor.max}}" value="{{catalog.filters.floor.valueMax}}" step="1" aria-label="Максимальный этаж">
+              </div>
+            </div>
+
+            <div class="catalog-filter__floor-options">
+              {{#each catalog.filters.floor.options}}
+                <label class="catalog-check">
+                  <input type="checkbox" name="floor-options" value="{{value}}" {{#if checked}}checked{{/if}}>
+                  <span class="catalog-check__box" aria-hidden="true">
+                    <svg width="18" height="18" focusable="false"><use href="#filter-checkmark"></use></svg>
+                  </span>
+                  <span>{{label}}</span>
+                </label>
+              {{/each}}
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="catalog-filter__group catalog-filter__group--features">
+          <legend class="catalog-filter__label">Преимущества</legend>
+          <div class="catalog-filter__features">
+            {{#each catalog.filters.features}}
+              <label class="catalog-feature">
+                <input type="checkbox" name="features" value="{{value}}" {{#if checked}}checked{{/if}}>
+                <span>{{label}}</span>
+              </label>
+            {{/each}}
+          </div>
+        </fieldset>
+
+        <div class="catalog-filter__actions">
+          <button class="catalog-filter__submit" type="submit">Показать варианты</button>
+          <button class="catalog-filter__reset" type="reset">
+            <span>Сбросить</span>
+            <svg width="32" height="32" aria-hidden="true" focusable="false"><use href="#catalog-reset"></use></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="apartment-catalog__results container">
+    <div class="apartment-catalog__toolbar">
+      <h2 class="apartment-catalog__count">
+        Найдено <output class="js-catalog-count" aria-live="polite">{{catalog.count}}</output> квартир
+      </h2>
+
+      <div class="apartment-catalog__controls">
+        <label class="catalog-sort">
+          <span class="visually-hidden">Сортировка квартир</span>
+          <select name="catalog-sort">
+            {{#each catalog.sortOptions}}
+              <option value="{{value}}">{{label}}</option>
+            {{/each}}
+          </select>
+        </label>
+
+        <label class="catalog-reserved-toggle">
+          <input class="js-hide-reserved" type="checkbox" name="hide-reserved">
+          <span class="catalog-check__box" aria-hidden="true">
+            <svg width="18" height="18" focusable="false"><use href="#filter-checkmark"></use></svg>
+          </span>
+          <span>Не показывать забронированные</span>
+        </label>
+      </div>
+    </div>
+
+    <ul class="apartment-catalog__grid js-apartment-recommendations">
+      {{#each catalog.itemsBeforeForm}}
+        <li class="apartment-catalog__item{{#if reserved}} js-reserved-apartment{{/if}}">
+          {{> components/apartment-card }}
+        </li>
+      {{/each}}
+
+      <li class="apartment-catalog__item apartment-catalog__item--contact">
+        {{> components/contact-request-card catalog.contactRequest }}
+      </li>
+
+      {{#each catalog.itemsAfterForm}}
+        <li class="apartment-catalog__item{{#if reserved}} js-reserved-apartment{{/if}}">
+          {{> components/apartment-card }}
+        </li>
+      {{/each}}
+
+      <li class="apartment-catalog__item apartment-catalog__item--mortgage">
+        {{> components/mortgage-offer catalog.mortgageOffer }}
+      </li>
+    </ul>
+
+    <button class="apartment-catalog__more" type="button">
+      Показать еще <span>{{catalog.moreCount}}</span> из {{catalog.totalCount}}
+    </button>
+  </div>
+</section>

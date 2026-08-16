@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  {{> layout/meta }}
+</head>
+
+<body class="catalog-page">
+  {{> layout/header }}
+
+  <main class="page-main catalog-page__main">
+    {{> sections/apartment-catalog }}
+  </main>
+
+  {{> layout/footer }}
+  {{> sections/modals }}
+
+  <script type="module" src="/src/js/main.ts"></script>
+</body>
+
+</html>
