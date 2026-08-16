@@ -1,0 +1,52 @@
+<section class="contact-request-card" aria-labelledby="{{id}}-title">
+  <picture class="contact-request-card__decor" aria-hidden="true">
+    <source srcset="/images/contact-request-card/background-mobile.svg" media="(max-width: 576px)">
+    <img src="/images/contact-request-card/background.svg" width="560" height="672" alt="">
+  </picture>
+
+  <img
+    class="contact-request-card__image"
+    src="/images/contact-request-card/buildings.webp"
+    width="1120"
+    height="722"
+    alt=""
+    aria-hidden="true"
+    loading="lazy"
+  >
+
+  <div class="contact-request-card__body">
+    <div class="contact-request-card__heading">
+      <h2 class="contact-request-card__title" id="{{id}}-title">{{title}}</h2>
+      <p class="contact-request-card__subtitle">{{subtitle}}</p>
+    </div>
+
+    <form
+      class="contact-request-card__form js-form"
+      action="{{action}}"
+      method="post"
+      {{#if successModalId}}data-success-modal="#{{successModalId}}"{{/if}}
+      {{#if errorModalId}}data-error-modal="#{{errorModalId}}"{{/if}}
+    >
+      <div class="contact-request-card__controls">
+        <div class="contact-request-card__fields">
+          {{#each fields}}
+            {{> components/text-field }}
+          {{/each}}
+        </div>
+
+        {{> components/button
+          class="contact-request-card__submit btn--full"
+          type="submit"
+          label=submitLabel
+          labelMobile=submitLabelMobile
+        }}
+      </div>
+
+      <div class="contact-request-card__agreements">
+        {{#each agreements}}
+          {{> components/checkbox }}
+        {{/each}}
+      </div>
+    </form>
+  </div>
+</section>

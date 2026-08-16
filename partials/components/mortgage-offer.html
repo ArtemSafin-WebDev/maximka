@@ -1,0 +1,37 @@
+<article class="mortgage-offer">
+  <picture class="mortgage-offer__picture">
+    <source
+      srcset="/images/mortgage-offer/background-mobile.svg"
+      media="(max-width: 576px)"
+      width="335"
+      height="220"
+    >
+    <img
+      class="mortgage-offer__background"
+      src="/images/mortgage-offer/background.svg"
+      width="1720"
+      height="400"
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+    >
+  </picture>
+
+  <div class="mortgage-offer__content">
+    <div class="mortgage-offer__copy">
+      <h2 class="mortgage-offer__title">{{title}}</h2>
+      <p class="mortgage-offer__description">
+        <span class="mortgage-offer__description-part">{{descriptionStart}}</span>
+        <span class="mortgage-offer__description-part">{{descriptionEnd}}</span>
+      </p>
+    </div>
+
+    {{> components/button
+      class="mortgage-offer__button"
+      href=buttonHref
+      label=buttonLabel
+      labelMobile=buttonLabelMobile
+      type="button"
+    }}
+  </div>
+</article>

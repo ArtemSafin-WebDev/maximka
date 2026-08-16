@@ -1,0 +1,180 @@
+@use "tools/media" as mq;
+
+@layer components {
+  .contact-request-card {
+    position: relative;
+    flex-shrink: 0;
+    width: 56rem;
+    height: 84.6rem;
+    overflow: hidden;
+    border-radius: 4rem;
+    background-color: #d8de5b;
+  }
+
+  .contact-request-card__decor {
+    position: absolute;
+    display: block;
+    top: 17.3rem;
+    left: 0;
+    width: 56rem;
+    height: 67.2rem;
+    pointer-events: none;
+  }
+
+  .contact-request-card__decor img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .contact-request-card__image {
+    position: absolute;
+    top: -4.5rem;
+    left: -3.3rem;
+    width: 72.4rem;
+    max-width: none;
+    height: 33rem;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  .contact-request-card__body {
+    position: absolute;
+    bottom: 5rem;
+    left: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 46rem;
+  }
+
+  .contact-request-card__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .contact-request-card__title {
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .contact-request-card__subtitle {
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    white-space: pre-line;
+  }
+
+  .contact-request-card__form,
+  .contact-request-card__controls,
+  .contact-request-card__fields,
+  .contact-request-card__agreements {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-request-card__form {
+    gap: 4rem;
+  }
+
+  .contact-request-card__controls,
+  .contact-request-card__fields,
+  .contact-request-card__agreements {
+    gap: 2rem;
+  }
+
+  .contact-request-card .form-field__inner {
+    min-height: 7rem;
+    background-color: #ffffff;
+  }
+
+  .contact-request-card__submit {
+    min-height: 7rem;
+    padding: 2.4rem;
+  }
+
+  .contact-request-card .checkbox {
+    font-size: 1.2rem;
+  }
+
+  @include mq.down(sm) {
+    .contact-request-card {
+      width: 33.5rem;
+      height: 47.9rem;
+      border-radius: 2.4rem;
+    }
+
+    .contact-request-card__decor {
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .contact-request-card__image {
+      display: none;
+    }
+
+    .contact-request-card__body {
+      top: 3.2rem;
+      bottom: auto;
+      left: 2rem;
+      gap: 3.2rem;
+      width: 29.5rem;
+    }
+
+    .contact-request-card__title {
+      font-size: 2.4rem;
+      line-height: 1.3;
+    }
+
+    .contact-request-card__subtitle {
+      font-size: 1.6rem;
+      line-height: 1.2;
+    }
+
+    .contact-request-card__controls {
+      gap: 2.4rem;
+    }
+
+    .contact-request-card__form {
+      gap: 2rem;
+    }
+
+    .contact-request-card__fields {
+      gap: 1.6rem;
+    }
+
+    .contact-request-card__agreements {
+      gap: 1.4rem;
+    }
+
+    .contact-request-card .form-field__inner {
+      min-height: 4.6rem;
+      padding: 1.5rem 1.6rem;
+      border-color: rgb(255 255 255 / 24%);
+      border-radius: 2.4rem;
+    }
+
+    .contact-request-card .form-field__control {
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .contact-request-card__submit {
+      min-height: 4.8rem;
+      padding: 1.6rem 2rem;
+      font-size: 1.4rem;
+      line-height: 1.1;
+    }
+
+    .contact-request-card .checkbox {
+      font-size: 1.2rem;
+      line-height: 1.2;
+      letter-spacing: 0.015em;
+    }
+  }
+}
