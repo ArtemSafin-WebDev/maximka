@@ -97,6 +97,18 @@
     background-color: #ffffff;
   }
 
+  .apartment-card__link {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .apartment-card__link:focus-visible {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.2rem;
+  }
+
   .apartment-card__header {
     display: flex;
     flex-direction: column;
@@ -143,18 +155,56 @@
   }
 
   .apartment-card__media {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 35.1rem;
+    overflow: hidden;
   }
 
   .apartment-card__image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     display: block;
-    width: 35.1rem;
+    width: 100%;
+    max-width: 37.4rem;
     height: 30.1rem;
     object-fit: contain;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .apartment-card__image.is-active {
+    opacity: 1;
+  }
+
+  .apartment-card__image--floor {
+    transform: translate(-50%, -50%) scale(1.29);
+  }
+
+  .apartment-card__image-progress {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: flex;
+    width: 12rem;
+    height: 0.4rem;
+    background-color: #e8e8e8;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .apartment-card__image-progress-item {
+    flex: 1 1 0;
+  }
+
+  .apartment-card__image-progress-item.is-active {
+    background-color: #707070;
   }
 
   .apartment-card__price-block {
@@ -248,7 +298,7 @@
 
   .apartment-card__feature--count {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     flex: 0 0 auto;
     width: 5.9rem;
     margin-left: auto;
@@ -263,7 +313,7 @@
 
   .apartment-card__scrim {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     inset: 0;
     border-radius: inherit;
     background-color: var(--bg-color);
@@ -284,7 +334,7 @@
 
   .apartment-card__feature-popover {
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     right: -1rem;
     bottom: calc(100% + 1rem);
     left: -1rem;
@@ -380,8 +430,19 @@
     }
 
     .apartment-card__image {
-      width: 21.1rem;
+      width: 100%;
+      max-width: 21.1rem;
       height: 18.1rem;
+      transition: none;
+    }
+
+    .apartment-card__image:not(:first-child),
+    .apartment-card__image-progress {
+      display: none;
+    }
+
+    .apartment-card__image:first-child {
+      opacity: 1;
     }
 
     .apartment-card__price-block {

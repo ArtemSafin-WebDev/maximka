@@ -1,4 +1,10 @@
 <article class="apartment-card">
+  <a
+    class="apartment-card__link"
+    href="{{href}}"
+    aria-label="Открыть {{title}}, {{area}}, {{floor}}"
+  ></a>
+
   <header class="apartment-card__header">
     <h3 class="apartment-card__title">{{title}}</h3>
     <p class="apartment-card__meta">
@@ -8,15 +14,26 @@
     </p>
   </header>
 
-  <div class="apartment-card__media">
-    <img
-      class="apartment-card__image"
-      src="{{image}}"
-      width="{{imageWidth}}"
-      height="{{imageHeight}}"
-      alt="{{imageAlt}}"
-      loading="lazy"
-    >
+  <div class="apartment-card__media js-apartment-card-gallery">
+    {{#each images}}
+      <img
+        class="apartment-card__image js-apartment-card-image{{#if className}} {{className}}{{/if}}{{#if @first}} is-active{{/if}}"
+        src="{{src}}"
+        width="{{width}}"
+        height="{{height}}"
+        alt="{{alt}}"
+        loading="lazy"
+        {{#unless @first}}aria-hidden="true"{{/unless}}
+      >
+    {{/each}}
+
+    {{#if hasMultipleImages}}
+      <span class="apartment-card__image-progress" aria-hidden="true">
+        {{#each images}}
+          <span class="apartment-card__image-progress-item{{#if @first}} is-active{{/if}}"></span>
+        {{/each}}
+      </span>
+    {{/if}}
   </div>
 
   <div class="apartment-card__price-block">

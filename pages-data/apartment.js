@@ -1,12 +1,27 @@
+const apartmentImages = [
+  {
+    src: "/images/apartment-card/layout.webp",
+    width: 751,
+    height: 1103,
+    alt: "Планировка квартиры-студии площадью 22,1 м²",
+  },
+  {
+    src: "/images/apartment-card/floor.webp",
+    width: 860,
+    height: 540,
+    alt: "Расположение квартиры-студии на этаже",
+    className: "apartment-card__image--floor",
+  },
+];
+
 const similarApartments = Array.from({ length: 8 }, (_, index) => ({
   id: index + 1,
+  href: "/apartment.html",
   title: "Квартира - студия",
   area: "22,1 м²",
   floor: "3 / 13 этаж",
-  image: "/images/apartment-card/layout.webp",
-  imageWidth: 751,
-  imageHeight: 1103,
-  imageAlt: "Планировка квартиры-студии площадью 22,1 м²",
+  images: index === 0 ? apartmentImages.slice(0, 1) : apartmentImages,
+  hasMultipleImages: index !== 0 && apartmentImages.length > 1,
   price: "6 735 319 ₽",
   oldPrice: "6 935 117 ₽",
   discount: "Скидка 199 798 ₽",
