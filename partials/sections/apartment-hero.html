@@ -137,9 +137,7 @@
           <div class="apartment-hero__price-meta">
             <span class="apartment-hero__mortgage">{{apartmentHero.mortgage}}</span>
             <span class="apartment-hero__discount">
-              <svg width="18" height="18" aria-hidden="true" focusable="false">
-                <use href="#discount"></use>
-              </svg>
+              <img src="/images/apartment-hero/discount.svg" width="18" height="18" alt="" aria-hidden="true">
               <span>{{apartmentHero.discount}}</span>
             </span>
           </div>
@@ -158,6 +156,8 @@
             class="apartment-hero__characteristics-toggle js-apartment-characteristics-toggle"
             type="button"
             aria-expanded="false"
+            data-expand-label="{{apartmentHero.characteristicsLabel}}"
+            data-collapse-label="{{apartmentHero.characteristicsCollapseLabel}}"
           >
             {{apartmentHero.characteristicsLabel}}
           </button>

@@ -2,7 +2,7 @@
 
 @layer sections {
   .meeting-cta {
-    margin-bottom: 2rem;
+    margin-bottom: 12rem;
   }
 
   .meeting-cta__inner {
@@ -67,17 +67,22 @@
 
   @include mq.hover {
     .meeting-cta__button.btn:hover {
+      background-color: var(--primary-hover-color);
       color: #ffffff;
     }
   }
 
   @include mq.down(sm) {
+    .meeting-cta {
+      margin-bottom: 4.8rem;
+    }
+
     .meeting-cta__inner {
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 27rem;
-      padding: 3.2rem 2rem 3.1rem;
+      padding: 3.2rem 2rem 3rem;
       border-radius: 2.8rem;
     }
 

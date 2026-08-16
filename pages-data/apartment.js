@@ -68,6 +68,7 @@ export default {
       mortgage: "Ипотека от 35 041 ₽/мес",
       discount: "Скидка 199 798 ₽",
       characteristicsLabel: "Все характеристики",
+      characteristicsCollapseLabel: "Свернуть",
       characteristics: [
         { label: "Общая площадь", value: "22,1 м²" },
         { label: "Жилая площадь", value: "14,3 м²" },

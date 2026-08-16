@@ -16,6 +16,11 @@
     --sunrise-angle: 45deg;
     --sun-arc-gap-start: 45deg;
     --sun-arc-gap-end: 135deg;
+    --sun-marker-gap: 0.8rem;
+    --sun-marker-icon-radius: 2rem;
+    --sun-marker-offset: calc(
+      var(--sun-marker-icon-radius) + var(--sun-marker-gap)
+    );
 
     padding-top: 15.2rem;
     margin-bottom: 12rem;
@@ -28,7 +33,6 @@
   .apartment-hero__card {
     display: grid;
     grid-template-columns: minmax(0, 101.5rem) minmax(0, 70.5rem);
-    min-height: 78.8rem;
     overflow: hidden;
     border-radius: 4rem;
     background-color: #ffffff;
@@ -37,6 +41,9 @@
   .apartment-hero__visual {
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
+    align-self: start;
+    width: 100%;
+    height: 78.8rem;
     min-width: 0;
     min-height: 0;
   }
@@ -68,6 +75,9 @@
   }
 
   .apartment-hero__back svg {
+    flex: 0 0 3.2rem;
+    width: 3.2rem;
+    height: 3.2rem;
     border-radius: 50%;
     background-color: var(--bg-color);
     fill: var(--primary-color);
@@ -110,7 +120,8 @@
     background-color: #d8de5b;
   }
 
-  .apartment-hero__sun-toggle[aria-checked="true"] .apartment-hero__switch::after {
+  .apartment-hero__sun-toggle[aria-checked="true"]
+    .apartment-hero__switch::after {
     background-color: #ffffff;
     transform: translateX(1.8rem);
   }
@@ -210,10 +221,19 @@
 
   .apartment-hero__sun-marker {
     --sun-angle: 0deg;
+    --sun-marker-direction: 1;
 
     position: absolute;
-    left: calc(50% + cos(var(--sun-angle)) * var(--sun-orbit-radius));
-    top: calc(50% + sin(var(--sun-angle)) * var(--sun-orbit-radius));
+    left: calc(
+      50% + cos(var(--sun-angle)) *
+        var(--sun-orbit-radius) - sin(var(--sun-angle)) *
+        var(--sun-marker-direction) * var(--sun-marker-offset)
+    );
+    top: calc(
+      50% + sin(var(--sun-angle)) * var(--sun-orbit-radius) +
+        cos(var(--sun-angle)) * var(--sun-marker-direction) *
+        var(--sun-marker-offset)
+    );
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -227,6 +247,7 @@
 
   .apartment-hero__sun-marker--sunrise {
     --sun-angle: var(--sunrise-angle);
+    --sun-marker-direction: -1;
   }
 
   .apartment-hero__sun-marker-icon {
@@ -424,7 +445,9 @@
     white-space: nowrap;
   }
 
-  .apartment-hero__discount svg {
+  .apartment-hero__discount img {
+    display: block;
+    flex: 0 0 1.8rem;
     width: 1.8rem;
     height: 1.8rem;
   }
@@ -463,6 +486,7 @@
     line-height: 1.1;
     letter-spacing: 0.01em;
     text-align: right;
+    white-space: nowrap;
   }
 
   .apartment-hero__characteristics-toggle {
@@ -483,7 +507,7 @@
   .apartment-hero__desktop-cta {
     width: 41.5rem;
     min-height: 6.2rem;
-    margin-top: auto;
+    margin-top: 5.3rem;
     padding-block: 2rem;
   }
 
@@ -495,6 +519,7 @@
     .apartment-hero {
       --sun-orbit-size: 33.1rem;
       --sun-orbit-radius: calc(var(--sun-orbit-size) / 2);
+      --sun-marker-icon-radius: 1.2rem;
 
       padding-top: 7.2rem;
       margin-bottom: 4.8rem;
@@ -699,7 +724,7 @@
       background-color: rgb(255 87 74 / 5%);
     }
 
-    .apartment-hero__discount svg {
+    .apartment-hero__discount img {
       width: 1.8rem;
       height: 1.8rem;
     }

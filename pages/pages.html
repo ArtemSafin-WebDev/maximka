@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  {{> layout/meta }}
+</head>
+
+<body class="pages-directory-page">
+  <main class="pages-directory">
+    <header class="pages-directory__header">
+      <a class="pages-directory__brand" href="/index.html" aria-label="Перейти на главную страницу">
+        Максима
+      </a>
+
+      <div class="pages-directory__intro">
+        <p class="pages-directory__eyebrow">Карта проекта</p>
+        <h1 class="pages-directory__title">Все страницы</h1>
+        <p class="pages-directory__summary">
+          Собрано страниц: <span>{{ pagesCount }}</span>
+        </p>
+      </div>
+    </header>
+
+    <nav class="pages-directory__nav" aria-label="Страницы проекта">
+      <ol class="pages-directory__list">
+        {{#each pagesList}}
+          <li class="pages-directory__item">
+            <a class="pages-directory__link" href="{{ url }}">
+              <span class="pages-directory__number" aria-hidden="true">{{ number }}</span>
+              <span class="pages-directory__page-title">{{ title }}</span>
+              <span class="pages-directory__file-name">/{{ fileName }}</span>
+              <svg class="pages-directory__arrow" aria-hidden="true">
+                <use href="#arrows/diagonal"></use>
+              </svg>
+            </a>
+          </li>
+        {{/each}}
+      </ol>
+    </nav>
+
+    <footer class="pages-directory__footer">
+      <p>Список обновляется автоматически при добавлении файлов в <code>pages/</code></p>
+    </footer>
+  </main>
+
+  <script type="module" src="/src/js/pagesDirectory.ts"></script>
+</body>
+
+</html>

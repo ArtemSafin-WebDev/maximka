@@ -2,7 +2,7 @@
 
 @layer sections {
   .about-developer {
-    margin-bottom: 14rem;
+    margin-bottom: 12rem;
     padding-inline: 2rem;
   }
 
@@ -52,7 +52,7 @@
 
   @include mq.down(sm) {
     .about-developer {
-      margin-bottom: 6rem;
+      margin-bottom: 4.8rem;
     }
 
     .about-developer__card {

@@ -2,7 +2,7 @@
 
 @layer sections {
   .progress {
-    margin-bottom: 14rem;
+    margin-bottom: 12rem;
   }
 
   .progress__head {
@@ -162,7 +162,7 @@
 
   @include mq.down(sm) {
     .progress {
-      margin-bottom: 5.6rem;
+      margin-bottom: 4.8rem;
     }
 
     .progress__head {
@@ -175,6 +175,7 @@
     .progress__title {
       width: 100%;
       font-size: 1.8rem;
+      line-height: 2.3rem;
     }
 
     .progress__filters {
@@ -193,9 +194,10 @@
     }
 
     .progress__select .select__button {
+      height: 4rem;
       min-height: 4rem;
       gap: 1.2rem;
-      padding: 1.2rem 1.2rem 1.2rem 2rem;
+      padding: 1.1rem 1.2rem 1.1rem 2rem;
     }
 
     .progress__select .select__button-text {

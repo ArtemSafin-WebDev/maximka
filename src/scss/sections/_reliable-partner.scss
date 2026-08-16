@@ -2,7 +2,7 @@
 
 @layer sections {
   .reliable-partner {
-    margin-bottom: 14rem;
+    margin-bottom: 12rem;
   }
 
   .reliable-partner__layout {
@@ -91,7 +91,7 @@
 
   @include mq.down(sm) {
     .reliable-partner {
-      margin-bottom: 6rem;
+      margin-bottom: 5.2rem;
     }
 
     .reliable-partner__layout {

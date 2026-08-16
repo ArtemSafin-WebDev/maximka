@@ -29,16 +29,23 @@ for (const file of dataFiles) {
 // Автоматически собираем список всех страниц для /pages.html
 const allHtmlFiles = fs
   .readdirSync(path.resolve(__dirname, "pages"))
-  .filter((f) => f.endsWith(".html") && f !== "pages.html");
+  .filter((f) => f.endsWith(".html") && f !== "pages.html")
+  .sort((a, b) => {
+    if (a === "index.html") return -1;
+    if (b === "index.html") return 1;
+    return a.localeCompare(b);
+  });
 
-const pagesList = allHtmlFiles.map((file) => {
+const pagesList = allHtmlFiles.map((file, index) => {
   const key = `/${file}`;
   const title = pagesConfig[key]?.title || file.replace(".html", "");
-  return { url: key, title };
+  const number = String(index + 1).padStart(2, "0");
+  return { url: key, title, fileName: file, number };
 });
 
 pagesConfig["/pages.html"] = {
   title: "Все страницы",
+  pagesCount: pagesList.length,
   pagesList,
 };
 

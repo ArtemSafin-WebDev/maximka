@@ -161,6 +161,13 @@ export default {
       playLabel: "Смотреть трансляцию со стройплощадки",
     },
     progress: homePages["/index.html"].progress,
+    aboutApartments: {
+      title: "Каждый метр работает для вас",
+      description:
+        "Без длинных коридоров и пустых метров. Просторные кухни-гостиные, места для хранения, балконы и продуманные решения делают каждую квартиру комфортной",
+      image: "/images/about-apartments/interior.webp",
+      imageAlt: "Светлая кухня-гостиная с продуманной зоной отдыха",
+    },
     aboutGallery: {
       title: "Галерея",
       moreLabel: "Загрузить еще",

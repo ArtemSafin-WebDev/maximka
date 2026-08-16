@@ -2,7 +2,7 @@
 
 @layer sections {
   .about-gallery {
-    margin-bottom: 14rem;
+    margin-bottom: 2rem;
     padding-inline: 2rem;
   }
 
@@ -92,7 +92,7 @@
 
   @include mq.down(sm) {
     .about-gallery {
-      margin-bottom: 6rem;
+      margin-bottom: 2rem;
     }
 
     .about-gallery__inner {

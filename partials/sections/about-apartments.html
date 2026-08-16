@@ -1,0 +1,29 @@
+<section class="about-apartments" aria-labelledby="about-apartments-title">
+  <div class="about-apartments__card">
+    <div class="about-apartments__content">
+      <h2 class="about-apartments__title" id="about-apartments-title">
+        {{aboutApartments.title}}
+      </h2>
+      <p class="about-apartments__description">
+        {{aboutApartments.description}}
+      </p>
+    </div>
+
+    <div class="about-apartments__media">
+      <img
+        class="about-apartments__image"
+        src="{{aboutApartments.image}}"
+        width="1024"
+        height="683"
+        alt="{{aboutApartments.imageAlt}}"
+        loading="lazy"
+      >
+    </div>
+  </div>
+
+  <div class="about-apartments__pagination" aria-hidden="true">
+    <span class="about-apartments__pagination-item about-apartments__pagination-item--active"></span>
+    <span class="about-apartments__pagination-item"></span>
+    <span class="about-apartments__pagination-item"></span>
+  </div>
+</section>

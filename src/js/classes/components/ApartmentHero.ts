@@ -162,9 +162,21 @@ class ApartmentHero extends Component {
   };
 
   private handleCharacteristicsToggle = () => {
-    this.characteristicsList?.classList.add("is-expanded");
-    this.characteristicsToggle?.setAttribute("aria-expanded", "true");
-    if (this.characteristicsToggle) this.characteristicsToggle.hidden = true;
+    if (!this.characteristicsToggle) return;
+
+    const isExpanded =
+      this.characteristicsToggle.getAttribute("aria-expanded") === "true";
+    const shouldExpand = !isExpanded;
+
+    this.characteristicsList?.classList.toggle("is-expanded", shouldExpand);
+    this.characteristicsToggle.setAttribute(
+      "aria-expanded",
+      String(shouldExpand)
+    );
+    this.characteristicsToggle.textContent = shouldExpand
+      ? (this.characteristicsToggle.dataset.collapseLabel ?? "Свернуть")
+      : (this.characteristicsToggle.dataset.expandLabel ??
+        "Все характеристики");
   };
 
   private handleShare = async () => {
