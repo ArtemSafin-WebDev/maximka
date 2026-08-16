@@ -554,6 +554,7 @@
     }
 
     .apartment-hero__visual-head {
+      align-items: flex-start;
       min-height: 5.6rem;
       padding: 2rem 2rem 0;
     }
@@ -564,8 +565,10 @@
     }
 
     .apartment-hero__back svg {
+      flex-basis: 3.6rem;
       width: 3.6rem;
       height: 3.6rem;
+      fill: var(--text-color);
     }
 
     .apartment-hero__back span,
@@ -597,8 +600,21 @@
       height: 3.6rem;
     }
 
+    .apartment-hero__round-action:not(.apartment-hero__round-action--sun) svg {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+
     .apartment-hero__round-action--sun[aria-checked="true"] {
       background-color: #d8de5b;
+    }
+
+    .apartment-hero.is-sun-active
+      .apartment-hero__mobile-actions
+      .apartment-hero__round-action:not(.apartment-hero__round-action--sun) {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
     }
 
     .apartment-hero__stage {
@@ -652,7 +668,7 @@
       gap: 0.4rem;
       width: max-content;
       min-height: 5rem;
-      padding: 0.4rem;
+      padding: 0.4rem 2rem;
       border: 0;
     }
 
@@ -674,7 +690,7 @@
     .apartment-hero__details {
       display: block;
       min-height: 52.5rem;
-      padding: 3rem 2rem;
+      padding: 3rem 2rem 2rem;
       overflow: hidden;
       border-radius: 2.4rem;
       background-color: #ffffff;
@@ -746,6 +762,10 @@
       font-size: 1.3rem;
     }
 
+    .apartment-hero__characteristic:nth-child(n + 6) {
+      display: grid;
+    }
+
     .apartment-hero__characteristic:nth-child(odd) {
       background-color: var(--bg-color);
     }
@@ -760,8 +780,7 @@
     }
 
     .apartment-hero__characteristics-toggle {
-      min-height: 4.4rem;
-      font-size: 1.4rem;
+      display: none;
     }
 
     .apartment-hero__desktop-cta {
@@ -814,6 +833,10 @@
     .apartment-booking-bar__cta:link,
     .apartment-booking-bar__cta:visited {
       color: #ffffff;
+    }
+
+    .apartment-booking-bar__cta--full {
+      grid-column: 1 / -1;
     }
 
     .apartment-booking-bar__cta--compact {

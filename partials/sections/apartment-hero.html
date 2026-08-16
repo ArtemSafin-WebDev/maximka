@@ -6,7 +6,7 @@
       <div class="apartment-hero__visual">
         <div class="apartment-hero__visual-head">
           <a class="apartment-hero__back" href="{{apartmentHero.backHref}}">
-            <svg width="32" height="32" aria-hidden="true" focusable="false">
+            <svg width="36" height="36" aria-hidden="true" focusable="false">
               <use href="#apartment-back"></use>
             </svg>
             <span>{{apartmentHero.backLabel}}</span>
@@ -23,16 +23,6 @@
           </button>
 
           <div class="apartment-hero__mobile-actions">
-            <button class="apartment-hero__round-action js-apartment-share" type="button" aria-label="Поделиться">
-              <svg width="36" height="36" aria-hidden="true" focusable="false">
-                <use href="#apartment-share"></use>
-              </svg>
-            </button>
-            <button class="apartment-hero__round-action js-apartment-print" type="button" aria-label="Напечатать">
-              <svg width="36" height="36" aria-hidden="true" focusable="false">
-                <use href="#apartment-print"></use>
-              </svg>
-            </button>
             <button
               class="apartment-hero__round-action apartment-hero__round-action--sun js-apartment-sun-toggle"
               type="button"
@@ -42,6 +32,16 @@
             >
               <svg width="36" height="36" aria-hidden="true" focusable="false">
                 <use href="#apartment-sun"></use>
+              </svg>
+            </button>
+            <button class="apartment-hero__round-action js-apartment-share" type="button" aria-label="Поделиться">
+              <svg width="36" height="36" aria-hidden="true" focusable="false">
+                <use href="#apartment-share-mobile"></use>
+              </svg>
+            </button>
+            <button class="apartment-hero__round-action js-apartment-print" type="button" aria-label="Напечатать">
+              <svg width="36" height="36" aria-hidden="true" focusable="false">
+                <use href="#apartment-print-mobile"></use>
               </svg>
             </button>
           </div>

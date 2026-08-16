@@ -26,9 +26,7 @@ class ApartmentRecommendations extends Component {
       )
     );
     this.galleries = Array.from(
-      this.element.querySelectorAll<HTMLElement>(
-        ".js-apartment-card-gallery"
-      )
+      this.element.querySelectorAll<HTMLElement>(".js-apartment-card-gallery")
     )
       .map((galleryElement) => {
         const card = galleryElement.closest<HTMLElement>(".apartment-card");
@@ -136,7 +134,7 @@ class ApartmentRecommendations extends Component {
     this.swiper = new Swiper(slider, {
       modules: [Navigation, Scrollbar],
       slidesPerView: "auto",
-      spaceBetween: 12,
+      spaceBetween: 20,
       speed: 500,
       watchOverflow: true,
       navigation: {
@@ -178,9 +176,7 @@ class ApartmentRecommendations extends Component {
 
     const card = toggle.closest<HTMLElement>(".apartment-card");
     const popoverId = toggle.getAttribute("aria-controls");
-    const popover = popoverId
-      ? document.getElementById(popoverId)
-      : null;
+    const popover = popoverId ? document.getElementById(popoverId) : null;
 
     if (!card || !(popover instanceof HTMLElement)) return;
 
@@ -197,9 +193,7 @@ class ApartmentRecommendations extends Component {
     if (!(target instanceof Node)) return;
 
     const popoverId = this.activeFeatureToggle.getAttribute("aria-controls");
-    const popover = popoverId
-      ? document.getElementById(popoverId)
-      : null;
+    const popover = popoverId ? document.getElementById(popoverId) : null;
 
     if (
       this.activeFeatureToggle.contains(target) ||
