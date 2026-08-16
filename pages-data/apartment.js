@@ -11,6 +11,14 @@ const similarApartments = Array.from({ length: 8 }, (_, index) => ({
   oldPrice: "6 935 117 ₽",
   discount: "Скидка 199 798 ₽",
   features: ["Окно в ванной", "Просторная кухня"],
+  allFeatures: [
+    "Окно в ванной",
+    "Просторная кухня",
+    "Изолированная спальня",
+    "Балкон",
+    "Кухня-гостиная",
+    "2 санузла",
+  ],
   featuresRemaining: 5,
 }));
 

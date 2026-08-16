@@ -42,14 +42,34 @@
 
   <div class="apartment-card__divider" aria-hidden="true"></div>
 
+  <span class="apartment-card__scrim" aria-hidden="true"></span>
+
   <div class="apartment-card__features">
     <div class="apartment-card__feature-list">
       {{#each features}}
         <span class="apartment-card__feature">{{this}}</span>
       {{/each}}
     </div>
-    <span class="apartment-card__feature apartment-card__feature--count">
+
+    <button
+      class="apartment-card__feature apartment-card__feature--count js-apartment-features-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="apartment-features-{{id}}"
+      aria-label="Показать все особенности квартиры"
+    >
       +{{featuresRemaining}}
-    </span>
+    </button>
+
+    <div
+      class="apartment-card__feature-popover js-apartment-features-popover"
+      id="apartment-features-{{id}}"
+      role="region"
+      aria-label="Особенности квартиры"
+    >
+      {{#each allFeatures}}
+        <span class="apartment-card__feature">{{this}}</span>
+      {{/each}}
+    </div>
   </div>
 </article>

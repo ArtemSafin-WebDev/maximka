@@ -12,6 +12,7 @@ class ApartmentHero extends Component {
   private readonly scrollTopButton: HTMLButtonElement | null;
   private readonly footer: HTMLElement | null;
   private footerObserver: IntersectionObserver | null = null;
+  private readyRaf = 0;
   private scrollRaf = 0;
   private activeIndex = 0;
   private isSunActive = false;
@@ -73,6 +74,7 @@ class ApartmentHero extends Component {
 
     this.observeFooter();
     this.updateBookingBar();
+    this.enableTransitions();
   }
 
   public destroy() {
@@ -96,8 +98,19 @@ class ApartmentHero extends Component {
     this.scrollTopButton?.removeEventListener("click", this.handleScrollTop);
     window.removeEventListener("scroll", this.handleScroll);
     this.footerObserver?.disconnect();
+    if (this.readyRaf) cancelAnimationFrame(this.readyRaf);
     if (this.scrollRaf) cancelAnimationFrame(this.scrollRaf);
+    this.element.classList.remove("is-ready");
     this.unregister();
+  }
+
+  private enableTransitions() {
+    this.readyRaf = requestAnimationFrame(() => {
+      this.readyRaf = requestAnimationFrame(() => {
+        this.readyRaf = 0;
+        this.element.classList.add("is-ready");
+      });
+    });
   }
 
   private setActiveTab(index: number, moveFocus = false) {

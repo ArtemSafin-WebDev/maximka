@@ -86,6 +86,7 @@
   }
 
   .apartment-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 3.2rem;
@@ -211,6 +212,7 @@
   }
 
   .apartment-card__features {
+    position: relative;
     display: flex;
     align-items: flex-start;
     gap: 0.4rem;
@@ -245,9 +247,73 @@
   }
 
   .apartment-card__feature--count {
+    position: relative;
+    z-index: 2;
+    flex: 0 0 auto;
     width: 5.9rem;
+    margin-left: auto;
     padding-inline: 0;
     text-align: center;
+  }
+
+  .apartment-card__feature--count:focus-visible {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.2rem;
+  }
+
+  .apartment-card__scrim {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    border-radius: inherit;
+    background-color: var(--bg-color);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.25s ease,
+      visibility 0s linear 0.25s;
+  }
+
+  .apartment-card.is-features-open .apartment-card__scrim {
+    opacity: 0.6;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+
+  .apartment-card__feature-popover {
+    position: absolute;
+    z-index: 2;
+    right: -1rem;
+    bottom: calc(100% + 1rem);
+    left: -1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 1.2rem 1.5rem rgb(0 0 0 / 5%);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(1rem) scale(0.98);
+    transform-origin: center bottom;
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+      visibility 0s linear 0.25s;
+  }
+
+  .apartment-card.is-features-open .apartment-card__feature-popover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    transition-delay: 0s;
   }
 
   .apartment-recommendations__scrollbar.swiper-scrollbar {
