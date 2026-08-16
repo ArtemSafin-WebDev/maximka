@@ -16,15 +16,12 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     row-gap: 0;
-    padding-block: 12rem 0;
+    padding-block: calc(
+        12rem + var(--stack-top, 24rem) - var(--stack-final-top, 24rem)
+      )
+      0;
     overflow: visible;
     box-sizing: border-box;
-
-    &::after {
-      content: "";
-      display: block;
-      height: 4rem;
-    }
   }
 
   .about-apartments__slide {
@@ -40,6 +37,8 @@
   }
 
   .about-apartments__card {
+    position: relative;
+    top: var(--stack-card-offset, 0);
     display: grid;
     grid-template-columns: 56rem 99.6rem;
     grid-template-areas: "content media";
@@ -128,10 +127,6 @@
       padding-block: 0;
       overflow: hidden;
       border-radius: 2.8rem;
-
-      &::after {
-        display: none;
-      }
     }
 
     .about-apartments__slide {
@@ -148,6 +143,7 @@
     }
 
     .about-apartments__card {
+      top: auto;
       display: flex;
       flex-direction: column;
       align-items: center;

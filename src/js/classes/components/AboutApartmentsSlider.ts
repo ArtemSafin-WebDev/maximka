@@ -15,7 +15,7 @@ const DESKTOP_STACK_MIN_SCALE = 0.5;
 
 class AboutApartmentsSlider extends Component {
   private swiper: Swiper | null = null;
-  private stackTimelines: gsap.core.Timeline[] = [];
+  private stackTriggers: ScrollTrigger[] = [];
   private readonly mediaQuery = window.matchMedia(
     `(max-width: ${MOBILE_BREAKPOINT}px)`
   );
@@ -75,110 +75,136 @@ class AboutApartmentsSlider extends Component {
   }
 
   private initDesktopStack() {
-    if (this.stackTimelines.length > 0) return;
+    if (this.stackTriggers.length > 0) return;
 
     const slides = Array.from(
       this.element.querySelectorAll<HTMLElement>(".about-apartments__slide")
     );
+    const list = this.element.querySelector<HTMLElement>(
+      ".about-apartments__list"
+    );
+    const finalStackTop =
+      DESKTOP_STACK_TOP_REM +
+      Math.max(slides.length - 1, 0) * DESKTOP_STACK_STEP_REM;
+
+    list?.style.setProperty("--stack-top", "calc(100svh - 78rem)");
+    list?.style.setProperty("--stack-final-top", `${finalStackTop}rem`);
 
     slides.forEach((slide, slideIndex) => {
+      const cardTop =
+        DESKTOP_STACK_TOP_REM + slideIndex * DESKTOP_STACK_STEP_REM;
+
       slide.style.setProperty(
-        "--stack-top",
-        `${DESKTOP_STACK_TOP_REM + slideIndex * DESKTOP_STACK_STEP_REM}rem`
+        "--stack-card-offset",
+        `calc(${cardTop}rem - var(--stack-top))`
       );
       slide.style.setProperty("--stack-z-index", String(slideIndex + 1));
     });
 
-    slides.slice(1).forEach((slide, slideIndex) => {
-      const previousSlides = slides.slice(0, slideIndex + 1);
-      const previousActiveSlide = previousSlides[previousSlides.length - 1];
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: slide,
-          start: () => {
-            const stickyOffset = Number.parseFloat(
-              getComputedStyle(previousActiveSlide).top
-            );
+    const cards = slides.map((slide) =>
+      slide.querySelector<HTMLElement>(".about-apartments__card")
+    );
+    const getCardTargetTop = (slideIndex: number) => {
+      const slide = slides[slideIndex];
+      const card = cards[slideIndex];
 
-            return `top bottom+=${stickyOffset}`;
-          },
-          end: () => {
-            const stickyOffset = Number.parseFloat(getComputedStyle(slide).top);
+      if (!slide || !card) return 0;
 
-            return `top top+=${stickyOffset}`;
-          },
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
-      });
+      return (
+        Number.parseFloat(getComputedStyle(slide).top) +
+        Number.parseFloat(getComputedStyle(card).top)
+      );
+    };
+    const getTransitionProgress = (incomingSlideIndex: number) => {
+      const incomingCard = cards[incomingSlideIndex];
 
-      previousSlides.forEach((previousSlide, previousSlideIndex) => {
-        const stackDepth = slideIndex + 1 - previousSlideIndex;
-        const previousStackDepth = stackDepth - 1;
-        const card = previousSlide.querySelector<HTMLElement>(
-          ".about-apartments__card"
-        );
-        const cardContents = previousSlide.querySelectorAll<HTMLElement>(
+      if (!incomingCard) return 0;
+
+      const startTop =
+        window.innerHeight + getCardTargetTop(incomingSlideIndex - 1);
+      const endTop = getCardTargetTop(incomingSlideIndex);
+      const currentTop = incomingCard.getBoundingClientRect().top;
+      const transitionDistance = startTop - endTop;
+
+      if (transitionDistance <= 0) {
+        return currentTop <= endTop ? 1 : 0;
+      }
+
+      return gsap.utils.clamp(
+        0,
+        1,
+        (startTop - currentTop) / transitionDistance
+      );
+    };
+    const renderStack = () => {
+      const transitionProgresses = slides
+        .slice(1)
+        .map((_, slideIndex) => getTransitionProgress(slideIndex + 1));
+
+      slides.forEach((slide, slideIndex) => {
+        const card = cards[slideIndex];
+        const cardContents = slide.querySelectorAll<HTMLElement>(
           ".about-apartments__content, .about-apartments__media"
         );
+        const ownTransitionProgress =
+          transitionProgresses[slideIndex] ?? 0;
+        const stackDepth = transitionProgresses
+          .slice(slideIndex)
+          .reduce((depth, progress) => depth + progress, 0);
 
         if (card) {
-          timeline.fromTo(
-            card,
-            {
-              opacity: previousStackDepth === 0 ? 1 : 0.5,
-              scale: () =>
-                this.getCardScale(previousSlide, previousStackDepth),
-              transformOrigin: "center top",
-            },
-            {
-              opacity: 0.5,
-              scale: () => this.getCardScale(previousSlide, stackDepth),
-              transformOrigin: "center top",
-              duration: 1,
-              ease: "none",
-              immediateRender: false,
-            },
-            0
-          );
+          gsap.set(card, {
+            opacity: 1 - ownTransitionProgress * 0.5,
+            scale: this.getCardScale(slide, stackDepth),
+            transformOrigin: "center top",
+          });
         }
 
         if (cardContents.length > 0) {
-          timeline.fromTo(
-            cardContents,
-            {
-              opacity: previousStackDepth === 0 ? 1 : 0,
-            },
-            {
-              opacity: 0,
-              duration: 1,
-              ease: "none",
-              immediateRender: false,
-            },
-            0
-          );
+          gsap.set(cardContents, {
+            opacity: 1 - ownTransitionProgress,
+          });
         }
       });
+    };
 
-      this.stackTimelines.push(timeline);
-    });
+    if (list) {
+      const trigger = ScrollTrigger.create({
+        trigger: list,
+        start: "top bottom",
+        end: "bottom top",
+        invalidateOnRefresh: true,
+        onEnter: renderStack,
+        onEnterBack: renderStack,
+        onLeave: renderStack,
+        onLeaveBack: renderStack,
+        onRefresh: renderStack,
+        onUpdate: renderStack,
+      });
+
+      this.stackTriggers.push(trigger);
+    }
 
     ScrollTrigger.refresh();
+    renderStack();
   }
 
   private destroyDesktopStack() {
-    this.stackTimelines.forEach((timeline) => {
-      timeline.scrollTrigger?.kill();
-      timeline.kill();
-    });
-    this.stackTimelines = [];
+    this.stackTriggers.forEach((trigger) => trigger.kill());
+    this.stackTriggers = [];
 
     this.element
       .querySelectorAll<HTMLElement>(".about-apartments__slide")
       .forEach((slide) => {
-        slide.style.removeProperty("--stack-top");
+        slide.style.removeProperty("--stack-card-offset");
         slide.style.removeProperty("--stack-z-index");
       });
+    const list = this.element.querySelector<HTMLElement>(
+      ".about-apartments__list"
+    );
+
+    list?.style.removeProperty("--stack-top");
+    list?.style.removeProperty("--stack-final-top");
     this.element
       .querySelectorAll<HTMLElement>(".about-apartments__card")
       .forEach((card) => {
