@@ -2,6 +2,8 @@
 
 @layer components {
   .form-field {
+    --form-field-padding-inline: 2.4rem;
+
     display: block;
     width: 100%;
   }
@@ -63,7 +65,7 @@
 
   .form-field .validation-error {
     margin-top: 0.6rem;
-    padding-inline: 2.4rem;
+    padding-inline: calc(var(--form-field-padding-inline) + 0.1rem);
     font-size: 1.2rem;
     font-weight: 500;
     line-height: 1.4;
@@ -71,6 +73,10 @@
   }
 
   @include mq.down(sm) {
+    .form-field {
+      --form-field-padding-inline: 2rem;
+    }
+
     .form-field__inner {
       min-height: 5rem;
       padding: 1.6rem 2rem;

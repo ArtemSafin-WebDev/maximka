@@ -279,6 +279,10 @@
       color: #878e05;
     }
 
+    .individual-conditions .form-field {
+      --form-field-padding-inline: 1.6rem;
+    }
+
     .individual-conditions .form-field__inner {
       min-height: 4.6rem;
       padding: 1.6rem;

@@ -34,6 +34,52 @@ const callbackModal = {
   ],
 };
 
+const meetingModal = {
+  meeting: true,
+  id: "meeting-dialog",
+  formName: "meeting",
+  title: "Запись на встречу",
+  mobileTitle: "Ваши контакты",
+  description:
+    "Менеджер свяжется с вами для подтверждения заявки и согласует время консультации",
+  mobileDescription:
+    "Менеджер свяжется с вами для подтверждения заявки и согласует время",
+  submitLabel: "Оставить заявку",
+  fields: [
+    {
+      type: "text",
+      name: "name",
+      placeholder: "Имя",
+      placeholderMobile: "Имя*",
+      required: true,
+    },
+    {
+      type: "tel",
+      name: "phone",
+      placeholder: "Телефон",
+      placeholderMobile: "Телефон*",
+      required: true,
+    },
+  ],
+  agreements: [
+    {
+      name: "personal-data",
+      required: true,
+      textBefore: "Я согласен на обработку персональных данных и принимаю ",
+      policy: {
+        href: "#",
+        label: "условия политики конфиденциальности",
+      },
+    },
+    {
+      name: "marketing-consent",
+      mobileOnly: true,
+      text:
+        "Я согласен на получение рекламных и информационных email-рассылок",
+    },
+  ],
+};
+
 export default {
   "/about.html": {
     title: "О проекте — ЖК «Максима»",
@@ -59,7 +105,7 @@ export default {
       },
       secondaryAction: {
         label: "Записаться на встречу",
-        href: "#callback-dialog",
+        href: "#meeting-dialog",
       },
       status: {
         label: "Статус проекта",
@@ -252,11 +298,11 @@ export default {
         "о преимуществах проекта и поможем выбрать наиболее выгодный вариант покупки.",
       buttonLabel: "Выбрать дату встречи",
       buttonLabelMobile: "Записаться на экскурсию",
-      href: "#callback-dialog",
+      href: "#meeting-dialog",
       image: "/images/meeting-cta/bg.svg",
       imageMobile: "/images/meeting-cta/bg-mobile.svg",
     },
-    modals: [callbackModal],
+    modals: [callbackModal, meetingModal],
     successModal: {
       id: "success-dialog",
       title: "Спасибо! Ваша заявка отправлена",

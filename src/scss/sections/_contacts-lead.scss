@@ -301,6 +301,10 @@
       gap: 2.4rem;
     }
 
+    .contacts-lead .form-field {
+      --form-field-padding-inline: 1.6rem;
+    }
+
     .contacts-lead .form-field__inner {
       min-height: 4.4rem;
       padding: 1.6rem;

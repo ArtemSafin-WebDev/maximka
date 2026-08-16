@@ -1,0 +1,133 @@
+<dialog
+  class="modal meeting-modal js-dialog-modal js-meeting-modal"
+  id="{{id}}"
+  aria-labelledby="{{id}}-title"
+>
+  <div class="modal__panel meeting-modal__contacts js-meeting-contacts">
+    <div class="modal__head">
+      <h2 class="modal__title" id="{{id}}-title" tabindex="-1">
+        <span class="meeting-modal__title-desktop">{{title}}</span>
+        <span class="meeting-modal__title-mobile">{{mobileTitle}}</span>
+      </h2>
+
+      <button class="modal__close js-dialog-close" type="button" aria-label="Закрыть модальное окно">
+        <svg class="modal__close-icon" width="21" height="21" aria-hidden="true" focusable="false">
+          <use href="#modal-close"></use>
+        </svg>
+      </button>
+    </div>
+
+    <p class="modal__description">
+      <span class="meeting-modal__description-desktop">{{description}}</span>
+      <span class="meeting-modal__description-mobile">{{mobileDescription}}</span>
+    </p>
+
+    <form
+      class="modal__form meeting-modal__form js-form js-meeting-form"
+      action="#"
+      method="post"
+      data-success-modal="#{{successModal.id}}"
+      data-error-modal="#{{errorModal.id}}"
+    >
+      <input type="hidden" name="form" value="{{formName}}">
+      <input class="js-meeting-date-input" type="hidden" name="date" value="">
+
+      <div class="modal__fields">
+        {{#each fields}}
+          <label class="form-field">
+            <span class="form-field__inner">
+              <input
+                class="form-field__control js-meeting-field"
+                type="{{type}}"
+                name="{{name}}"
+                placeholder="{{placeholder}}"
+                data-placeholder-desktop="{{placeholder}}"
+                data-placeholder-mobile="{{placeholderMobile}}"
+                aria-label="{{placeholderMobile}}"
+                {{#if required}}required{{/if}}
+              >
+            </span>
+          </label>
+        {{/each}}
+
+        <div class="meeting-modal__date-field">
+          <button
+            class="meeting-modal__date-button js-meeting-calendar-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="{{id}}-calendar"
+          >
+            <span class="meeting-modal__date-placeholder js-meeting-date-label">Выбрать дату</span>
+            <svg class="meeting-modal__date-icon" width="40" height="40" aria-hidden="true" focusable="false">
+              <use href="#calendar"></use>
+            </svg>
+          </button>
+          <span class="meeting-modal__date-error js-meeting-date-error" aria-live="polite"></span>
+
+          <section class="meeting-calendar js-meeting-calendar" id="{{id}}-calendar" aria-label="Выбор даты" hidden>
+            <div class="meeting-calendar__head">
+              <h3 class="meeting-calendar__title">Выбрать дату</h3>
+              <button class="meeting-calendar__close js-meeting-calendar-close" type="button" aria-label="Закрыть календарь">
+                <svg width="10" height="10" aria-hidden="true" focusable="false">
+                  <use href="#calendar-close"></use>
+                </svg>
+              </button>
+            </div>
+
+            <div class="meeting-calendar__body">
+              <div class="meeting-calendar__content">
+                <div class="meeting-calendar__navigation">
+                  <button class="meeting-calendar__nav js-meeting-month-prev" type="button" aria-label="Предыдущий месяц">
+                    <svg width="5.868" height="9.912" aria-hidden="true" focusable="false">
+                      <use href="#calendar-arrow-left"></use>
+                    </svg>
+                  </button>
+                  <p class="meeting-calendar__month js-meeting-month-label" aria-live="polite"></p>
+                  <button class="meeting-calendar__nav js-meeting-month-next" type="button" aria-label="Следующий месяц">
+                    <svg width="5.868" height="9.912" aria-hidden="true" focusable="false">
+                      <use href="#calendar-arrow-right"></use>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="meeting-calendar__grid js-meeting-calendar-grid" role="group" aria-label="Дни месяца"></div>
+              </div>
+
+              {{> components/button
+                class="meeting-calendar__continue btn--full js-meeting-continue"
+                type="button"
+                label="Продолжить"
+              }}
+              <p class="meeting-calendar__error js-meeting-calendar-error" aria-live="polite"></p>
+            </div>
+          </section>
+        </div>
+
+        <p class="modal__required-note">* поле обязательно для заполнения</p>
+      </div>
+
+      <div class="meeting-modal__actions">
+        {{> components/button
+          class="modal__submit btn--full"
+          type="submit"
+          label=submitLabel
+        }}
+
+        <button class="meeting-modal__date-summary js-meeting-change-date" type="button">
+          <span class="meeting-modal__date-summary-value js-meeting-mobile-date">Дата не выбрана</span>
+          <span class="meeting-modal__date-summary-divider" aria-hidden="true"></span>
+          <span class="meeting-modal__date-summary-action">Изменить</span>
+        </button>
+      </div>
+
+      <div class="modal__agreements">
+        {{#each agreements}}
+          <div class="meeting-modal__agreement{{#if mobileOnly}} meeting-modal__agreement--mobile-only{{/if}}">
+            {{> components/checkbox }}
+          </div>
+        {{/each}}
+      </div>
+    </form>
+  </div>
+
+</dialog>

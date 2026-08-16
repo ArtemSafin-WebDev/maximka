@@ -10,6 +10,10 @@ export default {
         label: "Выбрать квартиру",
         href: "#layouts",
       },
+      meetingCta: {
+        label: "Записаться на встречу",
+        href: "#meeting-dialog",
+      },
       promo: {
         image: "/images/hero/card-bg.svg",
         imageMobile: "/images/hero/card-bg-mobile.svg",
@@ -927,6 +931,52 @@ export default {
             name: "newsletter",
             required: true,
             text: "Я согласен на получение рекламных и информационных email-рассылок",
+          },
+        ],
+      },
+      {
+        meeting: true,
+        id: "meeting-dialog",
+        formName: "meeting",
+        title: "Запись на встречу",
+        mobileTitle: "Ваши контакты",
+        description:
+          "Менеджер свяжется с вами для подтверждения заявки и согласует время консультации",
+        mobileDescription:
+          "Менеджер свяжется с вами для подтверждения заявки и согласует время",
+        submitLabel: "Оставить заявку",
+        fields: [
+          {
+            type: "text",
+            name: "name",
+            placeholder: "Имя",
+            placeholderMobile: "Имя*",
+            required: true,
+          },
+          {
+            type: "tel",
+            name: "phone",
+            placeholder: "Телефон",
+            placeholderMobile: "Телефон*",
+            required: true,
+          },
+        ],
+        agreements: [
+          {
+            name: "personal-data",
+            required: true,
+            textBefore:
+              "Я согласен на обработку персональных данных и принимаю ",
+            policy: {
+              href: "#",
+              label: "условия политики конфиденциальности",
+            },
+          },
+          {
+            name: "marketing-consent",
+            mobileOnly: true,
+            text:
+              "Я согласен на получение рекламных и информационных email-рассылок",
           },
         ],
       },

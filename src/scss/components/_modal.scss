@@ -185,6 +185,10 @@
       gap: 1.6rem;
     }
 
+    .modal .form-field {
+      --form-field-padding-inline: 1.6rem;
+    }
+
     .modal .form-field__inner {
       min-height: 4.4rem;
       padding: 1.6rem;
