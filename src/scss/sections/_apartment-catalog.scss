@@ -1,10 +1,6 @@
 @use "tools/media" as mq;
 
 @layer sections {
-  html:has(.catalog-page) {
-    font-size: clamp(2px, 0.525vw, 125px);
-  }
-
   .catalog-page .page-header {
     color: var(--text-color);
   }
@@ -796,10 +792,6 @@
   }
 
   @include mq.down(sm) {
-    html:has(.catalog-page) {
-      font-size: 10px;
-    }
-
     .apartment-catalog__intro {
       min-height: 0;
       padding-block: 10rem 2rem;

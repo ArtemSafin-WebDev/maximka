@@ -3,6 +3,7 @@ import Component from "../Component";
 class PageHeader extends Component {
   private readonly toggleButton: HTMLButtonElement | null;
   private readonly menuLinks: HTMLAnchorElement[];
+  private readonly navLinks: HTMLAnchorElement[];
   private isMenuOpen = false;
   private scrollRaf = 0;
 
@@ -15,15 +16,22 @@ class PageHeader extends Component {
     this.menuLinks = Array.from(
       this.element.querySelectorAll<HTMLAnchorElement>(".page-header__menu a")
     );
+    this.navLinks = Array.from(
+      this.element.querySelectorAll<HTMLAnchorElement>(
+        ".page-header__nav-link, .page-header__menu-link"
+      )
+    );
 
     this.toggleButton?.addEventListener("click", this.handleToggleClick);
     this.menuLinks.forEach((link) => {
       link.addEventListener("click", this.closeMenu);
     });
     window.addEventListener("scroll", this.handleScroll, { passive: true });
+    window.addEventListener("hashchange", this.updateActiveNavLink);
     document.addEventListener("keydown", this.handleKeyDown);
 
     this.updateScrolledState();
+    this.updateActiveNavLink();
   }
 
   public destroy() {
@@ -32,6 +40,7 @@ class PageHeader extends Component {
       link.removeEventListener("click", this.closeMenu);
     });
     window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("hashchange", this.updateActiveNavLink);
     document.removeEventListener("keydown", this.handleKeyDown);
     if (this.scrollRaf) cancelAnimationFrame(this.scrollRaf);
     this.closeMenu();
@@ -76,6 +85,44 @@ class PageHeader extends Component {
 
   private updateScrolledState() {
     this.element.classList.toggle("is-scrolled", window.scrollY > 8);
+  }
+
+  private updateActiveNavLink = () => {
+    const currentPath = this.normalizePath(window.location.pathname);
+    const currentHash = window.location.hash;
+    const hasExactHashMatch = this.navLinks.some((link) => {
+      const url = new URL(link.href, window.location.href);
+
+      return (
+        this.normalizePath(url.pathname) === currentPath &&
+        Boolean(url.hash) &&
+        url.hash === currentHash
+      );
+    });
+
+    this.navLinks.forEach((link) => {
+      const url = new URL(link.href, window.location.href);
+      const isSamePath = this.normalizePath(url.pathname) === currentPath;
+      const isActive =
+        isSamePath &&
+        (url.hash === currentHash || (!url.hash && !hasExactHashMatch));
+
+      link.classList.toggle("is-active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  private normalizePath(pathname: string) {
+    const normalizedPath = pathname.replace(/\/index\.html$/, "/");
+
+    return normalizedPath.length > 1
+      ? normalizedPath.replace(/\/$/, "")
+      : normalizedPath;
   }
 }
 

@@ -194,6 +194,11 @@
     }
   }
 
+  .page-header__nav-link.is-active,
+  .page-header__menu-link.is-active {
+    color: var(--primary-color);
+  }
+
   .page-header__divider {
     flex-shrink: 0;
     width: 0.1rem;
