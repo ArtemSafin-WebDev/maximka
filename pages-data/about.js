@@ -124,7 +124,6 @@ export default {
       cards: [
         {
           image: "/images/project-location/transport.webp",
-          imageClass: "project-location-card__image--transport",
           imageLoading: "eager",
           title: "Транспортная доступность",
           description:
@@ -132,7 +131,6 @@ export default {
         },
         {
           image: "/images/project-location/ecology.webp",
-          imageClass: "project-location-card__image--ecology",
           imageLoading: "lazy",
           title: "Благоустройство и экология",
           description:
@@ -140,7 +138,6 @@ export default {
         },
         {
           image: "/images/project-location/comfort.webp",
-          imageClass: "project-location-card__image--comfort",
           imageLoading: "lazy",
           title: "Внутренний комфорт",
           description:
@@ -218,7 +215,6 @@ export default {
             {
               src: "/images/about-apartments/interior.webp",
               alt: "Светлая кухня-гостиная с продуманной зоной отдыха",
-              className: "about-apartments__image--interior",
             },
           ],
         },
@@ -230,7 +226,6 @@ export default {
             {
               src: "/images/about-apartments/white-box.webp",
               alt: "Квартира с предчистовой отделкой и панорамным окном",
-              className: "about-apartments__image--white-box",
             },
           ],
         },
@@ -242,7 +237,6 @@ export default {
             {
               src: "/images/about-apartments/natural-light.webp",
               alt: "Светлая кухня с увеличенным окном",
-              className: "about-apartments__image--natural-light",
             },
           ],
         },

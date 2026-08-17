@@ -82,30 +82,12 @@
 
   .about-apartments__image {
     position: absolute;
-    display: block;
-    max-width: none;
-    object-fit: cover;
-  }
-
-  .about-apartments__image--interior {
-    top: -20.32%;
-    left: -10.04%;
-    width: 121.69%;
-    height: 130.32%;
-  }
-
-  .about-apartments__image--white-box {
     inset: 0;
+    display: block;
     width: 100%;
     height: 100%;
-  }
-
-  .about-apartments__image--natural-light {
-    top: -11.13%;
-    left: -2.91%;
-    width: 121.99%;
-    height: 130.65%;
-    transform: scaleX(-1);
+    max-width: none;
+    object-fit: cover;
   }
 
   .about-apartments__pagination {
@@ -184,28 +166,6 @@
       width: 100%;
       height: 18.4rem;
       border-radius: 1.8rem;
-    }
-
-    .about-apartments__image--interior {
-      top: 50%;
-      left: 50%;
-      width: 107.3%;
-      height: 122.28%;
-      transform: translate(-50%, -50%);
-    }
-
-    .about-apartments__image--white-box {
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .about-apartments__image--natural-light {
-      top: 50%;
-      left: 50%;
-      width: 107.3%;
-      height: 122.28%;
-      transform: translate(-50%, -50%) scaleX(-1);
     }
 
     .about-apartments__pagination.swiper-pagination {
