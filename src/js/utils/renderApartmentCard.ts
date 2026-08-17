@@ -17,6 +17,7 @@ export interface ApartmentCardData {
   price: string;
   oldPrice?: string;
   discount?: string;
+  discountIcon?: string;
   mortgage?: string;
   features: string[];
   allFeatures: string[];
@@ -177,10 +178,11 @@ export default function renderApartmentCard(item: ApartmentCardData) {
     priceBlock.append(
       createElement("p", "apartment-card__mortgage", item.mortgage)
     );
-  } else if (item.oldPrice && item.discount) {
+  } else if (item.oldPrice && item.discount && item.discountIcon) {
     const discount = createElement("div", "apartment-card__discount");
     const icon = createElement("img", "apartment-card__discount-icon");
-    icon.src = "/src/icons/discount.svg";
+    const iconSrc = getSafeUrl(item.discountIcon);
+    if (iconSrc) icon.src = iconSrc;
     icon.width = 18;
     icon.height = 18;
     icon.alt = "";

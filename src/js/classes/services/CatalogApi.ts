@@ -158,8 +158,14 @@ function parseApartment(value: unknown): ApartmentCardData {
 
   const oldPrice = getOptionalString(value, "oldPrice");
   const discount = getOptionalString(value, "discount");
-  if (Boolean(oldPrice) !== Boolean(discount)) {
-    throw new Error("Catalog response: oldPrice and discount must be passed together");
+  const discountIcon = getOptionalString(value, "discountIcon");
+  if (
+    Boolean(oldPrice) !== Boolean(discount) ||
+    Boolean(discount) !== Boolean(discountIcon)
+  ) {
+    throw new Error(
+      "Catalog response: oldPrice, discount and discountIcon must be passed together"
+    );
   }
 
   return {
@@ -173,6 +179,7 @@ function parseApartment(value: unknown): ApartmentCardData {
     price: getRequiredString(value, "price"),
     oldPrice,
     discount,
+    discountIcon,
     mortgage: getOptionalString(value, "mortgage"),
     features,
     allFeatures,

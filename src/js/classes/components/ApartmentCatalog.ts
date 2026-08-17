@@ -12,6 +12,7 @@ interface CatalogRange {
   element: HTMLElement;
   min: number;
   max: number;
+  step: number;
   initialMin: number;
   initialMax: number;
   minRange: HTMLInputElement;
@@ -78,7 +79,6 @@ class ApartmentCatalog extends Component {
   private lastFailedMode: CatalogLoadMode = "replace";
   private lastFailedParams: URLSearchParams | null = null;
   private readonly loadedIds = new Set<string>();
-  private hasLoadedOnce = false;
   private previouslyFocusedElement: HTMLElement | null = null;
   private isFilterOpen = false;
   private isSortOpen = false;
@@ -273,6 +273,7 @@ class ApartmentCatalog extends Component {
       element,
       min: Number(element.dataset.min),
       max: Number(element.dataset.max),
+      step: Number(minRange.step) || 1,
       initialMin: Number(element.dataset.initialMin),
       initialMax: Number(element.dataset.initialMax),
       minRange,
@@ -302,7 +303,7 @@ class ApartmentCatalog extends Component {
       input.addEventListener(
         "input",
         () => {
-          input.value = input.value.replace(/[^\d]/g, "");
+          input.value = this.sanitizeValueInput(input.value, range.step < 1);
         },
         { signal: this.eventController.signal }
       );
@@ -371,7 +372,16 @@ class ApartmentCatalog extends Component {
   }
 
   private parseValue(value: string) {
-    return Number(value.replace(/\D/g, ""));
+    return Number(value.replace(/\s/g, "").replace(",", "."));
+  }
+
+  private sanitizeValueInput(value: string, allowDecimal: boolean) {
+    if (!allowDecimal) return value.replace(/[^\d]/g, "");
+
+    const normalized = value.replace(",", ".").replace(/[^\d.]/g, "");
+    const [integer = "", ...fractionParts] = normalized.split(".");
+    const fraction = fractionParts.join("");
+    return fractionParts.length ? `${integer},${fraction}` : integer;
   }
 
   private formatValue(value: number) {
@@ -663,10 +673,16 @@ class ApartmentCatalog extends Component {
     const range = this.ranges.find(({ element }) => element.matches(selector));
     if (!range || (minValue === null && maxValue === null)) return;
 
+    const restoredMax =
+      maxValue === null ? Number(range.maxRange.value) : Number(maxValue);
+    const maxValueIsLegacyStepClamp =
+      restoredMax < range.initialMax &&
+      range.initialMax - restoredMax <= range.step + Number.EPSILON;
+
     this.setRange(
       range,
       minValue === null ? Number(range.minRange.value) : Number(minValue),
-      maxValue === null ? Number(range.maxRange.value) : Number(maxValue)
+      maxValueIsLegacyStepClamp ? range.initialMax : restoredMax
     );
   }
 
@@ -727,8 +743,12 @@ class ApartmentCatalog extends Component {
     const range = this.ranges.find(({ element }) => element.matches(selector));
     if (!range) return;
 
-    params.set(minName, range.minRange.value);
-    params.set(maxName, range.maxRange.value);
+    if (Number(range.minRange.value) > range.initialMin) {
+      params.set(minName, range.minRange.value);
+    }
+    if (Number(range.maxRange.value) < range.initialMax) {
+      params.set(maxName, range.maxRange.value);
+    }
   }
 
   private syncUrl(params: URLSearchParams) {
@@ -779,9 +799,7 @@ class ApartmentCatalog extends Component {
       if (mode === "replace") {
         this.syncUrl(params);
         if (this.isFilterOpen) this.closeFilter();
-        if (this.hasLoadedOnce) this.scrollToResults();
       }
-      this.hasLoadedOnce = true;
     } catch (error) {
       if (controller.signal.aborted || currentRequestId !== this.requestId) {
         return;
@@ -899,35 +917,9 @@ class ApartmentCatalog extends Component {
   }
 
   private applyFacets(facets: CatalogFacets) {
-    this.applyRangeFacet(".catalog-filter__group--price", facets.price);
-    this.applyRangeFacet(".catalog-filter__group--area", facets.area);
-    this.applyRangeFacet(".catalog-range--floor", facets.floor);
     this.applyOptionFacets("rooms", facets.rooms);
     this.applyOptionFacets("entrances", facets.entrances);
     this.applyOptionFacets("features", facets.features);
-  }
-
-  private applyRangeFacet(
-    selector: string,
-    facet: { min: number; max: number } | undefined
-  ) {
-    if (!facet) return;
-    const range = this.ranges.find(({ element }) => element.matches(selector));
-    if (!range) return;
-
-    range.min = facet.min;
-    range.max = facet.max;
-    range.element.dataset.min = String(facet.min);
-    range.element.dataset.max = String(facet.max);
-    range.minRange.min = String(facet.min);
-    range.minRange.max = String(facet.max);
-    range.maxRange.min = String(facet.min);
-    range.maxRange.max = String(facet.max);
-    this.setRange(
-      range,
-      Number(range.minRange.value),
-      Number(range.maxRange.value)
-    );
   }
 
   private applyOptionFacets(
@@ -943,7 +935,7 @@ class ApartmentCatalog extends Component {
         const count = counts.get(input.value);
         if (count === undefined) return;
 
-        input.disabled = count === 0 && !input.checked;
+        input.disabled = false;
         input.setAttribute("aria-description", `Доступно квартир: ${count}`);
       });
   }
@@ -992,17 +984,6 @@ class ApartmentCatalog extends Component {
 
   private announce(message: string) {
     if (this.statusElement) this.statusElement.textContent = message;
-  }
-
-  private scrollToResults() {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    this.results?.scrollIntoView({
-      behavior: prefersReducedMotion ? "auto" : "smooth",
-      block: "start",
-    });
   }
 
   private sortApartments() {

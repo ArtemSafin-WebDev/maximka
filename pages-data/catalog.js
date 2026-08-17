@@ -33,6 +33,7 @@ const apartments = Array.from({ length: 11 }, (_, index) => ({
   price: "6 735 319 ₽",
   oldPrice: index < 3 ? "6 935 117 ₽" : undefined,
   discount: index < 3 ? "Скидка 199 798 ₽" : undefined,
+  discountIcon: index < 3 ? "/images/apartment-hero/discount.svg" : undefined,
   mortgage: index < 3 ? undefined : "Ипотека от 35 041 ₽/мес",
   features: featureSets[index % featureSets.length],
   allFeatures: [
@@ -111,6 +112,7 @@ export default {
           displayMin: "3 678 809",
           displayMax: "15 500 000",
           step: 1,
+          inputMode: "numeric",
         },
         area: {
           class: "catalog-filter__group--area",
@@ -121,7 +123,8 @@ export default {
           valueMax: 68,
           displayMin: "22",
           displayMax: "68",
-          step: 1,
+          step: 0.1,
+          inputMode: "decimal",
         },
         entrances: [
           { label: "1", value: "1", checked: true },

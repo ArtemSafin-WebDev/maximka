@@ -90,6 +90,7 @@ GET /api/v1/apartments?rooms=studio&rooms=1&priceMin=3678809&priceMax=15500000&a
       "price": "6 735 319 ₽",
       "oldPrice": "6 935 117 ₽",
       "discount": "Скидка 199 798 ₽",
+      "discountIcon": "/images/apartment-hero/discount.svg",
       "mortgage": null,
       "features": ["Окно в ванной", "Просторная кухня"],
       "allFeatures": [
@@ -138,7 +139,7 @@ GET /api/v1/apartments?rooms=studio&rooms=1&priceMin=3678809&priceMax=15500000&a
 - `title`, `area`, `floor`, `price` — обязательные готовые к показу строки. Числа форматируются с учетом русской локали.
 - `images` — минимум одно изображение. `src`, положительные `width/height` и содержательный `alt` обязательны. Растровые локальные изображения передаются в `webp`; `className` допускает только известные фронтенду модификаторы.
 - `hasMultipleImages` — `true` только при `images.length > 1`. Можно вычислять на фронтенде, но если поле передается, оно должно совпадать с массивом.
-- `oldPrice` и `discount` передаются вместе, когда есть скидка. Если скидки нет, оба поля равны `null` или отсутствуют.
+- `oldPrice`, `discount` и `discountIcon` передаются вместе, когда есть скидка. `discountIcon` содержит внутренний или абсолютный URL иконки; frontend не задаёт его самостоятельно. Если скидки нет, все три поля равны `null` или отсутствуют.
 - `mortgage` — готовая строка платежа. Текущий шаблон показывает либо `mortgage`, либо блок `oldPrice/discount`. Если нужны оба блока одновременно, сначала требуется изменение верстки.
 - `features` — короткий набор меток, постоянно видимый в карточке; сейчас ожидается не более двух.
 - `allFeatures` — полный набор меток для popover. `featuresRemaining` равен `max(allFeatures.length - features.length, 0)`.
