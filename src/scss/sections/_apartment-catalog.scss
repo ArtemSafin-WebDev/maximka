@@ -992,9 +992,9 @@
       flex-direction: column;
       gap: 0;
       width: 100%;
-      padding-bottom: 0.5rem;
+      padding-bottom: 0;
       overflow: hidden;
-      border-radius: 3.2rem;
+      border-radius: 3.2rem 3.2rem 0 0;
       background-color: var(--bg-color);
       transform: translateY(2rem);
       transition: transform 0.25s ease;
@@ -1046,6 +1046,15 @@
       padding: 2rem;
       border-radius: 3.2rem;
       background-color: #ffffff;
+    }
+
+    .catalog-filter__group > legend.catalog-filter__label {
+      float: left;
+      width: 100%;
+    }
+
+    .catalog-filter__group > legend.catalog-filter__label + * {
+      clear: both;
     }
 
     .catalog-filter__label {
@@ -1110,10 +1119,10 @@
     }
 
     .catalog-range__native {
-      right: -0.6rem;
+      right: -2.2rem;
       bottom: -3.8rem;
-      left: -0.6rem;
-      width: calc(100% + 1.2rem);
+      left: -2.2rem;
+      width: calc(100% + 4.4rem);
     }
 
     .catalog-filter__more {
@@ -1205,6 +1214,18 @@
       display: none;
     }
 
+    .catalog-filter__group--features.is-expanded .catalog-filter__features {
+      max-height: none;
+    }
+
+    .catalog-filter__group--features.is-expanded .catalog-feature:nth-child(n + 5) {
+      display: block;
+    }
+
+    .catalog-filter__group--features.is-expanded .catalog-filter__features-more {
+      display: none;
+    }
+
     .catalog-feature > span {
       width: auto;
       white-space: nowrap;
@@ -1218,8 +1239,13 @@
       height: 4rem;
       border-radius: 50%;
       background-color: var(--bg-color);
-      font-size: 1.2rem;
-      letter-spacing: 0.12em;
+      color: var(--text-color);
+    }
+
+    .catalog-filter__features-more svg {
+      width: 1.8rem;
+      height: 1.8rem;
+      fill: currentcolor;
     }
 
     .catalog-filter__actions {
@@ -1310,11 +1336,19 @@
     }
 
     .apartment-catalog__more {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
-      min-height: 5.6rem;
+      height: 4.8rem;
+      min-height: 4.8rem;
       margin-block: 4rem 3.1rem;
-      padding: 1.9rem 2rem;
+      padding-inline: 2rem;
       font-size: 1.4rem;
+    }
+
+    .apartment-catalog__more span {
+      color: inherit;
     }
 
     .catalog-page .page-footer {

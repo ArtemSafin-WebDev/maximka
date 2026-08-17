@@ -18,6 +18,8 @@ class ApartmentCatalog extends Component {
   private readonly openButton: HTMLButtonElement | null;
   private readonly closeButton: HTMLButtonElement | null;
   private readonly moreButton: HTMLButtonElement | null;
+  private readonly featuresMoreButton: HTMLButtonElement | null;
+  private readonly featuresGroup: HTMLElement | null;
   private readonly sort: HTMLElement | null;
   private readonly sortTrigger: HTMLButtonElement | null;
   private readonly sortDropdown: HTMLElement | null;
@@ -52,6 +54,12 @@ class ApartmentCatalog extends Component {
     this.moreButton = this.element.querySelector<HTMLButtonElement>(
       ".js-catalog-filter-more"
     );
+    this.featuresMoreButton = this.element.querySelector<HTMLButtonElement>(
+      ".js-catalog-features-more"
+    );
+    this.featuresGroup = this.featuresMoreButton?.closest<HTMLElement>(
+      ".catalog-filter__group--features"
+    ) ?? null;
     this.sort = this.element.querySelector<HTMLElement>(".js-catalog-sort");
     this.sortTrigger = this.element.querySelector<HTMLButtonElement>(
       ".js-catalog-sort-trigger"
@@ -95,6 +103,11 @@ class ApartmentCatalog extends Component {
     this.moreButton?.addEventListener("click", this.toggleAdditionalFilters, {
       signal: this.eventController.signal,
     });
+    this.featuresMoreButton?.addEventListener(
+      "click",
+      this.toggleAdditionalFeatures,
+      { signal: this.eventController.signal }
+    );
     this.sortTrigger?.addEventListener("click", this.toggleSort, {
       signal: this.eventController.signal,
     });
@@ -312,6 +325,19 @@ class ApartmentCatalog extends Component {
     this.moreButton.setAttribute("aria-expanded", String(isExpanded));
 
     if (!isExpanded) this.modal.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  private toggleAdditionalFeatures = () => {
+    if (!this.featuresGroup || !this.featuresMoreButton) return;
+
+    const isExpanded = this.featuresGroup.classList.toggle("is-expanded");
+    this.featuresMoreButton.setAttribute("aria-expanded", String(isExpanded));
+    this.featuresMoreButton.setAttribute(
+      "aria-label",
+      isExpanded
+        ? "Скрыть остальные преимущества"
+        : "Показать остальные преимущества"
+    );
   };
 
   private handleModalClick = (event: MouseEvent) => {

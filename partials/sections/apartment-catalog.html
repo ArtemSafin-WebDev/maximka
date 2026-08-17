@@ -114,14 +114,22 @@
 
         <fieldset class="catalog-filter__group catalog-filter__group--features">
           <legend class="catalog-filter__label">Преимущества</legend>
-          <div class="catalog-filter__features">
+          <div class="catalog-filter__features" id="catalog-filter-features">
             {{#each catalog.filters.features}}
               <label class="catalog-feature">
                 <input type="checkbox" name="features" value="{{value}}" {{#if checked}}checked{{/if}}>
                 <span>{{label}}</span>
               </label>
             {{/each}}
-            <span class="catalog-filter__features-more" aria-hidden="true">•••</span>
+            <button
+              class="catalog-filter__features-more js-catalog-features-more"
+              type="button"
+              aria-expanded="false"
+              aria-controls="catalog-filter-features"
+              aria-label="Показать остальные преимущества"
+            >
+              <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#catalog-features-more"></use></svg>
+            </button>
           </div>
         </fieldset>
         </div>

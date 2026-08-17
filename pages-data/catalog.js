@@ -105,9 +105,9 @@ export default {
           min: 3678809,
           max: 15500000,
           valueMin: 3678809,
-          valueMax: 10932340,
+          valueMax: 15500000,
           displayMin: "3 678 809",
-          displayMax: "10 932 340",
+          displayMax: "15 500 000",
           step: 1,
         },
         area: {
