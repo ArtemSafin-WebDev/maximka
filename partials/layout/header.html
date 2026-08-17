@@ -68,10 +68,20 @@
       <a class="page-header__button page-header__button--menu-apartments" href="{{header.apartments.href}}">
         <span>{{header.apartments.label}}</span>
         <span class="page-header__button-icon" aria-hidden="true">
-          <svg width="32" height="32" focusable="false">
+          <svg width="20" height="20" focusable="false">
             <use href="#arrows/right"></use>
           </svg>
         </span>
+      </a>
+
+      <a
+        class="page-header__menu-meeting"
+        href="{{header.meeting.href}}"
+        aria-label="{{header.meeting.label}}"
+      >
+        <svg width="20" height="20" focusable="false" aria-hidden="true">
+          <use href="#chat"></use>
+        </svg>
       </a>
     </div>
   </div>

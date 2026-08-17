@@ -1,0 +1,321 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Максима" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+      - generic [ref=e502]:
+        - link "+7 (4722) 78-95-49" [ref=e503] [cursor=pointer]:
+          - /url: tel:+74722789549
+          - img [ref=e504]
+        - button "Меню" [ref=e506] [cursor=pointer]:
+          - img [ref=e507]
+          - img [ref=e509]
+          - generic [ref=e511]: Меню
+  - main [ref=e27]:
+    - region "Подбор квартир" [ref=e28]:
+      - generic [ref=e30]:
+        - heading "Подбор квартир" [level=1] [ref=e39]
+        - generic [ref=e512]:
+          - 'button "Фильтр Выбрано параметров: 8" [expanded] [ref=e552] [cursor=pointer]':
+            - generic [ref=e514]: Фильтр
+            - 'generic "Выбрано параметров: 8" [ref=e553]': "8"
+          - generic [ref=e516]:
+            - 'button "Сортировка квартир: Сначала дешевле" [ref=e162] [cursor=pointer]':
+              - img [ref=e517]
+            - generic:
+              - group:
+                - generic: Порядок сортировки квартир
+                - generic:
+                  - radio [checked]
+                  - generic: Сначала дешевле
+                  - generic:
+                    - img
+                - generic:
+                  - radio
+                  - generic: Сначала дороже
+                  - generic:
+                    - img
+                - generic:
+                  - radio
+                  - generic: Сначала с меньшей площадью
+                  - generic:
+                    - img
+                - generic:
+                  - radio
+                  - generic: Сначала с большей площадью
+                  - generic:
+                    - img
+        - dialog "Фильтр квартир" [ref=e536]:
+          - generic [ref=e41]:
+            - generic [ref=e537]:
+              - heading "Фильтр" [level=2] [ref=e538]
+              - button "Закрыть фильтр" [ref=e539] [cursor=pointer]:
+                - img [ref=e540]
+            - generic [ref=e42]:
+              - group "Количество комнат" [ref=e43]:
+                - generic [ref=e44]: Количество комнат
+                - generic [ref=e45]:
+                  - generic [ref=e46] [cursor=pointer]:
+                    - checkbox "Студия" [checked] [ref=e47]
+                    - generic [ref=e48]: Студия
+                  - generic [ref=e49] [cursor=pointer]:
+                    - checkbox "1" [checked] [ref=e50]
+                    - generic [ref=e51]: "1"
+                  - generic [ref=e52] [cursor=pointer]:
+                    - checkbox "2" [ref=e53]
+                    - generic [ref=e54]: "2"
+                  - generic [ref=e55] [cursor=pointer]:
+                    - checkbox "3" [ref=e56]
+                    - generic [ref=e57]: "3"
+              - generic [ref=e58]:
+                - paragraph [ref=e59]: Стоимость, ₽
+                - generic [ref=e60]:
+                  - textbox "Стоимость, ₽, от" [ref=e63]: 3 678 809
+                  - textbox "Стоимость, ₽, до" [ref=e67]: 15 500 000
+                  - slider "Стоимость, ₽, минимальное значение": "3678809"
+                  - slider "Стоимость, ₽, максимальное значение": "15500000"
+              - generic [ref=e68]:
+                - paragraph [ref=e69]: Площадь, м²
+                - generic [ref=e70]:
+                  - textbox "Площадь, м², от" [ref=e73]: "22"
+                  - textbox "Площадь, м², до" [ref=e77]: "68"
+                  - slider "Площадь, м², минимальное значение": "22"
+                  - slider "Площадь, м², максимальное значение": "68"
+              - button "Показать все параметры" [ref=e542] [cursor=pointer]:
+                - generic [ref=e543]: Показать все параметры
+                - img [ref=e544]
+              - generic [ref=e149]:
+                - button "Показать" [ref=e546] [cursor=pointer]:
+                  - generic [ref=e547]: Показать
+                - button "Сбросить" [active] [ref=e152] [cursor=pointer]:
+                  - generic [ref=e153]: Сбросить
+                  - img [ref=e154]
+      - generic [ref=e156]:
+        - heading "Найдено квартир" [level=2] [ref=e158]:
+          - text: Найдено
+          - status [ref=e159]: "345"
+          - text: квартир
+        - list [ref=e174]:
+          - listitem [ref=e175]:
+            - article [ref=e176]:
+              - link "Открыть Квартира - студия, 22,1 м², 3 / 13 этаж" [ref=e177] [cursor=pointer]:
+                - /url: /apartment.html
+              - generic [ref=e178]:
+                - heading "Квартира - студия" [level=3] [ref=e179]
+                - paragraph [ref=e180]:
+                  - generic [ref=e181]: 22,1 м²
+                  - generic [ref=e183]: 3 / 13 этаж
+              - generic [ref=e184]:
+                - img "Планировка квартиры-студии площадью 22,1 м²"
+              - generic [ref=e185]:
+                - generic [ref=e186]:
+                  - generic [ref=e187]: Цена
+                  - strong [ref=e188]: 6 735 319 ₽
+                - generic [ref=e189]:
+                  - deletion [ref=e190]: 6 935 117 ₽
+                  - generic [ref=e192]: Скидка 199 798 ₽
+                  - img [ref=e193]
+              - generic [ref=e195]:
+                - generic [ref=e196]:
+                  - generic [ref=e197]: Окно в ванной
+                  - generic [ref=e198]: Просторная кухня
+                - button "Показать все особенности квартиры" [ref=e199] [cursor=pointer]: "+5"
+          - listitem [ref=e200]:
+            - article [ref=e201]:
+              - link "Открыть Квартира - студия, 22,1 м², 3 / 13 этаж" [ref=e202] [cursor=pointer]:
+                - /url: /apartment.html
+              - generic [ref=e203]:
+                - heading "Квартира - студия" [level=3] [ref=e204]
+                - paragraph [ref=e205]:
+                  - generic [ref=e206]: 22,1 м²
+                  - generic [ref=e208]: 3 / 13 этаж
+              - generic [ref=e209]:
+                - img "Планировка квартиры-студии площадью 22,1 м²"
+              - generic [ref=e210]:
+                - generic [ref=e211]:
+                  - generic [ref=e212]: Цена
+                  - strong [ref=e213]: 6 735 319 ₽
+                - generic [ref=e214]:
+                  - deletion [ref=e215]: 6 935 117 ₽
+                  - generic [ref=e217]: Скидка 199 798 ₽
+                  - img [ref=e218]
+              - generic [ref=e220]:
+                - generic [ref=e221]:
+                  - generic [ref=e222]: Окно в ванной
+                  - generic [ref=e223]: Просторная кухня
+                - button "Показать все особенности квартиры" [ref=e224] [cursor=pointer]: "+5"
+          - listitem [ref=e225]:
+            - article [ref=e226]:
+              - generic [ref=e227]:
+                - heading "Квартира - студия" [level=3] [ref=e228]
+                - paragraph [ref=e229]:
+                  - generic [ref=e230]: 22,1 м²
+                  - generic [ref=e232]: 3 / 13 этаж
+              - generic [ref=e233]:
+                - img "Планировка квартиры-студии площадью 22,1 м²"
+              - generic [ref=e234]:
+                - generic [ref=e235]:
+                  - generic [ref=e236]: Цена
+                  - strong [ref=e237]: 6 735 319 ₽
+                - generic [ref=e238]:
+                  - deletion [ref=e239]: 6 935 117 ₽
+                  - generic [ref=e241]: Скидка 199 798 ₽
+                  - img [ref=e242]
+              - generic [ref=e244]:
+                - generic [ref=e245]:
+                  - generic [ref=e246]: Окно в ванной
+                  - generic [ref=e247]: Просторная кухня
+                - button "Показать все особенности квартиры" [disabled] [ref=e248] [cursor=pointer]: "+5"
+              - status [ref=e250]:
+                - img [ref=e251]
+                - generic [ref=e253]: Забронировано
+          - listitem [ref=e254]:
+            - article [ref=e255]:
+              - link "Открыть Квартира - студия, 22,1 м², 3 / 13 этаж" [ref=e256] [cursor=pointer]:
+                - /url: /apartment.html
+              - generic [ref=e257]:
+                - heading "Квартира - студия" [level=3] [ref=e258]
+                - paragraph [ref=e259]:
+                  - generic [ref=e260]: 22,1 м²
+                  - generic [ref=e262]: 3 / 13 этаж
+              - generic [ref=e263]:
+                - img "Планировка квартиры-студии площадью 22,1 м²"
+              - generic [ref=e264]:
+                - generic [ref=e265]:
+                  - generic [ref=e266]: Цена
+                  - strong [ref=e267]: 6 735 319 ₽
+                - paragraph [ref=e268]: Ипотека от 35 041 ₽/мес
+              - generic [ref=e270]:
+                - generic [ref=e271]:
+                  - generic [ref=e272]: Окно в ванной
+                  - generic [ref=e273]: Просторная кухня
+                - button "Показать все особенности квартиры" [ref=e274] [cursor=pointer]: "+5"
+          - listitem [ref=e275]:
+            - article [ref=e276]:
+              - link "Открыть Квартира - студия, 22,1 м², 3 / 13 этаж" [ref=e277] [cursor=pointer]:
+                - /url: /apartment.html
+              - generic [ref=e278]:
+                - heading "Квартира - студия" [level=3] [ref=e279]
+                - paragraph [ref=e280]:
+                  - generic [ref=e281]: 22,1 м²
+                  - generic [ref=e283]: 3 / 13 этаж
+              - generic [ref=e284]:
+                - img "Планировка квартиры-студии площадью 22,1 м²"
+              - generic [ref=e285]:
+                - generic [ref=e286]:
+                  - generic [ref=e287]: Цена
+                  - strong [ref=e288]: 6 735 319 ₽
+                - paragraph [ref=e289]: Ипотека от 35 041 ₽/мес
+              - generic [ref=e291]:
+                - generic [ref=e292]:
+                  - generic [ref=e293]: Окно в ванной
+                  - generic [ref=e294]: Просторная кухня
+                - button "Показать все особенности квартиры" [ref=e295] [cursor=pointer]: "+5"
+          - listitem [ref=e296]:
+            - article [ref=e297]:
+              - link "Открыть Квартира - студия, 22,1 м², 3 / 13 этаж" [ref=e298] [cursor=pointer]:
+                - /url: /apartment.html
+              - generic [ref=e299]:
+                - heading "Квартира - студия" [level=3] [ref=e300]
+                - paragraph [ref=e301]:
+                  - generic [ref=e302]: 22,1 м²
+                  - generic [ref=e304]: 3 / 13 этаж
+              - generic [ref=e305]:
+                - img "Планировка квартиры-студии площадью 22,1 м²"
+              - generic [ref=e306]:
+                - generic [ref=e307]:
+                  - generic [ref=e308]: Цена
+                  - strong [ref=e309]: 6 735 319 ₽
+                - paragraph [ref=e310]: Ипотека от 35 041 ₽/мес
+              - generic [ref=e312]:
+                - generic [ref=e313]:
+                  - generic [ref=e314]: Окно в ванной
+                  - generic [ref=e315]: Просторная кухня
+                - button "Показать все особенности квартиры" [ref=e316] [cursor=pointer]: "+5"
+          - listitem [ref=e359]:
+            - region "Оставьте контакт" [ref=e360]:
+              - generic [ref=e361]:
+                - generic [ref=e362]:
+                  - heading "Оставьте контакт" [level=2] [ref=e363]
+                  - paragraph [ref=e364]: Наш эксперт подберет подходящий вариант
+                - generic [ref=e365]:
+                  - generic [ref=e366]:
+                    - generic [ref=e367]:
+                      - textbox "Имя*" [ref=e370]
+                      - textbox "Телефон*" [ref=e373]
+                    - button "Оставить заявку" [ref=e374] [cursor=pointer]:
+                      - generic [ref=e375]: Оставить заявку
+                  - generic [ref=e376]:
+                    - generic [ref=e377] [cursor=pointer]:
+                      - generic [ref=e378]:
+                        - checkbox "Я согласен на обработку персональных данных и принимаю условия политики конфиденциальности" [ref=e379]
+                        - img [ref=e381]
+                      - generic [ref=e383]:
+                        - text: Я согласен на обработку персональных данных и принимаю
+                        - link "условия политики конфиденциальности" [ref=e384]:
+                          - /url: "#"
+                    - generic [ref=e385] [cursor=pointer]:
+                      - generic [ref=e386]:
+                        - checkbox "Я согласен на получение рекламных и информационных email-рассылок" [ref=e387]
+                        - img [ref=e389]
+                      - generic [ref=e391]: Я согласен на получение рекламных и информационных email-рассылок
+          - listitem [ref=e455]:
+            - article [ref=e456]:
+              - img [ref=e458]
+              - generic [ref=e459]:
+                - generic [ref=e460]:
+                  - heading "Ипотека от 3,5%" [level=2] [ref=e461]
+                  - paragraph [ref=e462]:
+                    - generic [ref=e519]: Поможем с оформлением IT-ипотеки
+                    - generic [ref=e520]: или семейной
+                - link "Оставить заявку" [ref=e521] [cursor=pointer]:
+                  - /url: "#request-dialog"
+                  - generic [ref=e464]: Оставить заявку
+        - button "Показать еще 15 из 107" [ref=e465] [cursor=pointer]:
+          - generic [ref=e466]: Показать еще 15 из 107
+  - contentinfo [ref=e467]:
+    - generic [ref=e470]:
+      - link "Заказать звонок" [ref=e522] [cursor=pointer]:
+        - /url: "#callback-dialog"
+        - img [ref=e523]
+        - generic [ref=e525]: Заказать звонок
+      - link "Максима" [ref=e471] [cursor=pointer]:
+        - /url: /
+        - img "Максима" [ref=e472]
+      - navigation "Навигация в подвале" [ref=e526]:
+        - link "О проекте" [ref=e527] [cursor=pointer]:
+          - /url: /about.html
+        - link "Особенности проекта" [ref=e528] [cursor=pointer]:
+          - /url: "#features"
+        - link "Инфраструктура" [ref=e529] [cursor=pointer]:
+          - /url: "#infrastructure"
+        - link "Преимущества" [ref=e530] [cursor=pointer]:
+          - /url: "#benefits"
+        - link "Расположение" [ref=e531] [cursor=pointer]:
+          - /url: /about.html#location
+        - link "Квартиры" [ref=e532] [cursor=pointer]:
+          - /url: "#layouts"
+        - link "Акции" [ref=e533] [cursor=pointer]:
+          - /url: "#promotions"
+        - link "Как купить" [ref=e534] [cursor=pointer]:
+          - /url: "#buy"
+      - link "+7 (495) 132-07-08" [ref=e486] [cursor=pointer]:
+        - /url: tel:+74951320708
+      - generic [ref=e487]:
+        - link "Сайт разработан Mark Weber" [ref=e488] [cursor=pointer]:
+          - /url: https://markweber.ru/
+          - generic [ref=e490]:
+            - generic [ref=e491]: Создание
+            - generic [ref=e492]: сайта
+        - generic [ref=e535]: ©2026
+    - generic [ref=e494]:
+      - navigation "Юридическая информация" [ref=e496]:
+        - link "Проектная декларация" [ref=e497] [cursor=pointer]:
+          - /url: "#"
+        - link "Документы" [ref=e498] [cursor=pointer]:
+          - /url: "#"
+        - link "Политика конфиденциальности" [ref=e499] [cursor=pointer]:
+          - /url: "#"
+      - paragraph [ref=e501]: ПРЕДСТАВЛЕННАЯ ИНФОРМАЦИЯ НОСИТ ИСКЛЮЧИТЕЛЬНО ОЗНАКОМИТЕЛЬНЫЙ ХАРАКТЕР, НИ ПРИ КАКИХ ОБСТОЯТЕЛЬСТВАХ НЕ ЯВЛЯЕТСЯ ПУБЛИЧНОЙ ОФЕРТОЙ, ОПРЕДЕЛЯЕМОЙ ПОЛОЖЕНИЯМИ СТАТЬИ 437 ГК РФ. ПОСТРОЕННЫЕ ОБЪЕКТЫ МОГУТ ОТЛИЧАТЬСЯ ОТ ПРЕДСТАВЛЕННЫХ 3D-ВИЗУАЛИЗАЦИЙ, ИЗОБРАЖЕНИЙ. ВСЕ ПРЕДСТАВЛЕННЫЕ МАТЕРИАЛЫ, ИЗОБРАЖЕНИЯ ЯВЛЯЮТСЯ ОРИЕНТИРОВОЧНЫМИ, В НИХ МОГУТ БЫТЬ ВНЕСЕНЫ ЛЮБЫЕ ИЗМЕНЕНИЯ И ДОПОЛНЕНИЯ.
+  - img

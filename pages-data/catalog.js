@@ -89,7 +89,7 @@ export default {
         ],
       },
       count: 345,
-      activeFilterCount: 6,
+      activeFilterCount: 8,
       totalCount: 107,
       moreCount: 15,
       filters: {

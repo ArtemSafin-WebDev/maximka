@@ -16,6 +16,7 @@ class ApartmentCatalog extends Component {
   private readonly form: HTMLFormElement | null;
   private readonly modal: HTMLElement | null;
   private readonly openButton: HTMLButtonElement | null;
+  private readonly filterCount: HTMLElement | null;
   private readonly closeButton: HTMLButtonElement | null;
   private readonly moreButton: HTMLButtonElement | null;
   private readonly featuresMoreButton: HTMLButtonElement | null;
@@ -47,6 +48,9 @@ class ApartmentCatalog extends Component {
     );
     this.openButton = this.element.querySelector<HTMLButtonElement>(
       ".js-catalog-filter-open"
+    );
+    this.filterCount = this.element.querySelector<HTMLElement>(
+      ".js-catalog-filter-count"
     );
     this.closeButton = this.element.querySelector<HTMLButtonElement>(
       ".js-catalog-filter-close"
@@ -94,6 +98,9 @@ class ApartmentCatalog extends Component {
     this.form?.addEventListener("reset", this.handleReset, {
       signal: this.eventController.signal,
     });
+    this.form?.addEventListener("change", this.updateFilterCount, {
+      signal: this.eventController.signal,
+    });
     this.openButton?.addEventListener("click", this.openFilter, {
       signal: this.eventController.signal,
     });
@@ -130,6 +137,7 @@ class ApartmentCatalog extends Component {
     });
 
     this.moveSort();
+    this.updateFilterCount();
     this.updateSortLabel();
     this.updateModalAccessibility();
   }
@@ -248,6 +256,7 @@ class ApartmentCatalog extends Component {
     range.element.style.setProperty("--range-min", `${minPosition}%`);
     range.element.style.setProperty("--range-max", `${maxPosition}%`);
     range.minRange.style.zIndex = minValue === maxValue ? "3" : "2";
+    this.updateFilterCount();
   }
 
   private parseValue(value: string) {
@@ -282,7 +291,28 @@ class ApartmentCatalog extends Component {
       this.ranges.forEach((range) => {
         this.setRange(range, range.initialMin, range.initialMax);
       });
+      this.updateFilterCount();
     });
+  };
+
+  private updateFilterCount = () => {
+    if (!this.form || !this.filterCount) return;
+
+    const checkedCount = this.form.querySelectorAll<HTMLInputElement>(
+      'input[type="checkbox"]:checked'
+    ).length;
+    const activeRangeCount = this.ranges.filter(
+      (range) =>
+        Number(range.minRange.value) !== range.min ||
+        Number(range.maxRange.value) !== range.max
+    ).length;
+    const activeFilterCount = checkedCount + activeRangeCount;
+
+    this.filterCount.textContent = String(activeFilterCount);
+    this.filterCount.setAttribute(
+      "aria-label",
+      `Выбрано параметров: ${activeFilterCount}`
+    );
   };
 
   private openFilter = () => {

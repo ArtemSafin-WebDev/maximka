@@ -27,6 +27,10 @@ export default {
       label: "Заказать звонок",
       href: "#callback-dialog",
     },
+    meeting: {
+      label: "Записаться на встречу",
+      href: "#meeting-dialog",
+    },
   },
   footer: {
     phone: "+7 (495) 132-07-08",

@@ -17,7 +17,7 @@
           aria-expanded="false"
         >
           <span>Фильтр</span>
-          <span class="apartment-catalog__filter-count" aria-label="Выбрано параметров: {{catalog.activeFilterCount}}">{{catalog.activeFilterCount}}</span>
+          <span class="apartment-catalog__filter-count js-catalog-filter-count" aria-label="Выбрано параметров: {{catalog.activeFilterCount}}" aria-live="polite">{{catalog.activeFilterCount}}</span>
         </button>
 
         <div class="catalog-sort-slot catalog-sort-slot--mobile js-catalog-sort-mobile-slot"></div>
@@ -224,7 +224,9 @@
     </ul>
 
     <button class="apartment-catalog__more" type="button">
-      Показать еще <span>{{catalog.moreCount}}</span> из {{catalog.totalCount}}
+      <span class="apartment-catalog__more-label">
+        Показать еще <span class="apartment-catalog__more-count">{{catalog.moreCount}}</span> из {{catalog.totalCount}}
+      </span>
     </button>
   </div>
 </section>

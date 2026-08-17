@@ -409,12 +409,13 @@
 
     .page-header__button--menu-apartments {
       display: inline-flex;
+      gap: 1.2rem;
       min-height: 5rem;
       padding: 1.6rem 2rem;
       border-radius: 3.1rem;
-      background-color: var(--primary-color);
+      background-color: #ffffff;
       font-size: 1.4rem;
-      color: #ffffff;
+      color: var(--text-color);
     }
 
     @include mq.hover {
@@ -425,7 +426,38 @@
     }
 
     .page-header__button--menu-apartments .page-header__button-icon {
-      display: none;
+      display: flex;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .page-header__button--menu-apartments .page-header__button-icon svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .page-header__menu-meeting {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: #ffffff;
+    }
+
+    .page-header__menu-meeting svg {
+      width: 2rem;
+      height: 2rem;
+      fill: currentColor;
+    }
+
+    @include mq.hover {
+      .page-header__menu-meeting:hover {
+        background-color: var(--primary-hover-color);
+      }
     }
   }
 }
