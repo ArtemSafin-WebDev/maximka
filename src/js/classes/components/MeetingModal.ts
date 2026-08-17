@@ -178,15 +178,16 @@ class MeetingModal extends Component {
   private handleDocumentClick(event: MouseEvent) {
     if (
       this.mobileMedia.matches ||
-      this.calendar.hidden ||
-      !(event.target instanceof Node)
+      this.calendar.hidden
     ) {
       return;
     }
 
+    const eventPath = event.composedPath();
+
     if (
-      !this.calendar.contains(event.target) &&
-      !this.calendarToggle.contains(event.target)
+      !eventPath.includes(this.calendar) &&
+      !eventPath.includes(this.calendarToggle)
     ) {
       this.setCalendarVisibility(false);
     }

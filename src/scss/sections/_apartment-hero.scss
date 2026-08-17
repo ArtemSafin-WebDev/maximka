@@ -172,7 +172,8 @@
 
   .apartment-hero__plan-image {
     width: 53.7rem;
-    height: 47rem;
+    height: auto;
+    aspect-ratio: 1 / 1;
     object-fit: contain;
   }
 
@@ -185,7 +186,6 @@
 
   .apartment-hero.is-sun-active .apartment-hero__plan-image {
     width: 36.7rem;
-    height: 32.2rem;
   }
 
   .apartment-hero__sun-path {
@@ -624,12 +624,10 @@
 
     .apartment-hero__plan-image {
       width: 24.7rem;
-      height: 21.6rem;
     }
 
     .apartment-hero.is-sun-active .apartment-hero__plan-image {
       width: 20.1rem;
-      height: 17.6rem;
     }
 
     .apartment-hero__sun-marker {

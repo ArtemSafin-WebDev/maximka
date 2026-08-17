@@ -77,12 +77,19 @@ export default {
     },
   },
   build: {
+    cssCodeSplit: false,
+    modulePreload: false,
     target: "es2022",
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name].js`,
         chunkFileNames: `assets/[name].js`,
         assetFileNames: `assets/[name].[ext]`,
+        manualChunks(id) {
+          if (id.endsWith("/src/js/classes/Component.ts")) {
+            return "Component";
+          }
+        },
       },
       input: glob
         .sync("pages/*.html")
