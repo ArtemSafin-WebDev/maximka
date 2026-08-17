@@ -80,6 +80,8 @@ export default {
       },
     },
     catalog: {
+      apiUrl: "/api/v1/apartments",
+      pageSize: 15,
       title: "Подбор квартир",
       breadcrumbs: {
         ariaLabel: "Хлебные крошки",

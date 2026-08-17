@@ -1,4 +1,12 @@
 import Component from "../Component";
+import CatalogApi, {
+  CatalogApiError,
+  type CatalogFacets,
+  type CatalogOptionFacet,
+  type CatalogResponse,
+} from "../services/CatalogApi";
+import renderApartmentCard from "../../utils/renderApartmentCard";
+import ApartmentRecommendations from "./ApartmentRecommendations";
 
 interface CatalogRange {
   element: HTMLElement;
@@ -11,6 +19,23 @@ interface CatalogRange {
   minValue: HTMLInputElement;
   maxValue: HTMLInputElement;
 }
+
+type CatalogLoadMode = "replace" | "append";
+
+const CATALOG_URL_KEYS = [
+  "rooms",
+  "priceMin",
+  "priceMax",
+  "areaMin",
+  "areaMax",
+  "entrances",
+  "floorMin",
+  "floorMax",
+  "floorOptions",
+  "features",
+  "hideReserved",
+  "sort",
+];
 
 class ApartmentCatalog extends Component {
   private readonly form: HTMLFormElement | null;
@@ -28,9 +53,32 @@ class ApartmentCatalog extends Component {
   private readonly sortOptions: HTMLInputElement[];
   private readonly sortMobileSlot: HTMLElement | null;
   private readonly sortDesktopSlot: HTMLElement | null;
+  private readonly results: HTMLElement | null;
+  private readonly grid: HTMLElement | null;
+  private readonly count: HTMLOutputElement | null;
+  private readonly loadMoreButton: HTMLButtonElement | null;
+  private readonly loadMoreCount: HTMLElement | null;
+  private readonly remainingCount: HTMLElement | null;
+  private readonly emptyElement: HTMLElement | null;
+  private readonly errorElement: HTMLElement | null;
+  private readonly errorText: HTMLElement | null;
+  private readonly retryButton: HTMLButtonElement | null;
+  private readonly statusElement: HTMLElement | null;
+  private readonly hideReservedInput: HTMLInputElement | null;
+  private readonly contactItem: HTMLElement | null;
+  private readonly mortgageItem: HTMLElement | null;
+  private readonly api: CatalogApi | null;
+  private readonly pageSize: number;
   private readonly mobileMedia = window.matchMedia("(max-width: 576px)");
   private readonly ranges: CatalogRange[];
   private readonly eventController = new AbortController();
+  private requestController: AbortController | null = null;
+  private requestId = 0;
+  private nextCursor: string | null = null;
+  private lastFailedMode: CatalogLoadMode = "replace";
+  private lastFailedParams: URLSearchParams | null = null;
+  private readonly loadedIds = new Set<string>();
+  private hasLoadedOnce = false;
   private previouslyFocusedElement: HTMLElement | null = null;
   private isFilterOpen = false;
   private isSortOpen = false;
@@ -85,6 +133,53 @@ class ApartmentCatalog extends Component {
     this.sortDesktopSlot = this.element.querySelector<HTMLElement>(
       ".js-catalog-sort-desktop-slot"
     );
+    this.results = this.element.querySelector<HTMLElement>(
+      ".apartment-catalog__results"
+    );
+    this.grid = this.element.querySelector<HTMLElement>(".js-catalog-grid");
+    this.count = this.element.querySelector<HTMLOutputElement>(
+      ".js-catalog-count"
+    );
+    this.loadMoreButton = this.element.querySelector<HTMLButtonElement>(
+      ".js-catalog-more"
+    );
+    this.loadMoreCount = this.element.querySelector<HTMLElement>(
+      ".js-catalog-more-count"
+    );
+    this.remainingCount = this.element.querySelector<HTMLElement>(
+      ".js-catalog-remaining"
+    );
+    this.emptyElement = this.element.querySelector<HTMLElement>(
+      ".js-catalog-empty"
+    );
+    this.errorElement = this.element.querySelector<HTMLElement>(
+      ".js-catalog-error"
+    );
+    this.errorText = this.element.querySelector<HTMLElement>(
+      ".js-catalog-error-text"
+    );
+    this.retryButton = this.element.querySelector<HTMLButtonElement>(
+      ".js-catalog-retry"
+    );
+    this.statusElement = this.element.querySelector<HTMLElement>(
+      ".js-catalog-status"
+    );
+    this.hideReservedInput = this.element.querySelector<HTMLInputElement>(
+      'input[name="hide-reserved"]'
+    );
+    this.contactItem = this.grid?.querySelector<HTMLElement>(
+      ".apartment-catalog__item--contact"
+    ) ?? null;
+    this.mortgageItem = this.grid?.querySelector<HTMLElement>(
+      ".apartment-catalog__item--mortgage"
+    ) ?? null;
+    const dataUrl = this.element.dataset.url ?? "";
+    this.api = dataUrl ? new CatalogApi(dataUrl) : null;
+    const configuredPageSize = Number(this.element.dataset.pageSize);
+    this.pageSize =
+      Number.isInteger(configuredPageSize) && configuredPageSize > 0
+        ? Math.min(configuredPageSize, 50)
+        : 15;
     this.ranges = Array.from(
       this.element.querySelectorAll<HTMLElement>(".js-catalog-range")
     )
@@ -92,6 +187,7 @@ class ApartmentCatalog extends Component {
       .filter((range): range is CatalogRange => range !== null);
 
     this.ranges.forEach((range) => this.initRange(range));
+    this.restoreStateFromUrl();
     this.form?.addEventListener("submit", this.handleSubmit, {
       signal: this.eventController.signal,
     });
@@ -123,6 +219,17 @@ class ApartmentCatalog extends Component {
         signal: this.eventController.signal,
       });
     });
+    this.hideReservedInput?.addEventListener(
+      "change",
+      this.handleHideReservedChange,
+      { signal: this.eventController.signal }
+    );
+    this.loadMoreButton?.addEventListener("click", this.handleLoadMore, {
+      signal: this.eventController.signal,
+    });
+    this.retryButton?.addEventListener("click", this.handleRetry, {
+      signal: this.eventController.signal,
+    });
     this.modal?.addEventListener("click", this.handleModalClick, {
       signal: this.eventController.signal,
     });
@@ -140,6 +247,10 @@ class ApartmentCatalog extends Component {
     this.updateFilterCount();
     this.updateSortLabel();
     this.updateModalAccessibility();
+
+    if (this.api) {
+      void this.loadApartments("replace");
+    }
   }
 
   private createRange(element: HTMLElement): CatalogRange | null {
@@ -280,7 +391,12 @@ class ApartmentCatalog extends Component {
 
   private handleSubmit = (event: SubmitEvent) => {
     event.preventDefault();
-    if (this.isFilterOpen) this.closeFilter();
+
+    if (this.api) {
+      void this.loadApartments("replace");
+    } else if (this.isFilterOpen) {
+      this.closeFilter();
+    }
   };
 
   private handleReset = () => {
@@ -292,7 +408,36 @@ class ApartmentCatalog extends Component {
         this.setRange(range, range.initialMin, range.initialMax);
       });
       this.updateFilterCount();
+
+      if (this.api) {
+        void this.loadApartments("replace");
+      }
     });
+  };
+
+  private handleHideReservedChange = () => {
+    if (this.api) {
+      void this.loadApartments("replace");
+      return;
+    }
+
+    this.element
+      .querySelectorAll<HTMLElement>(".js-reserved-apartment")
+      .forEach((item) => {
+        item.hidden = Boolean(this.hideReservedInput?.checked);
+      });
+  };
+
+  private handleLoadMore = () => {
+    if (this.api && this.nextCursor) {
+      void this.loadApartments("append");
+    }
+  };
+
+  private handleRetry = () => {
+    if (this.api) {
+      void this.loadApartments(this.lastFailedMode, this.lastFailedParams);
+    }
   };
 
   private updateFilterCount = () => {
@@ -463,10 +608,402 @@ class ApartmentCatalog extends Component {
 
   private handleSortChange = () => {
     this.updateSortLabel();
-    this.sortApartments();
+    if (this.api) void this.loadApartments("replace");
+    else this.sortApartments();
     this.closeSort();
     this.sortTrigger?.focus();
   };
+
+  private restoreStateFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    if (!CATALOG_URL_KEYS.some((key) => params.has(key))) return;
+
+    ["rooms", "entrances", "floor-options", "features"].forEach((name) => {
+      const queryKey = name === "floor-options" ? "floorOptions" : name;
+      const values = new Set(params.getAll(queryKey));
+      this.form
+        ?.querySelectorAll<HTMLInputElement>(`input[name="${name}"]`)
+        .forEach((input) => {
+          input.checked = values.has(input.value);
+        });
+    });
+
+    const sort = params.get("sort");
+    if (sort) {
+      const option = this.sortOptions.find(({ value }) => value === sort);
+      if (option) option.checked = true;
+    }
+
+    if (this.hideReservedInput) {
+      this.hideReservedInput.checked = params.get("hideReserved") === "true";
+    }
+
+    this.restoreRangeFromUrl(
+      ".catalog-filter__group--price",
+      params.get("priceMin"),
+      params.get("priceMax")
+    );
+    this.restoreRangeFromUrl(
+      ".catalog-filter__group--area",
+      params.get("areaMin"),
+      params.get("areaMax")
+    );
+    this.restoreRangeFromUrl(
+      ".catalog-range--floor",
+      params.get("floorMin"),
+      params.get("floorMax")
+    );
+  }
+
+  private restoreRangeFromUrl(
+    selector: string,
+    minValue: string | null,
+    maxValue: string | null
+  ) {
+    const range = this.ranges.find(({ element }) => element.matches(selector));
+    if (!range || (minValue === null && maxValue === null)) return;
+
+    this.setRange(
+      range,
+      minValue === null ? Number(range.minRange.value) : Number(minValue),
+      maxValue === null ? Number(range.maxRange.value) : Number(maxValue)
+    );
+  }
+
+  private getSearchParams(cursor?: string | null) {
+    const params = new URLSearchParams();
+
+    this.appendCheckedValues(params, "rooms", "rooms");
+    this.appendRangeValues(
+      params,
+      ".catalog-filter__group--price",
+      "priceMin",
+      "priceMax"
+    );
+    this.appendRangeValues(
+      params,
+      ".catalog-filter__group--area",
+      "areaMin",
+      "areaMax"
+    );
+    this.appendCheckedValues(params, "entrances", "entrances");
+    this.appendRangeValues(
+      params,
+      ".catalog-range--floor",
+      "floorMin",
+      "floorMax"
+    );
+    this.appendCheckedValues(params, "floor-options", "floorOptions");
+    this.appendCheckedValues(params, "features", "features");
+
+    if (this.hideReservedInput?.checked) {
+      params.set("hideReserved", "true");
+    }
+
+    const sort = this.sortOptions.find(({ checked }) => checked)?.value;
+    if (sort) params.set("sort", sort);
+    params.set("limit", String(this.pageSize));
+    if (cursor) params.set("cursor", cursor);
+
+    return params;
+  }
+
+  private appendCheckedValues(
+    params: URLSearchParams,
+    inputName: string,
+    queryName: string
+  ) {
+    this.form
+      ?.querySelectorAll<HTMLInputElement>(`input[name="${inputName}"]:checked`)
+      .forEach(({ value }) => params.append(queryName, value));
+  }
+
+  private appendRangeValues(
+    params: URLSearchParams,
+    selector: string,
+    minName: string,
+    maxName: string
+  ) {
+    const range = this.ranges.find(({ element }) => element.matches(selector));
+    if (!range) return;
+
+    params.set(minName, range.minRange.value);
+    params.set(maxName, range.maxRange.value);
+  }
+
+  private syncUrl(params: URLSearchParams) {
+    const pageUrl = new URL(window.location.href);
+    CATALOG_URL_KEYS.forEach((key) => pageUrl.searchParams.delete(key));
+
+    params.forEach((value, key) => {
+      if (key !== "cursor" && key !== "limit") {
+        pageUrl.searchParams.append(key, value);
+      }
+    });
+
+    window.history.replaceState(null, "", pageUrl);
+  }
+
+  private async loadApartments(
+    mode: CatalogLoadMode,
+    retryParams: URLSearchParams | null = null
+  ) {
+    if (!this.api || !this.grid) return;
+    if (mode === "append" && !this.nextCursor) return;
+
+    this.requestController?.abort();
+    const controller = new AbortController();
+    this.requestController = controller;
+    const currentRequestId = ++this.requestId;
+    const params = retryParams
+      ? new URLSearchParams(retryParams)
+      : this.getSearchParams(mode === "append" ? this.nextCursor : null);
+    let shouldRestartAfterExpiredCursor = false;
+
+    this.hideError();
+    this.setLoading(true, mode);
+
+    try {
+      const response = await this.api.load(params, controller.signal);
+      if (currentRequestId !== this.requestId) return;
+
+      if (
+        mode === "append" &&
+        response.items.some(({ id }) => this.loadedIds.has(id))
+      ) {
+        throw new Error("Catalog response contains an already loaded apartment");
+      }
+
+      this.applyResponse(response, mode);
+      this.lastFailedParams = null;
+      if (mode === "replace") {
+        this.syncUrl(params);
+        if (this.isFilterOpen) this.closeFilter();
+        if (this.hasLoadedOnce) this.scrollToResults();
+      }
+      this.hasLoadedOnce = true;
+    } catch (error) {
+      if (controller.signal.aborted || currentRequestId !== this.requestId) {
+        return;
+      }
+
+      if (
+        mode === "append" &&
+        error instanceof CatalogApiError &&
+        error.code === "CURSOR_EXPIRED"
+      ) {
+        this.nextCursor = null;
+        this.lastFailedMode = "replace";
+        this.lastFailedParams = null;
+        this.announce("Выдача обновилась. Загружаем квартиры заново");
+        shouldRestartAfterExpiredCursor = true;
+      } else {
+        this.lastFailedMode = mode;
+        this.lastFailedParams = new URLSearchParams(params);
+        this.showError(error, mode);
+      }
+    } finally {
+      if (currentRequestId === this.requestId) {
+        this.requestController = null;
+        this.setLoading(false, mode);
+      }
+
+      if (shouldRestartAfterExpiredCursor) {
+        queueMicrotask(() => void this.loadApartments("replace"));
+      }
+    }
+  }
+
+  private applyResponse(response: CatalogResponse, mode: CatalogLoadMode) {
+    if (!this.grid) return;
+
+    if (mode === "replace") {
+      this.getApartmentElements().forEach((item) => item.remove());
+      this.loadedIds.clear();
+    }
+
+    const renderedItems = response.items.map((item) => {
+      this.loadedIds.add(item.id);
+      return renderApartmentCard(item);
+    });
+    this.grid.append(...renderedItems);
+
+    this.nextCursor = response.pagination.nextCursor;
+    if (this.count) this.count.value = String(response.pagination.total);
+
+    this.arrangeContentItems(response.pagination.total);
+    this.updatePagination(response);
+    if (mode === "replace" && response.facets) {
+      this.applyFacets(response.facets);
+    }
+
+    const isEmpty = response.pagination.total === 0;
+    if (this.emptyElement) this.emptyElement.hidden = !isEmpty;
+    this.element.classList.add("is-api-ready");
+
+    const recommendations = ApartmentRecommendations.getInstanceFor(this.grid);
+    if (recommendations) recommendations.refresh();
+    else new ApartmentRecommendations(this.grid);
+
+    this.announce(
+      mode === "append"
+        ? `Загружено еще ${response.pagination.returned} квартир`
+        : `Найдено квартир: ${response.pagination.total}`
+    );
+  }
+
+  private getApartmentElements() {
+    if (!this.grid) return [];
+
+    return Array.from(
+      this.grid.querySelectorAll<HTMLElement>(".apartment-catalog__item")
+    ).filter((item) => item.querySelector(".apartment-card--catalog"));
+  }
+
+  private arrangeContentItems(total: number) {
+    if (!this.grid) return;
+
+    const apartments = this.getApartmentElements();
+    const hasApartments = total > 0;
+
+    if (this.contactItem) {
+      this.contactItem.hidden = !hasApartments;
+      if (hasApartments) {
+        const contactAnchor = apartments[7];
+        if (contactAnchor) contactAnchor.after(this.contactItem);
+        else this.grid.append(this.contactItem);
+      }
+    }
+
+    if (this.mortgageItem) {
+      this.mortgageItem.hidden = !hasApartments;
+      if (hasApartments) this.grid.append(this.mortgageItem);
+    }
+  }
+
+  private updatePagination(response: CatalogResponse) {
+    const { pagination } = response;
+    const hasMore = pagination.hasMore;
+
+    if (this.loadMoreButton) {
+      this.loadMoreButton.hidden = !hasMore;
+    }
+    if (this.loadMoreCount) {
+      this.loadMoreCount.textContent = String(
+        Math.min(pagination.limit, pagination.remaining)
+      );
+    }
+    if (this.remainingCount) {
+      this.remainingCount.textContent = String(pagination.remaining);
+    }
+  }
+
+  private applyFacets(facets: CatalogFacets) {
+    this.applyRangeFacet(".catalog-filter__group--price", facets.price);
+    this.applyRangeFacet(".catalog-filter__group--area", facets.area);
+    this.applyRangeFacet(".catalog-range--floor", facets.floor);
+    this.applyOptionFacets("rooms", facets.rooms);
+    this.applyOptionFacets("entrances", facets.entrances);
+    this.applyOptionFacets("features", facets.features);
+  }
+
+  private applyRangeFacet(
+    selector: string,
+    facet: { min: number; max: number } | undefined
+  ) {
+    if (!facet) return;
+    const range = this.ranges.find(({ element }) => element.matches(selector));
+    if (!range) return;
+
+    range.min = facet.min;
+    range.max = facet.max;
+    range.element.dataset.min = String(facet.min);
+    range.element.dataset.max = String(facet.max);
+    range.minRange.min = String(facet.min);
+    range.minRange.max = String(facet.max);
+    range.maxRange.min = String(facet.min);
+    range.maxRange.max = String(facet.max);
+    this.setRange(
+      range,
+      Number(range.minRange.value),
+      Number(range.maxRange.value)
+    );
+  }
+
+  private applyOptionFacets(
+    inputName: string,
+    facets: CatalogOptionFacet[] | undefined
+  ) {
+    if (!facets || !this.form) return;
+    const counts = new Map(facets.map(({ value, count }) => [value, count]));
+
+    this.form
+      .querySelectorAll<HTMLInputElement>(`input[name="${inputName}"]`)
+      .forEach((input) => {
+        const count = counts.get(input.value);
+        if (count === undefined) return;
+
+        input.disabled = count === 0 && !input.checked;
+        input.setAttribute("aria-description", `Доступно квартир: ${count}`);
+      });
+  }
+
+  private setLoading(isLoading: boolean, mode: CatalogLoadMode) {
+    this.element.classList.toggle("is-loading", isLoading);
+    if (isLoading) this.results?.setAttribute("aria-busy", "true");
+    else this.results?.removeAttribute("aria-busy");
+
+    if (this.loadMoreButton) {
+      this.loadMoreButton.disabled = isLoading;
+      if (isLoading && mode === "append") {
+        this.loadMoreButton.setAttribute("aria-busy", "true");
+      } else {
+        this.loadMoreButton.removeAttribute("aria-busy");
+      }
+    }
+    if (this.retryButton) this.retryButton.disabled = isLoading;
+  }
+
+  private hideError() {
+    if (this.errorElement) this.errorElement.hidden = true;
+  }
+
+  private showError(error: unknown, mode: CatalogLoadMode) {
+    console.warn("ApartmentCatalog: failed to load apartments", error);
+
+    let message =
+      mode === "append"
+        ? "Не удалось загрузить следующие квартиры"
+        : "Не удалось обновить каталог";
+
+    if (error instanceof CatalogApiError) {
+      if (error.status === 400) message = "Проверьте выбранные параметры фильтра";
+      if (error.status === 429) message = "Слишком много запросов. Попробуйте позже";
+      if (error.status >= 500) message = "Сервис временно недоступен";
+    }
+
+    if (this.errorText) this.errorText.textContent = message;
+    if (this.errorElement) this.errorElement.hidden = false;
+    if ((mode === "replace" || !this.nextCursor) && this.loadMoreButton) {
+      this.loadMoreButton.hidden = true;
+    }
+    this.announce(message);
+  }
+
+  private announce(message: string) {
+    if (this.statusElement) this.statusElement.textContent = message;
+  }
+
+  private scrollToResults() {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    this.results?.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  }
 
   private sortApartments() {
     const selectedValue = this.sortOptions.find(
@@ -557,6 +1094,8 @@ class ApartmentCatalog extends Component {
   }
 
   public destroy() {
+    this.requestController?.abort();
+    this.requestController = null;
     this.closeFilter();
     this.closeSort();
     if (this.sort && this.sortTrigger) {

@@ -689,6 +689,48 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2rem;
     margin-top: 6rem;
+    transition: opacity 0.2s;
+  }
+
+  .apartment-catalog.is-loading .apartment-catalog__grid {
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .apartment-catalog__empty,
+  .apartment-catalog__error {
+    margin: 6rem auto 0;
+    font-size: 2rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .apartment-catalog__empty[hidden],
+  .apartment-catalog__error[hidden],
+  .apartment-catalog__more[hidden] {
+    display: none;
+  }
+
+  .apartment-catalog__error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    color: #8f2626;
+  }
+
+  .apartment-catalog__retry {
+    padding: 1.2rem 2rem;
+    border: 0.1rem solid currentColor;
+    border-radius: 10rem;
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+  }
+
+  .apartment-catalog__retry:focus-visible {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.3rem;
   }
 
   .apartment-catalog__item {
@@ -720,6 +762,11 @@
 
   .apartment-catalog__more-count {
     color: var(--primary-color);
+  }
+
+  .apartment-catalog__more:disabled {
+    cursor: wait;
+    opacity: 0.55;
   }
 
   .apartment-catalog__more:focus-visible {
@@ -1305,28 +1352,31 @@
       margin-top: 3rem;
     }
 
-    .apartment-catalog__item--contact {
+    .apartment-catalog:not(.is-api-ready) .apartment-catalog__item--contact {
       order: 4;
     }
 
-    .apartment-catalog__item:nth-child(4) {
+    .apartment-catalog:not(.is-api-ready) .apartment-catalog__item:nth-child(4) {
       order: 5;
     }
 
-    .apartment-catalog__item:nth-child(5) {
+    .apartment-catalog:not(.is-api-ready) .apartment-catalog__item:nth-child(5) {
       order: 6;
     }
 
-    .apartment-catalog__item:nth-child(6) {
+    .apartment-catalog:not(.is-api-ready) .apartment-catalog__item:nth-child(6) {
       order: 7;
     }
 
-    .apartment-catalog__item:is(:nth-child(7), :nth-child(8), :nth-child(10), :nth-child(11), :nth-child(12)) {
+    .apartment-catalog:not(.is-api-ready) .apartment-catalog__item:is(:nth-child(7), :nth-child(8), :nth-child(10), :nth-child(11), :nth-child(12)) {
       display: none;
     }
 
-    .apartment-catalog__item--mortgage {
+    .apartment-catalog:not(.is-api-ready) .apartment-catalog__item--mortgage {
       order: 8;
+    }
+
+    .apartment-catalog__item--mortgage {
       grid-column: auto;
       margin-top: 0;
     }
@@ -1349,6 +1399,17 @@
 
     .apartment-catalog__more-count {
       color: inherit;
+    }
+
+    .apartment-catalog__empty,
+    .apartment-catalog__error {
+      margin-top: 3rem;
+      font-size: 1.6rem;
+    }
+
+    .apartment-catalog__error {
+      flex-direction: column;
+      gap: 1.2rem;
     }
 
     .catalog-page .page-footer {

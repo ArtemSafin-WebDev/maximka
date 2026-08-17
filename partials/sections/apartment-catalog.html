@@ -1,4 +1,9 @@
-<section class="apartment-catalog js-apartment-catalog" aria-labelledby="apartment-catalog-title">
+<section
+  class="apartment-catalog js-apartment-catalog"
+  aria-labelledby="apartment-catalog-title"
+  {{#if catalog.apiUrl}}data-url="{{catalog.apiUrl}}"{{/if}}
+  data-page-size="{{catalog.pageSize}}"
+>
   <div class="apartment-catalog__intro">
     <div class="container">
       {{> components/breadcrumbs
@@ -201,7 +206,7 @@
       </div>
     </div>
 
-    <ul class="apartment-catalog__grid js-apartment-recommendations">
+    <ul class="apartment-catalog__grid js-catalog-grid js-apartment-recommendations">
       {{#each catalog.itemsBeforeForm}}
         <li class="apartment-catalog__item{{#if reserved}} js-reserved-apartment{{/if}}">
           {{> components/apartment-card }}
@@ -223,9 +228,21 @@
       </li>
     </ul>
 
-    <button class="apartment-catalog__more" type="button">
+    <p class="apartment-catalog__empty js-catalog-empty" hidden>
+      По выбранным параметрам квартир не найдено
+    </p>
+
+    <div class="apartment-catalog__error js-catalog-error" role="alert" hidden>
+      <span class="js-catalog-error-text">Не удалось загрузить квартиры</span>
+      <button class="apartment-catalog__retry js-catalog-retry" type="button">Повторить</button>
+    </div>
+
+    <p class="visually-hidden js-catalog-status" aria-live="polite"></p>
+
+    <button class="apartment-catalog__more js-catalog-more" type="button">
       <span class="apartment-catalog__more-label">
-        Показать еще <span class="apartment-catalog__more-count">{{catalog.moreCount}}</span> из {{catalog.totalCount}}
+        Показать еще <span class="apartment-catalog__more-count js-catalog-more-count">{{catalog.moreCount}}</span>
+        из <span class="js-catalog-remaining">{{catalog.totalCount}}</span>
       </span>
     </button>
   </div>

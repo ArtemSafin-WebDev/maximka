@@ -14,12 +14,24 @@ interface ApartmentCardGallery {
 
 class ApartmentRecommendations extends Component {
   private swiper: Swiper | null = null;
-  private readonly featureToggles: HTMLButtonElement[];
-  private readonly galleries: ApartmentCardGallery[];
+  private featureToggles: HTMLButtonElement[] = [];
+  private galleries: ApartmentCardGallery[] = [];
   private activeFeatureToggle: HTMLButtonElement | null = null;
 
   constructor(element: HTMLElement) {
     super(element);
+
+    this.refresh();
+    document.addEventListener("click", this.handleDocumentClick);
+    document.addEventListener("keydown", this.handleDocumentKeyDown);
+
+    this.initSlider();
+  }
+
+  public refresh() {
+    this.closeFeaturePopover();
+    this.removeCardListeners();
+
     this.featureToggles = Array.from(
       this.element.querySelectorAll<HTMLButtonElement>(
         ".js-apartment-features-toggle"
@@ -59,10 +71,16 @@ class ApartmentRecommendations extends Component {
       card.addEventListener("mousemove", this.handleCardMouseMove);
       card.addEventListener("mouseleave", this.handleCardMouseLeave);
     });
-    document.addEventListener("click", this.handleDocumentClick);
-    document.addEventListener("keydown", this.handleDocumentKeyDown);
+  }
 
-    this.initSlider();
+  private removeCardListeners() {
+    this.featureToggles.forEach((toggle) => {
+      toggle.removeEventListener("click", this.handleFeatureToggle);
+    });
+    this.galleries.forEach(({ card }) => {
+      card.removeEventListener("mousemove", this.handleCardMouseMove);
+      card.removeEventListener("mouseleave", this.handleCardMouseLeave);
+    });
   }
 
   private handleCardMouseMove = (event: MouseEvent) => {
@@ -227,13 +245,7 @@ class ApartmentRecommendations extends Component {
 
   public destroy() {
     this.closeFeaturePopover();
-    this.featureToggles.forEach((toggle) => {
-      toggle.removeEventListener("click", this.handleFeatureToggle);
-    });
-    this.galleries.forEach(({ card }) => {
-      card.removeEventListener("mousemove", this.handleCardMouseMove);
-      card.removeEventListener("mouseleave", this.handleCardMouseLeave);
-    });
+    this.removeCardListeners();
     document.removeEventListener("click", this.handleDocumentClick);
     document.removeEventListener("keydown", this.handleDocumentKeyDown);
     this.swiper?.destroy(true, true);
