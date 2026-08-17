@@ -9,7 +9,30 @@
 
       <h1 class="apartment-catalog__title" id="apartment-catalog-title">{{catalog.title}}</h1>
 
-      <form class="catalog-filter js-catalog-filter">
+      <div class="apartment-catalog__mobile-actions">
+        <button
+          class="apartment-catalog__filter-button js-catalog-filter-open"
+          type="button"
+          aria-controls="catalog-filter-modal"
+          aria-expanded="false"
+        >
+          <span>Фильтр</span>
+          <span class="apartment-catalog__filter-count" aria-label="Выбрано параметров: {{catalog.activeFilterCount}}">{{catalog.activeFilterCount}}</span>
+        </button>
+
+        <div class="catalog-sort-slot catalog-sort-slot--mobile js-catalog-sort-mobile-slot"></div>
+      </div>
+
+      <div class="catalog-filter-modal js-catalog-filter-modal" id="catalog-filter-modal">
+      <form class="catalog-filter js-catalog-filter" id="catalog-filter-form">
+        <div class="catalog-filter__modal-header">
+          <h2 class="catalog-filter__modal-title">Фильтр</h2>
+          <button class="catalog-filter__close js-catalog-filter-close" type="button" aria-label="Закрыть фильтр">
+            <svg width="10" height="10" aria-hidden="true" focusable="false"><use href="#catalog-filter-close"></use></svg>
+          </button>
+        </div>
+
+        <div class="catalog-filter__body">
         <fieldset class="catalog-filter__group catalog-filter__group--rooms">
           <legend class="catalog-filter__label">Количество комнат</legend>
           <div class="catalog-filter__chips">
@@ -25,6 +48,18 @@
         {{> components/catalog-range catalog.filters.price }}
         {{> components/catalog-range catalog.filters.area }}
 
+        <button
+          class="catalog-filter__more js-catalog-filter-more"
+          type="button"
+          aria-expanded="false"
+          aria-controls="catalog-filter-additional"
+        >
+          <span class="catalog-filter__more-show">Показать все параметры</span>
+          <span class="catalog-filter__more-hide">Скрыть все параметры</span>
+          <svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#arrows/right"></use></svg>
+        </button>
+
+        <div class="catalog-filter__additional" id="catalog-filter-additional">
         <fieldset class="catalog-filter__group catalog-filter__group--entrances">
           <legend class="catalog-filter__label">Подъезд</legend>
           <div class="catalog-filter__chips">
@@ -86,17 +121,24 @@
                 <span>{{label}}</span>
               </label>
             {{/each}}
+            <span class="catalog-filter__features-more" aria-hidden="true">•••</span>
           </div>
         </fieldset>
+        </div>
 
         <div class="catalog-filter__actions">
-          <button class="catalog-filter__submit" type="submit">Показать варианты</button>
+          <button class="catalog-filter__submit" type="submit">
+            <span class="catalog-filter__submit-label-desktop">Показать варианты</span>
+            <span class="catalog-filter__submit-label-mobile">Показать</span>
+          </button>
           <button class="catalog-filter__reset" type="reset">
             <span>Сбросить</span>
             <svg width="32" height="32" aria-hidden="true" focusable="false"><use href="#catalog-reset"></use></svg>
           </button>
         </div>
+        </div>
       </form>
+      </div>
     </div>
   </div>
 
@@ -107,22 +149,47 @@
       </h2>
 
       <div class="apartment-catalog__controls">
-        <label class="catalog-sort">
-          <span class="visually-hidden">Сортировка квартир</span>
-          <select name="catalog-sort">
-            {{#each catalog.sortOptions}}
-              <option value="{{value}}">{{label}}</option>
-            {{/each}}
-          </select>
-        </label>
+        <div class="catalog-sort-slot catalog-sort-slot--desktop js-catalog-sort-desktop-slot">
+          <button
+            class="catalog-sort__trigger js-catalog-sort-trigger"
+            type="button"
+            aria-controls="catalog-sort-dropdown"
+            aria-expanded="false"
+            aria-label="Сортировка квартир: Сначала дешевле"
+          >
+            <span class="catalog-sort__trigger-label js-catalog-sort-label">Сначала дешевле</span>
+            <span class="catalog-sort__trigger-arrow" aria-hidden="true">
+              <svg width="32" height="32" focusable="false"><use href="#catalog-sort-arrow"></use></svg>
+            </span>
+            <svg class="catalog-sort__trigger-mobile-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#catalog-sort-mobile"></use></svg>
+          </button>
 
-        <label class="catalog-reserved-toggle">
-          <input class="js-hide-reserved" type="checkbox" name="hide-reserved">
-          <span class="catalog-check__box" aria-hidden="true">
-            <svg width="18" height="18" focusable="false"><use href="#filter-checkmark"></use></svg>
-          </span>
-          <span>Не показывать забронированные</span>
-        </label>
+          <div class="catalog-sort js-catalog-sort">
+            <div class="catalog-sort__dropdown js-catalog-sort-dropdown" id="catalog-sort-dropdown" aria-hidden="true">
+              <fieldset class="catalog-sort__options">
+                <legend class="visually-hidden">Порядок сортировки квартир</legend>
+                {{#each catalog.sortOptions}}
+                  <label class="catalog-sort__option">
+                    <input class="js-catalog-sort-option" type="radio" name="catalog-sort" value="{{value}}" {{#if checked}}checked{{/if}}>
+                    <span>{{label}}</span>
+                    <span class="catalog-sort__check" aria-hidden="true">
+                      <svg width="18" height="18" focusable="false"><use href="#filter-checkmark"></use></svg>
+                    </span>
+                  </label>
+                {{/each}}
+              </fieldset>
+
+            </div>
+
+            <label class="catalog-reserved-toggle">
+              <input type="checkbox" name="hide-reserved">
+              <span class="catalog-check__box" aria-hidden="true">
+                <svg width="18" height="18" focusable="false"><use href="#filter-checkmark"></use></svg>
+              </span>
+              <span>Не показывать забронированные</span>
+            </label>
+          </div>
+        </div>
       </div>
     </div>
 

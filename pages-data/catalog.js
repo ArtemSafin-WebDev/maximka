@@ -17,8 +17,8 @@ const apartmentImages = [
 ];
 
 const featureSets = [
-  ["Окно в ванной", "Просторная кухня", "Балкон"],
-  ["Санузел с полноценной ванной", "Балкон"],
+  ["Окно в ванной", "Просторная кухня"],
+  ["Окно в ванной", "Просторная кухня"],
 ];
 
 const apartments = Array.from({ length: 11 }, (_, index) => ({
@@ -45,7 +45,7 @@ const apartments = Array.from({ length: 11 }, (_, index) => ({
     "2 санузла",
   ],
   featuresRemaining: 5,
-  reserved: index === 1,
+  reserved: index === 2,
 }));
 
 const formAgreements = [
@@ -89,6 +89,7 @@ export default {
         ],
       },
       count: 345,
+      activeFilterCount: 6,
       totalCount: 107,
       moreCount: 15,
       filters: {
@@ -151,9 +152,10 @@ export default {
         ],
       },
       sortOptions: [
-        { label: "Сначала дешевле", value: "price-asc" },
+        { label: "Сначала дешевле", value: "price-asc", checked: true },
         { label: "Сначала дороже", value: "price-desc" },
-        { label: "Сначала больше", value: "area-desc" },
+        { label: "Сначала с меньшей площадью", value: "area-asc" },
+        { label: "Сначала с большей площадью", value: "area-desc" },
       ],
       itemsBeforeForm: apartments.slice(0, 8),
       itemsAfterForm: apartments.slice(8),
@@ -164,10 +166,27 @@ export default {
         action: "#",
         successModalId: "success-dialog",
         errorModalId: "error-dialog",
-        submitLabel: "Отправить заявку",
+        submitLabel: "Оставить заявку",
         fields: [
           { type: "text", name: "name", placeholder: "Имя*", required: true },
           { type: "tel", name: "phone", placeholder: "Телефон*", required: true },
+        ],
+        agreements: [
+          {
+            name: "catalog-personal-data",
+            required: true,
+            textBefore: "Я согласен на обработку персональных данных и принимаю ",
+            policy: {
+              href: "#",
+              label: "условия политики конфиденциальности",
+            },
+          },
+          {
+            name: "catalog-mailing",
+            required: true,
+            text:
+              "Я согласен на получение рекламных и информационных email-рассылок",
+          },
         ],
       },
       mortgageOffer: {
@@ -176,7 +195,7 @@ export default {
         descriptionEnd: "или семейной",
         buttonHref: "#request-dialog",
         buttonLabel: "Получить консультацию",
-        buttonLabelMobile: "Получить консультацию",
+        buttonLabelMobile: "Оставить заявку",
       },
     },
     modals: [
