@@ -29,12 +29,7 @@
                 <strong>{{title}}</strong>
               </h3>
 
-              <p class="promos-showcase__description">
-                <span class="promos-showcase__desktop-text">
-                  {{#each descriptionLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
-                </span>
-                <span class="promos-showcase__mobile-text">{{descriptionMobile}}</span>
-              </p>
+              <p class="promos-showcase__description">{{description}}</p>
 
               {{#if discount}}
                 <div class="promos-showcase__benefit">
