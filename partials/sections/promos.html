@@ -5,6 +5,63 @@
       <span class="promos__mobile-text">{{promos.titleMobile}}</span>
     </h2>
 
+    <div
+      class="promos-showcase swiper js-promos-showcase-slider"
+      aria-label="{{promos.showcaseLabel}}"
+    >
+      <ul class="promos-showcase__list swiper-wrapper">
+        {{#each promos.showcaseItems}}
+          <li class="promos-showcase__slide {{variantClass}} swiper-slide">
+            <picture class="promos-showcase__picture">
+              <source media="(max-width: 576px)" srcset="{{imageMobile}}">
+              <img
+                class="promos-showcase__image"
+                src="{{image}}"
+                width="{{imageWidth}}"
+                height="{{imageHeight}}"
+                alt="{{imageAlt}}"
+              >
+            </picture>
+
+            <article class="promos-showcase__panel">
+              <h3 class="promos-showcase__title">
+                {{#if titlePrefix}}<span>{{titlePrefix}}</span>{{/if}}
+                <strong>{{title}}</strong>
+              </h3>
+
+              <p class="promos-showcase__description">
+                <span class="promos-showcase__desktop-text">
+                  {{#each descriptionLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}
+                </span>
+                <span class="promos-showcase__mobile-text">{{descriptionMobile}}</span>
+              </p>
+
+              {{#if discount}}
+                <div class="promos-showcase__benefit">
+                  <svg class="promos-showcase__benefit-icon" width="46" height="46" aria-hidden="true" focusable="false">
+                    <use href="#promo-discount"></use>
+                  </svg>
+                  <p class="promos-showcase__benefit-copy">
+                    <span><strong>{{discount.value}}</strong> {{discount.label}}</span>
+                    <small>{{discount.note}}</small>
+                  </p>
+                </div>
+              {{/if}}
+
+              {{> components/button
+                class="promos-showcase__button"
+                href=buttonHref
+                label=buttonLabel
+                icon="arrows/right"
+              }}
+            </article>
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="promos-showcase__pagination swiper-pagination"></div>
+    </div>
+
     <div class="promos__slider swiper js-promos-slider">
       <ul class="promos__list swiper-wrapper">
         {{#each promos.items}}

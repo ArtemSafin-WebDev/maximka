@@ -17,6 +17,228 @@
     color: var(--text-color);
   }
 
+  .promos-showcase {
+    margin-bottom: 4.8rem;
+    overflow: visible;
+  }
+
+  .promos-showcase__list {
+    align-items: flex-start;
+    overflow: hidden;
+    border-radius: 6rem;
+  }
+
+  .promos-showcase__slide {
+    position: relative;
+    height: auto;
+    background-color: #d8d8d8;
+  }
+
+  .promos-showcase__slide--discount {
+    aspect-ratio: 1720 / 785;
+  }
+
+  .promos-showcase__slide--trade-in {
+    aspect-ratio: 1720 / 667;
+  }
+
+  .promos-showcase__picture,
+  .promos-showcase__image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .promos-showcase__image {
+    object-fit: cover;
+  }
+
+  .promos-showcase__panel {
+    position: absolute;
+    left: 4.9rem;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+  }
+
+  .promos-showcase__slide--discount .promos-showcase__panel {
+    top: 4.99rem;
+    width: 67.6rem;
+    height: 68.52rem;
+    border-radius: 3.679rem;
+    box-shadow: 2.759rem 0 2.207rem rgb(0 0 0 / 15%);
+  }
+
+  .promos-showcase__slide--trade-in .promos-showcase__panel {
+    top: 5.1rem;
+    width: 63.9rem;
+    height: 56.1rem;
+    border-radius: 3.679rem;
+  }
+
+  .promos-showcase__title,
+  .promos-showcase__description,
+  .promos-showcase__benefit,
+  .promos-showcase__button {
+    position: absolute;
+  }
+
+  .promos-showcase__title {
+    left: 6.254rem;
+    color: var(--text-color);
+  }
+
+  .promos-showcase__title span,
+  .promos-showcase__title strong {
+    display: block;
+  }
+
+  .promos-showcase__title strong {
+    font-weight: 600;
+    line-height: 1;
+    color: var(--primary-color);
+    white-space: nowrap;
+  }
+
+  .promos-showcase__slide--discount .promos-showcase__title {
+    top: 4.9rem;
+  }
+
+  .promos-showcase__slide--discount .promos-showcase__title span {
+    font-size: 5.978rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .promos-showcase__slide--discount .promos-showcase__title strong {
+    font-size: 11.037rem;
+  }
+
+  .promos-showcase__slide--trade-in .promos-showcase__title {
+    top: 7.5rem;
+    left: 5.5rem;
+  }
+
+  .promos-showcase__slide--trade-in .promos-showcase__title strong {
+    font-size: 11.037rem;
+  }
+
+  .promos-showcase__description {
+    font-size: 4.047rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text-color);
+  }
+
+  .promos-showcase__slide--discount .promos-showcase__description {
+    top: 24.9rem;
+    left: 6.254rem;
+  }
+
+  .promos-showcase__slide--trade-in .promos-showcase__description {
+    top: 21.8rem;
+    left: 5.5rem;
+  }
+
+  .promos-showcase__benefit {
+    top: 38.41rem;
+    left: 6.622rem;
+    display: flex;
+    align-items: center;
+    gap: 1.7rem;
+    width: 55.46rem;
+    padding-top: 2.8rem;
+    border-top: 0.3rem solid #dedbd6;
+    color: var(--text-color);
+  }
+
+  .promos-showcase__benefit-icon {
+    flex: 0 0 auto;
+    display: block;
+    width: 4.6rem;
+    height: 4.6rem;
+    fill: var(--primary-color);
+  }
+
+  .promos-showcase__benefit-copy {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+  }
+
+  .promos-showcase__benefit-copy span {
+    font-size: 2.207rem;
+    font-weight: 500;
+  }
+
+  .promos-showcase__benefit-copy strong {
+    margin-right: 0.4rem;
+    font-size: 3.035rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+
+  .promos-showcase__benefit-copy small {
+    font-size: 2.207rem;
+    line-height: 1.3;
+  }
+
+  .promos-showcase__button {
+    left: 6.254rem;
+    gap: 1.655rem;
+    height: 8.094rem;
+    padding: 0 2.207rem 0 2.943rem;
+    font-size: 2.207rem;
+  }
+
+  .promos-showcase__slide--discount .promos-showcase__button {
+    top: 54.61rem;
+  }
+
+  .promos-showcase__slide--trade-in .promos-showcase__button {
+    top: 40rem;
+    left: 5.5rem;
+  }
+
+  .promos-showcase__button .btn__icon,
+  .promos-showcase__button .btn__icon svg {
+    width: 2.943rem;
+    height: 2.943rem;
+  }
+
+  .promos-showcase__pagination.swiper-pagination {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    width: 100%;
+    height: 3.2rem;
+    margin-top: 1.6rem;
+  }
+
+  .promos-showcase__pagination .swiper-pagination-bullet {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: 0;
+    border-radius: 3rem;
+    background-color: var(--primary-color);
+    opacity: 0.6;
+    transition:
+      width 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .promos-showcase__pagination .swiper-pagination-bullet-active {
+    width: 1.2rem;
+    opacity: 1;
+  }
+
+  .promos-showcase__mobile-text {
+    display: none;
+  }
+
   .promos__slider {
     overflow: visible;
   }
@@ -85,8 +307,7 @@
   }
 
   .promos__card-title {
-    width: max-content;
-    white-space: nowrap;
+    text-wrap: balance;
     font-size: 5.6rem;
     font-weight: 500;
     line-height: 1.2;
@@ -122,6 +343,145 @@
       margin-bottom: 2.4rem;
       font-size: 1.8rem;
       line-height: 1.3;
+    }
+
+    .promos-showcase {
+      margin-bottom: 2.4rem;
+    }
+
+    .promos-showcase__list {
+      border-radius: 2.8rem;
+    }
+
+    .promos-showcase__slide--discount,
+    .promos-showcase__slide--trade-in {
+      aspect-ratio: 335 / 439;
+    }
+
+    .promos-showcase__panel {
+      top: auto;
+      right: 1.9rem;
+      bottom: 1.8rem;
+      left: 1.9rem;
+      width: auto;
+      border-radius: 1.137rem;
+      box-shadow: 0.853rem 0 0.682rem rgb(0 0 0 / 15%);
+    }
+
+    .promos-showcase__slide--discount .promos-showcase__panel {
+      top: auto;
+      width: auto;
+      height: 25.3rem;
+      border-radius: 1.137rem;
+      box-shadow: 0.853rem 0 0.682rem rgb(0 0 0 / 15%);
+    }
+
+    .promos-showcase__slide--trade-in .promos-showcase__panel {
+      top: auto;
+      width: auto;
+      height: 19.7rem;
+      border-radius: 1.137rem;
+      box-shadow: 0.853rem 0 0.682rem rgb(0 0 0 / 15%);
+    }
+
+    .promos-showcase__title,
+    .promos-showcase__slide--trade-in .promos-showcase__title {
+      top: 2.1rem;
+      left: 1.934rem;
+    }
+
+    .promos-showcase__slide--discount .promos-showcase__title {
+      top: 1.8rem;
+    }
+
+    .promos-showcase__slide--discount .promos-showcase__title span {
+      font-size: 2.112rem;
+    }
+
+    .promos-showcase__slide--discount .promos-showcase__title strong,
+    .promos-showcase__slide--trade-in .promos-showcase__title strong {
+      font-size: 4rem;
+    }
+
+    .promos-showcase__description {
+      font-size: 1.3rem;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+
+    .promos-showcase__slide--discount .promos-showcase__description {
+      top: 9.2rem;
+      left: 1.934rem;
+    }
+
+    .promos-showcase__slide--trade-in .promos-showcase__description {
+      top: 7.35rem;
+      left: 2rem;
+      font-size: 1.6rem;
+    }
+
+    .promos-showcase__benefit {
+      top: 11.875rem;
+      left: 2.047rem;
+      gap: 0.85rem;
+      width: 25.053rem;
+      padding-top: 1.22rem;
+      border-top-width: 0.1rem;
+    }
+
+    .promos-showcase__benefit-icon {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+
+    .promos-showcase__benefit-copy span {
+      font-size: 1.2rem;
+    }
+
+    .promos-showcase__benefit-copy strong {
+      margin-right: 0.15rem;
+      font-size: 1.6rem;
+    }
+
+    .promos-showcase__benefit-copy small {
+      font-size: 1.2rem;
+    }
+
+    .promos-showcase__slide--discount .promos-showcase__button,
+    .promos-showcase__slide--trade-in .promos-showcase__button {
+      top: auto;
+      bottom: 1.6rem;
+      left: 1.934rem;
+      gap: 1.8rem;
+      width: auto;
+      min-width: 0;
+      min-height: 5.6rem;
+      height: 5.6rem;
+      padding: 1.2rem 1.2rem 1.2rem 2rem;
+      border-radius: 3.1rem;
+      font-size: 1.6rem;
+    }
+
+    .promos-showcase__slide--discount .promos-showcase__button {
+      bottom: 1rem;
+    }
+
+    .promos-showcase__button .btn__icon,
+    .promos-showcase__button .btn__icon svg {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+
+    .promos-showcase__pagination.swiper-pagination {
+      margin-top: 0.8rem;
+    }
+
+    .promos-showcase__desktop-text {
+      display: none;
+    }
+
+    .promos-showcase__mobile-text {
+      display: inline;
     }
 
     .promos__list {
@@ -165,7 +525,6 @@
 
     .promos__card-title {
       width: 100%;
-      white-space: normal;
       font-size: 2.4rem;
       line-height: 1.2;
       letter-spacing: 0.02em;

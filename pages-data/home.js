@@ -775,6 +775,41 @@ export default {
     promos: {
       title: "Акции",
       titleMobile: "Спецпредложения",
+      showcaseLabel: "Специальные предложения жилого комплекса",
+      showcaseItems: [
+        {
+          variantClass: "promos-showcase__slide--discount",
+          image: "/images/promos-showcase/discount-desktop.webp",
+          imageMobile: "/images/promos-showcase/discount-mobile.webp",
+          imageWidth: 3440,
+          imageHeight: 1570,
+          imageAlt: "Вид сверху на жилой комплекс и благоустроенный двор",
+          titlePrefix: "Скидка до",
+          title: "500 000 ₽",
+          descriptionLines: ["Сотрудникам заводов", "и участникам СВО"],
+          descriptionMobile: "Сотрудникам заводов и участникам СВО",
+          discount: {
+            value: "3%",
+            label: "к основной скидке",
+            note: "Оплата без субсидирования или cash",
+          },
+          buttonLabel: "Получить расчет",
+          buttonHref: "#request-dialog",
+        },
+        {
+          variantClass: "promos-showcase__slide--trade-in",
+          image: "/images/promos-showcase/trade-in-desktop.webp",
+          imageMobile: "/images/promos-showcase/trade-in-mobile.webp",
+          imageWidth: 3410,
+          imageHeight: 1334,
+          imageAlt: "Фасады жилого комплекса со стороны благоустроенного сквера",
+          title: "Трейд-ин",
+          descriptionLines: ["Подробности", "у менеджера"],
+          descriptionMobile: "Подробности у менеджера",
+          buttonLabel: "Связаться",
+          buttonHref: "#request-dialog",
+        },
+      ],
       items: [
         {
           image: "/images/promos/1.svg",
