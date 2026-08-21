@@ -59,6 +59,28 @@
         {{/each}}
       </ul>
 
+      <div class="promos-showcase__arrows" aria-label="{{promos.showcaseControlsLabel}}">
+        <button
+          class="promos-showcase__arrow js-promos-showcase-prev"
+          type="button"
+          aria-label="{{promos.showcasePrevLabel}}"
+        >
+          <svg class="promos-showcase__arrow-icon" width="64" height="64" aria-hidden="true" focusable="false">
+            <use href="#promos-showcase-left"></use>
+          </svg>
+        </button>
+
+        <button
+          class="promos-showcase__arrow js-promos-showcase-next"
+          type="button"
+          aria-label="{{promos.showcaseNextLabel}}"
+        >
+          <svg class="promos-showcase__arrow-icon" width="64" height="64" aria-hidden="true" focusable="false">
+            <use href="#promos-showcase-right"></use>
+          </svg>
+        </button>
+      </div>
+
       <div class="promos-showcase__pagination swiper-pagination"></div>
     </div>
 

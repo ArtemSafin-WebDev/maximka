@@ -207,6 +207,44 @@
     height: 2.943rem;
   }
 
+  .promos-showcase__arrows {
+    position: absolute;
+    right: 4.9rem;
+    bottom: 9.7rem;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  .promos-showcase__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6.4rem;
+    height: 6.4rem;
+    border-radius: 50%;
+    background-color: #d8de5b;
+    color: var(--text-color);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  @include mq.hover {
+    .promos-showcase__arrow:hover {
+      background-color: var(--primary-color);
+      color: #ffffff;
+    }
+  }
+
+  .promos-showcase__arrow-icon {
+    display: block;
+    width: 6.4rem;
+    height: 6.4rem;
+    fill: currentColor;
+  }
+
   .promos-showcase__pagination.swiper-pagination {
     position: static;
     display: flex;
@@ -219,8 +257,8 @@
   }
 
   .promos-showcase__pagination .swiper-pagination-bullet {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 0.8rem;
+    height: 0.8rem;
     margin: 0;
     border-radius: 3rem;
     background-color: var(--primary-color);
@@ -231,7 +269,7 @@
   }
 
   .promos-showcase__pagination .swiper-pagination-bullet-active {
-    width: 1.2rem;
+    width: 1.8rem;
     opacity: 1;
   }
 
@@ -468,8 +506,29 @@
       height: 3.2rem;
     }
 
+    .promos-showcase__arrows {
+      position: static;
+      gap: 1rem;
+      margin-top: 2.4rem;
+    }
+
+    .promos-showcase__arrow,
+    .promos-showcase__arrow-icon {
+      width: 4.7rem;
+      height: 4.7rem;
+    }
+
     .promos-showcase__pagination.swiper-pagination {
       margin-top: 0.8rem;
+    }
+
+    .promos-showcase__pagination .swiper-pagination-bullet {
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+
+    .promos-showcase__pagination .swiper-pagination-bullet-active {
+      width: 1.2rem;
     }
 
     .promos-showcase__desktop-text {

@@ -776,6 +776,9 @@ export default {
       title: "Акции",
       titleMobile: "Спецпредложения",
       showcaseLabel: "Специальные предложения жилого комплекса",
+      showcaseControlsLabel: "Управление специальными предложениями",
+      showcasePrevLabel: "Предыдущее специальное предложение",
+      showcaseNextLabel: "Следующее специальное предложение",
       showcaseItems: [
         {
           variantClass: "promos-showcase__slide--discount",
